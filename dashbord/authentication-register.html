@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<title>Регистрация</title>
+	<link rel="icon" href="assets/images/favicon-32x32.png" type="image/png" />
+	<link href="assets/css/pace.min.css" rel="stylesheet" />
+	<script src="assets/js/pace.min.js"></script>
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="assets/css/icons.css" />
+	<link rel="stylesheet" href="assets/css/app.css" />
+	<link rel="stylesheet" href="assets/plugins/notifications/css/lobibox.min.css">
+</head>
+
+<body class="bg-theme bg-theme1">
+	<!-- wrapper -->
+	<div class="wrapper">
+		<div class="section-authentication-register d-flex align-items-center justify-content-center">
+			<div class="row">
+				<div class="col-12 col-lg-10 mx-auto">
+					<div class="card radius-15">
+						<div class="row no-gutters">
+							<div class="col-lg-6">
+								<div class="card-body p-md-5">
+									<div class="text-center">
+
+										<h3 class="mt-4 font-weight-bold">Создание аккаунта</h3>
+									</div>
+
+									<div class="login-separater text-center"><span>Регистрация через почту</span>
+										<hr/>
+									</div>
+
+										<div class="form-group mt-4">
+											<label>Логин</label>
+											<input id="login_login" type="text" class="form-control" placeholder="glushok" required/>
+										</div>
+										<div class="form-group mt-4">
+											<label>Email Адрес</label>
+											<input id="login_email" type="text" class="form-control" placeholder="example@user.com" required/>
+										</div>
+
+										<div class="form-group">
+											<label>Пароль</label>
+											<div class="input-group" id="show_hide_password">
+												<input id="login_passwd" class="form-control border-right-0" type="password" value="" required>
+												<div class="input-group-append">	<a href="javascript:;" class="input-group-text border-left-0"><i class='bx bx-hide'></i></a>
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<div class="custom-control custom-checkbox">
+												<input type="checkbox" class="custom-control-input pravila" id="customCheck1">
+												<label class="custom-control-label" for="customCheck1">Ответственное лицо</label>
+											</div>
+										</div>
+
+										<div class="btn-group mt-3 w-100">
+											<button id="registrsend" type="button" class="btn btn-light btn-block">Регистрация</button>
+											<button id="registrsend" type="button" class="btn btn-light"><i class="lni lni-arrow-right"></i>
+											</button>
+										</div>
+									<hr/>
+									<div class="text-center mt-4">
+										<p class="mb-0">У вас уже есть учетная запись? <a href="authentication-login.html">Вход</a>
+										</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-6">
+								<img src="assets/images/login-images/register-frent-img.jpg" class="card-img login-img h-100" alt="...">
+							</div>
+						</div>
+						<!--end row-->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end wrapper -->
+	<!-- JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/plugins/notifications/js/lobibox.min.js"></script>
+	<script src="assets/plugins/notifications/js/notifications.js"></script>
+	<script src="assets/plugins/notifications/js/notification-custom-script.js"></script>
+	<!--Password show & hide js -->
+	<script>
+		$(document).ready(function () {
+		    $('#login_login').on('blur', function(){
+				res = ((/^[a-z0-9_-]{3,16}$/).test($("#login_login").val()));
+				 if (!res){
+					 warning_noti("Не более 16 символов! <br> Разрешены буквы a-z и цифры!");
+				 }
+			});
+			$('#login_email').on('blur', function(){
+				res = ((/^[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}$/i).test($("#login_email").val()));
+				 if (!res){
+					 warning_noti("Введите в соответствии с примером! <br> example@user.com");
+				 }
+			});
+
+			$('#login_passwd').on('blur', function(){
+				res = ((/^(?=.*[A-Z].*[A-Z])(?=.*[a-z].*[a-z].*[a-z]).{8,}$/).test($("#login_passwd").val()));
+				 if (!res){
+					 warning_noti("Минимальная длинна 8 символов!<br> Минимум 3 строчные буквы! <br>Минимум 2 заглавные буквы! ");
+				 }
+			});
+
+			$("#registrsend").on('click', function (event) {
+				let prov = true;
+				if ($("#login_login").val() == ""){
+					warning_noti("Необходимо ввести логин!");
+					 prov = false;
+				}
+				else {
+					res = ((/^[a-z0-9_-]{3,16}$/).test($("#login_login").val()));
+					 if (!res){
+						 warning_noti("Не более 16 символов! <br> Разрешены буквы a-z и цифры!");
+						 prov = false;
+					 }
+				}
+				if ($("#login_email").val() == ""){
+					warning_noti("Необходимо ввести почту!");
+					 prov = false;
+				}
+				else {
+					res = ((/^[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}$/i).test($("#login_email").val()));
+					 if (!res){
+						 warning_noti("Введите в соответствии с примером! <br> example@user.com");
+						 prov = false;
+					 }
+				}
+
+				if ($("#login_passwd").val() == ""){
+					warning_noti("Необходимо ввести пароль!");
+					 prov = false;
+				}
+				else {
+					res = ((/^(?=.*[A-Z].*[A-Z])(?=.*[a-z].*[a-z].*[a-z]).{8,}$/).test($("#login_passwd").val()));
+					 if (!res){
+						 warning_noti("Минимальная длинна 8 символов! <br> Минимум 3 строчные буквы! <br> Минимум 2 заглавные буквы! ");
+						  prov = false;
+					 }
+				}
+
+				if (prov == true){
+				
+					var datareg = {
+						"login":$("#login_login").val(),
+						"email":$("#login_email").val(),
+						"passwd":($("#login_passwd").val()),
+						"type_user":$('.pravila').prop('checked')
+					};
+
+					//console.log(datareg);
+					$.post("/register.php", datareg, function(data){
+						var obj = JSON.parse(data);
+						if (obj.status == "error"){
+							warning_noti(obj.mes);
+						}
+						if (obj.status == "success"){
+							window.open('index.php');
+						}
+					});
+				}
+			});
+
+			$("#show_hide_password a").on('click', function (event) {
+				event.preventDefault();
+				if ($('#show_hide_password input').attr("type") == "text") {
+					$('#show_hide_password input').attr('type', 'password');
+					$('#show_hide_password i').addClass("bx-hide");
+					$('#show_hide_password i').removeClass("bx-show");
+				} else if ($('#show_hide_password input').attr("type") == "password") {
+					$('#show_hide_password input').attr('type', 'text');
+					$('#show_hide_password i').removeClass("bx-hide");
+					$('#show_hide_password i').addClass("bx-show");
+				}
+			});
+
+		});
+	</script>
+</body>
+
+</html>

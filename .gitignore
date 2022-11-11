@@ -1,0 +1,5 @@
+/node_modules
+/vendor
+config/config.php
+dashbord/calc/connect.php
+dashbord/calcUr/connect.php

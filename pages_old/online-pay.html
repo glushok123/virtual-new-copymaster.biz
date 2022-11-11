@@ -1,0 +1,58 @@
+        <?php
+    $keyw="Онлайн оплата";
+    $titl="Онлайн оплата";
+    $desc="Онлайн оплата";
+    include"top.php";
+?>
+
+    <div class="w1 con">
+     <br>
+<h1>Для Вашего удобства мы предусмотрели все самые удобные виды платежей:</h1>
+ <br>
+        <div class="w1 con" id="online-pay">
+        <br>
+      <h2><b>Онлайн оплата</b></h2>
+      <br>
+
+      <form method="POST" action="https://money.yandex.ru/quickpay/confirm.xml" style="text-align:center;">
+        
+        <p>
+        <img src="/img/u.png">
+          Онлайн через сервисы Яндекса:<br>
+          <input name="sum" placeholder="Введите сумму" data-type="number" style="width: 190px; padding: 10px; font-size: 1.2em;margin-top: 10px;"><br>
+          <input type="submit" name="submit-button" value="Перевести" style="width: 214px; padding: 10px; font-size: 1.2em;    margin-top: 10px;">
+        </p>
+        <p style="display:none;">
+          <input type="hidden" name="receiver" value="41001450854725">
+          <input type="hidden" name="label" value="$order_id">
+          <input type="hidden" name="quickpay-form" value="donate">
+          <input type="hidden" name="targets" value="Предоплата за услуги копицентра Копимастер">
+          <input type="hidden" name="need-fio" value="true">
+          <input type="hidden" name="need-email" value="false">
+          <input type="hidden" name="need-phone" value="false">
+          <input type="hidden" name="need-address" value="false">
+          <input type="radio" name="paymentType" value="AC" checked>
+          <input type="radio" name="paymentType" value="PC">
+        </p><br>
+      </form>
+           <br>
+     <h2>Наличный расчёт</h2>
+     <br>
+     <p>С кассовым чеком и отчетной документацией</p>
+     <br>
+     <h2>Безналич. расчёт для юр.лиц</h2>
+     <br>
+     <p>С закрывающими  накладными и отчетной документацией</p>
+
+     <br>
+ <br>
+  <br>
+    </div>
+ <br>
+ <br>
+  <br>
+ <br>
+ <br>
+    </div>
+
+    <?php $fg=999; include"bot.php"; ?>

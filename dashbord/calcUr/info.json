@@ -1,0 +1,393 @@
+{
+  "petchat_chet_A4_0_odn":"",
+  "petchat_chet_A4_10_odn":"",
+  "petchat_chet_A4_50_odn":"",
+  "petchat_chet_A4_100_odn":"",
+  "petchat_chet_A4_250_odn":"",
+  "petchat_chet_A4_500_odn":"",
+  "petchat_chet_A4_1000_odn":"",
+  "petchat_chet_A4_10000_odn":"",
+
+  "petchat_chet_A4_0_dvx":"",
+  "petchat_chet_A4_10_dvx":"",
+  "petchat_chet_A4_50_dvx":"",
+  "petchat_chet_A4_100_dvx":"",
+  "petchat_chet_A4_250_dvx":"",
+  "petchat_chet_A4_500_dvx":"",
+  "petchat_chet_A4_1000_dvx":"",
+  "petchat_chet_A4_10000_dvx":"",
+
+  "petchat_chet_A3_0_odn":"",
+  "petchat_chet_A3_10_odn":"",
+  "petchat_chet_A3_50_odn":"",
+  "petchat_chet_A3_100_odn":"",
+  "petchat_chet_A3_250_odn":"",
+  "petchat_chet_A3_500_odn":"",
+  "petchat_chet_A3_1000_odn":"",
+  "petchat_chet_A3_10000_odn":"",
+
+  "petchat_chet_A3_0_dvx":"",
+  "petchat_chet_A3_10_dvx":"",
+  "petchat_chet_A3_50_dvx":"",
+  "petchat_chet_A3_100_dvx":"",
+  "petchat_chet_A3_250_dvx":"",
+  "petchat_chet_A3_500_dvx":"",
+  "petchat_chet_A3_1000_dvx":"",
+  "petchat_chet_A3_10000_dvx":"",
+
+  "petchat_chet_A2_0_z0":"",
+  "petchat_chet_A2_10_z0":"",
+  "petchat_chet_A2_100_z0":"",
+  "petchat_chet_A2_1000_z0":"",
+
+  "petchat_chet_A2_0_z20":"",
+  "petchat_chet_A2_10_z20":"",
+  "petchat_chet_A2_100_z20":"",
+  "petchat_chet_A2_1000_z20":"",
+
+  "petchat_chet_A1_0_z0":"",
+  "petchat_chet_A1_10_z0":"",
+  "petchat_chet_A1_100_z0":"",
+  "petchat_chet_A1_1000_z0":"",
+
+  "petchat_chet_A1_0_z20":"",
+  "petchat_chet_A1_10_z20":"",
+  "petchat_chet_A1_100_z20":"",
+  "petchat_chet_A1_1000_z20":"",
+
+  "petchat_chet_A0_0_z0":"",
+  "petchat_chet_A0_10_z0":"",
+  "petchat_chet_A0_100_z0":"",
+  "petchat_chet_A0_1000_z0":"",
+
+  "petchat_chet_A0_0_z20":"",
+  "petchat_chet_A0_10_z20":"",
+  "petchat_chet_A0_100_z20":"",
+  "petchat_chet_A0_1000_z20":"",
+
+  "petchat_chet_ns_0_z0":"",
+  "petchat_chet_ns_10_z0":"",
+  "petchat_chet_ns_100_z0":"",
+  "petchat_chet_ns_1000_z0":"",
+
+  "petchat_chet_ns_0_z20":"",
+  "petchat_chet_ns_10_z20":"",
+  "petchat_chet_ns_100_z20":"",
+  "petchat_chet_ns_1000_z20":"",
+
+  "petchat_bw_A4_0_odn":"",
+  "petchat_bw_A4_10_odn":"",
+  "petchat_bw_A4_50_odn":"",
+  "petchat_bw_A4_100_odn":"",
+  "petchat_bw_A4_250_odn":"",
+  "petchat_bw_A4_500_odn":"",
+  "petchat_bw_A4_1000_odn":"",
+  "petchat_bw_A4_10000_odn":"",
+
+  "petchat_bw_A4_0_dvx":"",
+  "petchat_bw_A4_10_dvx":"",
+  "petchat_bw_A4_50_dvx":"",
+  "petchat_bw_A4_100_dvx":"",
+  "petchat_bw_A4_250_dvx":"",
+  "petchat_bw_A4_500_dvx":"",
+  "petchat_bw_A4_1000_dvx":"",
+  "petchat_bw_A4_10000_dvx":"",
+
+  "petchat_bw_A3_0_odn":"",
+  "petchat_bw_A3_10_odn":"",
+  "petchat_bw_A3_50_odn":"",
+  "petchat_bw_A3_100_odn":"",
+  "petchat_bw_A3_250_odn":"",
+  "petchat_bw_A3_500_odn":"",
+  "petchat_bw_A3_1000_odn":"",
+  "petchat_bw_A3_10000_odn":"",
+
+  "petchat_bw_A3_0_dvx":"",
+  "petchat_bw_A3_10_dvx":"",
+  "petchat_bw_A3_50_dvx":"",
+  "petchat_bw_A3_100_dvx":"",
+  "petchat_bw_A3_250_dvx":"",
+  "petchat_bw_A3_500_dvx":"",
+  "petchat_bw_A3_1000_dvx":"",
+  "petchat_bw_A3_10000_dvx":"",
+
+  "petchat_bw_A2_0_80":"",
+  "petchat_bw_A2_50_80":"",
+  "petchat_bw_A2_200_80":"",
+  "petchat_bw_A2_500_80":"",
+
+  "petchat_bw_A2_0_90":"",
+  "petchat_bw_A2_50_90":"",
+  "petchat_bw_A2_200_90":"",
+  "petchat_bw_A2_500_90":"",
+
+  "petchat_bw_A1_0_80":"",
+  "petchat_bw_A1_50_80":"",
+  "petchat_bw_A1_200_80":"",
+  "petchat_bw_A1_500_80":"",
+
+  "petchat_bw_A1_0_90":"",
+  "petchat_bw_A1_50_90":"",
+  "petchat_bw_A1_200_90":"",
+  "petchat_bw_A1_500_90":"",
+
+  "petchat_bw_A0_0_80":"",
+  "petchat_bw_A0_50_80":"",
+  "petchat_bw_A0_200_80":"",
+  "petchat_bw_A0_500_80":"",
+
+  "petchat_bw_A0_0_90":"",
+  "petchat_bw_A0_50_90":"",
+  "petchat_bw_A0_200_90":"",
+  "petchat_bw_A0_500_90":"",
+
+  "petchat_bw_ns_0_80":"",
+  "petchat_bw_ns_50_80":"",
+  "petchat_bw_ns_200_80":"",
+  "petchat_bw_ns_500_80":"",
+
+  "petchat_bw_ns_0_90":"",
+  "petchat_bw_ns_50_90":"",
+  "petchat_bw_ns_200_90":"",
+  "petchat_bw_ns_500_90":"",
+
+  "petchat_A4_mt120":"",
+  "petchat_A4_mt160":"",
+  "petchat_A4_mt200":"",
+  "petchat_A4_mt250":"",
+  "petchat_A4_mt300":"",
+  "petchat_A4_gl170":"",
+  "petchat_A4_gl250":"",
+  "petchat_A4_klk250":"",
+  "petchat_A4_sk":"",
+
+  "petchat_A3_mt160":"",
+  "petchat_A3_mt200":"",
+  "petchat_A3_mt250":"",
+  "petchat_A3_mt280":"",
+  "petchat_A3_gl170":"",
+  "petchat_A3_gl250":"",
+  "petchat_A3_sm":"",
+
+
+
+
+
+########################
+"pereplet_pl_A4_m":"",
+"pereplet_pl_A4_s":"",
+"pereplet_pl_A4_b":"",
+"pereplet_pl_A3_m":"",
+"pereplet_pl_A3_s":"",
+"pereplet_pl_A3_b":"",
+"pereplet_mt_A4_m":"",
+"pereplet_mt_A4_s":"",
+"pereplet_mt_A4_b":"",
+"pereplet_mt_A3_m":"",
+"pereplet_mt_A3_s":"",
+"pereplet_mt_A3_b":"",
+"pereplet_tv_5":"",
+"pereplet_tv_10":"",
+"pereplet_tv_16":"",
+"pereplet_vs_k":"",
+"pereplet_vs_f":"",
+"pereplet_pl_per":"",
+
+
+
+"prochee_r":"",
+"prochee_rr":"",
+"prochee_opf":"",
+"prochee_rk":"",
+"prochee_nt":"",
+"prochee_df":"",
+"prochee_dc":"",
+"prochee_dk":"",
+"prochee_shiv":"",
+"prochee_perfor":"",
+"prochee_stepler":"",
+"prochee_bigovka":"",
+"prochee_tisn":"",
+"prochee_dost":"",
+"prochee_ps":"",
+"prochee_A4":"",
+"prochee_A3":"",
+
+
+
+"prochee_scan_0_A4_av":"",
+"prochee_scan_10_A4_av":"",
+"prochee_scan_50_A4_av":"",
+"prochee_scan_100_A4_av":"",
+"prochee_scan_500_A4_av":"",
+
+"prochee_scan_0_A4_r":"",
+"prochee_scan_10_A4_r":"",
+"prochee_scan_50_A4_r":"",
+"prochee_scan_100_A4_r":"",
+"prochee_scan_500_A4_r":"",
+
+"prochee_scan_0_A3_av":"",
+"prochee_scan_10_A3_av":"",
+"prochee_scan_50_A3_av":"",
+"prochee_scan_100_A3_av":"",
+"prochee_scan_500_A3_av":"",
+
+"prochee_scan_0_A3_r":"",
+"prochee_scan_10_A3_r":"",
+"prochee_scan_50_A3_r":"",
+"prochee_scan_100_A3_r":"",
+"prochee_scan_500_A3_r":"",
+
+"prochee_scan_0_A2":"",
+"prochee_scan_10_A2":"",
+"prochee_scan_50_A2":"",
+"prochee_scan_100_A2":"",
+"prochee_scan_500_A2":"",
+
+"prochee_scan_0_A1":"",
+"prochee_scan_10_A1":"",
+"prochee_scan_50_A1":"",
+"prochee_scan_100_A1":"",
+"prochee_scan_500_A1":"",
+
+"prochee_scan_0_A0":"",
+"prochee_scan_10_A0":"",
+"prochee_scan_50_A0":"",
+"prochee_scan_100_A0":"",
+"prochee_scan_500_A0":"",
+
+
+
+"prochee_lam_0_A6_g":"",
+"prochee_lam_10_A6_g":"",
+"prochee_lam_50_A6_g":"",
+
+"prochee_lam_0_A5_g":"",
+"prochee_lam_10_A5_g":"",
+"prochee_lam_50_A5_g":"",
+
+"prochee_lam_0_A4_g":"",
+"prochee_lam_10_A4_g":"",
+"prochee_lam_50_A4_g":"",
+
+"prochee_lam_0_A3_g":"",
+"prochee_lam_10_A3_g":"",
+"prochee_lam_50_A3_g":"",
+
+"prochee_lam_0_A6_m":"",
+"prochee_lam_10_A6_m":"",
+"prochee_lam_50_A6_m":"",
+
+"prochee_lam_0_A5_m":"",
+"prochee_lam_10_A5_m":"",
+"prochee_lam_50_A5_m":"",
+
+"prochee_lam_0_A4_m":"",
+"prochee_lam_10_A4_m":"",
+"prochee_lam_50_A4_m":"",
+
+"prochee_lam_0_A3_m":"",
+"prochee_lam_10_A3_m":"",
+"prochee_lam_50_A3_m":"",
+
+
+
+
+"dis_one_ysl":"",
+"dis_one_vv":"",
+"dis_one_fr":"",
+"dis_one_vm":"",
+"dis_one_rl":"",
+
+"dis_db_db":"",
+"dis_db_tc":"",
+"dis_db_vl":"",
+"dis_db_m":"",
+
+"dis_fd_1":"",
+"dis_fd_2":"",
+"dis_fd_3":"",
+"dis_fd_4":"",
+"dis_fd_5":"",
+
+"dis_pet_kp":"",
+"dis_pet_hm":"",
+"dis_pet_hs":"",
+"dis_pet_hb":"",
+"dis_pet_fa":"",
+"dis_pet_iks":"",
+"dis_pet_otp":"",
+
+"dis_osn_1":"",
+"dis_osn_2":"",
+"dis_osn_3":"",
+"dis_osn_4":"",
+"dis_osn_5":"",
+"dis_osn_6":"",
+
+"dis_krask_1":"",
+"dis_krask_2":"",
+"dis_krask_3":"",
+"dis_krask_4":"",
+"dis_krask_5":"",
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+таблицы
+"pereplet":"",
+"prochee":"",
+"prochee_scan":"",
+"prochee_lam":"",
+"dis_one":"",
+"dis_db":"",
+"dis_fd":"",
+"dis_pet":"",
+"dis_osn":"",
+"dis_krask":"",
+"":"",
+"":"",
+"":"",
+"":"",
+"":"",
+"":"",
+"":"",
+"":"",
+"":"",
+"":"",
+"":"",
+"":"",
+"":"",
+"":"",
+"":"",
+"":"",
+"":"",
+"":"",
+"":"",
+
+
+
+
+
+
+
+
+
+
+
+}

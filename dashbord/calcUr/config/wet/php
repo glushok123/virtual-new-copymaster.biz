@@ -1,0 +1,78 @@
+<div class="modal fade" id="petchatfotomodal" tabindex="-1" aria-hidden="true" style="display: none;" >
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content radius-30">
+            <div class="modal-header border-bottom-0">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">	<span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body ">
+                <div class="container  text-center justify-content-center">
+                    <div class="row">
+                        <div class="col-12 col-lg-6 col-xl-6">
+                            <h4>РАЗМЕР</h4>
+                            <select id="sizebum_petchatfoto" class="form-control" aria-label=".form-select-lg example">
+                             <option selected></option>
+                             <option value="1">10x15 см (A6)</option>
+                             <option value="2">15x20 см (A5)</option>
+                             <option value="3">21x30 см (A4)</option>
+                           </select>
+                           </select>
+                        </div>
+                        <div class="col-12 col-lg-6 col-xl-6">
+                            <h4><span data-bs-toggle="modal" data-bs-target="#exampleModal2">ТИП БУМАГИ</span> </h4>
+                            <select id="tibum_petchatfoto"  class="form-control" aria-label=".form-select-lg example">
+                           <option selected></option>
+                             <option value="4">Матовая</option>
+                             <option value="5">Глянцевая</option>
+                           </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-lg-6 col-xl-6">
+                            <h4>Срочность</h4>
+                            <select id="srok_petchatfoto"  class="form-control" aria-label=".form-select-lg example">
+                                <option selected></option>
+                             <option value="6">Не срочно (один рабочий день)</option>
+                             <option value="7">В течении 4 часов</option>
+                           </select>
+                        </div>
+                        <div class="col-12 col-lg-6 col-xl-6">
+                            <h4>КОЛИЧЕСТВО</h4>
+                            <input id="kol_petchatfoto" type="text" class="form-control form-control-lg radius-30 "   placeholder="100"  />
+                        </div>
+                    </div>
+
+                <br>
+                <div class="row text-center justify-content-center">
+                    <div class="col-6 col-lg-6 col-xl-6">
+                           <h4>Статус</h4>
+                           <select id="status_petchatfoto"  class="form-control" aria-label=".form-select-lg example">
+                               <option selected></option>
+                            <option value="Активна">Активна</option>
+                            <option value="Отмена">Отмена</option>
+                            <option value="Ожидание">Ожидание</option>
+                            <option value="Оплачена">Оплачена</option>
+                            <option value="Закрыта">Закрыта</option>
+                          </select>
+                    </div>
+                   </div>
+                 </div>
+                <hr>
+                <br>
+                <h3 class="text-center">Обработка заявки</h3>
+                <div class="form-group">
+                    <label>ЦЕНА</label>
+                    <input id="price_petchatfoto" type="text" class="form-control form-control-lg radius-30">
+                </div>
+                <div class="form-group">
+                    <label>Комментарий</label>
+                    <input id="comment_petchatfoto" type="text" class="form-control form-control-lg radius-30">
+                </div>
+                <div class="form-group">
+                    <button id="updatezayiavka_petchatfoto"  data-id="0" type="button" class="btn btn-light radius-30 btn-lg btn-block">Отправить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

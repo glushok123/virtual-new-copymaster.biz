@@ -1,0 +1,92 @@
+<?php
+    $keyw="изготовление плакатов, напечатать постер, печать больших плакатов, печать плаката, печать плакатов, печать плакатов Москва, печать плакатов а0, печать плакатов а1, печать плакатов а2, печать формата а1, печать формата а2, плакаты дешево, распечатать плакат, распечатать плакаты, цветная печать а2";
+    $titl="Печать плакатов в Москве в копировальном центре Копимастер";
+    $desc="Компания Копимастер предлагает клиентам в Москве услуги по изготовлению плакатов методом цифровой печати.";
+    $style="
+#gal_left, #gal_right, .galshow, .galhide,.gallery div,.poster-menu div,.galleryshadeshow, .galem {-webkit-transition:all 0.5s ease;-moz-transition:all 0.5s ease;-o-transition:all 0.5s ease;transition:all 0.5s ease;}
+.poster-menu  {position:relative; float:left; margin:15px 0px 15px 0px; width:1000px;}
+.poster-menu div {position:relative; float:left; margin:5px; width:190px; height:210px; text-align:center; color:#0000cc; opacity: 0.5;cursor:pointer;}
+.poster-menu div:hover {opacity:1;}
+.pst1 { background:url('img/poster-menu-1.jpg') no-repeat bottom;}
+.pst2 { background:url('img/poster-menu-2.jpg') no-repeat bottom;}
+.pst3 { background:url('img/poster-menu-3.jpg') no-repeat bottom;}
+.pst4 { background:url('img/poster-menu-4.jpg') no-repeat bottom;}
+.pst5 { background:url('img/poster-menu-5.jpg') no-repeat bottom;}
+.pst6 { background:url('img/poster-menu-6.jpg') no-repeat bottom;}
+.pst7 { background:url('img/poster-menu-7.jpg') no-repeat bottom;}
+.pst8 { background:url('img/poster-menu-8.jpg') no-repeat bottom;}
+.pst9 { background:url('img/poster-menu-9.jpg') no-repeat bottom;}
+.galhead0 { width:9%;height:90px;margin:5px 0.5% 10px 0.5%;position:relative;float:left;background:url('img/galleryclose.png')no-repeat center;cursor: pointer;}
+.galhead1 { width:9%;height:90px;margin:5px 0.5% 10px 0.5%;position:relative;float:left;background:url('posters/1s/10000.jpg');background-size:cover;cursor: pointer;}
+.galhead2 { width:9%;height:90px;margin:5px 0.5% 10px 0.5%;position:relative;float:left;background:url('posters/2s/20000.jpg');background-size:cover;cursor: pointer;}
+.galhead3 { width:9%;height:90px;margin:5px 0.5% 10px 0.5%;position:relative;float:left;background:url('posters/3s/30000.jpg');background-size:cover;cursor: pointer;}
+.galhead4 { width:9%;height:90px;margin:5px 0.5% 10px 0.5%;position:relative;float:left;background:url('posters/4s/40000.jpg');background-size:cover;cursor: pointer;}
+.galhead5 { width:9%;height:90px;margin:5px 0.5% 10px 0.5%;position:relative;float:left;background:url('posters/5s/50000.jpg');background-size:cover;cursor: pointer;}
+.galhead6 { width:9%;height:90px;margin:5px 0.5% 10px 0.5%;position:relative;float:left;background:url('posters/6s/60000.jpg');background-size:cover;cursor: pointer;}
+.galhead7 { width:9%;height:90px;margin:5px 0.5% 10px 0.5%;position:relative;float:left;background:url('posters/7s/70000.jpg');background-size:cover;cursor: pointer;}
+.galhead8 { width:9%;height:90px;margin:5px 0.5% 10px 0.5%;position:relative;float:left;background:url('posters/8s/80000.jpg');background-size:cover;cursor: pointer;}
+.galhead9 { width:9%;height:90px;margin:5px 0.5% 10px 0.5%;position:relative;float:left;background:url('posters/9s/90000.jpg');background-size:cover;cursor: pointer;}
+.galviewshadehide {width:0; height:0; position:fixed; top:50%; left:50%;}
+.galviewshadeshow {opacity:0.5; width:100%; height:100%; position:fixed; top:0; left:0;z-index: 150; background:#000; cursor:pointer;}
+.galleryshadehide {display:none; width:0; height:0; position:fixed; top:50%; left:50%;}
+.galleryshadeshow {width:100%; height:100%; position:fixed; top:0; left:0;z-index: 50; background:#333; cursor:pointer;}
+.galleryshadeshow:hover {background:#444;}
+.galshow {width:80%; height:80%; z-index:200; position:fixed; top:10%; left:10%; cursor: pointer;}
+.galhide {width:0; height:0; position:fixed; top:50%; left:50%;}
+.gallefthide {width:10%; height:200px; position:fixed; top:50%; margin-top:-100px; left:-10%;}
+.galrighthide {width:10%; height:200px; position:fixed; top:50%; margin-top:-100px; right:-10%;}
+.galleftshow {opacity:0.25;background:url('img/gal_left.png')no-repeat center; width:10%; height:200px; position: fixed; top:50%; margin-top:-100px; left:0;z-index: 160;cursor: pointer;}
+.galrightshow {opacity:0.25;background:url('img/gal_right.png')no-repeat center; width:10%; height:200px; position: fixed; top:50%; margin-top:-100px;right:0;z-index: 160;cursor: pointer;}
+#gal_right:hover, #gal_left:hover {opacity:0.5;}
+.galleryshow {position:absolute; top:50px; left:0%; width:100%; background:#000; z-index:100; border:solid 1px #333;}
+.galleryhide {display:none;}
+.closegal {position:fixed;top:0;left:50%; margin-left:400px;width:90px;height:40px; border:solid 5px #fff; background:url('img/close.jpg')no-repeat center; z-index: 120;}
+.galem {position:relative; float:left; height:180px; width:9%; margin:5px 0.5%; cursor: pointer; background-position:center !important; background-size:cover !important; }
+.galem:hover {opacity:0.75;}
+
+@media screen and (max-width:1440px) {.galem {width:11.5%;}}
+@media screen and (max-width:1080px) {.galem {width:15.66%;}}
+@media screen and (max-width:720px) {.galem {width:24%;}}
+@media screen and (max-width:360px) {.galem {width:49%;}}
+    ";
+    include"top.php";
+?>
+
+    <? include"p_gallery.php"; ?>
+<div class="w1 con">
+    <h1>Печать плакатов</h1>
+     <div class="poster-menu">
+        <div title="Абстракции" class="pst1" onclick="showgallery (1)">Абстракции</div>
+        <div title="Архитектура" class="pst2" onclick="showgallery (2)">Архитектура</div>
+        <div title="Девушки" class="pst3" onclick="showgallery (3)">Девушки</div>
+        <div title="Еда" class="pst4" onclick="showgallery (4)">Еда</div>
+        <div title="Животные" class="pst5" onclick="showgallery (5)">Животные</div>
+        <div title="Мужчины" class="pst6" onclick="showgallery (6)">Мужчины</div>
+        <div title="Новый год" class="pst7" onclick="showgallery (7)">Новый год</div>
+        <div title="Природа" class="pst8" onclick="showgallery (8)">Природа</div>
+        <div title="Разное" class="pst9" onclick="showgallery (9)">Разное</div>
+    </div>
+    <img src="img/baners-printing-1.jpg" alt="печать плакатов" title="печать плакатов">
+    <h1>Быстрое изготовление плакатов, постеров и афиш в Москве</h1>
+<p>Благодаря современному оборудованию копировальный центр "Копимастер" готов предоставить заказчикам услугу оперативной  печати плакатов разных форматов. Вы можете выбрать готовый шаблон из каталога или предоставить собственный эскиз, на основе которого будет создан дизайн-макет. Клиентам в Москве мы предлагаем печать плакатов и афиш тиражом от одного экземпляра. </p>
+<h2>Материалы для печати плаката</h2>
+<p>Прежде чем распечатать плакаты, необходимо определиться с размерами изделий и типом бумаги. Мы принимаем заказы на изготовление постеров формата А0, А1, А2, А3. Центр "Копимастер" использует матовую, глянцевую и сатиновую бумагу плотностью 90-235гр/м2.</p>
+<p>Выбор материала для изготовления изделий зависит от их назначения. Например, для печати афиш подойдет бумага средней плотности без ламинации, поскольку изделие предназначено для краткосрочного разового применения.</p>
+<p>Для более продолжительного использования стоит  распечатать плакат на бумаге, которую отличает высокая плотность. Такой материал лучше противостоит деформации и тем самым сохраняет эстетичный внешний вид изделия. Кроме разработки дизайн-макета, немало внимания уделяется послепечатной подготовке. Если изделие дополнительно заламинировать, постер прослужит очень долго.</p>
+<h2>Недорогое и оригинальное украшение</h2>
+<p>Если вы ищете недорогой и эффектный способ стилизации интерьера, достаточно лишь напечатать постер с понравившимся изображением и украсить им стену. Такое решение обладает рядом преимуществ:</p>
+<p>Стоят плакаты дешево, и это вовсе не преувеличение. Вы получаете оригинальное интерьерное украшение без больших вложений. Даже печать больших плакатов на качественной плотной бумаге обойдется намного дешевле картины или гравюры, которыми традиционно украшают стены.</p>
+<ul>
+<li>На бумажной поверхности можно разместить любую иллюстрацию или текст, так что чисто теоретически какой угодно рисунок может стать основой для плаката.</li>
+<li>Постеры используют для оформления жилых помещений, заведений отдыха и любых других объектов. К примеру, поклонники современного стиля охотно заказывают печать плакатов А1 с абстрактными рисунками, чтобы создать незаурядный дизайн у себя дома или в офисе.</li>
+<li>Постер выполняет декоративную функцию и одновременно служит универсальным рекламным носителем. Для компаний становится привычным делом заказать печать плакатов А0 с корпоративной символикой. Рекламные постеры используются для оформления офисного пространства, фирменных точек продаж. Плакатная реклама является одним из старейших видов представительской рекламы и до сих не теряет своей актуальности.</li>
+<li>Постер можно закрепить на стене самостоятельно при помощи двустороннего скотча.</li>
+</ul>
+<h2>Плакаты в домашнем интерьере</h2>
+<p>Мода украшать стены постерами возникла довольно давно, и вряд ли когда-либо эта тенденция утратит свою актуальность. Достаточно заказать печать формата а1, чтобы создать большой креативный постер, который придаст интерьеру индивидуальность. Такое украшение без слов  поведает о ваших увлечениях, интересах и даже характере.</p>
+<p>Вы можете почувствовать себя настоящим дизайнером, ведь каждое изображение несет в себе определенный посыл и создает нужную атмосферу, превращая скучный стандартный интерьер в нечто особенное и запоминающееся.</p>
+<p>На стену небольшой комнаты необязательно вешать огромный плакат. Рекомендуем обратить внимание на цветную печать А2. Можно напечатать несколько постеров, объединенных одной тематикой. Настоящей "классикой жанра" являются плакаты с фото популярных артистов, участников музыкальных групп, известных спортсменов и кинозвезд.</p>
+<p>Если вы не являетесь фанатом музыки и спорта, можно заказать печать формата А2 с изображением универсального характера. Например, постер в виде декоративной географической карты мира актуален в любом помещении. Такой плакат подойдет в качестве украшения жилой комнаты, будет уместен в офисном интерьере.</p>
+<p>Еще один популярный вариант – печать плакатов А2 в виде репродукций известных полотен или с изображением достопримечательностей разных стран мира. Такие рисунки выглядят гармонично в любом окружении. </p>
+</div>
+<?php $fg=11; include"bot.php"; ?>
