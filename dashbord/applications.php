@@ -144,7 +144,7 @@
 						<option value="Активна">Активна</option>
 						<option value="Отмена">Отмена</option>
 						<option value="Ожидание">Ожидание</option>
-						<option value="Оплачена">Выполнена</option>
+						<option value="Выполнена">Выполнена</option>
 					</select>
 				</div>
 			</div>
