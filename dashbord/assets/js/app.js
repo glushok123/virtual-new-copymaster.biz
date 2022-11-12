@@ -179,7 +179,3 @@ $(function () {
       $('body').attr('class', 'bg-theme bg-theme12');
     }
 });
-
-/* perfect scrol bar */
-new PerfectScrollbar('.header-message-list');
-new PerfectScrollbar('.header-notifications-list');

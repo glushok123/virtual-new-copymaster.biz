@@ -246,12 +246,17 @@ if (!isset($_SESSION['user_logged_in']))
 						<a class="has-arrow" href="javascript:;">
 							<div class="parent-icon"><i class="bx bx-comment-edit"></i>
 							</div>
-							<div class="menu-title">График</div>
+							<div class="menu-title">Рабочая</div>
 						</a>
 						<ul>
-							<li> <a href="../rasListOnGrafik.php"><i class="bx bx-right-arrow-alt"></i>Расчёт по графику</a>
+							<li>
+								 <a href="../rasListOnGrafik.php"><i class="bx bx-right-arrow-alt"></i>Расчёт по графику</a>
 							</li>
-							<li> <a href="../grafikSmen.php"><i class="bx bx-right-arrow-alt"></i>График смен</a>
+							<li> 
+								<a href="../grafikSmen.php"><i class="bx bx-right-arrow-alt"></i>График смен</a>
+							</li>
+							<li> 
+								<a href="../applications.php"><i class="bx bx-right-arrow-alt"></i>Заказ материалов</a>
 							</li>
 						</ul>
 					</li>
