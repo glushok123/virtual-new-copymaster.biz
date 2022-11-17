@@ -2,7 +2,7 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 require_once './connect.php';
-$stmt = $dbh->prepare("SELECT ci.id, ci.cost, ci.createtime, ci.discount, ci.discount_percent, ci.pay_type from check_id as ci where (ci.createtime >= DATE_SUB(NOW(), INTERVAL 14 DAY)) AND (ci.cher <> '1' ) order by ci.createtime DESC;");
+$stmt = $dbh->prepare("SELECT ci.id, ci.cost, ci.createtime, ci.discount, ci.discount_percent, ci.pay_type from check_id as ci where (ci.createtime >= DATE_SUB(NOW(), INTERVAL 30 DAY)) AND (ci.cher <> '1' ) order by ci.createtime DESC;");
 $stmt->execute();
 $data = $stmt->fetchAll();
 
