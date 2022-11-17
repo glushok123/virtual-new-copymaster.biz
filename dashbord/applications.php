@@ -42,6 +42,30 @@
 									<tbody>
 
 										<?php 
+											function printButtonDone($order)
+											{
+												if ($_SESSION['type'] != 'admin') {
+													return ' ';
+												}
+
+												if ($order['status'] == 'Выполнена') {
+													return ' ';
+
+												}else {
+													return '<button data-order-id=' . $order['id'] . ' type="button" class="btn btn-warning change-status-order" data-toggle="modal" data-target="#">Заказано</button>';
+												}
+											}
+
+											function printButtonDelete($order)
+											{
+												if ($_SESSION['type'] != 'admin') {
+													return ' ';
+												}
+
+												
+												return '<button data-order-id=' . $order['id'] . ' type="button" class="btn btn-danger delete-order">Удалить</button>';
+											}
+
 											foreach($orders as $order) {
 												echo(
 													'
@@ -52,8 +76,9 @@
 															<td><textarea class="form-control resize"  disabled>' . $order['comment'] . '</textarea></td>
 															<td>' . $order['status'] . '</td>
 															<td>
-																<button data-order-id=' . $order['id'] . ' type="button" class="btn btn-warning change-order" data-toggle="modal" data-target="#">Изменить</button>
-																<button data-order-id=' . $order['id'] . ' type="button" class="btn btn-danger delete-order">Удалить</button>
+																<!--button data-order-id=' . $order['id'] . ' type="button" class="btn btn-warning change-order" data-toggle="modal" data-target="#">Изменить</button-->
+																' . printButtonDone($order) . '
+																' . printButtonDelete($order) . '
 															</td>
 														</tr>
 													'
@@ -357,10 +382,49 @@
 			
 		}
 
+		/**
+		 * Обновление статуса ордера
+		 *
+		 */
+		function updateStatusOrder($orderId) 
+		{
+			$.ajax({
+				url: '/dashbord/request/order/updateStatus.php',
+				method: 'post',
+				dataType: 'json',
+				data: {'id': $orderId},
+				success: function(data){
+					if(data.status == 'success') {
+						location.reload()
+					}
+				},
+				error: function (jqXHR, exception) {
+					if (jqXHR.status === 0) {
+						alert('Not connect. Verify Network.');
+					} else if (jqXHR.status == 404) {
+						alert('Requested page not found (404).');
+					} else if (jqXHR.status == 500) {
+						alert('Internal Server Error (500).');
+					} else if (exception === 'parsererror') {
+						alert('Requested JSON parse failed.');
+					} else if (exception === 'timeout') {
+						alert('Time out error.');
+					} else if (exception === 'abort') {
+						alert('Ajax request aborted.');
+					} else {
+						alert('Uncaught Error. ' + jqXHR.responseText);
+					}
+				}
+			});
+		}
+
 		$('#saveOrderButton').on('click', function() { saveOrderRequest() });
 		$('#changeOrderButton').on('click', function() { updateOrderRequest($(this)) });
 		$('.delete-order').on('click', function() { deleteOrderRequest($(this)) });
 		$('.change-order').on('click', function() { getOrder($(this).data('order-id')) });
+		$('.change-status-order').on('click', function() { updateStatusOrder($(this).data('order-id')) });
+
+		
 		
 	});
 
