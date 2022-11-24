@@ -4,7 +4,7 @@
 
 
 let base = new function () {
-  let z = 150; //глобальный коэф в процентах
+  let z = 165; //глобальный коэф в процентах
 
   	this.a = new function () {
 		this.nm = "Печать";
