@@ -39,7 +39,7 @@
  <tr class="tr1">
      <td colspan="5"></td>
  </tr>
- <tr>
+ <!--tr>
      <td rowspan="2">Глянцевая фотобумага HP (235 гр./м²)</td>
      <td>А2</td>
      <td>А1</td>
@@ -99,6 +99,6 @@
      <td>1440</td>
      <td>2880</td>
      <td>2880</td>
- </tr>
+ </tr-->
    </tbody>
 </table>

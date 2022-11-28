@@ -60,9 +60,10 @@ include('./header.php')
 							</div>
 							<div class="col-6 col-lg-6 col-xl-6">
 								<h4>Год</h4>
-								<select id="tibum_vizit"  class="form-control" aria-label=".form-select-lg example">
-								 <option selected value="2022">2022</option>
-								 </select>
+								<select id="years"  class="form-control" aria-label=".form-select-lg example">
+									<option selected value="2022">2022</option>
+									<option value="2023">2023</option>
+								</select>
 							</div>
 						</div>
 					</div>
@@ -77,31 +78,28 @@ include('./header.php')
     
     						 if($_SESSION['type'] == "admin"){
     							echo '
-    
-    							<br>
-    							<hr>
-    
-    							<!--button class="btn btn-info  m-1 px-5" type="button" name="button" id="saveTable">Сохранить</button>
-    							<button class="btn btn-info  m-1 px-5"type="button" name="button" id="editTable">Редактировать</button>
-    							<button class="btn btn-info  m-1 px-5"type="button" name="button" id="slogTable">Расчёт времени</button-->
-    
-    							<button type="button" name="button" class="cvet2 bel" data-chet="bel">		Админ		</button>
-    							<button type="button" name="button" class="cvet kor" data-chet="kor">		Менеджер	</button>
-    							<button type="button" name="button" class="cvet filo" data-chet="filo">		Дизайнер	</button>
-    							<button type="button" name="button" class="cvet jolt" data-chet="jolt">		Стажер		</button>
-    							<button type="button" name="button" class="cvet golub" data-chet="golub">	Кузня		</button>
-    
-    							<button type="button" name="button" class="cvet kras" data-chet="kras">		Отпуск		</button>
-    							<button type="button" name="button" class="cvet2 chern" data-chet="chern">	Занят		</button>
-    							<button type="button" name="button" class="cvet kor2" data-chet="kor2">		Замена		</button>
-    						
-    							<button type="button" name="button" class="cvet zel" data-chet="zel">		Ночь		</button>
-    							<button type="button" name="button" class="cvet deny" data-chet="deny">		День		</button>
-    
-    							<button type="button" name="button" class="cvet del" data-chet="del">		ОЧИСТИТЬ	</button>
-    							<button type="button" name="button" class="cvet kras"  id="exportpdf">Экспорт в	PDF</button>
+									<br><hr>
+		
+									<!--button class="btn btn-info  m-1 px-5" type="button" name="button" id="saveTable">Сохранить</button>
+									<button class="btn btn-info  m-1 px-5"type="button" name="button" id="editTable">Редактировать</button>
+									<button class="btn btn-info  m-1 px-5"type="button" name="button" id="slogTable">Расчёт времени</button-->
+		
+									<button type="button" name="button" class="cvet2 bel" data-chet="bel">		Админ		</button>
+									<button type="button" name="button" class="cvet kor" data-chet="kor">		Менеджер	</button>
+									<button type="button" name="button" class="cvet filo" data-chet="filo">		Дизайнер	</button>
+									<button type="button" name="button" class="cvet jolt" data-chet="jolt">		Стажер		</button>
+									<button type="button" name="button" class="cvet golub" data-chet="golub">	Кузня		</button>
+		
+									<button type="button" name="button" class="cvet kras" data-chet="kras">		Отпуск		</button>
+									<button type="button" name="button" class="cvet2 chern" data-chet="chern">	Занят		</button>
+									<button type="button" name="button" class="cvet kor2" data-chet="kor2">		Замена		</button>
+								
+									<button type="button" name="button" class="cvet zel" data-chet="zel">		Ночь		</button>
+									<button type="button" name="button" class="cvet deny" data-chet="deny">		День		</button>
+		
+									<button type="button" name="button" class="cvet del" data-chet="del">		ОЧИСТИТЬ	</button>
+									<button type="button" name="button" class="cvet kras"  id="exportpdf">Экспорт в	PDF</button>
     							';
-    
     						}
     					}
 					 ?>
@@ -119,77 +117,77 @@ include('./header.php')
 	</div>
 <style media="screen">
 
-select option {
-	background: rgba(0, 0, 0, 0.3);
-	color: #fff;
-	text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+	select option {
+		background: rgba(0, 0, 0, 0.3);
+		color: #fff;
+		text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
 
-}
-select, input  {
-	background-color: transparent;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    color: white;
-    border: none;
-}
+	}
+	select, input  {
+		background-color: transparent;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		color: white;
+		border: none;
+	}
 
 
-.deny select {
-	color:black !important;
-	font-weight: bold !important;
-}
-.zel select {
-	color:black !important;
-	font-weight: bold !important;
-}
-.jolt select {
-	color:black !important;
-	font-weight: bold !important;
-}
-.kras select {
-	color:black !important;
-	font-weight: bold !important;
-}
-.golub select {
-	color:black !important;
-	font-weight: bold !important;
-}
-.deny select {
-	color:black !important;
-	font-weight: bold !important;
-}
+	.deny select {
+		color:black !important;
+		font-weight: bold !important;
+	}
+	.zel select {
+		color:black !important;
+		font-weight: bold !important;
+	}
+	.jolt select {
+		color:black !important;
+		font-weight: bold !important;
+	}
+	.kras select {
+		color:black !important;
+		font-weight: bold !important;
+	}
+	.golub select {
+		color:black !important;
+		font-weight: bold !important;
+	}
+	.deny select {
+		color:black !important;
+		font-weight: bold !important;
+	}
 
-select::-ms-expand {
-  display: none;
-}
+	select::-ms-expand {
+	display: none;
+	}
 
-td.vx { vertical-align:middle; text-align:center; border-bottom:2px solid #000000 !important; border-top:2px solid #000000 !important; border-left:2px solid #000000 !important; border-right:2px solid #000000 !important; font-weight:bold; font-style:italic; color:#000000 !important; font-family:'Arial';  background-color:#FF0000 }
-td.itogo { vertical-align:middle; text-align:center; border-bottom:2px solid #000000 !important; border-top:2px solid #000000 !important; border-left:2px solid #000000 !important; border-right:none #000000; font-weight:bold; font-style:italic; color:#000000 !important; font-family:'Arial';  background-color:#FFFF00 }
-.kras { vertical-align:middle; text-align:center; border-bottom:2px solid #000000 !important; border-top:2px solid #000000 !important; border-left:2px solid #000000 !important; border-right:2px solid #000000 !important; font-weight:bold; font-style:italic; color:#000000 !important; font-family:'Arial';  background-color:#FF0000 }
-.jolt { vertical-align:middle; text-align:center; border-bottom:2px solid #000000 !important; border-top:2px solid #000000 !important; border-left:2px solid #000000 !important; border-right:none #000000; font-weight:bold; font-style:italic; color:black !important; font-family:'Arial';  background-color:#FFFF00; color:black }
-.chern { vertical-align:middle; text-align:center; border-bottom:2px solid #000000 !important; border-top:2px solid #000000 !important; border-left:2px solid #000000 !important; border-right:2px solid #000000 !important; font-weight:bold; font-style:italic; color:#FFFFFF !important; font-family:'Arial';  background-color:#000000 }
-.bel { vertical-align:middle; text-align:center; border-bottom:2px solid #000000 !important; border-top:2px solid #000000 !important; border-left:2px solid #000000 !important; border-right:2px solid #000000 !important; font-weight:bold; font-style:italic; color:black !important; font-family:'Arial';  background-color:#FFFFFF; color:black }
-.zel { vertical-align:middle; text-align:center; border-bottom:2px solid #000000 !important; border-top:none #000000; border-left:2px solid #000000 !important; border-right:2px solid #000000 !important; font-weight:bold; font-style:italic; color:black !important; font-family:'Arial';  background-color:#00B050 }
-.kor { vertical-align:middle; text-align:center; border-bottom:2px solid #000000 !important; border-top:none #000000; border-left:2px solid #000000 !important; border-right:2px solid #000000 !important; font-weight:bold; font-style:italic; color:#000000 !important; font-family:'Arial';  background-color:#777670 }
-.filo { vertical-align:middle; text-align:center; border-bottom:2px solid #000000 !important; border-top:2px solid #000000 !important; border-left:2px solid #000000 !important; border-right:2px solid #000000 !important; color:black !important; font-family:'Arial';  background-color:#FF6699; color:black }
-.golub { vertical-align:middle; text-align:center; border-bottom:2px solid #000000 !important; border-top:2px solid #000000 !important; border-left:2px solid #000000 !important; border-right:2px solid #000000 !important; color:#000000 !important; font-family:'Arial';  background-color:#00B0F0 }
-.kor2 { vertical-align:middle; text-align:center; border-bottom:2px solid #000000 !important; border-top:none #000000; border-left:2px solid #000000 !important; border-right:none #000000; font-weight:bold; font-style:italic; color:#000000 !important; font-family:'Arial';  background-color:#B97034 }
-.deny { vertical-align:middle; text-align:center; border-bottom:2px solid #000000 !important; border-top:none #000000; border-left:2px solid #000000 !important; border-right:2px solid #000000 !important; font-weight:bold; font-style:italic; color:black !important; font-family:'Arial';  background-color:#FFC000; color:black }
-.deny { vertical-align:middle; text-align:center; border-bottom:2px solid #000000 !important; border-top:none #000000; border-left:2px solid #000000 !important; border-right:2px solid #000000 !important; font-weight:bold; font-style:italic; color:black !important; font-family:'Arial';  background-color:#FFC000; color:black }
+	td.vx { vertical-align:middle; text-align:center; border-bottom:2px solid #000000 !important; border-top:2px solid #000000 !important; border-left:2px solid #000000 !important; border-right:2px solid #000000 !important; font-weight:bold; font-style:italic; color:#000000 !important; font-family:'Arial';  background-color:#FF0000 }
+	td.itogo { vertical-align:middle; text-align:center; border-bottom:2px solid #000000 !important; border-top:2px solid #000000 !important; border-left:2px solid #000000 !important; border-right:none #000000; font-weight:bold; font-style:italic; color:#000000 !important; font-family:'Arial';  background-color:#FFFF00 }
+	.kras { vertical-align:middle; text-align:center; border-bottom:2px solid #000000 !important; border-top:2px solid #000000 !important; border-left:2px solid #000000 !important; border-right:2px solid #000000 !important; font-weight:bold; font-style:italic; color:#000000 !important; font-family:'Arial';  background-color:#FF0000 }
+	.jolt { vertical-align:middle; text-align:center; border-bottom:2px solid #000000 !important; border-top:2px solid #000000 !important; border-left:2px solid #000000 !important; border-right:none #000000; font-weight:bold; font-style:italic; color:black !important; font-family:'Arial';  background-color:#FFFF00; color:black }
+	.chern { vertical-align:middle; text-align:center; border-bottom:2px solid #000000 !important; border-top:2px solid #000000 !important; border-left:2px solid #000000 !important; border-right:2px solid #000000 !important; font-weight:bold; font-style:italic; color:#FFFFFF !important; font-family:'Arial';  background-color:#000000 }
+	.bel { vertical-align:middle; text-align:center; border-bottom:2px solid #000000 !important; border-top:2px solid #000000 !important; border-left:2px solid #000000 !important; border-right:2px solid #000000 !important; font-weight:bold; font-style:italic; color:black !important; font-family:'Arial';  background-color:#FFFFFF; color:black }
+	.zel { vertical-align:middle; text-align:center; border-bottom:2px solid #000000 !important; border-top:none #000000; border-left:2px solid #000000 !important; border-right:2px solid #000000 !important; font-weight:bold; font-style:italic; color:black !important; font-family:'Arial';  background-color:#00B050 }
+	.kor { vertical-align:middle; text-align:center; border-bottom:2px solid #000000 !important; border-top:none #000000; border-left:2px solid #000000 !important; border-right:2px solid #000000 !important; font-weight:bold; font-style:italic; color:#000000 !important; font-family:'Arial';  background-color:#777670 }
+	.filo { vertical-align:middle; text-align:center; border-bottom:2px solid #000000 !important; border-top:2px solid #000000 !important; border-left:2px solid #000000 !important; border-right:2px solid #000000 !important; color:black !important; font-family:'Arial';  background-color:#FF6699; color:black }
+	.golub { vertical-align:middle; text-align:center; border-bottom:2px solid #000000 !important; border-top:2px solid #000000 !important; border-left:2px solid #000000 !important; border-right:2px solid #000000 !important; color:#000000 !important; font-family:'Arial';  background-color:#00B0F0 }
+	.kor2 { vertical-align:middle; text-align:center; border-bottom:2px solid #000000 !important; border-top:none #000000; border-left:2px solid #000000 !important; border-right:none #000000; font-weight:bold; font-style:italic; color:#000000 !important; font-family:'Arial';  background-color:#B97034 }
+	.deny { vertical-align:middle; text-align:center; border-bottom:2px solid #000000 !important; border-top:none #000000; border-left:2px solid #000000 !important; border-right:2px solid #000000 !important; font-weight:bold; font-style:italic; color:black !important; font-family:'Arial';  background-color:#FFC000; color:black }
+	.deny { vertical-align:middle; text-align:center; border-bottom:2px solid #000000 !important; border-top:none #000000; border-left:2px solid #000000 !important; border-right:2px solid #000000 !important; font-weight:bold; font-style:italic; color:black !important; font-family:'Arial';  background-color:#FFC000; color:black }
 
-.cvet{
-	font-size: 18px;
-	font-weight: bold;
-}
-.cvet2{
-	weight:30px;
-	height:30px;
-}
+	.cvet{
+		font-size: 18px;
+		font-weight: bold;
+	}
+	.cvet2{
+		weight:30px;
+		height:30px;
+	}
 
-table {
- table-layout: auto;; /* Фиксированная ширина ячеек */
- max-width: 80%; /* Ширина таблицы */
-}
+	table {
+	table-layout: auto;; /* Фиксированная ширина ячеек */
+	max-width: 80%; /* Ширина таблицы */
+	}
 
 </style>
 
@@ -224,17 +222,48 @@ table {
 		var d = new Date();
 		var m = d.getMonth();
 		var n = d.getDay();
-		m = m +1
+		m = m + 1
 
-	$.ajax({url: 'time.php', method: 'POST', data:{mes:m,s:"get"}, success: function(response){
+	$.ajax({
+		url: 'time.php', 
+		method: 'POST', 
+		data:{
+			mes		: m,
+			s		: "get",
+			year	: $('#years').val()
+		}, 
+		success: function(response){
 		$('#mainblock').html(response);
-		$('#messec option[value='+m+']').prop('selected', true);
+		$('#messec option[value=' + m + ']').prop('selected', true);
 
 		buildEditTable()
 	}});
 
 	$( "#messec" ).change(function() {
-		$.ajax({url: 'time.php', method: 'POST', data:{mes:$(this).val(),s:"get"}, success: function(response){
+		$.ajax({
+			url: 'time.php', 
+			method: 'POST', 
+			data:{
+				mes		: $(this).val(),
+				s		: "get",
+				year	: $('#years').val()
+			}, 
+			success: function(response){
+				$('#mainblock').html(response);
+				buildEditTable()
+			}});
+	});
+	
+	$( "#years" ).change(function() {
+		$.ajax({
+			url: 'time.php', 
+			method: 'POST', 
+			data:{
+				mes		: $('#messec').val(),
+				s		: "get",
+				year	: $('#years').val()
+			}, 
+			success: function(response){
 				$('#mainblock').html(response);
 				buildEditTable()
 			}});
@@ -302,7 +331,18 @@ table {
 
 	function requestSaveData() {
 		var el = document.getElementById( 'table2');
-		$.ajax({url: 'time.php', method: 'POST', data:{mes:$('#messec').val(), s:"save", text_new: el.outerHTML}, success: function(response){ }});
+
+		$.ajax(
+			{
+				url: 'time.php', 
+				method: 'POST', 
+				data:{
+					mes		 : $('#messec').val(), 
+					s		 : "save", 
+					text_new : el.outerHTML,
+					year	 : $('#years').val()
+				}, 
+				success: function(response){ }});
 	}
 
 	$(document).on("change", "input", function(){

@@ -10,12 +10,12 @@
            <td>Добавочная стоимость (за лист) р.</td>
        </tr>
        <tr data-status="">
-           <td>матовая 120 гр/м2</td>
+           <td>матовая 160 гр/м2</td>
            <td>16</td>
            <td>матовая 160 гр/м2</td>
            <td>32</td>
        </tr>
-       <tr data-status="">
+       <!--tr data-status="">
            <td>матовая 160 гр/м2</td>
            <td>16</td>
            <td>матовая 200 гр/м2</td>
@@ -32,14 +32,14 @@
            <td>26</td>
            <td>матовая 280 гр/м2</td>
            <td>64</td>
-       </tr>
+       </tr-->
        <tr data-status="">
            <td>матовая 300 гр/м2</td>
            <td>37</td>
-           <td>глянцевая 170 гр/м2</td>
-           <td>53</td>
+           <td>матовая 300 гр/м2</td>
+           <td>74</td>
        </tr>
-       <tr data-status="">
+       <!--tr data-status="">
            <td>глянцевая 170 гр/м2</td>
            <td>16</td>
            <td>глянцевая 250 гр/м2</td>
@@ -50,14 +50,14 @@
            <td>32</td>
            <td>калька 250 гр/м2</td>
            <td>186</td>
-       </tr>
+       </tr-->
        <tr data-status="">
-           <td>калька 250 гр/м2</td>
-           <td>95</td>
+           <td>файл</td>
+           <td>7</td>
            <td>файл</td>
            <td>27</td>
        </tr>
-       <tr data-status="">
+       <!--tr data-status="">
            <td>самоклейка</td>
            <td>64</td>
            <td colspan="2" rowspan="5"></td>
@@ -77,6 +77,6 @@
        <tr data-status="">
            <td>Папка - скоросшиватель</td>
            <td>106</td>
-       </tr>
+       </tr-->
    </tbody>
 </table>

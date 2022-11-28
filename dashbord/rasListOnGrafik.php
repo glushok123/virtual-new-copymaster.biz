@@ -33,32 +33,35 @@
 							 <h1>Расчёт средств</h1>
 						 </div>
 					</div>
-
 						<hr>
 						<div class="container">
-								<div class="row">
-									<div class="col-6 col-lg-6 col-xl-6">
-										<h4>Месяц</h4>
-										<select id="messec" class="form-control" aria-label=".form-select-lg example">
-										 <option selected></option>
-										 <option value="6">Июнь</option>
-										 <option value="7">Июль</option>
-										 <option value="8">Август</option>
-										 <option value="9">Сентябрь</option>
-										 <option value="10">Октябрь</option>
-										 <option value="11">Ноябрь</option>
-										 <option value="12">Декабрь</option>
-										 </select>
-										 </select>
-									</div>
-									<div class="col-6 col-lg-6 col-xl-6">
-										<h4>Год</h4>
-										<select id="tibum_vizit"  class="form-control" aria-label=".form-select-lg example">
-										 <option selected value="2022">2022</option>
-										 </select>
-									</div>
+							<div class="row">
+								<div class="col-6 col-lg-6 col-xl-6">
+									<h4>Месяц</h4>
+									<select id="messec" class="form-control" aria-label=".form-select-lg example">
+										<option value="1">  Январь	 </option>
+										<option value="2">  Февраль  </option>
+										<option value="3">  Март     </option>
+										<option value="4">  Апрель   </option>
+										<option value="5">  Май      </option>
+										<option value="6">  Июнь     </option>
+										<option value="7">  Июль     </option>
+										<option value="8">  Август   </option>
+										<option value="9">  Сентябрь </option>
+										<option value="10"> Октябрь  </option>
+										<option value="11"> Ноябрь   </option>
+										<option value="12"> Декабрь  </option>
+									</select>
+								</div>
+								<div class="col-6 col-lg-6 col-xl-6">
+									<h4>Год</h4>
+									<select id="years"  class="form-control" aria-label=".form-select-lg example">
+										<option selected value="2022">2022</option>
+										<option value="2023">2023</option>
+									</select>
 								</div>
 							</div>
+						</div>
 							<br>
 							<hr>
 					<?php
@@ -154,328 +157,350 @@ table {
 </style>
 <script type="text/javascript">
 
-$(document).ready(function(){
-	var arrayFamily = []
-	var chett = 'kras';
+	$(document).ready(function(){
+		var arrayFamily = [];
+		var chett = 'kras';
 
-	var days = [
-		'Вс',
-		'Пн',
-		'Вт',
-		'Ср',
-		'Чт',
-		'Пт',
-		'Сб'
-	];
-	var d = new Date();
-	var m = d.getMonth();
-	var n = d.getDay();
-	m = m + 1
+		var days = [
+			'Вс',
+			'Пн',
+			'Вт',
+			'Ср',
+			'Чт',
+			'Пт',
+			'Сб'
+		];
+		var d = new Date();
+		var m = d.getMonth();
+		var n = d.getDay();
+		m = m + 1;
 
-	$.ajax({url: 'moneyOnGrafik.php', method: 'POST', data:{mes:m,s:"get"}, async: false, success: function(response){
-				$('#mainblock').html(response);
-				$('#messec option[value='+m+']').prop('selected', true);
-				InsertArrayFamily()
-	}});
+		$('#messec option[value=' + m + ']').prop('selected', true);
 
-	$.ajax({url: 'time.php', method: 'POST', data:{mes:m,s:"get"}, async: false, success: function(response){
-			$('#mainblockGrafik').html(response);
-			dataInsertTable();
+		getTableCalcRequest();
+		getTableGrafikRequest();
 
-	}});
+		$( "#messec" ).change(function() {
+			arrayFamily = [];
 
-	function printTip(q) {
+			getTableCalcRequest();
+			getTableGrafikRequest();
+		});
 
-		if ($(q).hasClass('admin')) {
-			return "admin";
-		}
+		$( "#years" ).change(function() {
+			arrayFamily = [];
 
-		if ($(q).hasClass('dizainer')) {
-			return "dizainer";
-		}
+			getTableCalcRequest();
+			getTableGrafikRequest();
+		});
 
-		if ($(q).hasClass('day')) {
-			return "day";
-		}
+		$(document).on("click", ".cvet", function(){
+			chett = $(this).attr('data-chet');
+		})
 
-		if ($(q).hasClass('night')) {
-			return "night";
-		}
-
-		if ($(q).hasClass('intern')) {
-			return "intern";
-		}
-	}
-
-	function dataInsertTable() {
-		var schet = 0;
-
-		$('#table2 tr').each(function(row) {
-			var family = ''
-			var kolTime = ''
-			var tip = ''
-
-			$(this).find('td').each(function(cell) {
-
-				let cvel = $(this).text();
-
-				if ($(this).hasClass('fio') && cvel != ''){
-
-					tip = printTip(this);
-					family = cvel;
-					
-				}
-				if ($(this).hasClass('itogo')){
-					kolTime = cvel;
-				}
-			});
-
-			if (family != '') {
-				var prov = 0
-
-				arrayFamily.forEach(function(v) {
-					if (v.family == family) {
-						prov = 1
-						v.kolTime = kolTime
-						v.tip = tip
-					}
-				})
-				
-				if (prov == 0) {
-					arrayFamily.push(
-						{	
-							"family" : family,	
-							"kolTime" : kolTime,	
-							"avans" : 0	,
-							"tip" : tip,	
-						}
-					)
-				}
-	
+		$(document).on("dblclick", "td", function(){
+			if (chett == "del"){
+				$(this).removeClass('kras jolt chern bel zel kor filo golub kor2 deny del');
+			}else{
+				$(this).removeClass('kras jolt chern bel zel kor filo golub kor2 deny del');
+				$(this).addClass(chett);
 			}
 		});
 
-		printData();
-	}
+		$(document).on("dblclick", ".fio", function(){
+			if (chett == "del"){
+				$(this).removeClass('kras jolt chern bel zel kor filo golub kor2 deny del');
+			}else{
+				$(this).removeClass('kras jolt chern bel zel kor filo golub kor2 deny del');
+				$(this).addClass(chett);
+			}
+		});
 
-	function InsertArrayFamily() {
+		$(document).on("click", "#editTable", function(){
+			$('#editTable').hide();
+			editTable();
+		});
 
-		$('#table3 tr').each(function(row) {
-			var family = ''
-			var tip = ''
-			var avance = 0
+		$(document).on("click", "#saveTable", function(){
+			$('#editTable').show();
+
+			saveData();
+			calculateManey();
+			requestSaveData();
 			
+		});
 
+		$(document).on("click", "#slogTable", function(){
+			calculateManey();
+		});
 
-			$(this).find('td').each(function(cell) {
-				
-				let cvel = $(this).text();
-
-				if ($(this).hasClass('fio') && cvel != '' ){
-
-					family = cvel;
+		function getTableCalcRequest()
+		{
+			$.ajax({
+				url: 'moneyOnGrafik.php', 
+				method: 'POST', 
+				data: {
+					mes		: $("#messec").val(),
+					s		: "get",
+					year	: $('#years').val()
+				}, 
+				async: false, 
+				success: function(response) {
+					$('#mainblock').html(response);
+					InsertArrayFamily()
 				}
-				
-				if ($(this).hasClass('avans') && cvel != '' ){
-
-					avance = cvel;
-				}
-
 			});
-
-			if (family != '') {
-				arrayFamily.push(
-					{	
-						"family" : family,	
-						"kolTime" : 0,	
-						"avans" : avance,
-						"tip" : tip,			
-					}	
-				)
-			}
-		});
-	}
-
-	function printData() {
-		console.log(arrayFamily);
-		$('#table3 tbody tr').remove()
-		var kol = 0
-		arrayFamily.forEach(function(v) {
-			kol = kol + 1;
-			let moneyTime = 'Очень много';
-
-			if (v.tip == 'day' || v.tip == 'night') {
-				moneyTime = v.kolTime * 200;
-			}
-
-			if (v.tip == 'intern' ) {
-				moneyTime = v.kolTime * 160;
-			}
-
-			row = '<tr>';
-			row = row + '<td class="chern">' + kol + '</td>';
-			row = row + '<td class="fio">' + v.family + '</td>';
-			row = row + '<td class="oklad">' + moneyTime + '</td>';
-			row = row + '<td class="avans">' + v.avans + '</td>';
-			row = row + '<td class="htraf"></td>';
-			row = row + '<td class="jolt itog" style="color:black">' + (moneyTime - v.avans) + '</td>';
-			row = row + '<td class="koment"></td> ';
-			row = row + '</tr>';
-			$('#table3 tbody ').append(row);
-		});
-	}
-
-$( "#messec" ).change(function() {
-
-	arrayFamily = [];
-
-	$.ajax({url: 'moneyOnGrafik.php', method: 'POST', data:{mes:$(this).val(),s:"get"}, async: false, success: function(response){
-		$('#mainblock').html(response);
-		InsertArrayFamily()
-	}});
-
-	$.ajax({url: 'time.php', method: 'POST', data:{mes:$(this).val(),s:"get"}, async: false, success: function(response){
-		$('#mainblockGrafik').html(response);
-		dataInsertTable();
-	}});
-
-});
-
-
-$(document).on("click", ".cvet", function(){
-	chett = $(this).attr('data-chet');
-})
-
-$(document).on("dblclick", "td", function(){
-		if (chett == "del"){
-			$(this).removeClass('kras jolt chern bel zel kor filo golub kor2 deny del');
-		}else{
-			$(this).removeClass('kras jolt chern bel zel kor filo golub kor2 deny del');
-			$(this).addClass(chett);
 		}
 
-});
+		function getTableGrafikRequest()
+		{
+			$.ajax({
+				url: 'time.php', 
+				method: 'POST', 
+				data:{
+					mes		: $("#messec").val(),
+					s		: "get",
+					year	: $('#years').val()
+				}, 
+				async: false, 
+				success: function(response){
+					$('#mainblockGrafik').html(response);
+					dataInsertTable();
+				}
+			});
+		}
 
-$(document).on("dblclick", ".fio", function(){
-	if (chett == "del"){
-		$(this).removeClass('kras jolt chern bel zel kor filo golub kor2 deny del');
-	}else{
-		$(this).removeClass('kras jolt chern bel zel kor filo golub kor2 deny del');
-		$(this).addClass(chett);
-	}
-});
+		function calculateManey()
+		{
+			var sumitog = 0
 
-function editTable() {
-	var schet = 0;
-	$('#table3 tr').each(function(row){
-		$(this).find('td').each(function(cell){
-			schet =  schet + 1;
-			let cvel = $(this).text();
+			$('#table3 tr').each(function(row){
+				let oklad = 0;
+				let avans = 0;
+				let shtraf = 0;
+				let ost = 0;
 
-			if ($(this).hasClass('oklad')){
-				$(this).html('<input type="text" name="" value="'+cvel+'">');
-			}
-
-			if ($(this).hasClass('avans')){
-				$(this).html('<input type="text" name="" value="'+cvel+'">');
-			}
-
-			if ($(this).hasClass('htraf')){
-				$(this).html('<input type="text" name="" value="'+cvel+'">');
-			}
-
-			if ($(this).hasClass('koment')){
-				$(this).html('<input type="text" name="" value="'+cvel+'">');
-			}
-		});
-	});
-}
-
-$(document).on("click", "#editTable", function(){
-	$('#editTable').hide();
-	editTable();
-});
-
-function requestSaveData() {
-	var el = document.getElementById( 'table3' );
-	$.ajax({url: 'moneyOnGrafik.php', method: 'POST', data:{mes:$('#messec').val(),s:"save", text_new: el.outerHTML}, success: function(response){	}});
-}
-
-function saveData() {
-	$('#table3 tr').each(function(row){
-		$(this).find('td').each(function(cell){
-			if ($(this).hasClass('fio')){
-				let zn = $(this).find('input').val();
-				$(this).html(zn);
-			}
-			if ($(this).hasClass('htraf')){
-				let zn = $(this).find('input').val();
-				$(this).html(zn);
-			}
-			if ($(this).hasClass('avans')){
-				let zn = $(this).find('input').val();
-				$(this).html(zn);
-			}
-			if ($(this).hasClass('oklad')){
-				let zn = $(this).find('input').val();
-				$(this).html(zn);
-			}
-			if ($(this).hasClass('koment')){
-				let zn = $(this).find('input').val();
-				$(this).html(zn);
-			}
-		});
-	});
-}
-$(document).on("click", "#saveTable", function(){
-	$('#editTable').show();
-
-	saveData();
-	calculateManey();
-	requestSaveData();
-	
-});
-
-function calculateManey() {
-	var sumitog = 0
-	$('#table3 tr').each(function(row){
-		let oklad = 0;
-		let avans = 0;
-		let shtraf = 0;
-		let ost = 0;
-		$(this).find('td').each(function(cell){
-
-			if ($(this).hasClass('oklad')){
+				$(this).find('td').each(function(cell) {
+					if ($(this).hasClass('oklad')) {
 						if ($(this).text() != ""){
 							oklad= Number($(this).text());
 						}
-			}
-			if ($(this).hasClass('avans')){
+					}
+					if ($(this).hasClass('avans')) {
 						if ($(this).text() != ""){
 							avans= Number($(this).text());
 						}
-			}
-			if ($(this).hasClass('htraf')){
+					}
+					if ($(this).hasClass('htraf')) {
 						if ($(this).text() != ""){
 							shtraf= Number($(this).text());
 						}
-			}
-			if ($(this).hasClass('itog')){
-
+					}
+					if ($(this).hasClass('itog')) {
 						$(this).text(	ost = oklad - avans - shtraf)
+					}
+				});
+
+			});
+		};
+		
+		function requestSaveData() {
+			var el = document.getElementById( 'table3' );
+			$.ajax({url: 'moneyOnGrafik.php', method: 'POST', data:{mes:$('#messec').val(),s:"save", text_new: el.outerHTML}, success: function(response){	}});
+		};
+
+		function saveData() {
+			$('#table3 tr').each(function(row){
+				$(this).find('td').each(function(cell){
+					if ($(this).hasClass('fio')){
+						let zn = $(this).find('input').val();
+						$(this).html(zn);
+					}
+					if ($(this).hasClass('htraf')){
+						let zn = $(this).find('input').val();
+						$(this).html(zn);
+					}
+					if ($(this).hasClass('avans')){
+						let zn = $(this).find('input').val();
+						$(this).html(zn);
+					}
+					if ($(this).hasClass('oklad')){
+						let zn = $(this).find('input').val();
+						$(this).html(zn);
+					}
+					if ($(this).hasClass('koment')){
+						let zn = $(this).find('input').val();
+						$(this).html(zn);
+					}
+				});
+			});
+		};
+
+		function editTable() {
+			var schet = 0;
+			$('#table3 tr').each(function(row){
+				$(this).find('td').each(function(cell){
+					schet =  schet + 1;
+					let cvel = $(this).text();
+
+					if ($(this).hasClass('oklad')){
+						$(this).html('<input type="text" name="" value="'+cvel+'">');
+					}
+
+					if ($(this).hasClass('avans')){
+						$(this).html('<input type="text" name="" value="'+cvel+'">');
+					}
+
+					if ($(this).hasClass('htraf')){
+						$(this).html('<input type="text" name="" value="'+cvel+'">');
+					}
+
+					if ($(this).hasClass('koment')){
+						$(this).html('<input type="text" name="" value="'+cvel+'">');
+					}
+				});
+			});
+		};
+
+		function printTip(q) {
+
+			if ($(q).hasClass('admin')) {
+				return "admin";
+			}
+
+			if ($(q).hasClass('dizainer')) {
+				return "dizainer";
+			}
+
+			if ($(q).hasClass('day')) {
+				return "day";
+			}
+
+			if ($(q).hasClass('night')) {
+				return "night";
+			}
+
+			if ($(q).hasClass('intern')) {
+				return "intern";
+			}
+		};
+
+		function dataInsertTable() {
+			var schet = 0;
+
+			$('#table2 tr').each(function(row) {
+				var family = ''
+				var kolTime = ''
+				var tip = ''
+
+				$(this).find('td').each(function(cell) {
+
+					let cvel = $(this).text();
+
+					if ($(this).hasClass('fio') && cvel != ''){
+
+						tip = printTip(this);
+						family = cvel;
+						
+					}
+					if ($(this).hasClass('itogo')){
+						kolTime = cvel;
+					}
+				});
+
+				if (family != '') {
+					var prov = 0
+
+					arrayFamily.forEach(function(v) {
+						if (v.family == family) {
+							prov = 1
+							v.kolTime = kolTime
+							v.tip = tip
+						}
+					})
+					
+					if (prov == 0) {
+						arrayFamily.push(
+							{	
+								"family" : family,	
+								"kolTime" : kolTime,	
+								"avans" : 0	,
+								"tip" : tip,	
+							}
+						)
+					}
+		
+				}
+			});
+
+			printData();
+		};
+
+		function InsertArrayFamily() {
+
+			$('#table3 tr').each(function(row) {
+				var family = ''
+				var tip = ''
+				var avance = 0
+				
+
+
+				$(this).find('td').each(function(cell) {
+					
+					let cvel = $(this).text();
+
+					if ($(this).hasClass('fio') && cvel != '' ){
+
+						family = cvel;
+					}
+					
+					if ($(this).hasClass('avans') && cvel != '' ){
+
+						avance = cvel;
+					}
+
+				});
+
+				if (family != '') {
+					arrayFamily.push(
+						{	
+							"family" : family,	
+							"kolTime" : 0,	
+							"avans" : avance,
+							"tip" : tip,			
+						}	
+					)
+				}
+			});
+		};
+
+		function printData() {
+			console.log(arrayFamily);
+			$('#table3 tbody tr').remove()
+			var kol = 0
+			arrayFamily.forEach(function(v) {
+				kol = kol + 1;
+				let moneyTime = 'Очень много';
+
+				if (v.tip == 'day' || v.tip == 'night') {
+					moneyTime = v.kolTime * 200;
 				}
 
-		});
+				if (v.tip == 'intern' ) {
+					moneyTime = v.kolTime * 160;
+				}
+
+				row = '<tr>';
+				row = row + '<td class="chern">' + kol + '</td>';
+				row = row + '<td class="fio">' + v.family + '</td>';
+				row = row + '<td class="oklad">' + moneyTime + '</td>';
+				row = row + '<td class="avans">' + v.avans + '</td>';
+				row = row + '<td class="htraf"></td>';
+				row = row + '<td class="jolt itog" style="color:black">' + (moneyTime - v.avans) + '</td>';
+				row = row + '<td class="koment"></td> ';
+				row = row + '</tr>';
+				$('#table3 tbody ').append(row);
+			});
+		};
 	});
-}
-$(document).on("click", "#slogTable", function(){
-	calculateManey();
-});
-
-
-})
-</script>
-
-<script>
-
 </script>
