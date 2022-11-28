@@ -3,7 +3,20 @@ $keyw="Цены на печать, печать недорого, копиров
 $titl="Цены на услуги копировального центра в Москве";
 $desc="Цены на услуги печали и копирования в компании «Копимастер» - Печать афиш круглосуточно!";
 include_once 'header.php';
- ?>
+
+require_once $_SERVER['DOCUMENT_ROOT'] . '/config/config.php';
+$db = getDbInstance();
+
+$res = $db->query("SELECT * FROM `pricecalc`");
+
+$price = [];
+
+foreach ($res as $z){
+    $price[$z["name"]] = $z["price"];
+}
+
+echo($price['petchat_chet_A4_0_odn']);
+?>
 <section>
   <div class="container">
     <div class="row text-center">
@@ -27,7 +40,6 @@ include_once 'header.php';
             <hr>
         </div>
 
-
             <div class="table-responsive"><!--Черно - белое копирование / печать А4 и А3-->
                 <?php include_once "price/FL/print/BW/fl_b-w_a4_a3.php"; ?>
             </div>
@@ -41,7 +53,7 @@ include_once 'header.php';
             </div>
 
             <div class="table-responsive"><!--Широкоформатная цветная печать и копирование-->
-                <?php include_once "price/FL/print/CV/fl_v-v_a0-a2.php"; ?>
+                <?php include_once "price/FL/print/CV/fl_v-v_a0-a2.php"; ?><!-- !!! Доделать синхронизацию !!! -->
             </div>
 
             <div class="table-responsive"><!--Переплетные работы-->
@@ -49,10 +61,10 @@ include_once 'header.php';
             </div>
 
         	<ul>
-        		<li>Вставка одного конверта для CD диска: +79.2 рублей к стоимости переплета</li>
-        		<li>Вставка одного файла в переплет: +122 рублей к стоимости переплета</li>
+        		<li>Вставка одного конверта для CD диска: +<? echo $price['pereplet_vs_k'] ?> рублей к стоимости переплета</li>
+        		<li>Вставка одного файла в переплет: +<? echo $price['pereplet_vs_f'] ?> рублей к стоимости переплета</li>
         		<li>Услуга переброшюровки твердого переплета и переплета на металлическую пружину: 50% от стоимости</li>
-        		<li>Услуга переброшюровки переплета на пластиковую пружину: 122 рублей</li>
+        		<li>Услуга переброшюровки переплета на пластиковую пружину: <? echo $price['pereplet_pl_per'] ?> рублей</li>
         	</ul>
 
             <div class="table-responsive"><!--Сканирование*-->
@@ -67,8 +79,8 @@ include_once 'header.php';
                 <?php include_once "price/FL/fl_pet_and_htamp.php"; ?>
             </div>
 
-            <div class="table-responsive"><!--Печать визиток 90*50 мм-->
-                <?php include_once "price/FL/fl_pet_vizitok.php"; ?>
+            <div class="table-responsive"><!--Печать визиток 90*50 мм-->  
+                <?php include_once "price/FL/fl_pet_vizitok.php"; ?> <!-- !!! Добавить синхронизацию !!! -->
             </div>
 
             <div class="table-responsive"><!--Ламинирование-->
@@ -76,7 +88,7 @@ include_once 'header.php';
             </div>
 
             <div class="table-responsive"><!--Накатка на пенокартон-->
-                <?php include_once "price/FL/fl_penokarton.php"; ?>
+                <?php include_once "price/FL/fl_penokarton.php"; ?> <!-- !!! Добавить синхронизацию !!! -->
             </div>
 
             <div class="table-responsive"><!--Дополнительные операции-->
@@ -117,47 +129,11 @@ include_once 'header.php';
     </div>
 </section>
 
- <?php
- include_once 'footer.php';
-  ?>
+<?php
+    include_once 'footer.php';
+?>
+
 <script src="dashbord/assets/plugins/edittable/bstable.js"></script>
 <script type="text/javascript">
-/*
-     var example1 = new BSTable("table_1");
-     example1.init();
-     var example2 = new BSTable("table_2");
-     example2.init();
-     var example3 = new BSTable("table_3");
-     example3.init();
-     var example4 = new BSTable("table_4");
-     example4.init();
-     var example5 = new BSTable("table_5");
-     example5.init();
-     var example6 = new BSTable("table_6");
-     example6.init();
-     var example7 = new BSTable("table_7");
-     example7.init();
-     var example8 = new BSTable("table_8");
-     example8.init();
-     var example9 = new BSTable("table_9");
-     example9.init();
-     var example10 = new BSTable("table_10");
-     example10.init();
-     var example11 = new BSTable("table_11");
-     example11.init();
-     var example12 = new BSTable("table_12");
-     example12.init();
-     var example13 = new BSTable("table_13");
-     example13.init();
-     var example14 = new BSTable("table_14");
-     example14.init();
-     var example15 = new BSTable("table_15");
-     example15.init();
-     var example16 = new BSTable("table_16");
-     example16.init();
-     var example17 = new BSTable("table_17");
-     example17.init();
-     var example18 = new BSTable("table_18");
-     example18.init();
-*/
+
 </script>

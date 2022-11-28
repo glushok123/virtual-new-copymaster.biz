@@ -12,31 +12,31 @@
        </tr>
        <tr data-status="">
            <td>1 - 50</td>
-           <td>106</td>
-           <td>132</td>
-           <td>264</td>
-           <td>423</td>
+            <td><? echo $price['petchat_bw_A2_0_80'] ?></td>
+            <td><? echo $price['petchat_bw_A1_0_80'] ?></td>
+            <td><? echo $price['petchat_bw_A0_0_80'] ?></td>
+            <td><? echo $price['petchat_bw_ns_0_80'] ?></td>
        </tr>
        <tr data-status="">
            <td>51 - 200</td>
-           <td>93</td>
-           <td>119</td>
-           <td>238</td>
-           <td>370</td>
+            <td><? echo $price['petchat_bw_A2_50_80'] ?></td>
+            <td><? echo $price['petchat_bw_A1_50_80'] ?></td>
+            <td><? echo $price['petchat_bw_A0_50_80'] ?></td>
+            <td><? echo $price['petchat_bw_ns_50_80'] ?></td>
        </tr>
        <tr data-status="">
            <td>201 - 500</td>
-           <td>66</td>
-           <td>93</td>
-           <td>185</td>
-           <td>264</td>
+            <td><? echo $price['petchat_bw_A2_200_80'] ?></td>
+            <td><? echo $price['petchat_bw_A1_200_80'] ?></td>
+            <td><? echo $price['petchat_bw_A0_200_80'] ?></td>
+            <td><? echo $price['petchat_bw_ns_200_80'] ?></td>
        </tr>
        <tr data-status="">
            <td>501 - 1000</td>
-           <td>53</td>
-           <td>80</td>
-           <td>160</td>
-           <td>212</td>
+            <td><? echo $price['petchat_bw_A2_500_80'] ?></td>
+            <td><? echo $price['petchat_bw_A1_500_80'] ?></td>
+            <td><? echo $price['petchat_bw_A0_500_80'] ?></td>
+            <td><? echo $price['petchat_bw_ns_500_80'] ?></td>
        </tr>
        <tr>
            <td>1000+</td>

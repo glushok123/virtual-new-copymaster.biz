@@ -24,12 +24,12 @@
 		<tr>
 			<td>от 6 до 51</td>
 			<td>от 25 до 480</td>
-			<td>от 72,00</td>
-			<td>от 96,00</td>
+			<td>от <? echo $price['pereplet_pl_A4_m'] ?></td>
+			<td>от <? echo $price['pereplet_pl_A3_m'] ?></td>
 			<td>от 5,5 до 14,3</td>
 			<td>от 20 до 120</td>
-			<td>от 108,00</td>
-			<td>от 132,00</td>
+			<td>от <? echo $price['pereplet_mt_A4_m'] ?></td>
+			<td>от <? echo $price['pereplet_mt_A3_m'] ?></td>
 		</tr>
 	</tbody>
 </table>

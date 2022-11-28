@@ -12,24 +12,24 @@
        </tr>
        <tr data-status="">
            <td>1 - 10</td>
-           <td>132</td>
-           <td>146</td>
-           <td>172</td>
-           <td>225</td>
+           <td><? echo $price['prochee_lam_0_A6_g'] ?></td>
+           <td><? echo $price['prochee_lam_0_A5_g'] ?></td>
+           <td><? echo $price['prochee_lam_0_A4_g'] ?></td>
+           <td><? echo $price['prochee_lam_0_A3_g'] ?></td>
        </tr>
        <tr data-status="">
            <td>11 - 50</td>
-           <td>106</td>
-           <td>120</td>
-           <td>146</td>
-           <td>200</td>
+           <td><? echo $price['prochee_lam_10_A6_g'] ?></td>
+           <td><? echo $price['prochee_lam_10_A5_g'] ?></td>
+           <td><? echo $price['prochee_lam_10_A4_g'] ?></td>
+           <td><? echo $price['prochee_lam_10_A3_g'] ?></td>
        </tr>
        <tr data-status="">
            <td>51 - 100</td>
-           <td>80</td>
-           <td>93</td>
-           <td>120</td>
-           <td>172</td>
+           <td><? echo $price['prochee_lam_50_A6_g'] ?></td>
+           <td><? echo $price['prochee_lam_50_A5_g'] ?></td>
+           <td><? echo $price['prochee_lam_50_A4_g'] ?></td>
+           <td><? echo $price['prochee_lam_50_A3_g'] ?></td>
        </tr>
        <tr>
            <td>101+</td>
@@ -45,27 +45,28 @@
            <td>А4</td>
            <td>А3</td>
        </tr>
+        <tr data-status="">
+           <td>1 - 10</td>
+           <td><? echo $price['prochee_lam_0_A6_m'] ?></td>
+           <td><? echo $price['prochee_lam_0_A5_m'] ?></td>
+           <td><? echo $price['prochee_lam_0_A4_m'] ?></td>
+           <td><? echo $price['prochee_lam_0_A3_m'] ?></td>
+       </tr>
        <tr data-status="">
            <td>1 - 10</td>
-           <td>146</td>
-           <td>160</td>
-           <td>185</td>
-           <td>238</td>
+           <td><? echo $price['prochee_lam_10_A6_m'] ?></td>
+           <td><? echo $price['prochee_lam_10_A5_m'] ?></td>
+           <td><? echo $price['prochee_lam_10_A4_m'] ?></td>
+           <td><? echo $price['prochee_lam_10_A3_m'] ?></td>
        </tr>
        <tr data-status="">
            <td>11 - 50</td>
-           <td>120</td>
-           <td>132</td>
-           <td>160</td>
-           <td>212</td>
+           <td><? echo $price['prochee_lam_50_A6_m'] ?></td>
+           <td><? echo $price['prochee_lam_50_A5_m'] ?></td>
+           <td><? echo $price['prochee_lam_50_A4_m'] ?></td>
+           <td><? echo $price['prochee_lam_50_A3_m'] ?></td>
        </tr>
-       <tr data-status="">
-           <td>51 - 100</td>
-           <td>93</td>
-           <td>106</td>
-           <td>132</td>
-           <td>185</td>
-       </tr>
+
        <tr>
            <td>101+</td>
            <td colspan="4">договорная</td>

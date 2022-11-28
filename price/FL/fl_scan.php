@@ -13,43 +13,43 @@
         </tr>
         <tr data-status="">
             <td colspan="2">1 - 10</td>
-            <td>20</td>
-            <td>30</td>
-            <td>70</td>
-            <td>130</td>
-            <td>218</td>
+            <td><? echo $price['prochee_scan_0_A4_av'] ?></td>
+            <td><? echo $price['prochee_scan_0_A3_av'] ?></td>
+            <td><? echo $price['prochee_scan_0_A2'] ?></td>
+            <td><? echo $price['prochee_scan_0_A1'] ?></td>
+            <td><? echo $price['prochee_scan_0_A0'] ?></td>
         </tr>
         <tr data-status="">
             <td colspan="2">11 - 50</td>
-            <td>16</td>
-            <td>24</td>
-            <td>50</td>
-            <td>110</td>
-            <td>190</td>
+            <td><? echo $price['prochee_scan_10_A4_av'] ?></td>
+            <td><? echo $price['prochee_scan_10_A3_av'] ?></td>
+            <td><? echo $price['prochee_scan_10_A2'] ?></td>
+            <td><? echo $price['prochee_scan_10_A1'] ?></td>
+            <td><? echo $price['prochee_scan_10_A0'] ?></td>
         </tr>
         <tr data-status="">
             <td colspan="2">51 - 100</td>
-            <td>12</td>
-            <td>18</td>
-            <td>40</td>
-            <td>72</td>
-            <td>170</td>
+            <td><? echo $price['prochee_scan_50_A4_av'] ?></td>
+            <td><? echo $price['prochee_scan_50_A3_av'] ?></td>
+            <td><? echo $price['prochee_scan_50_A2'] ?></td>
+            <td><? echo $price['prochee_scan_50_A1'] ?></td>
+            <td><? echo $price['prochee_scan_50_A0'] ?></td>
         </tr>
         <tr data-status="">
             <td colspan="2">101 - 500</td>
-            <td>8</td>
-            <td>14</td>
-            <td>30</td>
-            <td>70</td>
-            <td>150</td>
+            <td><? echo $price['prochee_scan_100_A4_av'] ?></td>
+            <td><? echo $price['prochee_scan_100_A3_av'] ?></td>
+            <td><? echo $price['prochee_scan_100_A2'] ?></td>
+            <td><? echo $price['prochee_scan_100_A1'] ?></td>
+            <td><? echo $price['prochee_scan_100_A0'] ?></td>
         </tr>
         <tr data-status="">
             <td colspan="2">501+</td>
-            <td>6</td>
-            <td>10</td>
-            <td>24</td>
-            <td>50</td>
-            <td>130</td>
+            <td><? echo $price['prochee_scan_500_A4_av'] ?></td>
+            <td><? echo $price['prochee_scan_500_A3_av'] ?></td>
+            <td><? echo $price['prochee_scan_500_A2'] ?></td>
+            <td><? echo $price['prochee_scan_500_A1'] ?></td>
+            <td><? echo $price['prochee_scan_500_A0'] ?></td>
         </tr>
         <tr>
             <td colspan="7">* Ручное сканирование форматов А4 и А3: +50% за каждый экземпляр</td>

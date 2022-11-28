@@ -10,23 +10,23 @@
            </tr>
            <tr>
                <td colspan="2">Круглая печать, штамп или факсимиле</td>
-               <td>770</td>
-               <td>2310</td>
+               <td><? echo $price['dis_pet_kp'] ?></td>
+               <td><? echo $price['dis_pet_kp']*1.3 ?></td>
            </tr>
            <tr>
                <td colspan="2">Маленькие штампы (1-2 слова): 'Копия верна', 'Оплачено'</td>
-               <td>1100</td>
-               <td>1650</td>
+               <td><? echo $price['dis_pet_hm'] ?></td>
+               <td><? echo $price['dis_pet_hm']*1.3 ?></td>
            </tr>
            <tr>
                <td colspan="2">Печать или штамп по оттиску (данная услуга предполагает отрисовку образца печати дизайнером за отдельную плату)</td>
-               <td>1540</td>
-               <td>2310</td>
+               <td><? echo $price['dis_pet_otp'] ?></td>
+               <td><? echo $price['dis_pet_otp']*1.3 ?></td>
            </tr>
            <tr>
                <td colspan="2">Изготовление личной печати, экслибриса (данная услуга предполагает отрисовку образца печати дизайнером за отдельную плату)</td>
-               <td>2200</td>
-               <td>3300</td>
+               <td><? echo $price['dis_pet_iks'] ?></td>
+               <td><? echo $price['dis_pet_iks']*1.3 ?></td>
            </tr>
            <tr class="tr1">
                <td colspan="2">Наиболее популярные модели оснастки</td>
@@ -34,11 +34,11 @@
            </tr>
            <tr>
                <td colspan="2">Печать на автоматической оснастке Trodat (диаметр 40 мм)</td>
-               <td colspan="2">1100</td>
+               <td colspan="2"><? echo $price['dis_osn_1'] ?></td>
            </tr>
            <tr>
                <td colspan="2">Пластмассовая оснастка 'грибок' (диаметр 40 мм)</td>
-               <td colspan="2">220</td>
+               <td colspan="2"><? echo $price['dis_osn_2'] ?></td>
            </tr>
            <tr>
                <td colspan="2">Карманная печать (диаметр 40 мм)</td>
@@ -46,11 +46,11 @@
            </tr>
            <tr>
                <td colspan="2">Автоматическая оснастка для маленьких штампов</td>
-               <td colspan="2">1100</td>
+               <td colspan="2"><? echo $price['dis_osn_3'] ?></td>
            </tr>
            <tr>
                <td colspan="2">Автоматическая оснастка для больших штампов</td>
-               <td colspan="2">1650</td>
+               <td colspan="2"><? echo $price['dis_osn_5'] ?></td>
            </tr>
        </tbody>
 </table>

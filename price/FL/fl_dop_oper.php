@@ -17,11 +17,11 @@
          <tr>
              <td colspan="2" rowspan="2">Запись информации на CD/DVD:</td>
              <td>Клиента</td>
-             <td colspan="2">132</td>
+             <td colspan="2"><? echo $price['prochee_dc'] ?></td>
          </tr>
          <tr>
              <td>Компании</td>
-             <td colspan="2">264</td>
+             <td colspan="2"><? echo $price['prochee_dk'] ?></td>
          </tr>
          <tr data-status="">
              <td colspan="2" rowspan="2">Фальцовка (за лист)</td>
@@ -35,11 +35,11 @@
          <tr data-status="">
              <td colspan="2" rowspan="2">Использование интернета:</td>
              <td>прием:</td>
-             <td colspan="2">80</td>
+             <td colspan="2"><? echo $price['prochee_opf'] ?></td>
          </tr>
          <tr data-status="">
              <td>отправка:</td>
-             <td colspan="2">80</td>
+             <td colspan="2"><? echo $price['prochee_opf'] ?></td>
          </tr>
          <tr data-status="">
              <td colspan="2">Сшивание/расшивание оригинала</td>
@@ -51,7 +51,7 @@
          </tr>
          <tr data-status="">
              <td colspan="2">Ручная резка</td>
-             <td colspan="3">16</td>
+             <td colspan="3"><? echo $price['prochee_rr'] ?></td>
          </tr>
          <tr data-status="">
              <td colspan="2">Степлер (1 скоба)</td>
@@ -59,7 +59,7 @@
          </tr>
          <tr data-status="">
              <td colspan="2">Биговка (за один биг)</td>
-             <td colspan="3">16</td>
+             <td colspan="3"><? echo $price['prochee_bigovka'] ?></td>
          </tr>
          <tr data-status="">
              <td colspan="2">Тиснение (1 штамп)</td>

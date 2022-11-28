@@ -211,7 +211,55 @@
 						</tbody>
 					</table>
 					<br>
+					<h5>Широкоформатная печать</h5>
+					<table class="table table-striped table-bordered" id="petchat_chet_shirokoformat">
+						<tbody>
+							<tr>
+								<td></td>
+								<td>матовая 180г</td>
+								<td>глянец HP</td>
+								<td>калька 90г</td>
+								<td>cамоклейка</td>
+								<td>холcт 320г</td>
+							</tr>
 
+							<tr>
+								<td>А2</td></td>
+								<td id="petchat_chet_A2_mat"></td>
+								<td id="petchat_chet_A2_gl"></td>
+								<td id="petchat_chet_A2_kalka"></td>
+								<td id="petchat_chet_A2_samokl"></td>
+								<td id="petchat_chet_A2_xolst"></td>
+							</tr>
+
+							<tr>
+								<td>А1</td></td>
+								<td id="petchat_chet_A1_mat"></td>
+								<td id="petchat_chet_A1_gl"></td>
+								<td id="petchat_chet_A1_kalka"></td>
+								<td id="petchat_chet_A1_samokl"></td>
+								<td id="petchat_chet_A1_xolst"></td>
+							</tr>
+
+							<tr>
+								<td>А0</td></td>
+								<td id="petchat_chet_A0_mat"></td>
+								<td id="petchat_chet_A0_gl"></td>
+								<td id="petchat_chet_A0_kalka"></td>
+								<td id="petchat_chet_A0_samokl"></td>
+								<td id="petchat_chet_A0_xolst"></td>
+							</tr>
+
+							<tr>
+								<td>Нестандартная</td></td>
+								<td id="petchat_chet_ns_mat"></td>
+								<td id="petchat_chet_ns_gl"></td>
+								<td id="petchat_chet_ns_kalka"></td>
+								<td id="petchat_chet_ns_samokl"></td>
+								<td id="petchat_chet_ns_xolst"></td>
+							</tr>
+						</tbody>
+					</table>
 					<h3>Черно-белая</h3>
 					<br>
 					<table class="table table-striped table-bordered" id="petchat_bw_A4_A3">
@@ -764,7 +812,8 @@ $(document).ready(function(){
 	$('#save').click(function(){
 		var json = '{';
 
-   	$('#petchat_dop_A4 tr').each(function(row){
+
+   		$('#petchat_dop_A4 tr').each(function(row){
 			 	$(this).find('td').each(function(cell){
 					if ($(this).attr('id') != undefined){
 						let textinfo= $(this).find("input").val();
@@ -774,6 +823,18 @@ $(document).ready(function(){
 					}
 				});
 		});
+
+		$('#petchat_chet_shirokoformat tr').each(function(row){
+			 	$(this).find('td').each(function(cell){
+					if ($(this).attr('id') != undefined){
+						let textinfo= $(this).find("input").val();
+						textinfo = textinfo.replace(",", ".");
+
+						json = json + '"'+$(this).attr("id")+'":"'+textinfo+'",';
+					}
+				});
+		});
+
 		$('#petchat_dop_A3 tr').each(function(row){
 			$(this).find('td').each(function(cell){
 				if ($(this).attr('id') != undefined){

@@ -69,10 +69,10 @@ let base = new function () {
         }
         this.priceL = prL;
         let prU = [
-          [330,528,264,660,1056], //A2 матовая 180г, глянец HP, калька 90г, cамоклейка, холcт 320г
-          [528,924,396,792,1584], //A1
-          [1056,1716,792,1584,3168], //A0
-          [1188,1848,1056,2904,3168] //неcт
+          [prRBD["petchat_chet_A2_mat"],prRBD["petchat_chet_A2_gl"],prRBD["petchat_chet_A2_kalka"],prRBD["petchat_chet_A2_samokl"],prRBD["petchat_chet_A2_xolst"]], //A2 матовая 180г, глянец HP, калька 90г, cамоклейка, холcт 320г
+          [prRBD["petchat_chet_A1_mat"],prRBD["petchat_chet_A1_gl"],prRBD["petchat_chet_A1_kalka"],prRBD["petchat_chet_A1_samokl"],prRBD["petchat_chet_A1_xolst"]], //A1
+          [prRBD["petchat_chet_A0_mat"],prRBD["petchat_chet_A0_gl"],prRBD["petchat_chet_A0_kalka"],prRBD["petchat_chet_A0_samokl"],prRBD["petchat_chet_A0_xolst"]], //A0
+          [prRBD["petchat_chet_ns_mat"],prRBD["petchat_chet_ns_gl"],prRBD["petchat_chet_ns_kalka"],prRBD["petchat_chet_ns_samokl"],prRBD["petchat_chet_ns_xolst"]] //неcт
         ]
         for (k in prU) {
           for (l in prU[k]) {

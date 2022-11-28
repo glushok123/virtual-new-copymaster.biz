@@ -1,40 +1,71 @@
 <table id="table_3"><!--Цветное копирование/печать форматов А4 и А3*-->
     <tbody>
          <tr class="tr1">
-             <td colspan="3">Цветное копирование/печать форматов А4 и А3*</td>
+             <td colspan="5">Цветное копирование/печать форматов А4 и А3*</td>
          </tr>
-         <tr>
-             <td>Кол. экз.</td>
-             <td>А4</td>
-             <td>А3</td>
-         </tr>
-         <tr data-status="">
-             <td>1 - 50</td>
-             <td>66</td>
-             <td>132</td>
-         </tr>
-         <tr data-status="">
-             <td>51 - 100</td>
-             <td>53</td>
-             <td>106</td>
-         </tr>
-         <tr data-status="">
-             <td>101 - 500</td>
-             <td>40</td>
-             <td>80</td>
-         </tr>
-         <tr data-status="">
-             <td>501 - 1000</td>
-             <td>27</td>
-             <td>53</td>
-         </tr>
-         <tr data-status="">
-             <td>1001+</td>
-             <td>22</td>
-             <td>43</td>
-         </tr>
-         <tr>
-             <td colspan="3">*При двустороннем копировании/печати цена удваивается</td>
-         </tr>
+          <tr>
+              <td rowspan="2">Кол. экз.</td>
+              <td colspan="2">А4</td>
+              <td colspan="2">А3</td>
+          </tr>
+          <tr>
+              <td>одностор.</td>
+              <td>двустор.</td>
+              <td>одностор.</td>
+              <td>двустор.</td>
+          </tr>
+          <tr data-status="">
+              <td>1 - 10</td>
+              <td><? echo $price['petchat_chet_A4_0_odn'] ?></td>
+              <td><? echo $price['petchat_chet_A4_0_dvx'] ?></td>
+              <td><? echo $price['petchat_chet_A3_0_odn'] ?></td>
+              <td><? echo $price['petchat_chet_A3_0_dvx'] ?></td>
+          </tr>
+          <tr data-status="">
+              <td>11 - 50</td>
+              <td><? echo $price['petchat_chet_A4_10_odn'] ?></td>
+              <td><? echo $price['petchat_chet_A4_10_dvx'] ?></td>
+              <td><? echo $price['petchat_chet_A3_10_odn'] ?></td>
+              <td><? echo $price['petchat_chet_A3_10_dvx'] ?></td>
+          </tr>
+          <tr data-status="">
+              <td>51 - 100</td>
+              <td><? echo $price['petchat_chet_A4_50_odn'] ?></td>
+              <td><? echo $price['petchat_chet_A4_50_dvx'] ?></td>
+              <td><? echo $price['petchat_chet_A3_50_odn'] ?></td>
+              <td><? echo $price['petchat_chet_A3_50_dvx'] ?></td>
+          </tr>
+          <tr data-status="">
+              <td>101 - 250</td>
+              <td><? echo $price['petchat_chet_A4_100_odn'] ?></td>
+              <td><? echo $price['petchat_chet_A4_100_dvx'] ?></td>
+              <td><? echo $price['petchat_chet_A3_100_odn'] ?></td>
+              <td><? echo $price['petchat_chet_A3_100_dvx'] ?></td>
+          </tr>
+          <tr data-status="">
+              <td>251 - 500</td>
+              <td><? echo $price['petchat_chet_A4_250_odn'] ?></td>
+              <td><? echo $price['petchat_chet_A4_250_dvx'] ?></td>
+              <td><? echo $price['petchat_chet_A3_250_odn'] ?></td>
+              <td><? echo $price['petchat_chet_A3_250_dvx'] ?></td>
+          </tr>
+          <tr data-status="">
+              <td>500 - 1000</td>
+              <td><? echo $price['petchat_chet_A4_500_odn'] ?></td>
+              <td><? echo $price['petchat_chet_A4_500_dvx'] ?></td>
+              <td><? echo $price['petchat_chet_A3_500_odn'] ?></td>
+              <td><? echo $price['petchat_chet_A3_500_dvx'] ?></td>
+          </tr>
+          <tr data-status="">
+              <td>1000-10000</td>
+              <td><? echo $price['petchat_chet_A4_1000_odn'] ?></td>
+              <td><? echo $price['petchat_chet_A4_1000_dvx'] ?></td>
+              <td><? echo $price['petchat_chet_A3_1000_odn'] ?></td>
+              <td><? echo $price['petchat_chet_A3_1000_dvx'] ?></td>
+          </tr>
+          <tr>
+              <td>10000+</td>
+              <td colspan="4">договорная</td>
+          </tr>
      </tbody>
 </table>
