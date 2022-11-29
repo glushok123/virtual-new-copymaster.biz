@@ -152,7 +152,7 @@ let base = new function () {
                 }
               }
               this.aaac = new function () {
-                this.nm = "матовая 160г";
+                this.nm = "матовая 170г";
                 this.fnm = titelBD['aaac'];
                 this.lst = new function () {
                   this.aaaca = new function () {
@@ -436,7 +436,7 @@ let base = new function () {
                 }
               }
               this.aabb = new function () {
-                this.nm = "матовая 160г";
+                this.nm = "матовая 170г";
                 this.fnm = titelBD['aabb'];
                 this.lst = new function () {
                   this.aabba = new function () {
@@ -702,7 +702,7 @@ let base = new function () {
                 }
               }
               this.aacb = new function () {
-                this.nm = "матовая 160г";
+                this.nm = "матовая 180г";
                 this.fnm = titelBD['aacb'];
                 this.skm = 0.25;
                 this.ski = "b17";
@@ -1036,7 +1036,7 @@ let base = new function () {
                 }
               }
               this.abac = new function () {
-                this.nm = "матовая 160г";
+                this.nm = "матовая 170г";
                 this.fnm = titelBD['abac'];
                 this.lst = new function () {
                   this.abaca = new function () {
@@ -1286,7 +1286,7 @@ let base = new function () {
                 }
               }
               this.abbb = new function () {
-                this.nm = "матовая 160г";
+                this.nm = "матовая 170г";
                 this.fnm = titelBD['abbb'];
                 this.lst = new function () {
                   this.abbba = new function () {
@@ -1478,8 +1478,8 @@ let base = new function () {
                 this.pr = prL[1];
               }
               this.abcc = new function () {
-                this.nm = "матовая 160г";
-                this.fnm = "матовая 160г";
+                this.nm = "матовая 180г";
+                this.fnm = "матовая 180г";
                 this.skm = 0.25;
                 this.ski = "b19";
                 this.gr = grL;
@@ -1492,6 +1492,12 @@ let base = new function () {
                 this.ski = "b19";
                 this.gr = grL;
                 this.pr = 150;
+              }
+              this.abce = new function () {
+                this.nm = "глянец HP";
+                this.skm = 0.25;
+                this.ski = "b18";
+                this.pr = 12;
               }
             }
           }
@@ -1515,6 +1521,20 @@ let base = new function () {
                 this.gr = grL;
                 this.pr = prL[3];
               }
+              this.abdc = new function () {
+                this.nm = "матовая 180г";
+                this.fnm = "матовая 180г";
+                this.skm = 0.25;
+                this.ski = "b19";
+                this.gr = grL;
+                this.pr = 150;
+              }
+              this.abdd = new function () {
+                this.nm = "глянец HP";
+                this.skm = 0.25;
+                this.ski = "b18";
+                this.pr = 12;
+              }
             }
           }
           this.abe = new function () {
@@ -1534,6 +1554,20 @@ let base = new function () {
                 this.ski = "b19";
                 this.gr = grL;
                 this.pr = prL[5];
+              }
+              this.abec = new function () {
+                this.nm = "матовая 180г";
+                this.fnm = "матовая 180г";
+                this.skm = 0.25;
+                this.ski = "b19";
+                this.gr = grL;
+                this.pr = 150;
+              }
+              this.abed = new function () {
+                this.nm = "глянец HP";
+                this.skm = 0.25;
+                this.ski = "b18";
+                this.pr = 12;
               }
             }
           }
@@ -1556,6 +1590,20 @@ let base = new function () {
                 this.ski = "b19";
                 this.gr = grL;
                 this.pr = prL[7];
+              }
+              this.abfc = new function () {
+                this.nm = "матовая 180г";
+                this.fnm = "матовая 180г";
+                this.skm = 0.25;
+                this.ski = "b19";
+                this.gr = grL;
+                this.pr = 150;
+              }
+              this.abfd = new function () {
+                this.nm = "глянец HP";
+                this.skm = 0.25;
+                this.ski = "b18";
+                this.pr = 12;
               }
             }
           }
@@ -1900,7 +1948,8 @@ let base = new function () {
             this.fnm = titelBD['bcd'];
             this.lst = new function () {
               this.bcda = new function () {
-                this.fnm = titelBD['bcda'];
+                //this.fnm = titelBD['bcda'];
+                this.fnm = 'Новый переплёт';
                 this.ski = "p10";
                 this.ski2 = 'p11';
                 this.skm2 = 2;

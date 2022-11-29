@@ -620,9 +620,10 @@ if (!isset($_SESSION['user_logged_in']))
 			display: none !important;
 		}
 
-		#aacc, /* A2 глянец HP */
-		#aacd, /* A2 калька 90 */
+		/*#aacc, /* A2 глянец HP */
+		/*#aacd, /* A2 калька 90 */
 		#aacf, /* A2 холст */
+		#aacg, /* A2 мат 300 */
 		#aace /* A2 самоклейка */
 		{
 			display: none !important;
@@ -630,7 +631,7 @@ if (!isset($_SESSION['user_logged_in']))
 		
 		/*#aadc,  A1 глянец HP */
 		/*#aadd,  A1 калька */
-		/*#aade,  A1 самоклейка */
+		#aade, /*A1 самоклейка */
 		#aadf /* A1 холст */
 		{
 			display: none !important;
@@ -638,9 +639,15 @@ if (!isset($_SESSION['user_logged_in']))
 
 		/*#aaec, /* A0 мат 180 */
 		/*#aaec, /* A0 глянец HP */
-		/*#aaed, /* A0 калька 90 */
-		/*#aaee, /* A0 самоклейка */
+		#aaed, /* A0 калька 90 */
+		#aaee, /* A0 самоклейка */
 		#aaef /* A0 холст */
+		{
+			display: none !important;
+		}
+
+		#aafe, /* нест самоклейка */
+		#aaff /* нест холст */
 		{
 			display: none !important;
 		}
@@ -663,12 +670,13 @@ if (!isset($_SESSION['user_logged_in']))
 			display: none !important;
 		}
 
-		#abcb /* A2 калк 90 */
+		/*#abcb /* A2 калк 90 */
+		#abcd /* A2 мат 300 */
 		{
 			display: none !important;
 		}
 
-		#abdb /* A1 калк 90 */
+		/*#abdb /* A1 калк 90 */
 		{
 			display: none !important;
 		}
@@ -677,7 +685,7 @@ if (!isset($_SESSION['user_logged_in']))
 		{
 			display: none !important;
 		}
-		
+
 </style>
 <script type="text/javascript">
 	$(document).ready(function() {
