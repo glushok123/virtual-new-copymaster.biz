@@ -32,26 +32,26 @@
 					<table class="table table-striped table-bordered" id="petchat_dop_A4">
 						<tbody>
 							<tr>
-								<td>мт120</td>
-								<td>мт160</td>
-								<td>мт200</td>
-								<td>мт250</td>
+								<!--td>мт120</td-->
+								<td>мт170</td>
+								<!--td>мт200</td>
+								<td>мт250</td-->
 								<td>мт300</td>
-								<td>гл170</td>
+								<!--td>гл170</td>
 								<td>гл250</td>
 								<td>клк250</td>
-								<td>самоклейка</td>
+								<td>самоклейка</td-->
 							</tr>
 							<tr>
-								<td id="petchat_A4_mt120"></td>
+								<!--td id="petchat_A4_mt120"></td-->
 								<td id="petchat_A4_mt160"></td>
-								<td id="petchat_A4_mt200"></td>
-								<td id="petchat_A4_mt250"></td>
+								<!--td id="petchat_A4_mt200"></td>
+								<td id="petchat_A4_mt250"></td-->
 								<td id="petchat_A4_mt300"></td>
-								<td id="petchat_A4_gl170"></td>
+								<!--td id="petchat_A4_gl170"></td>
 								<td id="petchat_A4_gl250"></td>
 								<td id="petchat_A4_klk250"></td>
-								<td id="petchat_A4_sk"> <input type="text" name="" value=""  class="calcprice"> </td>
+								<td id="petchat_A4_sk"> <input type="text" name="" value=""  class="calcprice"> </td-->
 							</tr>
 						</tbody>
 					</table>
@@ -60,22 +60,22 @@
 					<table class="table table-striped table-bordered" id="petchat_dop_A3">
 						<tbody>
 							<tr>
-								<td>мт160</td>
-								<td>мт200</td>
-								<td>мт250</td>
-								<td>мт280</td>
-								<td>гл170</td>
+								<td>мт170</td>
+								<!--td>мт200</td>
+								<td>мт250</td-->
+								<td>мт300</td>
+								<!--td>гл170</td>
 								<td>гл250</td>
-								<td>клк250</td>
+								<td>клк250</td-->
 							</tr>
 							<tr>
 								<td id="petchat_A3_mt160"></td>
-								<td id="petchat_A3_mt200"></td>
-								<td id="petchat_A3_mt250"></td>
+								<!--td id="petchat_A3_mt200"></td>
+								<td id="petchat_A3_mt250"></td-->
 								<td id="petchat_A3_mt280"></td>
-								<td id="petchat_A3_gl170"></td>
+								<!--td id="petchat_A3_gl170"></td>
 								<td id="petchat_A3_gl250"></td>
-								<td id="petchat_A3_sm"></td>
+								<td id="petchat_A3_sm"></td-->
 							</tr>
 						</tbody>
 					</table>
@@ -219,8 +219,8 @@
 								<td>матовая 180г</td>
 								<td>глянец HP</td>
 								<td>калька 90г</td>
-								<td>cамоклейка</td>
-								<td>холcт 320г</td>
+								<!--td>cамоклейка</td>
+								<td>холcт 320г</td-->
 							</tr>
 
 							<tr>
@@ -228,8 +228,8 @@
 								<td id="petchat_chet_A2_mat"></td>
 								<td id="petchat_chet_A2_gl"></td>
 								<td id="petchat_chet_A2_kalka"></td>
-								<td id="petchat_chet_A2_samokl"></td>
-								<td id="petchat_chet_A2_xolst"></td>
+								<!--td id="petchat_chet_A2_samokl"></td>
+								<td id="petchat_chet_A2_xolst"></td-->
 							</tr>
 
 							<tr>
@@ -237,17 +237,17 @@
 								<td id="petchat_chet_A1_mat"></td>
 								<td id="petchat_chet_A1_gl"></td>
 								<td id="petchat_chet_A1_kalka"></td>
-								<td id="petchat_chet_A1_samokl"></td>
-								<td id="petchat_chet_A1_xolst"></td>
+								<!--td id="petchat_chet_A1_samokl"></td>
+								<td id="petchat_chet_A1_xolst"></td-->
 							</tr>
 
 							<tr>
 								<td>А0</td></td>
 								<td id="petchat_chet_A0_mat"></td>
 								<td id="petchat_chet_A0_gl"></td>
-								<td id="petchat_chet_A0_kalka"></td>
-								<td id="petchat_chet_A0_samokl"></td>
-								<td id="petchat_chet_A0_xolst"></td>
+								<td id="petchat_chet_A0_kalka_Koment"> - </td>
+								<!--td id="petchat_chet_A0_samokl"></td>
+								<td id="petchat_chet_A0_xolst"></td-->
 							</tr>
 
 							<tr>
@@ -255,8 +255,8 @@
 								<td id="petchat_chet_ns_mat"></td>
 								<td id="petchat_chet_ns_gl"></td>
 								<td id="petchat_chet_ns_kalka"></td>
-								<td id="petchat_chet_ns_samokl"></td>
-								<td id="petchat_chet_ns_xolst"></td>
+								<!--td id="petchat_chet_ns_samokl"></td>
+								<td id="petchat_chet_ns_xolst"></td-->
 							</tr>
 						</tbody>
 					</table>

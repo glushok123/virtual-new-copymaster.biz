@@ -17,7 +17,17 @@ let base = new function () {
   this.a = new function () {
 
     this.nm = "Печать";
-    let bA4 = [prRBD["petchat_A4_mt120"],prRBD["petchat_A4_mt160"],prRBD["petchat_A4_mt200"],prRBD["petchat_A4_mt250"],prRBD["petchat_A4_mt300"],prRBD["petchat_A4_gl170"],prRBD["petchat_A4_gl250"],prRBD["petchat_A4_klk250"],prRBD["petchat_A4_sk"]];
+    let bA4 = [
+        prRBD["petchat_A4_mt120"],
+        prRBD["petchat_A4_mt160"],
+        prRBD["petchat_A4_mt200"],
+        prRBD["petchat_A4_mt250"],
+        prRBD["petchat_A4_mt300"],
+        prRBD["petchat_A4_gl170"],
+        prRBD["petchat_A4_gl250"],
+        prRBD["petchat_A4_klk250"],
+        prRBD["petchat_A4_sk"]
+    ];
     // бумага: мт120, мт160, мт200, мт250, мт300, гл170, гл250, клк250, cамоклейка
 
     for (k in bA4) { bA4[k] = Math.ceil(Math.round(bA4[k]*z)/100); }
