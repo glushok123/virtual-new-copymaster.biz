@@ -597,6 +597,88 @@ if (!isset($_SESSION['user_logged_in']))
 
 </style>
 
+
+<style>
+	/* !!! ЦВЕТНАЯ !!! */
+		#aaab, /* A4 мат 120 */
+		#aaad, /* A4 мат 200 */
+		#aaae, /* A4 мат 250 */
+		#aaag, /* A4 глян 170 */
+		#aaah, /* A4 глян 250 */
+		#aaaj, /* A4 калька 250 */
+		#aaai  /* A4 самоклейка */
+		{
+			display: none !important;
+		}
+
+		#aabc, /* A3 мат 200 */
+		#aabd, /* A3 мат 250 */
+		#aabf, /* A3 глян 170 */
+		#aabg, /* A3 глян 250 */
+		#aabh /* A3 калька 250 */
+		{
+			display: none !important;
+		}
+
+		#aacc, /* A2 глянец HP */
+		#aacd, /* A2 калька 90 */
+		#aacf, /* A2 холст */
+		#aace /* A2 самоклейка */
+		{
+			display: none !important;
+		}
+		
+		/*#aadc,  A1 глянец HP */
+		/*#aadd,  A1 калька */
+		/*#aade,  A1 самоклейка */
+		#aadf /* A1 холст */
+		{
+			display: none !important;
+		}
+
+		/*#aaec, /* A0 мат 180 */
+		/*#aaec, /* A0 глянец HP */
+		/*#aaed, /* A0 калька 90 */
+		/*#aaee, /* A0 самоклейка */
+		#aaef /* A0 холст */
+		{
+			display: none !important;
+		}
+
+	/* !!! ЧЕРНО-БЕЛАЯ !!! */
+		#abab, /* A4 мат 120 */
+		#abad, /* A4 мат 200 */
+		#abae, /* A4 мат 250 */
+		#abag, /* A4 гл 170 */
+		#abah, /* A4 гл 250 */
+		#abai /* A4 самоклейка */
+		{
+			display: none !important;
+		}
+
+		#abbc, /* A3 мат 200 */
+		#abbd, /* A3 мат 250 */
+		#abbf /* A3 глянцевая 170г */
+		{
+			display: none !important;
+		}
+
+		#abcb /* A2 калк 90 */
+		{
+			display: none !important;
+		}
+
+		#abdb /* A1 калк 90 */
+		{
+			display: none !important;
+		}
+
+		#abeb /* A0 калк 90 */
+		{
+			display: none !important;
+		}
+		
+</style>
 <script type="text/javascript">
 	$(document).ready(function() {
 		width=screen.width; // ширина  

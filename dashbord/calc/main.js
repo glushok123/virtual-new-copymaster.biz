@@ -538,7 +538,7 @@ let base = new function () {
                 }
               }
               this.aabe = new function () {
-                this.nm = "матовая 280г";
+                this.nm = "матовая 300г";
                 this.fnm = titelBD['aabe'];
                 this.lst = new function () {
                   this.aabea = new function () {
@@ -702,7 +702,7 @@ let base = new function () {
                 }
               }
               this.aacb = new function () {
-                this.nm = "матовая 180г";
+                this.nm = "матовая 160г";
                 this.fnm = titelBD['aacb'];
                 this.skm = 0.25;
                 this.ski = "b17";
@@ -735,6 +735,13 @@ let base = new function () {
                 this.skm = 0.25;
                 this.ski = "b21";
                 this.pr = prU[0][4];
+              }
+              this.aacg = new function () {
+                this.nm = "матовая 300г";
+                this.fnm = titelBD['aacb'];
+                this.skm = 0.25;
+                this.ski = "b17";
+                this.pr = prU[0][0];
               }
             }
           }
@@ -1381,7 +1388,7 @@ let base = new function () {
                 }
               }
               this.abbe = new function () {
-                this.nm = "матовая 280г";
+                this.nm = "матовая 300г";
                 this.fnm = titelBD['abbe'];
                 this.lst = new function () {
                   this.abbea = new function () {
@@ -1469,6 +1476,22 @@ let base = new function () {
                 this.ski = "b19";
                 this.gr = grL;
                 this.pr = prL[1];
+              }
+              this.abcc = new function () {
+                this.nm = "матовая 160г";
+                this.fnm = "матовая 160г";
+                this.skm = 0.25;
+                this.ski = "b19";
+                this.gr = grL;
+                this.pr = 150;
+              }
+              this.abcd = new function () {
+                this.nm = "матовая 300г";
+                this.fnm = "матовая 300г";
+                this.skm = 0.25;
+                this.ski = "b19";
+                this.gr = grL;
+                this.pr = 150;
               }
             }
           }
