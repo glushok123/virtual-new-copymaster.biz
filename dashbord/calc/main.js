@@ -707,6 +707,19 @@ let base = new function () {
                 this.skm = 0.25;
                 this.ski = "b17";
                 this.pr = prU[0][0];
+
+                this.lst = new function () {
+                  this.aacba = new function () {
+                      this.fnm = 'Заливка менее 20%';
+                      this.pr = prU[0][0];
+                    }
+
+                    this.aacbb = new function () {
+                      this.fnm = 'Заливка более 20%';
+                      this.pr = prU[0][0]*1.4;
+                    }
+                }
+
               }
               this.aacc = new function () {
                 this.nm = "глянец HP";
@@ -787,6 +800,21 @@ let base = new function () {
                 this.skm = 0.5;
                 this.ski = "b17";
                 this.pr = prU[1][0];
+
+                
+                this.lst = new function () {
+                  this.aadba = new function () {
+                      this.fnm = 'Заливка менее 20%';
+                      this.pr = prU[1][0];
+                    }
+
+                    this.aadbb = new function () {
+                      this.fnm = 'Заливка более 20%';
+                      this.pr = prU[1][0]*1.4;
+                    }
+                }
+
+              
               }
               this.aadc = new function () {
                 this.nm = "глянец HP";
@@ -860,6 +888,19 @@ let base = new function () {
                 this.fnm = titelBD['aaeb'];
                 this.ski = "b17";
                 this.pr = prU[2][0];
+
+                this.lst = new function () {
+                  this.aaeba = new function () {
+                      this.fnm = 'Заливка менее 20%';
+                      this.pr = prU[2][0];
+                    }
+
+                    this.aaebb = new function () {
+                      this.fnm = 'Заливка более 20%';
+                      this.pr = prU[2][0]*1.4;
+                    }
+                }
+
               }
               this.aaec = new function () {
                 this.nm = "глянец HP";
@@ -930,6 +971,19 @@ let base = new function () {
                 this.me = "кв. м.";
                 this.ski = "b17";
                 this.pr = prU[3][0];
+
+                this.lst = new function () {
+                  this.aafba = new function () {
+                      this.fnm = 'Заливка менее 20%';
+                      this.pr = prU[3][0];
+                    }
+
+                    this.aafbb = new function () {
+                      this.fnm = 'Заливка более 20%';
+                      this.pr = prU[3][0]*1.4;
+                    }
+                }
+
               }
               this.aafc = new function () {
                 this.nm = "глянец HP";
