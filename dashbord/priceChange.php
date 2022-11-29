@@ -80,7 +80,7 @@
 						</tbody>
 					</table>
 					<br>
-
+<hr>
 					<h3>Цветная</h3>
 					<br>
 					<table class="table table-striped table-bordered" id="petchat_chet_A4_A3">
@@ -245,7 +245,7 @@
 								<td>А0</td></td>
 								<td id="petchat_chet_A0_mat"></td>
 								<td id="petchat_chet_A0_gl"></td>
-								<td id="petchat_chet_A0_kalka_Koment"> - </td>
+								<td> - </td>
 								<!--td id="petchat_chet_A0_samokl"></td>
 								<td id="petchat_chet_A0_xolst"></td-->
 							</tr>
@@ -260,6 +260,7 @@
 							</tr>
 						</tbody>
 					</table>
+<hr>
 					<h3>Черно-белая</h3>
 					<br>
 					<table class="table table-striped table-bordered" id="petchat_bw_A4_A3">
@@ -339,25 +340,11 @@
 								<td>A2 обычная 80г</td>
 							</tr>
 							<tr>
-								<td id="petchat_bw_A2_0_90"></td>
-								<td id="petchat_bw_A2_50_90"></td>
-								<td id="petchat_bw_A2_200_90"></td>
-								<td id="petchat_bw_A2_500_90"></td>
-								<td>A2 калька 90г</td>
-							</tr>
-							<tr>
 								<td id="petchat_bw_A1_0_80"></td>
 								<td id="petchat_bw_A1_50_80"></td>
 								<td id="petchat_bw_A1_200_80"></td>
 								<td id="petchat_bw_A1_500_80"></td>
 								<td>A1 обычная 80г</td>
-							</tr>
-							<tr>
-								<td id="petchat_bw_A1_0_90"></td>
-								<td id="petchat_bw_A1_50_90"></td>
-								<td id="petchat_bw_A1_200_90"></td>
-								<td id="petchat_bw_A1_500_90"></td>
-								<td>A1 калька 90г</td>
 							</tr>
 							<tr>
 								<td id="petchat_bw_A0_0_80"></td>
@@ -367,29 +354,66 @@
 								<td>A0 обычная 80г</td>
 							</tr>
 							<tr>
-								<td id="petchat_bw_A0_0_90"></td>
-								<td id="petchat_bw_A0_50_90"></td>
-								<td id="petchat_bw_A0_200_90"></td>
-								<td id="petchat_bw_A0_500_90"></td>
-								<td>A0 калька 90г</td>
-							</tr>
-							<tr>
 								<td id="petchat_bw_ns_0_80"></td>
 								<td id="petchat_bw_ns_50_80"></td>
 								<td id="petchat_bw_ns_200_80"></td>
 								<td id="petchat_bw_ns_500_80"></td>
 								<td>нестд обычная 80г</td>
 							</tr>
-							<tr>
-								<td id="petchat_bw_ns_0_90"></td>
-								<td id="petchat_bw_ns_50_90"></td>
-								<td id="petchat_bw_ns_200_90"></td>
-								<td id="petchat_bw_ns_500_90"></td>
-								<td>нестд калька 90г</td>
-							</tr>
 						</tbody>
 					</table>
 
+					<br>
+					<h5>Широкоформатная печать</h5>
+					<table class="table table-striped table-bordered" id="petchat_bw_shirokoformat">
+						<tbody>
+							<tr>
+								<td></td>
+								<td>матовая 180г</td>
+								<td>глянец HP</td>
+								<td>калька 90г</td>
+								<!--td>cамоклейка</td>
+								<td>холcт 320г</td-->
+							</tr>
+
+							<tr>
+								<td>А2</td></td>
+								<td id="petchat_bw_A2_mat_180"></td>
+								<td id="petchat_bw_A2_gl"></td>
+								<td id="petchat_bw_A2_kalka"></td>
+								<!--td id="petchat_chet_A2_samokl"></td>
+								<td id="petchat_chet_A2_xolst"></td-->
+							</tr>
+
+							<tr>
+								<td>А1</td></td>
+								<td id="petchat_bw_A1_mat_180"></td>
+								<td id="petchat_bw_A1_gl"></td>
+								<td id="petchat_bw_A1_kalka"></td>
+								<!--td id="petchat_chet_A1_samokl"></td>
+								<td id="petchat_chet_A1_xolst"></td-->
+							</tr>
+
+							<tr>
+								<td>А0</td></td>
+								<td id="petchat_bw_A0_mat_180"></td>
+								<td id="petchat_bw_A0_gl"></td>
+								<td> - </td>
+								<!--td id="petchat_chet_A0_samokl"></td>
+								<td id="petchat_chet_A0_xolst"></td-->
+							</tr>
+
+							<tr>
+								<td>Нестандартная</td></td>
+								<td id="petchat_bw_ns_mat_180"></td>
+								<td id="petchat_bw_ns_gl"></td>
+								<td id="petchat_bw_ns_kalka"></td>
+								<!--td id="petchat_chet_ns_samokl"></td>
+								<td id="petchat_chet_ns_xolst"></td-->
+							</tr>
+						</tbody>
+					</table>
+					<hr>
 					<h1>Переплет</h1>
 					<hr>
 					<table class="table table-striped table-bordered" id="pereplet">
@@ -833,6 +857,16 @@ $(document).ready(function(){
 						json = json + '"'+$(this).attr("id")+'":"'+textinfo+'",';
 					}
 				});
+		});		
+		$('#petchat_bw_shirokoformat tr').each(function(row){
+			$(this).find('td').each(function(cell){
+				if ($(this).attr('id') != undefined){
+					let textinfo= $(this).find("input").val();
+					textinfo = textinfo.replace(",", ".");
+
+					json = json + '"'+$(this).attr("id")+'":"'+textinfo+'",';
+				}
+			});
 		});
 
 		$('#petchat_dop_A3 tr').each(function(row){

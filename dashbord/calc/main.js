@@ -1041,7 +1041,16 @@ let base = new function () {
       this.ab = new function () {
         this.nm = "черно-белая";
         this.fnm = titelBD['ab'];
-        let grS = [0,10,50,100,200,300,500,1000];
+        let grS = [
+          0,
+          10,
+          50,
+          100,
+          200,
+          300,
+          500,
+          1000
+        ];
         this.gradS = grS;
         let prS = [
           [prRBD["petchat_bw_A4_0_odn"],prRBD["petchat_bw_A4_10_odn"],prRBD["petchat_bw_A4_50_odn"],prRBD["petchat_bw_A4_100_odn"],prRBD["petchat_bw_A4_250_odn"],prRBD["petchat_bw_A4_500_odn"],prRBD["petchat_bw_A4_1000_odn"],prRBD["petchat_bw_A4_10000_odn"]], //A4 цена одноcторонней печати
@@ -1581,18 +1590,12 @@ let base = new function () {
               this.abcb = new function () {
                 this.nm = "калька 90г";
                 this.fnm = titelBD['abcb'];
-                this.skm = 0.25;
-                this.ski = "b19";
-                this.gr = grL;
-                this.pr = prL[1];
+                this.pr = prRBD["petchat_bw_A2_kalka"];
               }
               this.abcc = new function () {
                 this.nm = "матовая 180г";
                 this.fnm = "матовая 180г";
-                this.skm = 0.25;
-                this.ski = "b19";
-                this.gr = grL;
-                this.pr = 150;
+                this.pr = prRBD["petchat_bw_A2_mat_180"];
               }
               this.abcd = new function () {
                 this.nm = "матовая 300г";
@@ -1606,17 +1609,17 @@ let base = new function () {
                 this.nm = "глянец HP";
                 this.skm = 0.25;
                 this.ski = "b18";
-                this.pr = 100;
+                this.pr = prRBD["petchat_bw_A2_gl"];
 
                 this.lst = new function () {
                   this.abcea = new function () {
                       this.fnm = 'Заливка менее 20%';
-                      this.pr = 100;
+                      this.pr = prRBD["petchat_bw_A2_gl"];
                     }
 
                     this.abceb = new function () {
                       this.fnm = 'Заливка более 20%';
-                      this.pr = 100*1.4;
+                      this.pr = prRBD["petchat_bw_A2_gl"]*1.4;
                     }
                 }
 
@@ -1638,34 +1641,30 @@ let base = new function () {
               this.abdb = new function () {
                 this.nm = "калька 90г";
                 this.fnm = titelBD['abdb'];
-                this.skm = 0.5;
-                this.ski = "b19";
-                this.gr = grL;
-                this.pr = prL[3];
+
+                this.pr = prRBD["petchat_bw_A1_kalka"];
               }
               this.abdc = new function () {
                 this.nm = "матовая 180г";
                 this.fnm = "матовая 180г";
-                this.skm = 0.25;
-                this.ski = "b19";
-                this.gr = grL;
-                this.pr = 150;
+
+                this.pr = prRBD["petchat_bw_A1_mat_180"];
               }
               this.abdd = new function () {
                 this.nm = "глянец HP";
                 this.skm = 0.25;
                 this.ski = "b18";
-                this.pr = 100;
+                this.pr = prRBD["petchat_bw_A1_gl"];
 
                 this.lst = new function () {
                   this.abdda = new function () {
                       this.fnm = 'Заливка менее 20%';
-                      this.pr = 100;
+                      this.pr = prRBD["petchat_bw_A1_gl"];
                     }
 
                     this.abddb = new function () {
                       this.fnm = 'Заливка более 20%';
-                      this.pr = 100*1.4;
+                      this.pr = prRBD["petchat_bw_A1_gl"]*1.4;
                     }
                 }
 
@@ -1693,26 +1692,22 @@ let base = new function () {
               this.abec = new function () {
                 this.nm = "матовая 180г";
                 this.fnm = "матовая 180г";
-                this.skm = 0.25;
-                this.ski = "b19";
-                this.gr = grL;
-                this.pr = 150;
+
+                this.pr = prRBD["petchat_bw_A0_mat_180"];
               }
               this.abed = new function () {
                 this.nm = "глянец HP";
-                this.skm = 0.25;
-                this.ski = "b18";
-                this.pr = 100;
+                this.pr =prRBD["petchat_bw_A0_gl"];
                 
                 this.lst = new function () {
                   this.abeda = new function () {
                       this.fnm = 'Заливка менее 20%';
-                      this.pr = 100;
+                      this.pr = prRBD["petchat_bw_A0_gl"];
                     }
 
                     this.abedb = new function () {
                       this.fnm = 'Заливка более 20%';
-                      this.pr = 100*1.4;
+                      this.pr = prRBD["petchat_bw_A0_gl"]*1.4;
                     }
                 }
               }
@@ -1734,33 +1729,28 @@ let base = new function () {
                 this.nm = "калька 90г";
                 this.fnm = titelBD['abfb'];
                 this.me = "кв. м.";
-                this.ski = "b19";
-                this.gr = grL;
-                this.pr = prL[7];
+                this.pr = prRBD["petchat_bw_ns_kalka"];
               }
               this.abfc = new function () {
                 this.nm = "матовая 180г";
                 this.fnm = "матовая 180г";
-                this.skm = 0.25;
-                this.ski = "b19";
-                this.gr = grL;
-                this.pr = 150;
+                this.pr = prRBD["petchat_bw_ns_mat_180"];
               }
               this.abfd = new function () {
                 this.nm = "глянец HP";
                 this.skm = 0.25;
                 this.ski = "b18";
-                this.pr = 100;
+                this.pr = prRBD["petchat_bw_ns_gl"];
 
                 this.lst = new function () {
                   this.abfda = new function () {
                       this.fnm = 'Заливка менее 20%';
-                      this.pr = 100;
+                      this.pr = prRBD["petchat_bw_ns_gl"];
                     }
 
                     this.abfdb = new function () {
                       this.fnm = 'Заливка более 20%';
-                      this.pr = 100*1.4;
+                      this.pr = prRBD["petchat_bw_ns_gl"]*1.4;
                     }
                 }
 
