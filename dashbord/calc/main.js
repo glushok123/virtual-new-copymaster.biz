@@ -711,9 +711,19 @@ let base = new function () {
               this.aacc = new function () {
                 this.nm = "глянец HP";
                 this.fnm = titelBD['aacc'];
-                this.skm = 0.25;
-                this.ski = "b18";
-                this.pr = prU[0][1];
+
+                this.lst = new function () {
+                  this.aacca = new function () {
+                      this.fnm = 'Заливка менее 20%';
+                      this.pr = prU[0][1];
+                    }
+
+                    this.aaccb = new function () {
+                      this.fnm = 'Заливка более 20%';
+                      this.pr = prU[0][1]*1.4;
+                    }
+                }
+
               }
               this.aacd = new function () {
                 this.nm = "калька 90г";
@@ -784,6 +794,19 @@ let base = new function () {
                 this.skm = 0.5;
                 this.ski = "b18";
                 this.pr = prU[1][1];
+
+                this.lst = new function () {
+                  this.aadca = new function () {
+                      this.fnm = 'Заливка менее 20%';
+                      this.pr = prU[1][1];
+                    }
+
+                    this.aadcb = new function () {
+                      this.fnm = 'Заливка более 20%';
+                      this.pr = prU[1][1]*1.4;
+                    }
+                }
+
               }
               this.aadd = new function () {
                 this.nm = "калька 90г";
@@ -843,6 +866,17 @@ let base = new function () {
                 this.fnm = titelBD['aaec'];
                 this.ski = "b18";
                 this.pr = prU[2][1];
+                this.lst = new function () {
+                  this.aaeca = new function () {
+                      this.fnm = 'Заливка менее 20%';
+                      this.pr = prU[2][1];
+                    }
+
+                    this.aaecb = new function () {
+                      this.fnm = 'Заливка более 20%';
+                      this.pr = prU[2][1]*1.4;
+                    }
+                }
               }
               this.aaed = new function () {
                 this.nm = "калька 90г";
@@ -903,6 +937,17 @@ let base = new function () {
                 this.me = "кв. м.";
                 this.ski = "b18";
                 this.pr = prU[3][1];
+                this.lst = new function () {
+                  this.aafca = new function () {
+                      this.fnm = 'Заливка менее 20%';
+                      this.pr = prU[3][1];
+                    }
+
+                    this.aafcb = new function () {
+                      this.fnm = 'Заливка более 20%';
+                      this.pr = prU[3][1]*1.4;
+                    }
+                }
               }
               this.aafd = new function () {
                 this.nm = "калька 90г";
@@ -1497,7 +1542,20 @@ let base = new function () {
                 this.nm = "глянец HP";
                 this.skm = 0.25;
                 this.ski = "b18";
-                this.pr = 12;
+                this.pr = 100;
+
+                this.lst = new function () {
+                  this.abcea = new function () {
+                      this.fnm = 'Заливка менее 20%';
+                      this.pr = 100;
+                    }
+
+                    this.abceb = new function () {
+                      this.fnm = 'Заливка более 20%';
+                      this.pr = 100*1.4;
+                    }
+                }
+
               }
             }
           }
@@ -1533,7 +1591,20 @@ let base = new function () {
                 this.nm = "глянец HP";
                 this.skm = 0.25;
                 this.ski = "b18";
-                this.pr = 12;
+                this.pr = 100;
+
+                this.lst = new function () {
+                  this.abdda = new function () {
+                      this.fnm = 'Заливка менее 20%';
+                      this.pr = 100;
+                    }
+
+                    this.abddb = new function () {
+                      this.fnm = 'Заливка более 20%';
+                      this.pr = 100*1.4;
+                    }
+                }
+
               }
             }
           }
@@ -1567,7 +1638,19 @@ let base = new function () {
                 this.nm = "глянец HP";
                 this.skm = 0.25;
                 this.ski = "b18";
-                this.pr = 12;
+                this.pr = 100;
+                
+                this.lst = new function () {
+                  this.abeda = new function () {
+                      this.fnm = 'Заливка менее 20%';
+                      this.pr = 100;
+                    }
+
+                    this.abedb = new function () {
+                      this.fnm = 'Заливка более 20%';
+                      this.pr = 100*1.4;
+                    }
+                }
               }
             }
           }
@@ -1603,7 +1686,20 @@ let base = new function () {
                 this.nm = "глянец HP";
                 this.skm = 0.25;
                 this.ski = "b18";
-                this.pr = 12;
+                this.pr = 100;
+
+                this.lst = new function () {
+                  this.abfda = new function () {
+                      this.fnm = 'Заливка менее 20%';
+                      this.pr = 100;
+                    }
+
+                    this.abfdb = new function () {
+                      this.fnm = 'Заливка более 20%';
+                      this.pr = 100*1.4;
+                    }
+                }
+
               }
             }
           }
