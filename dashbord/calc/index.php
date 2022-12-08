@@ -605,8 +605,8 @@ if (!isset($_SESSION['user_logged_in']))
 		#aaae, /* A4 мат 250 */
 		#aaag, /* A4 глян 170 */
 		#aaah, /* A4 глян 250 */
-		#aaaj, /* A4 калька 250 */
-		#aaai  /* A4 самоклейка */
+		#aaaj /* A4 калька 250 */
+		/*#aaai   A4 самоклейка */
 		{
 			display: none !important;
 		}
@@ -657,8 +657,8 @@ if (!isset($_SESSION['user_logged_in']))
 		#abad, /* A4 мат 200 */
 		#abae, /* A4 мат 250 */
 		#abag, /* A4 гл 170 */
-		#abah, /* A4 гл 250 */
-		#abai /* A4 самоклейка */
+		#abah /* A4 гл 250 */
+		/*#abai  A4 самоклейка */
 		{
 			display: none !important;
 		}

@@ -402,16 +402,16 @@ let base = new function () {
               this.aaai = new function () {
                 this.nm = "cамоклейка";
                 this.fnm = titelBD['aaai'];
-                this.ski = "b9";
-                this.gr = grS;
-                this.pr = prS[0].slice(0);
-                for (k in this.pr) { this.pr[k] += bA4[7]; }
+                //this.ski = "b9";
+                //this.gr = grS;
+                this.pr = '150';//prS[0].slice(0);
+                //for (k in this.pr) { this.pr[k] += bA4[7]; }
               }
             }
           }
           this.aab = new function () {
             this.nm = "А3";
-            this.fnm = titelBD[''];
+            this.fnm = titelBD['aab'];
             this.lst = new function () {
               this.aaba = new function () {
                 this.nm = "обычная 80г";
@@ -682,6 +682,14 @@ let base = new function () {
                     for (k in this.pr) { this.pr[k] += bA3[6] + cp; }
                   }
                 }
+              }
+              this.aabj = new function () {
+                this.nm = "cамоклейка";
+                this.fnm = titelBD['aaai'];
+                //this.ski = "b9";
+                //this.gr = grS;
+                this.pr = '290';//prS[0].slice(0);
+                //for (k in this.pr) { this.pr[k] += bA4[7]; }
               }
             }
           }
@@ -1360,10 +1368,10 @@ let base = new function () {
               this.abai = new function () {
                 this.nm = "cамоклейка";
                 this.fnm = titelBD['abai'];
-                this.ski = "b9";
-                this.gr = grS;
-                this.pr = prS[0].slice(0);
-                for (k in this.pr) { this.pr[k] += bA4[7]; }
+                //this.ski = "b9";
+               // this.gr = grS;
+                this.pr = '150';//prS[0].slice(0);
+                //for (k in this.pr) { this.pr[k] += bA4[7]; }
               }
             }
           }
@@ -1572,6 +1580,14 @@ let base = new function () {
                     for (k in this.pr) { this.pr[k] += bA3[4] + cp; }
                   }
                 }
+              }
+              this.abbg = new function () {
+                this.nm = "cамоклейка";
+                this.fnm = titelBD['aaai'];
+                //this.ski = "b9";
+                //this.gr = grS;
+                this.pr = '290';//prS[0].slice(0);
+                //for (k in this.pr) { this.pr[k] += bA4[7]; }
               }
             }
           }
