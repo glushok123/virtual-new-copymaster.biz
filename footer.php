@@ -196,16 +196,24 @@
                         <div class="col-6">
                             <div class="row text-center">
                                 <h3>ФИЗ. лица </h3>
-                                <a class="social-icon icon-phone" title="Подпишитесь на нас в Phone" aria-label="Подпишитесь на нас в Phone" href="tel: +74952295662" target="_blank"><i class="fas fa-phone">+7 (495) 229-56-62</i></a><br>
-                                <a href="mailto:info@copymaster.biz"  class="a1 maila1" style="font-size:16px;">info@copymaster.biz</a>
+                                <i class="fas fa-phone">+7 (495) 229-56-62</i><br>
+                                <i class="a1 maila1" style="font-size:16px;">info@copymaster.biz</i><br>
+
+                                <button class='btn btn-outline-primary'>
+                                    <a class="social-icon icon-phone" title="Подпишитесь на нас в Phone" aria-label="Подпишитесь на нас в Phone" href="tel: +74952295662" target="_blank">Позвонить</a><br>
+                                </button>
 
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="row text-center">
                                 <h3>Юр. лица</h3>
-                                <a class="social-icon icon-phone" title="Подпишитесь на нас в Phone" aria-label="Подпишитесь на нас в Phone" href="tel: +79259686686" target="_blank"><i class="fas fa-phone">+7 (925) 968-66-86</i></a><br>
-                                <a href="mailto:manager@copymaster.biz"  class="a1 maila1" style="font-size:16px;">manager@copymaster.biz</a>
+                                <i class="fas fa-phone">+7 (925) 968-66-86</i><br>
+                                <i class="a1 maila1" style="font-size:16px;">manager@copymaster.biz</i><br>
+                                
+                                <button class='btn btn-outline-primary' >
+                                    <a class="social-icon icon-phone" title="Подпишитесь на нас в Phone" aria-label="Подпишитесь на нас в Phone" href="tel: +79259686686" target="_blank">Позвонить</a><br>
+                                </button>
                             </div>
                         </div>
                         <style >
