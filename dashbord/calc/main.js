@@ -2065,11 +2065,76 @@ let base = new function () {
                 this.ski2 = 'p11';
                 this.skm2 = 2;
                 this.pr = pr[4][0];
+
+                this.lst = new function () {
+                    this.bcaaa = new function () {
+                        this.fnm = titelBD['bd'];
+                        this.pr = pr[4][0] + pr[5][0];
+                        this.lst = new function () {
+                           this.bcaaaa = new function () {
+                              this.fnm = titelBD['be'];
+                              this.pr = pr[4][0] + pr[5][1];
+                           }
+                            this.bcaaab = new function () {
+                              this.nm = 'Без ' + titelBD['be'];
+                              this.pr = pr[4][0];
+                           }
+                        }
+                    }
+                    this.bcaab = new function () {
+                        this.nm = 'Без ' + titelBD['bd'];
+                        this.pr = pr[4][0];
+                        this.lst = new function () {
+                           this.bcaaba = new function () {
+                              this.fnm = titelBD['be'];
+                              this.pr = pr[4][0] + pr[5][1];
+                           }
+                            this.bcaabb = new function () {
+                              this.nm = 'Без '+titelBD['be'];
+                              this.pr = pr[4][0];
+                           }
+                        }
+                    }
+                }
+
               }
+
               this.bcab = new function () {
                 this.nm = "переброшюровка";
                 this.fnm = titelBD['bcab'];
                 this.pr = Math.ceil(Math.round(pr[4][0]/2));
+
+                this.lst = new function () {
+                    this.bcaba = new function () {
+                        this.fnm = titelBD['bd'];
+                        this.pr = Math.ceil(Math.round(pr[4][0]/2)) + pr[5][0];
+                        this.lst = new function () {
+                           this.bcabaa = new function () {
+                              this.fnm = titelBD['be'];
+                              this.pr = Math.ceil(Math.round(pr[4][0]/2)) + pr[5][1];
+                           }
+                            this.bcabab = new function () {
+                              this.nm = 'Без ' + titelBD['be'];
+                              this.pr = Math.ceil(Math.round(pr[4][0]/2));
+                           }
+                        }
+                    }
+                    this.bcabb = new function () {
+                        this.nm = 'Без ' + titelBD['bd'];
+                        this.pr = Math.ceil(Math.round(pr[4][0]/2));
+                        this.lst = new function () {
+                           this.bcabba = new function () {
+                              this.fnm = titelBD['be'];
+                              this.pr = Math.ceil(Math.round(pr[4][0]/2)) + pr[5][1];
+                           }
+                            this.bcabbb = new function () {
+                              this.nm = 'Без '+titelBD['be'];
+                              this.pr = Math.ceil(Math.round(pr[4][0]/2));
+                           }
+                        }
+                    }
+                }
+
               }
             }
           }
@@ -2083,11 +2148,75 @@ let base = new function () {
                 this.ski2 = 'p11';
                 this.skm2 = 2;
                 this.pr = pr[4][1];
+
+                this.lst = new function () {
+                    this.bcbaa = new function () {
+                        this.fnm = titelBD['bd'];
+                        this.pr =  pr[4][1] + pr[5][0];
+                        this.lst = new function () {
+                           this.bcbaaa = new function () {
+                              this.fnm = titelBD['be'];
+                              this.pr =  pr[4][1] + pr[5][1];
+                           }
+                            this.bcbaab = new function () {
+                              this.nm = 'Без ' + titelBD['be'];
+                              this.pr =  pr[4][1];
+                           }
+                        }
+                    }
+                    this.bcbab = new function () {
+                        this.nm = 'Без ' + titelBD['bd'];
+                        this.pr = Math.ceil(Math.round(pr[4][0]/2));
+                        this.lst = new function () {
+                           this.bcbaba = new function () {
+                              this.fnm = titelBD['be'];
+                              this.pr =  pr[4][1] + pr[5][1];
+                           }
+                            this.bcbabb = new function () {
+                              this.nm = 'Без '+titelBD['be'];
+                              this.pr =  pr[4][1];
+                           }
+                        }
+                    }
+                }
+
               }
               this.bcbb = new function () {
                 this.nm = "переброшюровка";
                 this.fnm = titelBD['bcbb'];
                 this.pr = Math.ceil(Math.round(pr[4][1]/2));
+
+                this.lst = new function () {
+                    this.bcbba = new function () {
+                        this.fnm = titelBD['bd'];
+                        this.pr =  Math.ceil(Math.round(pr[4][1]/2)) + pr[5][0];
+                        this.lst = new function () {
+                           this.bcbbaa = new function () {
+                              this.fnm = titelBD['be'];
+                              this.pr =  Math.ceil(Math.round(pr[4][1]/2)) + pr[5][1];
+                           }
+                            this.bcbbab = new function () {
+                              this.nm = 'Без ' + titelBD['be'];
+                              this.pr =  Math.ceil(Math.round(pr[4][1]/2));
+                           }
+                        }
+                    }
+                    this.bcbbb = new function () {
+                        this.nm = 'Без ' + titelBD['bd'];
+                        this.pr = Math.ceil(Math.round(pr[4][0]/2));
+                        this.lst = new function () {
+                           this.bcbbba = new function () {
+                              this.fnm = titelBD['be'];
+                              this.pr =  Math.ceil(Math.round(pr[4][1]/2)) + pr[5][1];
+                           }
+                            this.bcbbbb = new function () {
+                              this.nm = 'Без '+titelBD['be'];
+                              this.pr =  Math.ceil(Math.round(pr[4][1]/2));
+                           }
+                        }
+                    }
+                }
+
               }
             }
           }
@@ -2101,11 +2230,76 @@ let base = new function () {
                 this.ski2 = 'p11';
                 this.skm2 = 2;
                 this.pr = pr[4][2];
+
+                this.lst = new function () {
+                    this.bccaa = new function () {
+                        this.fnm = titelBD['bd'];
+                        this.pr =  pr[4][2] + pr[5][0];
+                        this.lst = new function () {
+                           this.bccaaa = new function () {
+                              this.fnm = titelBD['be'];
+                              this.pr =  pr[4][2] + pr[5][1];
+                           }
+                            this.bccaab = new function () {
+                              this.nm = 'Без ' + titelBD['be'];
+                              this.pr =  pr[4][2];
+                           }
+                        }
+                    }
+                    this.bccab = new function () {
+                        this.nm = 'Без ' + titelBD['bd'];
+                        this.pr = Math.ceil(Math.round(pr[4][0]/2));
+                        this.lst = new function () {
+                           this.bccaba = new function () {
+                              this.fnm = titelBD['be'];
+                              this.pr =  pr[4][2] + pr[5][1];
+                           }
+                            this.bccabb = new function () {
+                              this.nm = 'Без '+titelBD['be'];
+                              this.pr = pr[4][2];
+                           }
+                        }
+                    }
+                }
+
+
               }
               this.bccb = new function () {
                 this.nm = "переброшюровка";
                 this.fnm = titelBD['bccb'];
-                this.pr =Math.ceil(Math.round(pr[4][2]/2));
+                this.pr = Math.ceil(Math.round(pr[4][2]/2));
+
+                this.lst = new function () {
+                    this.bccba = new function () {
+                        this.fnm = titelBD['bd'];
+                        this.pr = Math.ceil(Math.round(pr[4][2]/2)) + pr[5][0];
+                        this.lst = new function () {
+                           this.bccbaa = new function () {
+                              this.fnm = titelBD['be'];
+                              this.pr = Math.ceil(Math.round(pr[4][2]/2)) + pr[5][1];
+                           }
+                            this.bccbab = new function () {
+                              this.nm = 'Без ' + titelBD['be'];
+                              this.pr = Math.ceil(Math.round(pr[4][2]/2));
+                           }
+                        }
+                    }
+                    this.bccbb = new function () {
+                        this.nm = 'Без ' + titelBD['bd'];
+                        this.pr = Math.ceil(Math.round(pr[4][0]/2));
+                        this.lst = new function () {
+                           this.bccbba = new function () {
+                              this.fnm = titelBD['be'];
+                              this.pr = Math.ceil(Math.round(pr[4][2]/2)) + pr[5][1];
+                           }
+                            this.bccbbb = new function () {
+                              this.nm = 'Без '+titelBD['be'];
+                              this.pr = Math.ceil(Math.round(pr[4][2]/2));
+                           }
+                        }
+                    }
+                }
+
               }
             }
           }
@@ -2120,24 +2314,87 @@ let base = new function () {
                 this.ski2 = 'p11';
                 this.skm2 = 2;
                 this.pr = pr[4][3];
+
+                this.lst = new function () {
+                    this.bcdaa = new function () {
+                        this.fnm = titelBD['bd'];
+                        this.pr = pr[4][3] + pr[5][0];
+                        this.lst = new function () {
+                           this.bcdaaa = new function () {
+                              this.fnm = titelBD['be'];
+                              this.pr = pr[4][3] + pr[5][1];
+                           }
+                            this.bcdaab = new function () {
+                              this.nm = 'Без ' + titelBD['be'];
+                              this.pr = pr[4][3];
+                           }
+                        }
+                    }
+                    this.bcdab = new function () {
+                        this.nm = 'Без ' + titelBD['bd'];
+                        this.pr = Math.ceil(Math.round(pr[4][0]/2));
+                        this.lst = new function () {
+                           this.bcdaba = new function () {
+                              this.fnm = titelBD['be'];
+                              this.pr = pr[4][3] + pr[5][1];
+                           }
+                            this.bcdabb = new function () {
+                              this.nm = 'Без '+titelBD['be'];
+                              this.pr = pr[4][3];
+                           }
+                        }
+                    }
+                }
               }
               this.bcdb = new function () {
                 this.nm = "переброшюровка";
                 this.fnm = titelBD['bcdb'];
                 this.pr = Math.ceil(Math.round(pr[4][3]/2));
+
+                this.lst = new function () {
+                    this.bcdba = new function () {
+                        this.fnm = titelBD['bd'];
+                        this.pr = Math.ceil(Math.round(pr[4][3]/2)) + pr[5][0];
+                        this.lst = new function () {
+                           this.bcdbaa = new function () {
+                              this.fnm = titelBD['be'];
+                              this.pr = Math.ceil(Math.round(pr[4][3]/2)) + pr[5][1];
+                           }
+                            this.bcdbab = new function () {
+                              this.nm = 'Без ' + titelBD['be'];
+                              this.pr = Math.ceil(Math.round(pr[4][3]/2));
+                           }
+                        }
+                    }
+                    this.bcdbb = new function () {
+                        this.nm = 'Без ' + titelBD['bd'];
+                        this.pr = Math.ceil(Math.round(pr[4][0]/2));
+                        this.lst = new function () {
+                           this.bcdbba = new function () {
+                              this.fnm = titelBD['be'];
+                              this.pr = Math.ceil(Math.round(pr[4][3]/2)) + pr[5][1];
+                           }
+                            this.bcdbbb = new function () {
+                              this.nm = 'Без '+titelBD['be'];
+                              this.pr = Math.ceil(Math.round(pr[4][3]/2));
+                           }
+                        }
+                    }
+                }
+
               }
             }
           }
         }
       }
-      this.bd = new function () {
+      /*this.bd = new function () {
         this.fnm = titelBD['bd'];
         this.pr = pr[5][0];
       }
       this.be = new function () {
         this.fnm = titelBD['be'];
         this.pr = pr[5][1];
-      }
+      }*/
     }
   }
   this.c = new function () {

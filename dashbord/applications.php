@@ -420,12 +420,13 @@
 
 		$('#saveOrderButton').on('click', function() { saveOrderRequest() });
 		$('#changeOrderButton').on('click', function() { updateOrderRequest($(this)) });
-		$('.delete-order').on('click', function() { deleteOrderRequest($(this)) });
 		$('.change-order').on('click', function() { getOrder($(this).data('order-id')) });
-		$('.change-status-order').on('click', function() { updateStatusOrder($(this).data('order-id')) });
 
-		
-		
+		$(document).on("click", ".change-status-order", function() { updateStatusOrder($(this).data('order-id')) });
+		$(document).on("click", ".delete-order", function() { deleteOrderRequest($(this)) });
+
+		//$('.change-status-order').on('click', function() { updateStatusOrder($(this).data('order-id')) });
+		//$('.delete-order').on('click', function() { deleteOrderRequest($(this)) });
 	});
 
 </script>

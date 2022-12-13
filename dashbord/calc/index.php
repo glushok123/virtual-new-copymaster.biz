@@ -671,17 +671,23 @@ if (!isset($_SESSION['user_logged_in']))
 		}
 
 		/*#abcb /* A2 калк 90 */
-		#abcd /* A2 мат 300 */
+		#abcd,/* A2 мат 300 */
+		#abcc,/* A2 мат 180 */
+		#abce/* A2 глянцевая */
 		{
 			display: none !important;
 		}
 
 		/*#abdb /* A1 калк 90 */
+		#abdc,/* A1 мат 180 */
+		#abdd/* A1 глянцевая */
 		{
 			display: none !important;
 		}
 
-		#abeb /* A0 калк 90 */
+		#abeb, /* A0 калк 90 */
+		#abec,/* A0 мат 180 */
+		#abed/* A0 глянцевая */
 		{
 			display: none !important;
 		}
