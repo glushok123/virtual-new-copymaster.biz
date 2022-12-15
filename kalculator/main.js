@@ -4656,7 +4656,7 @@ let main = new function () {
     butSave.addEventListener('click', function () {
       chek.fix();
     }, false);
-    butSaveCher.addEventListener('click', function () {
+   /* butSaveCher.addEventListener('click', function () {
       chek.fix2();
     }, false);
     butHistory.addEventListener('click', function () {
@@ -4664,7 +4664,7 @@ let main = new function () {
     }, false);
     butHistoryCher.addEventListener('click', function () {
       chek.swHistCher();
-    }, false);
+    }, false);*/
   }
   this.version = -1;
 }

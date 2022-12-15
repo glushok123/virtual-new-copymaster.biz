@@ -42,31 +42,7 @@
 <body class="bg-theme bg-theme9">
 
 	<div class="wrapper ">
-		<header class="top-header">
-			<nav class="navbar navbar-expand">
-				
-				<div class="sidebar-header">
-
-				</div>
-				<!--div class="flex-grow-1 search-bar">
-
-				</div-->
-
-			</nav>
-		</header>
-
-		<!--end header-->
-		<!--navigation-->
-		<div class="nav-container">
-			<nav class="topbar-nav">
-				<ul class="metismenu" id="menu">
-
-					
-
-				</ul>
-			</nav>
-		</div>
-	</header>
+	
 	</div>
 
 	<div id='wrapper' class='basic' style="top: 70px;">
@@ -81,28 +57,29 @@
 		</div>
 		<div id='wrapServ'>
 			<div class='box'>Кол-во <span id='metricSpan'>шт.</span>
-				<input id='inpNum' value='0'>
+				<input id='inpNum' value='0' >
 			</div>
 			<div class='box'>Цена
-				<input id='inpPrice' value='0'>
+				<input id='inpPrice' value='0' disabled="disabled">
 			</div>
 			<div class='box'>Стоимость
-				<input id='inpSum' value='0' readonly>
+				<input id='inpSum' value='0' readonly disabled="disabled">
 			</div>
-			<div id='compName' class='box2'>Клиент
+			<div id='compName' class='box2' style='display:none'>Клиент
 				<input id='inpName'>
 			</div>
-			<div id='comptel' class='box2'>Контакты
+			<div id='comptel' class='box2' style='display:none'>Контакты
 				<input id='tel'>
 			</div>
-			<div id='compsrok' class='box2'>Сроки/Коммент
+			<div id='compsrok' class='box2' style='display:none'>Сроки/Коммент
 				<input id='srok'>
 			</div>
-			<div id='butFiz' class='butn sel'>Физ. лицо</div>
-			<div id='butUrl' class='butn'>Юр. лицо</div>
-			<div id='butChekAdd' class='butn'>Добавить в чек</div>
+			
+			<div id='butFiz' class='butn sel' style='display:none'>Физ. лицо</div>
+			<div id='butUrl' class='butn' style='display:none'>Юр. лицо</div>
 			<!--div id='compName' class='box '><input id='inpName' placeholder='заказчик'></div-->
 		</div>
+
 		<div id='wrapDebily' class="hide">
 			<div class="row">
 				<!--div class="col-1">
@@ -118,6 +95,7 @@
 				</div>
 			</div>
 		</div>
+
 		<div id='wrapSchetHead'>
 			<table class='tb t10'>
 				<tr>
@@ -237,17 +215,21 @@
 		</div>
 		<div id='wrapChekContrl'>
 			<div id='someOtherDiv'> </div>
+			<div id='butChekAdd' class='butn'>Добавить в чек</div>
+			<div class='butn' id='butSave'>Отправить заявку</div>
+			
 			<div id='butNew' class='butn'>Новый чек</div>
-			<div class='butn span' id='butSkid'> <span class='skidName'>Cкидка</span>
+			<div class='butn span' id='butSkid' style='display:none'> <span class='skidName'>Cкидка</span>
 				<input id='inpDiscProc' value='0' class='skidInputs'><span class='skidInputs'>% &nbsp;</span>
-				<input id='inpDiscRub' value='0' class='skidInputs'><span class='skidInputs'>р.</span> </div>
-			<div class='butn' id='butSave'>Оплатить</div>
-			<div id='butHistory' class='butn'><span id="infoCheckSave"></span>История чеков</div>
-			<div id='historyList' class="hide"></div>
-			<div id='historyList2' class="hide"></div>
+				<input id='inpDiscRub' value='0' class='skidInputs'><span class='skidInputs'>р.</span> 
+			</div>
+			
+			<!--div id='butHistory' class='butn'><span id="infoCheckSave"></span>История чеков</div-->
+			<!--div id='historyList' class="hide"></div>
+			<div id='historyList2' class="hide"></div-->
 			<div class='butn' id='butPrint'>Печать чека</div>
-			<div class='butn' id='butSaveCher' style="background-color:#1fcbff; color: black">В черновик</div>
-			<div class='butn' id='butHistoryCher'>Черновики</div>
+			<!--div class='butn' id='butSaveCher' style="background-color:#1fcbff; color: black">В черновик</div-->
+			<!--div class='butn' id='butHistoryCher'>Черновики</div-->
 			<!--div class='butn' id='btnExport' style="background-color:red; color: white">Экспорт в PDF</div-->
 		</div>
 	</div>
@@ -348,7 +330,7 @@
 		#aaaj, /* A4 калька 250 */
 		#aaai  /* A4 самоклейка */
 		{
-			display: none !important;
+			display: none !font-family: "Monotype Corsiva" Cursive;;
 		}
 
 		#aabc, /* A3 мат 200 */
