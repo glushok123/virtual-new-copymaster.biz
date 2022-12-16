@@ -367,6 +367,8 @@
 <script src="js/text-animation.init.js"></script>
 
 <script src="js/app.js"></script>
+<script src="js/snowfall.js"></script>
+
 <script type="text/javascript">
     $(document).ready(function(){
         $('table').addClass('table');
@@ -526,4 +528,15 @@
 
 
     });
+
+
+    $(document).snowfall({
+        flakeCount: 200,
+        image :"./js/img/snow3.png", 
+        minSize: 10, 
+        maxSize:20,
+        round: true,
+        shadow: false,
+    });
+
 </script>

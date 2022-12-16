@@ -42,10 +42,143 @@
 <body class="bg-theme bg-theme9">
 
 	<div class="wrapper ">
+		<div class='container-fluid'>
+			<div 
+				class='row'
+				style='
+					margin-top:15px;
+					margin-left:25px;
+					margin-bottom:15px;
+				'
+			>
+				<a href="#" class="btn-arrow">
+					<span>
+						На главную
+					</span> 
+				</a>
+			</div>
+		</div>
+
+		<div class='container-fluid'>
+			<div class='row'>
+				<div class='col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6'>
+					<div id='wrapMenu2'>
+						<div id='m1' class='menu a'></div>
+						<div id='m2' class='menu aa'></div>
+						<div id='m3' class='menu aaa'></div>
+						<div id='m4' class='menu aaaa'></div>
+						<div id='m5' class='menu aaaaa'></div>
+						<div id='m6' class='menu aaaaaa'></div>
+						<div id='m7' class='menu aaaaaaa'></div>
+					</div>
+				</div>
+				<div class='col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6'>
+					<div id='wrapChek'>
+						<table>
+							<tr class='tht'>
+								<td>№</td>
+								<td>Услуга</td>
+								<td>Кол-во</td>
+								<td>Ед.</td>
+								<td>Цена</td>
+								<td>Стоимость</td>
+								<td style="display:none">Заказчик</td>
+							</tr>
+							<tr>
+								<td colspan="5">Итого</td>
+								<td></td>
+								<td style="display:none"></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
 	
+			<div class='row fixed-bottom' id='blockControl'
+				style='
+					
+				'
+			>
+				<div class='col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6'>
+
+					<div class='row' 
+						style='
+							margin-bottom:20px;
+						'
+					>
+						<div class='col'>
+							<div class=''>Кол-во <span id='metricSpan'>шт.</span>
+								<input id='inpNum' value='0' >
+							</div>
+						</div>
+						<div class='col'>
+							<div class=''>Цена
+								<input id='inpPrice' value='0' disabled="disabled">
+							</div>
+						</div>
+						<div class='col'>
+							<div class=''>Стоимость
+								<input id='inpSum' value='0' readonly disabled="disabled">
+							</div>
+						</div>
+
+					</div>
+	
+					<div id='wrapServ2' style='display:none'>
+						<div id='compName' class='box2' style='display:none'>Клиент
+							<input id='inpName'>
+						</div>
+						<div id='comptel' class='box2' style='display:none'>Контакты
+							<input id='tel'>
+						</div>
+						<div id='compsrok' class='box2' style='display:none'>Сроки/Коммент
+							<input id='srok'>
+						</div>
+						
+						<div id='butFiz' class='butn sel' style='display:none'>Физ. лицо</div>
+						<div id='butUrl' class='butn' style='display:none'>Юр. лицо</div>
+						<!--div id='compName' class='box '><input id='inpName' placeholder='заказчик'></div-->
+					</div>
+
+				</div>
+				<div class='col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6'>
+					<div id='wrapChekContrl2'>
+						
+						<div class='row'>
+							<div class='col'>
+								<div id='butChekAdd' class='btn btn-success'>Добавить в чек</div>
+							</div>
+							<div class='col'>
+								<div id='butSave'  class='btn btn-success'>Отправить заявку</div>
+							</div>
+							<div class='col'>
+								<div id='butNew' class='btn btn-success'>Новый чек</div>
+							</div>
+						</div>
+						<div id='someOtherDiv'> </div>
+						<!--div id='butChekAdd' class='butn'>Добавить в чек</div>
+						<div class='butn' id='butSave'>Отправить заявку</div>
+						
+						<div id='butNew' class='butn'>Новый чек</div-->
+						<div class='butn span' id='butSkid' style='display:none'> <span class='skidName'>Cкидка</span>
+							<input id='inpDiscProc' value='0' class='skidInputs'><span class='skidInputs'>% &nbsp;</span>
+							<input id='inpDiscRub' value='0' class='skidInputs'><span class='skidInputs'>р.</span> 
+						</div>
+						
+						<!--div id='butHistory' class='butn'><span id="infoCheckSave"></span>История чеков</div-->
+						<!--div id='historyList' class="hide"></div>
+						<div id='historyList2' class="hide"></div-->
+						<div class='butn' id='butPrint'>Печать чека</div>
+						<!--div class='butn' id='butSaveCher' style="background-color:#1fcbff; color: black">В черновик</div-->
+						<!--div class='butn' id='butHistoryCher'>Черновики</div-->
+						<!--div class='butn' id='btnExport' style="background-color:red; color: white">Экспорт в PDF</div-->
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 
-	<div id='wrapper' class='basic' style="top: 70px;">
+	<div id='wrapper' class='basic' style="display:none" >
 		<div id='wrapMenu'>
 			<div id='m1' class='menu a'></div>
 			<div id='m2' class='menu aa'></div>
@@ -55,30 +188,7 @@
 			<div id='m6' class='menu aaaaaa'></div>
 			<div id='m7' class='menu aaaaaaa'></div>
 		</div>
-		<div id='wrapServ'>
-			<div class='box'>Кол-во <span id='metricSpan'>шт.</span>
-				<input id='inpNum' value='0' >
-			</div>
-			<div class='box'>Цена
-				<input id='inpPrice' value='0' disabled="disabled">
-			</div>
-			<div class='box'>Стоимость
-				<input id='inpSum' value='0' readonly disabled="disabled">
-			</div>
-			<div id='compName' class='box2' style='display:none'>Клиент
-				<input id='inpName'>
-			</div>
-			<div id='comptel' class='box2' style='display:none'>Контакты
-				<input id='tel'>
-			</div>
-			<div id='compsrok' class='box2' style='display:none'>Сроки/Коммент
-				<input id='srok'>
-			</div>
-			
-			<div id='butFiz' class='butn sel' style='display:none'>Физ. лицо</div>
-			<div id='butUrl' class='butn' style='display:none'>Юр. лицо</div>
-			<!--div id='compName' class='box '><input id='inpName' placeholder='заказчик'></div-->
-		</div>
+
 
 		<div id='wrapDebily' class="hide">
 			<div class="row">
@@ -158,7 +268,7 @@
 			<hr>
 			<div> ООО "Копимастер", именуемый в дальнейшем 'Исполнитель', в лице Генерального Директора Васюковой В.И., действующий на основании устава, с одной стороны и <span class='komName'>Огранизация</span>, именуемый в дальнейшем 'Заказчик', составили настоящий Акт о том, что Исполнителем на основании задания Заказчика оказаны следующие печатные услуги: </div>
 			<br> </div>
-		<div id='wrapChek'>
+		<!--div id='wrapChek'>
 			<table>
 				<tr class='tht'>
 					<td>№</td>
@@ -175,7 +285,7 @@
 					<td></td>
 				</tr>
 			</table>
-		</div>
+		</div-->
 		<div id='wrapTovarchekNalFoot'>
 			<div class='itogo'>Итого</div>
 			<br>
@@ -213,25 +323,7 @@
 				</tr>
 			</table>
 		</div>
-		<div id='wrapChekContrl'>
-			<div id='someOtherDiv'> </div>
-			<div id='butChekAdd' class='butn'>Добавить в чек</div>
-			<div class='butn' id='butSave'>Отправить заявку</div>
-			
-			<div id='butNew' class='butn'>Новый чек</div>
-			<div class='butn span' id='butSkid' style='display:none'> <span class='skidName'>Cкидка</span>
-				<input id='inpDiscProc' value='0' class='skidInputs'><span class='skidInputs'>% &nbsp;</span>
-				<input id='inpDiscRub' value='0' class='skidInputs'><span class='skidInputs'>р.</span> 
-			</div>
-			
-			<!--div id='butHistory' class='butn'><span id="infoCheckSave"></span>История чеков</div-->
-			<!--div id='historyList' class="hide"></div>
-			<div id='historyList2' class="hide"></div-->
-			<div class='butn' id='butPrint'>Печать чека</div>
-			<!--div class='butn' id='butSaveCher' style="background-color:#1fcbff; color: black">В черновик</div-->
-			<!--div class='butn' id='butHistoryCher'>Черновики</div-->
-			<!--div class='butn' id='btnExport' style="background-color:red; color: white">Экспорт в PDF</div-->
-		</div>
+
 	</div>
 
 	<!--end switcher-->
@@ -307,6 +399,41 @@
 </style>
 
 <style media="screen">
+	.btn-arrow {
+    display: inline-block;
+    padding: 20px;
+    position: relative;
+    background: #c00;
+    color: #fff;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.75);
+	}
+	.btn-arrow span {
+		position: relative;
+		z-index: 1;
+	}
+	.btn-arrow:after, 
+	.btn-arrow:before {
+		content:'';
+		position: absolute;
+		left: -20px;
+		top: 50%;
+		background: #c00;
+		width: 40px;
+		height: 40px;
+		margin-top: -20px;
+		box-shadow: 0 0 25px rgba(0, 0, 0, 0.75);
+		z-index: -1;
+		transform: rotate(45deg);
+	}
+	.btn-arrow:before {
+		z-index: 1;
+		box-shadow: none;
+	}
+	.btn-arrow:hover, 
+	.btn-arrow:hover:after, 
+	.btn-arrow:hover:before {
+		background: #00f;
+	}
     .ogrsize{
     	max-width: 80px;
     	min-width: 80px;
@@ -409,7 +536,7 @@
 		}
 
 </style>
-<style>
+<!--style>
 
 	@media (min-width: 1095px)  and (max-width: 1247px)  { 
 		#wrapServ { zoom: 92%; }
@@ -462,7 +589,7 @@
 		* { zoom: 88%; }
 
 	}
-</style>
+</style-->
 
 <style>
 	.topbar-nav{
@@ -472,6 +599,14 @@
 
 <script type="text/javascript">
 
+	$(document).ready(function() {
+		width=screen.width; // ширина  
+		console.log(width)
+		if (width < 700) {
+			$('#blockControl').removeClass('fixed-bottom');
+		}
+	});
+	
 	$("body").on("click", "#hidewrapDebily", function() {
 		$('#wrapDebily').addClass('hide');
 	});

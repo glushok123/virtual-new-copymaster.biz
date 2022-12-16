@@ -236,13 +236,13 @@ width: calc(50% - 20px);
 width: calc(33.33% - 5px);
 }
 
-#butChekAdd,
+/*#butChekAdd,
 #butSave {
 background: #59b264;
   color: #fff;
       box-shadow: 0 0 3px rgba(0,0,0,0.1);
       border: 1px solid #59b264;
-}
+}*/
 
 #wrapServ .hide {
 height: 0;

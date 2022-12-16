@@ -4126,10 +4126,12 @@ let chek = new function () {
 
   this.add = function () {
 
-    if (!this.data.id) {
+    if (! this.data.id) {
 
     }
+
     let n = 1;
+
     for (let k in this.data.lst) {
       n = k * 1 + 1;
       let el = this.data.lst[k];
@@ -4138,6 +4140,7 @@ let chek = new function () {
         break;
       }
     }
+  
     this.data.lst[n] = [serv.id, serv.num, serv.price, serv.sum];
     this.show();
   }
@@ -4276,7 +4279,7 @@ let chek = new function () {
         } else {
           document.getElementById('historyList').className = 'hide'
         }
-      }
+  }
 
   this.edit = function (k) {
     serv.id = this.data.lst[k][0];
@@ -4307,6 +4310,7 @@ let chek = new function () {
       historyList.className = 'hide'
     }
   }
+
   this.swHistCher = function () {
     if (historyList2.className == 'hide') {
       historyList2.className = '';
@@ -4315,6 +4319,7 @@ let chek = new function () {
       historyList2.className = 'hide'
     }
   }
+
   this.histList = function () {
     fetch(`cheklist.php`)
       .then(response => response.text())
@@ -4323,6 +4328,7 @@ let chek = new function () {
         document.getElementById("historyList").innerHTML = '<table>'+text+'</table>';
       });
   }
+
   this.histListCher = function () {
     fetch(`cheklistCher.php`)
       .then(response => response.text())
@@ -4331,6 +4337,7 @@ let chek = new function () {
         document.getElementById("historyList2").innerHTML = '<table>'+text+'</table>';
       });
   }
+
   this.load = function (idloadcheck) {
     let xmlhttp = new XMLHttpRequest();
         xmlhttp.open('POST', 'loadcheck.php', true); // Открываем аcинхронное cоединение
@@ -4371,8 +4378,7 @@ let chek = new function () {
                innerCheckId[k].innerHTML = "№ " + idloadcheck;
             }
 
-      }
-
+  }
 
   this.loadCher = function (idloadcheck2) {
     let objInfo;
