@@ -1548,7 +1548,6 @@ var Lobibox = Lobibox || {};
         warning: {
             'class': 'lobibox-notify-warning',
             'title': 'Warning',
-            sound: 'sound5'
         },
         info: {
             'class': 'lobibox-notify-info',

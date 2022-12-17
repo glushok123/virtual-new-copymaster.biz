@@ -400,16 +400,16 @@ let base = new function () {
               this.aaai = new function () {
                 this.nm = "cамоклейка";
                 this.fnm = titelBD['aaai'];
-                this.ski = "b9";
-                this.gr = grS;
-                this.pr = prS[0].slice(0);
-                for (k in this.pr) { this.pr[k] += bA4[7]; }
+                //this.ski = "b9";
+                //this.gr = grS;
+                this.pr = '150';//prS[0].slice(0);
+                //for (k in this.pr) { this.pr[k] += bA4[7]; }
               }
             }
           }
           this.aab = new function () {
             this.nm = "А3";
-            this.fnm = titelBD[''];
+            this.fnm = titelBD['aab'];
             this.lst = new function () {
               this.aaba = new function () {
                 this.nm = "обычная 80г";
@@ -680,6 +680,14 @@ let base = new function () {
                     for (k in this.pr) { this.pr[k] += bA3[6] + cp; }
                   }
                 }
+              }
+              this.aabj = new function () {
+                this.nm = "cамоклейка";
+                this.fnm = titelBD['aaai'];
+                //this.ski = "b9";
+                //this.gr = grS;
+                this.pr = '290';//prS[0].slice(0);
+                //for (k in this.pr) { this.pr[k] += bA4[7]; }
               }
             }
           }
@@ -1358,10 +1366,10 @@ let base = new function () {
               this.abai = new function () {
                 this.nm = "cамоклейка";
                 this.fnm = titelBD['abai'];
-                this.ski = "b9";
-                this.gr = grS;
-                this.pr = prS[0].slice(0);
-                for (k in this.pr) { this.pr[k] += bA4[7]; }
+                //this.ski = "b9";
+               // this.gr = grS;
+                this.pr = '150';//prS[0].slice(0);
+                //for (k in this.pr) { this.pr[k] += bA4[7]; }
               }
             }
           }
@@ -1570,6 +1578,14 @@ let base = new function () {
                     for (k in this.pr) { this.pr[k] += bA3[4] + cp; }
                   }
                 }
+              }
+              this.abbg = new function () {
+                this.nm = "cамоклейка";
+                this.fnm = titelBD['aaai'];
+                //this.ski = "b9";
+                //this.gr = grS;
+                this.pr = '290';//prS[0].slice(0);
+                //for (k in this.pr) { this.pr[k] += bA4[7]; }
               }
             }
           }
@@ -2047,11 +2063,76 @@ let base = new function () {
                 this.ski2 = 'p11';
                 this.skm2 = 2;
                 this.pr = pr[4][0];
+
+                this.lst = new function () {
+                    this.bcaaa = new function () {
+                        this.fnm = titelBD['bd'];
+                        this.pr = pr[4][0] + pr[5][0];
+                        this.lst = new function () {
+                           this.bcaaaa = new function () {
+                              this.fnm = titelBD['be'];
+                              this.pr = pr[4][0] + pr[5][1];
+                           }
+                            this.bcaaab = new function () {
+                              this.nm = 'Без ' + titelBD['be'];
+                              this.pr = pr[4][0];
+                           }
+                        }
+                    }
+                    this.bcaab = new function () {
+                        this.nm = 'Без ' + titelBD['bd'];
+                        this.pr = pr[4][0];
+                        this.lst = new function () {
+                           this.bcaaba = new function () {
+                              this.fnm = titelBD['be'];
+                              this.pr = pr[4][0] + pr[5][1];
+                           }
+                            this.bcaabb = new function () {
+                              this.nm = 'Без '+titelBD['be'];
+                              this.pr = pr[4][0];
+                           }
+                        }
+                    }
+                }
+
               }
+
               this.bcab = new function () {
                 this.nm = "переброшюровка";
                 this.fnm = titelBD['bcab'];
                 this.pr = Math.ceil(Math.round(pr[4][0]/2));
+
+                this.lst = new function () {
+                    this.bcaba = new function () {
+                        this.fnm = titelBD['bd'];
+                        this.pr = Math.ceil(Math.round(pr[4][0]/2)) + pr[5][0];
+                        this.lst = new function () {
+                           this.bcabaa = new function () {
+                              this.fnm = titelBD['be'];
+                              this.pr = Math.ceil(Math.round(pr[4][0]/2)) + pr[5][1];
+                           }
+                            this.bcabab = new function () {
+                              this.nm = 'Без ' + titelBD['be'];
+                              this.pr = Math.ceil(Math.round(pr[4][0]/2));
+                           }
+                        }
+                    }
+                    this.bcabb = new function () {
+                        this.nm = 'Без ' + titelBD['bd'];
+                        this.pr = Math.ceil(Math.round(pr[4][0]/2));
+                        this.lst = new function () {
+                           this.bcabba = new function () {
+                              this.fnm = titelBD['be'];
+                              this.pr = Math.ceil(Math.round(pr[4][0]/2)) + pr[5][1];
+                           }
+                            this.bcabbb = new function () {
+                              this.nm = 'Без '+titelBD['be'];
+                              this.pr = Math.ceil(Math.round(pr[4][0]/2));
+                           }
+                        }
+                    }
+                }
+
               }
             }
           }
@@ -2065,11 +2146,75 @@ let base = new function () {
                 this.ski2 = 'p11';
                 this.skm2 = 2;
                 this.pr = pr[4][1];
+
+                this.lst = new function () {
+                    this.bcbaa = new function () {
+                        this.fnm = titelBD['bd'];
+                        this.pr =  pr[4][1] + pr[5][0];
+                        this.lst = new function () {
+                           this.bcbaaa = new function () {
+                              this.fnm = titelBD['be'];
+                              this.pr =  pr[4][1] + pr[5][1];
+                           }
+                            this.bcbaab = new function () {
+                              this.nm = 'Без ' + titelBD['be'];
+                              this.pr =  pr[4][1];
+                           }
+                        }
+                    }
+                    this.bcbab = new function () {
+                        this.nm = 'Без ' + titelBD['bd'];
+                        this.pr = Math.ceil(Math.round(pr[4][0]/2));
+                        this.lst = new function () {
+                           this.bcbaba = new function () {
+                              this.fnm = titelBD['be'];
+                              this.pr =  pr[4][1] + pr[5][1];
+                           }
+                            this.bcbabb = new function () {
+                              this.nm = 'Без '+titelBD['be'];
+                              this.pr =  pr[4][1];
+                           }
+                        }
+                    }
+                }
+
               }
               this.bcbb = new function () {
                 this.nm = "переброшюровка";
                 this.fnm = titelBD['bcbb'];
                 this.pr = Math.ceil(Math.round(pr[4][1]/2));
+
+                this.lst = new function () {
+                    this.bcbba = new function () {
+                        this.fnm = titelBD['bd'];
+                        this.pr =  Math.ceil(Math.round(pr[4][1]/2)) + pr[5][0];
+                        this.lst = new function () {
+                           this.bcbbaa = new function () {
+                              this.fnm = titelBD['be'];
+                              this.pr =  Math.ceil(Math.round(pr[4][1]/2)) + pr[5][1];
+                           }
+                            this.bcbbab = new function () {
+                              this.nm = 'Без ' + titelBD['be'];
+                              this.pr =  Math.ceil(Math.round(pr[4][1]/2));
+                           }
+                        }
+                    }
+                    this.bcbbb = new function () {
+                        this.nm = 'Без ' + titelBD['bd'];
+                        this.pr = Math.ceil(Math.round(pr[4][0]/2));
+                        this.lst = new function () {
+                           this.bcbbba = new function () {
+                              this.fnm = titelBD['be'];
+                              this.pr =  Math.ceil(Math.round(pr[4][1]/2)) + pr[5][1];
+                           }
+                            this.bcbbbb = new function () {
+                              this.nm = 'Без '+titelBD['be'];
+                              this.pr =  Math.ceil(Math.round(pr[4][1]/2));
+                           }
+                        }
+                    }
+                }
+
               }
             }
           }
@@ -2083,11 +2228,76 @@ let base = new function () {
                 this.ski2 = 'p11';
                 this.skm2 = 2;
                 this.pr = pr[4][2];
+
+                this.lst = new function () {
+                    this.bccaa = new function () {
+                        this.fnm = titelBD['bd'];
+                        this.pr =  pr[4][2] + pr[5][0];
+                        this.lst = new function () {
+                           this.bccaaa = new function () {
+                              this.fnm = titelBD['be'];
+                              this.pr =  pr[4][2] + pr[5][1];
+                           }
+                            this.bccaab = new function () {
+                              this.nm = 'Без ' + titelBD['be'];
+                              this.pr =  pr[4][2];
+                           }
+                        }
+                    }
+                    this.bccab = new function () {
+                        this.nm = 'Без ' + titelBD['bd'];
+                        this.pr = Math.ceil(Math.round(pr[4][0]/2));
+                        this.lst = new function () {
+                           this.bccaba = new function () {
+                              this.fnm = titelBD['be'];
+                              this.pr =  pr[4][2] + pr[5][1];
+                           }
+                            this.bccabb = new function () {
+                              this.nm = 'Без '+titelBD['be'];
+                              this.pr = pr[4][2];
+                           }
+                        }
+                    }
+                }
+
+
               }
               this.bccb = new function () {
                 this.nm = "переброшюровка";
                 this.fnm = titelBD['bccb'];
-                this.pr =Math.ceil(Math.round(pr[4][2]/2));
+                this.pr = Math.ceil(Math.round(pr[4][2]/2));
+
+                this.lst = new function () {
+                    this.bccba = new function () {
+                        this.fnm = titelBD['bd'];
+                        this.pr = Math.ceil(Math.round(pr[4][2]/2)) + pr[5][0];
+                        this.lst = new function () {
+                           this.bccbaa = new function () {
+                              this.fnm = titelBD['be'];
+                              this.pr = Math.ceil(Math.round(pr[4][2]/2)) + pr[5][1];
+                           }
+                            this.bccbab = new function () {
+                              this.nm = 'Без ' + titelBD['be'];
+                              this.pr = Math.ceil(Math.round(pr[4][2]/2));
+                           }
+                        }
+                    }
+                    this.bccbb = new function () {
+                        this.nm = 'Без ' + titelBD['bd'];
+                        this.pr = Math.ceil(Math.round(pr[4][0]/2));
+                        this.lst = new function () {
+                           this.bccbba = new function () {
+                              this.fnm = titelBD['be'];
+                              this.pr = Math.ceil(Math.round(pr[4][2]/2)) + pr[5][1];
+                           }
+                            this.bccbbb = new function () {
+                              this.nm = 'Без '+titelBD['be'];
+                              this.pr = Math.ceil(Math.round(pr[4][2]/2));
+                           }
+                        }
+                    }
+                }
+
               }
             }
           }
@@ -2102,24 +2312,87 @@ let base = new function () {
                 this.ski2 = 'p11';
                 this.skm2 = 2;
                 this.pr = pr[4][3];
+
+                this.lst = new function () {
+                    this.bcdaa = new function () {
+                        this.fnm = titelBD['bd'];
+                        this.pr = pr[4][3] + pr[5][0];
+                        this.lst = new function () {
+                           this.bcdaaa = new function () {
+                              this.fnm = titelBD['be'];
+                              this.pr = pr[4][3] + pr[5][1];
+                           }
+                            this.bcdaab = new function () {
+                              this.nm = 'Без ' + titelBD['be'];
+                              this.pr = pr[4][3];
+                           }
+                        }
+                    }
+                    this.bcdab = new function () {
+                        this.nm = 'Без ' + titelBD['bd'];
+                        this.pr = Math.ceil(Math.round(pr[4][0]/2));
+                        this.lst = new function () {
+                           this.bcdaba = new function () {
+                              this.fnm = titelBD['be'];
+                              this.pr = pr[4][3] + pr[5][1];
+                           }
+                            this.bcdabb = new function () {
+                              this.nm = 'Без '+titelBD['be'];
+                              this.pr = pr[4][3];
+                           }
+                        }
+                    }
+                }
               }
               this.bcdb = new function () {
                 this.nm = "переброшюровка";
                 this.fnm = titelBD['bcdb'];
                 this.pr = Math.ceil(Math.round(pr[4][3]/2));
+
+                this.lst = new function () {
+                    this.bcdba = new function () {
+                        this.fnm = titelBD['bd'];
+                        this.pr = Math.ceil(Math.round(pr[4][3]/2)) + pr[5][0];
+                        this.lst = new function () {
+                           this.bcdbaa = new function () {
+                              this.fnm = titelBD['be'];
+                              this.pr = Math.ceil(Math.round(pr[4][3]/2)) + pr[5][1];
+                           }
+                            this.bcdbab = new function () {
+                              this.nm = 'Без ' + titelBD['be'];
+                              this.pr = Math.ceil(Math.round(pr[4][3]/2));
+                           }
+                        }
+                    }
+                    this.bcdbb = new function () {
+                        this.nm = 'Без ' + titelBD['bd'];
+                        this.pr = Math.ceil(Math.round(pr[4][0]/2));
+                        this.lst = new function () {
+                           this.bcdbba = new function () {
+                              this.fnm = titelBD['be'];
+                              this.pr = Math.ceil(Math.round(pr[4][3]/2)) + pr[5][1];
+                           }
+                            this.bcdbbb = new function () {
+                              this.nm = 'Без '+titelBD['be'];
+                              this.pr = Math.ceil(Math.round(pr[4][3]/2));
+                           }
+                        }
+                    }
+                }
+
               }
             }
           }
         }
       }
-      this.bd = new function () {
+      /*this.bd = new function () {
         this.fnm = titelBD['bd'];
         this.pr = pr[5][0];
       }
       this.be = new function () {
         this.fnm = titelBD['be'];
         this.pr = pr[5][1];
-      }
+      }*/
     }
   }
   this.c = new function () {
@@ -3979,7 +4252,7 @@ let chek = new function () {
   }
 
   this.fix = function (id) {
-    if (!this.data.id) {
+    if (! this.data.id) {
       // return;
     }
     if (butUrl.className == 'butn sel') {
@@ -4049,7 +4322,7 @@ let chek = new function () {
         <tr>
           <td>№</td>
           <td>Уcлуга</td>
-          <td>Кол-во</td>
+          <td>Кол.</td>
           <td>Ед.</td>
           <td>Цена</td>
           <td>cтоимоcть</td>
@@ -4146,7 +4419,6 @@ let chek = new function () {
   }
 
   this.save = function () {
-
       testobj = chek.data
       if (JSON.stringify(this.data.lst).length < 3) {
         return;
@@ -4180,7 +4452,7 @@ let chek = new function () {
         info: testobj
       };
     console.log(obj);
-    let funcload = (resp) => {
+    /*let funcload = (resp) => {
         console.log(resp);
           respobj = JSON.parse(resp);
           let cheksId = document.getElementsByClassName('chekId');
@@ -4210,7 +4482,7 @@ let chek = new function () {
 
       } else {
         document.getElementById('historyList').className = 'hide'
-      }
+      }*/
     }
 
   this.saveCh = function () {
@@ -4590,7 +4862,7 @@ let main = new function () {
   }
 
   this.makeCSS = function (obj, id) {
-    main.css += `.${id} #${id} { background: #39248c; color:white;} `;
+    main.css += `.${id} #${id} { background: #ab4343; color:white;} `;
     if (id.length > 1) {
       main.css += `.${id.slice(0,-1)} + .menu #${id} { display: block; } `;
     }
@@ -4662,6 +4934,12 @@ let main = new function () {
     butSave.addEventListener('click', function () {
       chek.fix();
     }, false);
+
+    $(document).on('save-order', function () {
+      console.log('123')
+      chek.save();
+    });
+
    /* butSaveCher.addEventListener('click', function () {
       chek.fix2();
     }, false);

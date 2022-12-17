@@ -1,0 +1,190 @@
+html {
+
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    /*background: white !important;*/
+}
+
+input:disabled {
+    background-color: #edd1d1;
+    opacity: 1;
+}
+
+.titel-settings {
+    font-size: 18px;
+    color: white;
+}
+
+.titel-settings input {
+    color: black;
+}
+
+.btn-arrow {
+    display: inline-block;
+    padding: 20px;
+    position: relative;
+    background: #ab4343;
+    color: #fff;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.75);
+}
+
+.btn-arrow span {
+    position: relative;
+    z-index: 1;
+}
+
+.btn-arrow:after,
+.btn-arrow:before {
+    content: '';
+    position: absolute;
+    left: -20px;
+    top: 50%;
+    background: #ab4343;
+    width: 40px;
+    height: 40px;
+    margin-top: -20px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.75);
+    z-index: -1;
+    transform: rotate(45deg);
+}
+
+.btn-arrow:before {
+    z-index: 1;
+    box-shadow: none;
+}
+
+.btn-arrow:hover,
+.btn-arrow:hover:after,
+.btn-arrow:hover:before {
+    background: #00f;
+}
+
+.ogrsize {
+    max-width: 80px;
+    min-width: 80px;
+}
+
+::selection {
+    color: #800;
+    background-color: orange;
+}
+
+.tht {
+    font-weight: bold;
+}
+
+.butn {
+    /*border:1px solid black;*/
+}
+
+.btn-settings {
+    margin: 5px 5px 5px 5px;
+    border-color: red;
+    background: #ab4343;
+    color: white;
+}
+
+.topbar-nav {
+    background-color: black;
+}
+
+
+/* !!! ЦВЕТНАЯ !!! */
+#aaab, /* A4 мат 120 */
+#aaad, /* A4 мат 200 */
+#aaae, /* A4 мат 250 */
+#aaag, /* A4 глян 170 */
+#aaah, /* A4 глян 250 */
+#aaaj /* A4 калька 250 */
+/*#aaai   A4 самоклейка */
+{
+    display: none !important;
+}
+
+#aabc, /* A3 мат 200 */
+#aabd, /* A3 мат 250 */
+#aabf, /* A3 глян 170 */
+#aabg, /* A3 глян 250 */
+#aabh /* A3 калька 250 */
+{
+    display: none !important;
+}
+
+/*#aacc, /* A2 глянец HP */
+/*#aacd, /* A2 калька 90 */
+#aacf, /* A2 холст */
+#aacg, /* A2 мат 300 */
+#aace /* A2 самоклейка */
+{
+    display: none !important;
+}
+
+/*#aadc,  A1 глянец HP */
+/*#aadd,  A1 калька */
+#aade, /*A1 самоклейка */
+#aadf /* A1 холст */
+{
+    display: none !important;
+}
+
+/*#aaec, /* A0 мат 180 */
+/*#aaec, /* A0 глянец HP */
+#aaed, /* A0 калька 90 */
+#aaee, /* A0 самоклейка */
+#aaef /* A0 холст */
+{
+    display: none !important;
+}
+
+#aafe, /* нест самоклейка */
+#aaff /* нест холст */
+{
+    display: none !important;
+}
+
+/* !!! ЧЕРНО-БЕЛАЯ !!! */
+#abab, /* A4 мат 120 */
+#abad, /* A4 мат 200 */
+#abae, /* A4 мат 250 */
+#abag, /* A4 гл 170 */
+#abah /* A4 гл 250 */
+/*#abai  A4 самоклейка */
+{
+    display: none !important;
+}
+
+#abbc, /* A3 мат 200 */
+#abbd, /* A3 мат 250 */
+#abbf /* A3 глянцевая 170г */
+{
+    display: none !important;
+}
+
+/*#abcb /* A2 калк 90 */
+#abcd,/* A2 мат 300 */
+#abcc,/* A2 мат 180 */
+#abce/* A2 глянцевая */
+{
+    display: none !important;
+}
+
+/*#abdb /* A1 калк 90 */
+#abdc,/* A1 мат 180 */
+#abdd/* A1 глянцевая */
+{
+    display: none !important;
+}
+
+#abeb, /* A0 калк 90 */
+#abec,/* A0 мат 180 */
+#abed/* A0 глянцевая */
+{
+    display: none !important;
+}

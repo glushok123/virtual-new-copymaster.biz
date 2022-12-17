@@ -410,8 +410,7 @@ var Lobibox = Lobibox || {};
         },
         warning: {
             'class': 'lobibox-notify-warning',
-            'title': 'Warning',
-            sound: 'sound5'
+            'title': 'Warning'
         },
         info: {
             'class': 'lobibox-notify-info',

@@ -22,27 +22,12 @@ $(function () {
 			return false;
 		});
 	});
-	$(function () {
-		$('.metismenu-card').metisMenu({
-			toggle: false,
-			triggerElement: '.card-header',
-			parentTrigger: '.card',
-			subMenu: '.card-body'
-		});
-	});
+
 	// Tooltips 
 	$(function () {
 		$('[data-toggle="tooltip"]').tooltip()
 	})
-	// Metishmenu card collapse
-	$(function () {
-		$('.card-collapse').metisMenu({
-			toggle: false,
-			triggerElement: '.card-header',
-			parentTrigger: '.card',
-			subMenu: '.card-body'
-		});
-	});
+
 	// toggle menu button
 	$(".toggle-btn").click(function () {
 		if ($(".wrapper").hasClass("toggled")) {
@@ -82,19 +67,8 @@ $(function () {
 	$(".compose-mail-close").on("click", function () {
 		$(".compose-mail-popup").hide();
 	});
-	// === sidebar menu activation js
-	$(function () {
-		for (var i = window.location, o = $(".metismenu li a").filter(function () {
-			return this.href == i;
-		}).addClass("").parent().addClass("mm-active");;) {
-			if (!o.is("li")) break;
-			o = o.parent("").addClass("mm-show").parent("").addClass("mm-active");
-		}
-	}),
-	// metismenu
-	$(function () {
-		$('#menu').metisMenu();
-	});
+
+
 	/* Back To Top */
 	$(document).ready(function () {
 		$(window).on("scroll", function () {
