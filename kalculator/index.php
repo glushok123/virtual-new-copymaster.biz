@@ -205,7 +205,7 @@
 	$(document).ready(function() {
 		width = screen.width; // ширина
 
-		if (width < 700) {
+		if (width < 770) {
 			$('#blockControl').removeClass('fixed-bottom');
 		}
 
@@ -217,14 +217,14 @@
 
 		$(document).on('click', '[send-order]', function() {
 			if (! conditionalPhone()){
-				//return;
+				return;
             }
 
 			if (! conditionalFio()) {
-				//return;
+				return;
 			}
 
-			saveOrderRequest();
+			$(document).trigger('save-order')
 		});
 
         $('#fio').on('blur', function(){
@@ -257,43 +257,22 @@
 		function saveOrderRequest()
 		{	
 			let data = {
-				'phone' : $('#phone').val(),
-				'fio' : $('#fio').val(),
-				'info' :  $('#wrapChek').html().replace(/\s{2,}/g, ' ')
+				'id': 'order-kalkulator',
+				'phone': $('#phone').val(),
+				'fio': $('#fio').val(),
+				'id-order': $('body').attr('id'),
+				"email": 'отсутствует',
 			}
 
-			console.log(data);
-			$(document).trigger('save-order');
-			/*
-			$.ajax({
-				url: '/dashbord/request/order/save.php',         
-				method: 'post',             
-				dataType: 'json',          
-				data: $('#addOrder').serialize(),     
-				success: function(data){
-					if(data.status == 'success') {
-						location.reload()
-					}
-				},
-				error: function (jqXHR, exception) {
-					if (jqXHR.status === 0) {
-						alert('Not connect. Verify Network.');
-					} else if (jqXHR.status == 404) {
-						alert('Requested page not found (404).');
-					} else if (jqXHR.status == 500) {
-						alert('Internal Server Error (500).');
-					} else if (exception === 'parsererror') {
-						alert('Requested JSON parse failed.');
-					} else if (exception === 'timeout') {
-						alert('Time out error.');
-					} else if (exception === 'abort') {
-						alert('Ajax request aborted.');
-					} else {
-						alert('Uncaught Error. ' + jqXHR.responseText);
-					}
-				}
+			$.post("/registerz.php", data, function(data){
+				//var myModal = new bootstrap.Modal(document.getElementById('exampleModal3'));
+				//myModal.show();
+				alert('отправлено')
 			});
-			*/
+
 		}
+		$(document).on('save-order-end', function () {
+			saveOrderRequest();
+		});
 	});
 </script>

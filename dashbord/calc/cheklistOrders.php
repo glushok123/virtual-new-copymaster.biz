@@ -2,7 +2,7 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 require_once './connect.php';
-$stmt = $dbh->prepare("SELECT ci.id, ci.cost, ci.createtime, ci.discount, ci.discount_percent, ci.pay_type from check_id as ci where (ci.createtime >= DATE_SUB(NOW(), INTERVAL 30 DAY)) AND (ci.cher = '1' ) order by ci.createtime DESC;");
+$stmt = $dbh->prepare("SELECT ci.id, ci.cost, ci.createtime, ci.discount, ci.discount_percent, ci.pay_type from check_id as ci where (ci.createtime >= DATE_SUB(NOW(), INTERVAL 30 DAY)) AND (ci.cher = '2' ) order by ci.createtime DESC;");
 $stmt->execute();
 $data = $stmt->fetchAll();
 
@@ -107,7 +107,8 @@ foreach ($value as $cost) {
 				
 			//	var_dump($data[0]['name_komp']);
 				$text .= "<tr class=\"list ".$onecheck["pay_type"]."\" id=\"".$onecheck["id"]."\" >
-                      <td colspan=\"2\" onclick=\"chek.loadCher('".$onecheck["id"]."');\">".$onecheck["createtime"]."</td>
+					  <td colspan=\"1\" onclick=\"chek.loadCher('".$onecheck["id"]."');\">№". $onecheck["id"] ."</td>
+                      <td colspan=\"1\" onclick=\"chek.loadCher('".$onecheck["id"]."');\">".$onecheck["createtime"]."</td>
                       <td onclick=\"chek.loadCher('".$onecheck["id"]."');\">".$dataTest[0]['name_komp']."</td>
                       <td onclick=\"chek.loadCher('".$onecheck["id"]."');\">".$onecheck["cost"]." <span class=\"rouble\">₽</span></td>
                       <td onclick=\"chek.delCher('".$onecheck["id"]."');\" > Удалить</td>
@@ -163,7 +164,5 @@ foreach ($value as $cost) {
 	}
 }
 // var_dump($text);
-echo $text;
-
-
+	echo $text;
 ?>

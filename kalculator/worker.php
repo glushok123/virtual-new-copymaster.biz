@@ -7,7 +7,7 @@ $info = $_POST['post'];
  //var_dump($info);
 // $get = $_GET;
 $arr = json_decode($info);;
-var_dump($arr->check_id->info);
+//var_dump($arr->check_id->info);
 $s = serialize($arr->check_id->info);
 // die;
 // $reult = array();

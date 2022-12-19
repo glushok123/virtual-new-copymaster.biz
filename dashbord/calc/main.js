@@ -4582,6 +4582,14 @@ let chek = new function () {
       historyList.className = 'hide'
     }
   }
+  this.swOrders = function () {
+    if (listOrders.className == 'hide') {
+      listOrders.className = '';
+      this.listOrders();
+    } else {
+      listOrders.className = 'hide'
+    }
+  }
   this.swHistCher = function () {
     if (historyList2.className == 'hide') {
       historyList2.className = '';
@@ -4604,6 +4612,14 @@ let chek = new function () {
       .then(text => {
         console.log(text);
         document.getElementById("historyList2").innerHTML = '<table>'+text+'</table>';
+      });
+  }
+  this.listOrders = function () {
+    fetch(`cheklistOrders.php`)
+      .then(response => response.text())
+      .then(text => {
+        console.log(text);
+        document.getElementById("listOrders").innerHTML = '<table>'+text+'</table>';
       });
   }
   this.load = function (idloadcheck) {
@@ -4651,9 +4667,18 @@ let chek = new function () {
 
   this.loadCher = function (idloadcheck2) {
     let objInfo;
-    $.ajax({url: 'loadcheckCher.php', method: 'POST', async: false, data: {idloadcheck: encodeURIComponent(idloadcheck2)}, dataType: 'json', success: function(response){
-      objInfo = response;
-    }})
+    console.log(idloadcheck2);
+    $.ajax({
+        url: 'loadcheckCher.php', 
+        method: 'POST', 
+        async: false, 
+        data: { idloadcheck: idloadcheck2}, 
+        dataType: 'json', 
+        success: function(response) {
+            console.log(response);
+            objInfo = response;
+        }
+    })
 
     this.data = objInfo;
     console.log(this.data);
@@ -4939,6 +4964,9 @@ let main = new function () {
     }, false);
     butHistoryCher.addEventListener('click', function () {
       chek.swHistCher();
+    }, false);
+    butOrders.addEventListener('click', function () {
+      chek.swOrders();
     }, false);
   }
   this.version = -1;

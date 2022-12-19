@@ -7,7 +7,6 @@ header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
-
     if ($_POST["id"] == "vizitki")
     {
         $name = $_POST["login"];
@@ -252,25 +251,50 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         $db = getDbInstance();
         $datat = date('d.m.y H:i');
 
-            $db->query("INSERT INTO zayavki
-            ( `name`, `email`, `phon`,  `created_at`, `info`,`tip`)
-            VALUES
-            ('".$name."','".$email."','".$phon."','".$datat."','".$info."','Календари')");
+        $db->query("INSERT INTO zayavki
+        ( `name`, `email`, `phon`,  `created_at`, `info`,`tip`)
+        VALUES
+        ('".$name."','".$email."','".$phon."','".$datat."','".$info."','Календари')");
 
-           $json = '{
-                "status":"success"
-            }';
+        $json = '{
+            "status":"success"
+        }';
 
-            //require_once 'send.php';
-            //sendmessage("glushok19999@gmail.com");
-            echo $json;
+        echo $json;
+    }
+
+    if ($_POST["id"] == "order-kalkulator")
+    {
+        $name = $_POST["fio"];
+        $email = $_POST["email"];
+        $phone = $_POST["phone"];
+        $idOrder = $_POST["id-order"];
+
+        $db = getDbInstance();
+        $datat = date('d.m.y H:i');
+
+        $db->query("INSERT INTO zayavki
+        ( `name`, `email`, `phon`, `created_at`, `comment`,`tip`)
+        VALUES
+        (
+            '".$name."',
+            '".$email."',
+            '".$phone."',
+            '".$datat."',
+            'Чек в заявках № ".$idOrder."',
+            'С калькулятора')"
+        );
+
+        $json = '{
+            "status":"success"
+        }';
+
+        echo $json;
     }
 
     require_once 'send.php';
 
-
     sendmessage("info@copymaster.biz");
     sendmessage("Manager@copymaster.biz");
     sendmessage("design@copymaster.biz");
-
 }

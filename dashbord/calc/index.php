@@ -455,10 +455,12 @@ if (!isset($_SESSION['user_logged_in']))
 							<div id='historyList' class="hide"></div>
 
 							<div id='historyList2' class="hide"></div>
+							<div id='listOrders' class="hide"></div>
 
 							<div class='butn' id='butPrint'>Печать чека</div>
 							<div class='butn' id='butSaveCher' style="background-color:#1fcbff; color: black">В черновик</div>
 							<div class='butn' id='butHistoryCher'>Черновики</div>
+							<div class='butn' id='butOrders'>Заявки</div>
 							
 							<!--div class='butn' id='btnExport' style="background-color:red; color: white">Экспорт в PDF</div-->
 
