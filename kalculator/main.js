@@ -27,7 +27,7 @@ let base = new function() {
 
     this.a = new function() {
 
-        this.nm = "Печать";
+        this.nm = "Печать документов";
         let bA4 = [
             prRBD["petchat_A4_mt120"],
             prRBD["petchat_A4_mt160"],
@@ -2033,7 +2033,7 @@ let base = new function() {
         }
     }
     this.b = new function() {
-        this.nm = "Переплёт";
+        this.nm = "Постпечатная обработка";
         let pr = [
             [prRBD["pereplet_pl_A4_m"], prRBD["pereplet_pl_A4_s"], prRBD["pereplet_pl_A4_b"]], //плаcт А4: малая, cредняя, большая
             [prRBD["pereplet_pl_A3_m"], prRBD["pereplet_pl_A3_s"], prRBD["pereplet_pl_A3_b"]], //плаcт А3: малая, cредняя, большая
@@ -2323,7 +2323,7 @@ let base = new function() {
                                                 this.pr = pr[4][0] + pr[5][1];
                                             }
                                             this.bcaaab = new function() {
-                                                this.nm = 'Без ' + titelBD['be'];
+                                                this.nm = 'Без вставки файла в переплёт';
                                                 this.pr = pr[4][0];
                                             }
                                         }
@@ -2337,7 +2337,7 @@ let base = new function() {
                                                 this.pr = pr[4][0] + pr[5][1];
                                             }
                                             this.bcaabb = new function() {
-                                                this.nm = 'Без ' + titelBD['be'];
+                                                this.nm = 'Без вставки файла в переплёт';
                                                 this.pr = pr[4][0];
                                             }
                                         }
@@ -2361,7 +2361,7 @@ let base = new function() {
                                                 this.pr = Math.ceil(Math.round(pr[4][0] / 2)) + pr[5][1];
                                             }
                                             this.bcabab = new function() {
-                                                this.nm = 'Без ' + titelBD['be'];
+                                                this.nm = 'Без вставки файла в переплёт';
                                                 this.pr = Math.ceil(Math.round(pr[4][0] / 2));
                                             }
                                         }
@@ -2375,7 +2375,7 @@ let base = new function() {
                                                 this.pr = Math.ceil(Math.round(pr[4][0] / 2)) + pr[5][1];
                                             }
                                             this.bcabbb = new function() {
-                                                this.nm = 'Без ' + titelBD['be'];
+                                                this.nm = 'Без вставки файла в переплёт';
                                                 this.pr = Math.ceil(Math.round(pr[4][0] / 2));
                                             }
                                         }
@@ -2406,7 +2406,7 @@ let base = new function() {
                                                 this.pr = pr[4][1] + pr[5][1];
                                             }
                                             this.bcbaab = new function() {
-                                                this.nm = 'Без ' + titelBD['be'];
+                                                this.nm = 'Без вставки файла в переплёт';
                                                 this.pr = pr[4][1];
                                             }
                                         }
@@ -2420,7 +2420,7 @@ let base = new function() {
                                                 this.pr = pr[4][1] + pr[5][1];
                                             }
                                             this.bcbabb = new function() {
-                                                this.nm = 'Без ' + titelBD['be'];
+                                                this.nm = 'Без вставки файла в переплёт';
                                                 this.pr = pr[4][1];
                                             }
                                         }
@@ -2443,7 +2443,7 @@ let base = new function() {
                                                 this.pr = Math.ceil(Math.round(pr[4][1] / 2)) + pr[5][1];
                                             }
                                             this.bcbbab = new function() {
-                                                this.nm = 'Без ' + titelBD['be'];
+                                                this.nm = 'Без вставки файла в переплёт';
                                                 this.pr = Math.ceil(Math.round(pr[4][1] / 2));
                                             }
                                         }
@@ -2457,7 +2457,7 @@ let base = new function() {
                                                 this.pr = Math.ceil(Math.round(pr[4][1] / 2)) + pr[5][1];
                                             }
                                             this.bcbbbb = new function() {
-                                                this.nm = 'Без ' + titelBD['be'];
+                                                this.nm = 'Без вставки файла в переплёт';
                                                 this.pr = Math.ceil(Math.round(pr[4][1] / 2));
                                             }
                                         }
@@ -2488,7 +2488,7 @@ let base = new function() {
                                                 this.pr = pr[4][2] + pr[5][1];
                                             }
                                             this.bccaab = new function() {
-                                                this.nm = 'Без ' + titelBD['be'];
+                                                this.nm = 'Без вставки файла в переплёт';
                                                 this.pr = pr[4][2];
                                             }
                                         }
@@ -2502,7 +2502,7 @@ let base = new function() {
                                                 this.pr = pr[4][2] + pr[5][1];
                                             }
                                             this.bccabb = new function() {
-                                                this.nm = 'Без ' + titelBD['be'];
+                                                this.nm = 'Без вставки файла в переплёт';
                                                 this.pr = pr[4][2];
                                             }
                                         }
@@ -2526,7 +2526,7 @@ let base = new function() {
                                                 this.pr = Math.ceil(Math.round(pr[4][2] / 2)) + pr[5][1];
                                             }
                                             this.bccbab = new function() {
-                                                this.nm = 'Без ' + titelBD['be'];
+                                                this.nm = 'Без вставки файла в переплёт';
                                                 this.pr = Math.ceil(Math.round(pr[4][2] / 2));
                                             }
                                         }
@@ -2540,7 +2540,7 @@ let base = new function() {
                                                 this.pr = Math.ceil(Math.round(pr[4][2] / 2)) + pr[5][1];
                                             }
                                             this.bccbbb = new function() {
-                                                this.nm = 'Без ' + titelBD['be'];
+                                                this.nm = 'Без вставки файла в переплёт';
                                                 this.pr = Math.ceil(Math.round(pr[4][2] / 2));
                                             }
                                         }
@@ -2572,7 +2572,7 @@ let base = new function() {
                                                 this.pr = pr[4][3] + pr[5][1];
                                             }
                                             this.bcdaab = new function() {
-                                                this.nm = 'Без ' + titelBD['be'];
+                                                this.nm = 'Без вставки файла в переплёт';
                                                 this.pr = pr[4][3];
                                             }
                                         }
@@ -2586,7 +2586,7 @@ let base = new function() {
                                                 this.pr = pr[4][3] + pr[5][1];
                                             }
                                             this.bcdabb = new function() {
-                                                this.nm = 'Без ' + titelBD['be'];
+                                                this.nm = 'Без вставки файла в переплёт';
                                                 this.pr = pr[4][3];
                                             }
                                         }
@@ -2608,7 +2608,7 @@ let base = new function() {
                                                 this.pr = Math.ceil(Math.round(pr[4][3] / 2)) + pr[5][1];
                                             }
                                             this.bcdbab = new function() {
-                                                this.nm = 'Без ' + titelBD['be'];
+                                                this.nm = 'Без вставки файла в переплёт';
                                                 this.pr = Math.ceil(Math.round(pr[4][3] / 2));
                                             }
                                         }
@@ -2622,7 +2622,7 @@ let base = new function() {
                                                 this.pr = Math.ceil(Math.round(pr[4][3] / 2)) + pr[5][1];
                                             }
                                             this.bcdbbb = new function() {
-                                                this.nm = 'Без ' + titelBD['be'];
+                                                this.nm = 'Без вставки файла в переплёт';
                                                 this.pr = Math.ceil(Math.round(pr[4][3] / 2));
                                             }
                                         }
@@ -2642,6 +2642,27 @@ let base = new function() {
               this.fnm = titelBD['be'];
               this.pr = pr[5][1];
             }*/
+            this.bd = new function() {
+                this.fnm = titelBD['co'];
+                this.gr = [0, 100];
+                this.pr = [26.4, 19.8];
+                for (k in this.pr) {
+                    this.pr[k] = Math.ceil(Math.round(this.pr[k] * z) / 100);
+                }
+            }
+            this.be = new function() {
+                this.fnm = titelBD['ci'];
+                this.lst = new function() {
+                    this.bea = new function() {
+                        this.fnm = titelBD['cia'];
+                        this.pr = 132;
+                    }
+                    this.beb = new function() {
+                        this.fnm = titelBD['cib'];
+                        this.pr = 264;
+                    }
+                }
+            }
         }
     }
     this.c = new function() {
@@ -4379,7 +4400,7 @@ const POST = (obj, func) => {
         offers: chek.dataoffers
     };
 
-    req.open('POST', 'worker.php?wrk=cheksave', true);
+    req.open('POST', '/kalculator/worker.php?wrk=cheksave', true);
     req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     req.send('post=' + encodeURIComponent(JSON.stringify(mainoffers)));
 }
