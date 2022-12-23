@@ -187,6 +187,9 @@
 							</li>
 							<li> 
 								<a href="./applications.php"><i class="bx bx-right-arrow-alt"></i>Заказ материалов</a>
+							</li>							
+							<li> 
+								<a href="./reportCheck.php"><i class="bx bx-right-arrow-alt"></i>Отчёт по чекам</a>
 							</li>
 						</ul>
 					</li>

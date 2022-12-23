@@ -2,7 +2,7 @@
 	include('./header.php');
 	require_once './calc/connect.php';
 
-	$date = [
+	$date2022 = [
 		'Январь' => [
 			'2022-01-01',
 			'2022-01-31',
@@ -52,8 +52,59 @@
 			'2022-12-31',
 		],
 	];
-	
-	foreach ($date as $key => $month) {
+
+	$date2023 = [
+		'Январь' => [
+			'2023-01-01',
+			'2023-01-31',
+		],
+		'Февраль' => [
+			'2023-02-01',
+			'2023-02-28',
+		],
+		'Март' => [
+			'2023-03-01',
+			'2023-03-31',
+		],
+		'Апрель' => [
+			'2023-04-01',
+			'2023-04-30',
+		],
+		'Май' => [
+			'2023-05-01',
+			'2023-05-31',
+		],
+		'Июнь' => [
+			'2023-06-01',
+			'2023-06-30',
+		],
+		'Июль' => [
+			'2023-07-01',
+			'2023-07-31',
+		],
+		'Август' => [
+			'2023-08-01',
+			'2023-08-31',
+		],
+		'Сентябрь' => [
+			'2023-09-01',
+			'2023-09-30',
+		],
+		'Октябрь' => [
+			'2023-10-01',
+			'2023-10-31',
+		],
+		'Ноябрь' => [
+			'2023-11-01',
+			'2023-11-30',
+		],
+		'Декабрь'=> [
+			'2023-12-01',
+			'2023-12-31',
+		],
+	];
+
+	foreach ($date2022 as $key => $month) {
 		$stmt = $dbh->prepare("
 			SELECT 
 				ci.id, 
@@ -69,12 +120,29 @@
 		");
 
 		$stmt->execute();
-		$data = $stmt->fetchAll();
-		$date[$key]['info'] = $data;
+		$data2022 = $stmt->fetchAll();
+		$date2022[$key]['info'] = $data2022;
 	}
 
+	foreach ($date2023 as $key => $month) {
+		$stmt = $dbh->prepare("
+			SELECT 
+				ci.id, 
+				ci.cost, 
+				ci.createtime, 
+				ci.discount, 
+				ci.discount_percent, 
+				ci.pay_type 
+				from check_id as ci 
+				where '" . $month[0] ."' <= ci.createtime and ci.createtime < '" . $month[1] ."'
+				AND (ci.cher = '0' ) 
+				order by ci.createtime DESC;
+		");
 
-
+		$stmt->execute();
+		$data2023 = $stmt->fetchAll();
+		$date2023[$key]['info'] = $data2023;
+	}
 	
 ?>
 
@@ -102,53 +170,112 @@
 					?>
 
 						<div class='container'>
-							<?php 
-								$date = array_reverse($date);
 
-								foreach ($date as $key => $month) {
+							<!--div class=' text-center'>
+								<h3>2023</h3>
+							</div-->
+							<?php 
+								/*
+								echo '<table class="table table-striped table-bordered table-dark table-hover">';
+								echo '
+									<tr>
+										<td>Месяц</td>
+										<td>Заработано за месяц</td>
+										<td>Средний чек за месяц</td>
+										<td>Количество чеков</td>
+										<td>Оплачено картой</td>
+										<td>Оплачено наличкой</td>
+										<td>Действия</td>
+									</tr>
+									';
+								foreach ($date2023 as $key => $month) {
 									$averageMoneys = 0; // Средний чек
 									$inTotalMoneys = 0; // Всего заработано
 									$quantity = count($month['info']); // общее количество чеков
 									$payTypeByСash = 0; // наличкой
 									$payTypeByСard = 0; // картой
 
-									echo '<div class="">';
-										echo '
-											<div class="name-month">
-												<hr>
-												<h2>' . $key . '  (c ' . $month[0] .' до ' . $month[1] .')</h2>
-												<hr>
-											</div>
+									foreach ($month['info'] as $check) {
+										$inTotalMoneys = $inTotalMoneys + $check['cost'];
+
+										if($check['pay_type'] == 'cash') {
+											$payTypeByСash = $payTypeByСash + 1;
+										}
+
+										if($check['pay_type'] == 'card') {
+											$payTypeByСard = $payTypeByСard + 1;
+										}
+									};
+
+									$averageMoneys = $inTotalMoneys == 0 ? 0 : $inTotalMoneys/$quantity;
+									echo '
+										<tr>
+											<td>' . $key . '</td>
+											<td>' . $inTotalMoneys . ' р.</td>
+											<td>' . ceil($averageMoneys) . ' р.</td>
+											<td>' . $quantity . ' шт.</td>
+											<td>' . $payTypeByСard . ' шт.</td>
+											<td>' . $payTypeByСash . ' шт.</td>
+											<td><button type="button" class=" btn-info">Подробнее</button></td>
+										</tr>
 										';
-										
-
-										foreach ($month['info'] as $check) {
-											$inTotalMoneys = $inTotalMoneys + $check['cost'];
-
-											if($check['pay_type'] == 'cash') {
-												$payTypeByСash = $payTypeByСash + 1;
-											}
-
-											if($check['pay_type'] == 'card') {
-												$payTypeByСard = $payTypeByСard + 1;
-											}
-										};
-
-										$averageMoneys = $inTotalMoneys == 0 ? 0 : $inTotalMoneys/$quantity;
-
-										echo '
-											<div class="info-month">
-												<h4 class="btn-info">Заработано за месяц: ' . $inTotalMoneys . ' р.</h4>
-												<h4 class="btn-info">Средний чек за месяц: ' . $averageMoneys . ' р.</h4>
-												<h4 class="btn-info">Количество чеков: ' . $quantity . ' шт.</h4>
-												<h4 class="btn-info">Оплачено картой: ' . $payTypeByСard . ' шт.</h4>
-												<h4 class="btn-info">Оплачено наличкой: ' . $payTypeByСash . ' шт.</h4>
-											</div>
-										';
-									echo '</div>';
+									
 								}
+								echo '</table>';
+							*/
 							?>
 
+							<div class='text-center'>
+								<h3>2022</h3>
+							</div>
+							<?php 
+								//$date = array_reverse($date);
+								echo '<table class="table table-striped table-bordered table-dark table-hover">';
+								echo '
+									<tr>
+										<td>Месяц</td>
+										<td>Заработано за месяц</td>
+										<td>Средний чек за месяц</td>
+										<td>Количество чеков</td>
+										<td>Оплачено картой</td>
+										<td>Оплачено наличкой</td>
+										<td>Действия</td>
+									</tr>
+									';
+								foreach ($date2022 as $key => $month) {
+									$averageMoneys = 0; // Средний чек
+									$inTotalMoneys = 0; // Всего заработано
+									$quantity = count($month['info']); // общее количество чеков
+									$payTypeByСash = 0; // наличкой
+									$payTypeByСard = 0; // картой
+									
+									foreach ($month['info'] as $check) {
+										$inTotalMoneys = $inTotalMoneys + $check['cost'];
+
+										if($check['pay_type'] == 'cash') {
+											$payTypeByСash = $payTypeByСash + 1;
+										}
+
+										if($check['pay_type'] == 'card') {
+											$payTypeByСard = $payTypeByСard + 1;
+										}
+									};
+
+									$averageMoneys = $inTotalMoneys == 0 ? 0 : $inTotalMoneys/$quantity;
+									echo '
+										<tr>
+											<td>' . $key . '</td>
+											<td>' . $inTotalMoneys . ' р.</td>
+											<td>' . ceil($averageMoneys) . ' р.</td>
+											<td>' . $quantity . ' шт.</td>
+											<td>' . $payTypeByСard . ' шт.</td>
+											<td>' . $payTypeByСash . ' шт.</td>
+											<td><button type="button" class="btn-info more-detailed" data-start="' . $month[0] .'" data-end="' . $month[1] .'">Подробнее</button></td>
+										</tr>
+										';
+								}
+								echo '</table>';
+							?>
 
 						</div>
 				</div>
