@@ -270,12 +270,16 @@
 											<td>' . $quantity . ' шт.</td>
 											<td>' . $payTypeByСard . ' шт.</td>
 											<td>' . $payTypeByСash . ' шт.</td>
-											<td><button type="button" class="btn-info more-detailed" data-start="' . $month[0] .'" data-end="' . $month[1] .'">Подробнее</button></td>
+											<td><button type="button" class="btn-info more-detailed" data-start="' . $month[0] .'" data-end="' . $month[1] .'" init-more>Подробнее</button></td>
 										</tr>
 										';
 								}
 								echo '</table>';
 							?>
+
+						</div>
+
+						<div  class='container' info-days id='info-days'>
 
 						</div>
 				</div>
@@ -317,8 +321,46 @@
 </style>
 <script type="text/javascript">
 
-$(document).ready(function(){
 
+	$(document).on('click', '[init-more]', function() {
+		let dateStart = $(this).attr('data-start');
+		let dateEnd = $(this).attr('data-end');
 
-})
+		getDays(dateStart, dateEnd);
+	});
+
+	function getDays(dateStart, dateEnd)
+		{
+			$.ajax({
+				url: '/dashbord/request/report/getDays.php',
+				method: 'post',
+				//dataType: 'json',
+				data: { 
+					dateStart : dateStart,
+					dateEnd : dateEnd,
+				},
+				success: function(data){
+					console.log(data)
+					$('#info-days').html(data)
+				},
+				error: function (jqXHR, exception) {
+					if (jqXHR.status === 0) {
+						alert('Not connect. Verify Network.');
+					} else if (jqXHR.status == 404) {
+						alert('Requested page not found (404).');
+					} else if (jqXHR.status == 500) {
+						alert('Internal Server Error (500).');
+					} else if (exception === 'parsererror') {
+						alert('Requested JSON parse failed.');
+					} else if (exception === 'timeout') {
+						alert('Time out error.');
+					} else if (exception === 'abort') {
+						alert('Ajax request aborted.');
+					} else {
+						alert('Uncaught Error. ' + jqXHR.responseText);
+					}
+				}
+			});
+		}
+
 </script>
