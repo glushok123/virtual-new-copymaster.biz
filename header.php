@@ -136,7 +136,7 @@
      <div class="container">
          <div class="row justify-content-center text-center">
 
-             <div class="col-lg-6 mt-4 pt-2">
+             <div class="col-lg-12 mt-4 pt-2">
                 <div>
                     <h4>Дорогие клиенты!</h4>
                     <h6>С 31.12 по 8.01 у нас немного изменится режим работы.</h6>
