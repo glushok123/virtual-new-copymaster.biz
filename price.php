@@ -206,7 +206,7 @@ echo($price['petchat_chet_A4_0_odn']);
             <hr>
             <div class='container'>
                 <div class='row text-center'>
-                    <h2>Калькулятор цен для физических лиц</h2>
+                    <h2>Калькулятор заказов</h2>
                     <div class='pometka-div'>
                         <span class='pometka'></span>
                     </div>
@@ -280,7 +280,7 @@ echo($price['petchat_chet_A4_0_odn']);
 									width: 50%;
 									margin: 0 auto;
 								'>
-								<div id='butChekAdd' class='btn btn-success btn-settings'>Добавить в чек</div>
+								<div id='butChekAdd' class='btn btn-success btn-settings'>Добавить в просчёт</div>
 								<div id='butNew' class='btn btn-warning btn-settings' style='display:none'>Удалить данные чека</div>
 								
 							</div>
@@ -319,38 +319,10 @@ echo($price['petchat_chet_A4_0_odn']);
 			</div>
 
             <div class='container' style='max-width:400px'>
-				<div class='row text-center' >
-                    <div class="form-group"
-                        style='
-                            margin-top:15px;
-                        '>
-                        <label>ФИО:</label>
-                        <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="ФИО" id='fio'>
-                    </div>
-				</div>
-                <div class='row text-center'>
-	                <div class="form-group"
-						style='
-							margin-top:15px;
-						'>
-							<label for="exampleInputEmail1">Телефон:</label>
-							<input type="email" class="form-control" id="phone" aria-describedby="emailHelp" placeholder="Введите номер телефона">
-					</div>
-				</div>
-                <div class='row text-center'>
-	                <div class="form-group"
-						style='
-							margin-top:15px;
-						'>
-							<label for="exampleInputEmail1">Почта:</label>
-							<input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Введите email">
-					</div>
-				</div>
 
-                <div class='row text-center'>
-                    <div class='btn btn-primary btn-settings ' send-order>Отправить заявку</div>
-				</div>
-
+            <div class='row text-center'>
+                <div class='btn btn-primary btn-settings ' data-toggle="modal" data-target="#exampleModalCenter">Отправить заявку</div>
+            </div>
 			</div>
 
             <div id='wrapDebily' class="hide">
@@ -365,6 +337,59 @@ echo($price['petchat_chet_A4_0_odn']);
                     </div>
                 </div>
             </div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Контактные данные</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <div class='row text-center' >
+            <div class="form-group"
+                style='
+                    margin-top:15px;
+                '>
+                <label>ФИО:</label>
+                <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="ФИО" id='fio'>
+            </div>
+        </div>
+        <div class='row text-center'>
+            <div class="form-group"
+                style='
+                    margin-top:15px;
+                '>
+                    <label for="exampleInputEmail1">Телефон:</label>
+                    <input type="email" class="form-control" id="phone" aria-describedby="emailHelp" placeholder="Введите номер телефона">
+            </div>
+        </div>
+        <div class='row text-center'>
+            <div class="form-group"
+                style='
+                    margin-top:15px;
+                '>
+                    <label for="exampleInputEmail1">Почта:</label>
+                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Введите email">
+            </div>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+        <div class='row text-center'>
+            <div class='btn btn-primary btn-settings ' send-order>Отправить заявку</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <style>
     .pometka-div{
         margin-bottom:10px;

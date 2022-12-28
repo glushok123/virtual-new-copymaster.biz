@@ -19,7 +19,9 @@ input:disabled {
 
 .titel-settings {
     font-size: 18px;
-    color: black;
+    color: white;
+    background:#ab4343 !important;
+    border-radius: 10px;
 }
 
 .titel-settings input {
@@ -94,7 +96,17 @@ input:disabled {
 .topbar-nav {
     background-color: black;
 }
-
+.tht{
+    font-weight:normal !important;
+}
+.wrapChek table{
+    font-weight:normal !important;
+    font-weight: 400;
+}
+.wrapChek table tr:nth-of-type(1){
+    font-weight:normal !important;
+    font-weight: 400;
+}
 
 /* !!! ЦВЕТНАЯ !!! */
     #aaab, /* A4 мат 120 */
@@ -200,4 +212,11 @@ input:disabled {
 #c
 {
     display: none !important;
+}
+
+#wrapChek table td:nth-child(2){
+    background-color: #edd1d1
+}
+#wrapChek table td:nth-child(6){
+    background-color: #edd1d1
 }
