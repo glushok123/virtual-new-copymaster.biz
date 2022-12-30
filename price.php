@@ -214,7 +214,7 @@ echo($price['petchat_chet_A4_0_odn']);
             </div>
 
             <hr>
-			<div class='container-fluid'>
+			<div class='container-fluid' id='kalkulator'>
 				<div class='row'>
 					<div class='col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6'>
 						<div id='wrapMenu2'>
@@ -254,7 +254,7 @@ echo($price['petchat_chet_A4_0_odn']);
 						margin-bottom: 30px;
 					'>
 					<div class='col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 '>
-						<div class='row' 
+						<div class='row kalculator-kol' 
 							style='
 								margin-bottom:20px;
 							'>
@@ -318,7 +318,10 @@ echo($price['petchat_chet_A4_0_odn']);
 				</div>
 			</div>
 
-            <div class='container' style='max-width:400px'>
+            <div class='container' style='
+                max-width:400px;
+                margin-bottom:30px;
+            '>
 
             <div class='row text-center'>
                 <div class='btn btn-primary btn-settings ' data-toggle="modal" data-target="#exampleModalCenter">Отправить заявку</div>

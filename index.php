@@ -79,11 +79,6 @@ include_once 'header.php';
 
 
 
-
-
-
-
-
     <!-- end solution -->
         <br>
 <div id="kwiz">
@@ -288,7 +283,7 @@ include_once 'header.php';
 <div class="container">
     <div class="mobserv2">
         <br><br><br>
-        <div class="row text-center row-cols-2">
+        <div class="row text-center row-cols-2 justify-content-center">
           <div class="col border testplusi">
               <a href="pechat_proektov.php">
                   <img src="img/servlist_1.jpg" class="testplusiimg" alt="">
@@ -380,6 +375,18 @@ include_once 'header.php';
     </div>
 </div>
 
+<div class='container'>
+    <br><br>
+        <div class='row text-center justify-content-center'>
+            <a 
+                href="price.php#kalkulator"  
+                class='btn btn-primary btn-settings text-center'
+                style='
+                    max-width:250px;
+                ';
+            >Просчитать стоимость распечатки в калькуляторе</a>
+        </div>
+    </div>
 
 <section if="karta">
   <div class="container">
