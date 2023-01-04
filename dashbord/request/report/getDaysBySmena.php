@@ -163,7 +163,7 @@
         $text = $text . '
             <tr>
                 <td>' . $day . '</td>
-                <td>' . $inTotalMoneysDay . ' р.</td>
+                <td>' . $inTotalMoneys . ' р.</td>
                 <td>' . ceil($averageMoneys) . ' р.</td>
                 <td>' . $quantity . ' шт.</td>
                 <td>' . $payTypeByСard . ' шт.</td>
@@ -175,7 +175,7 @@
         $text = $text . '
             <tr class="table-light" style="color:black !important;">
                 <td style="color:black !important;">Дневная смена</td>
-                <td style="color:black !important;">' . $inTotalMoneys . ' р.</td>
+                <td style="color:black !important;">' . $inTotalMoneysDay . ' р.</td>
                 <td style="color:black !important;">' . ceil($averageMoneysDay) . ' р.</td>
                 <td style="color:black !important;">' . $quantityDay . ' шт.</td>
                 <td style="color:black !important;">' . $payTypeByСardDay . ' шт.</td>
