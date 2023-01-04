@@ -21,7 +21,7 @@ $data = $stmt->fetchAll();
         $period = strtotime(date("H:i:s",strtotime($dot['createtime'])));
 
         if ($period >= strtotime('08:29:59') && $period <= strtotime('20:29:59')){
-		$splitted[date("Y-m-d",strtotime($dot['createtime'])-30600)]["day"][] = $dot;
+			$splitted[date("Y-m-d",strtotime($dot['createtime'])-30600)]["day"][] = $dot;
 		}else if($period >= strtotime('20:29:59') && $period <= strtotime('23:59:59')){
 			$splitted[date("Y-m-d",strtotime($dot['createtime'])-30600)]["night"][] = $dot;
 		}

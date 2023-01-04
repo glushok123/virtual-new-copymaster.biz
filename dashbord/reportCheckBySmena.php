@@ -114,7 +114,9 @@
 				ci.discount_percent, 
 				ci.pay_type 
 				from check_id as ci 
-				where '" . $month[0] ."' <= ci.createtime and ci.createtime < '" . $month[1] ."'
+				where '" . $month[0] . " 08:29:59' <= ci.createtime 
+				and 
+				ci.createtime < '" . $month[1] ." 08:29:59'
 				AND (ci.cher = '0' ) 
 				order by ci.createtime DESC;
 		");
@@ -134,7 +136,9 @@
 				ci.discount_percent, 
 				ci.pay_type 
 				from check_id as ci 
-				where '" . $month[0] ."' <= ci.createtime and ci.createtime < '" . $month[1] ."'
+				where '" . $month[0] . " 08:29:59' <= ci.createtime 
+				and 
+				ci.createtime < '" . $month[1] ." 08:29:59'
 				AND (ci.cher = '0' ) 
 				order by ci.createtime DESC;
 		");
@@ -378,7 +382,7 @@
 	function getDays(dateStart, dateEnd)
 		{
 			$.ajax({
-				url: '/dashbord/request/report/getDays.php',
+				url: '/dashbord/request/report/getDaysBySmena.php',
 				method: 'post',
 				//dataType: 'json',
 				data: { 
