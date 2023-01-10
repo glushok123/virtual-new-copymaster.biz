@@ -129,11 +129,9 @@
         </div>
     </nav>
 
-     <br><br><br><br>
+     <br><br>
 
-
-
-     <!--div class="container">
+     <div class="container">
          <div class="row justify-content-center text-center">
 
              <div class="col-lg-12 mt-4 pt-2">
@@ -148,30 +146,7 @@
              </div>
             <span></span>
          </div>
-     </div-->
-
-
-        <div id ="del3" class="mobserv4">
-            <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                <div id="b_1" class="carousel-item active" data-bs-interval="7000">
-                    <a href="pechat_proektov.php"><img src="header_foto/Новогодний баннер для ПК.png" class="d-block w-100" alt="..."></a>
-                </div>
-            </div>
-
-            </div>
-        </div>
-        <div id ="del4" class="mobserv2">
-            <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                <div id="b_1" class="carousel-item active" data-bs-interval="7000">
-                    <a href="pechat_proektov.php"><img src="header_foto/Новогодний баннер для телефона.png" class="d-block w-100" alt="..."></a>
-                </div>
-            </div>
-
-            </div>
-        </div>
-<hr>
+     </div>
 
 <div id ="del1" class="mobserv4">
     <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
