@@ -61,8 +61,8 @@ include('./header.php')
 							<div class="col-6 col-lg-6 col-xl-6">
 								<h4>Год</h4>
 								<select id="years"  class="form-control" aria-label=".form-select-lg example">
-									<option selected value="2022">2022</option>
-									<option value="2023">2023</option>
+									<option value="2022">2022</option>
+									<option value="2023" selected>2023</option>
 								</select>
 							</div>
 						</div>
