@@ -2,7 +2,7 @@
 	session_start();
 	require_once $_SERVER['DOCUMENT_ROOT'] . '/config/config.php';
 
-	if (!isset($_SESSION['user_logged_in'])) {
+	if (! isset($_SESSION['user_logged_in'])) {
 		header('Location:authentication-login.php');
 	}
 ?>
@@ -12,14 +12,12 @@
 
 <head>
 	<meta charset="utf-8" />
-	
-
 	<meta http-equiv='cache-control' content='no-cache'>
 	<meta http-equiv='expires' content='0'>
 	<meta http-equiv='pragma' content='no-cache'>
 	<meta name="viewport" content="width=1000">
 
-	<title>КОПИМАСТЕР DASHBORD</title>
+	<title>КОПИМАСТЕР АДМИНКА</title>
 	<link rel="icon" href="assets/images/favicon-32x32.png" type="image/png" />
 	<link href="assets/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
 	<link href="assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
@@ -51,14 +49,12 @@
 						
 					</div>
 					<div>
-						<h4 class="d-none d-lg-flex logo-text">Dashbord</h4>
+						<h4 class="d-none d-lg-flex logo-text">Админка</h4>
 					</div>
 					<a href="javascript:;" class="toggle-btn ml-lg-auto" id="dashbord_icon"> <i class="bx bx-menu"></i>
 					</a>
 				</div>
-				<!--div class="flex-grow-1 search-bar">
 
-				</div-->
 				<div class="right-topbar ml-auto">
 					<ul class="navbar-nav">
 						<li class="nav-item search-btn-mobile">
@@ -70,12 +66,12 @@
 
 
 							<style media="screen">
-							@media screen and (max-width: 600px) {
-								#register {
-								visibility: hidden;
-								display: none;
+								@media screen and (max-width: 600px) {
+									#register {
+									visibility: hidden;
+									display: none;
+									}
 								}
-							}
 							</style>
 
 							<?php
@@ -115,7 +111,7 @@
 					<img src="assets/images/logo-icon.png" class="logo-icon-2" alt="" />
 				</div>
 				<div>
-					<h4 class="logo-text">Dashbord</h4>
+					<h4 class="logo-text">Админка</h4>
 				</div>
 				<a href="javascript:;" class="toggle-btn ml-auto"> <i class="bx bx-menu"></i>
 				</a>
@@ -207,7 +203,7 @@
 		<div class="switcher-btn"> <i class="bx bx-cog bx-spin"></i>
 		</div>
 		<div class="switcher-body">
-			<h5 class="mb-0 text-uppercase">Theme Customizer</h5>
+			<h5 class="mb-0 text-uppercase">Темы</h5>
 			<hr>
 			<p class="mb-0">Gaussian Texture</p>
 			  <hr>
@@ -221,7 +217,7 @@
 				<li id="theme6"></li>
 			  </ul>
                <hr>
-			  <p class="mb-0">Gradient Background</p>
+			  <p class="mb-0">Градиент</p>
 			  <hr>
 			  
 			  <ul class="switcher">
@@ -258,7 +254,7 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		width=screen.width; // ширина  
+		width=screen.width; // ширина
 		
 		if (width > 600) {
 			$("#dashbord_icon").click();

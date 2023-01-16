@@ -58,10 +58,10 @@
 										</button>
 									</div>
 									<hr>
-									<div class="text-center">
+									<!--div class="text-center">
 										<p class="mb-0">Нет аккаунта? <a href="authentication-register.html">Регистрация</a>
 										</p>
-									</div>
+									</div-->
 								</div>
 							</div>
 							<div class="col-lg-6">
@@ -94,10 +94,12 @@
 			warning_noti("Необходимо ввести логин!");
 				prov = false;
 		}
+
 		if ($("#login_passwd").val() == ""){
 			warning_noti("Необходимо ввести пароль!");
 				prov = false;
 		}
+
 		if (prov == true){
 			var datalog = {
 				"login":$("#login_login").val(),
@@ -105,22 +107,20 @@
 			};
 
 			$.post("login.php", datalog, function(datar){
-
-                console.log(datar)
 				var obj = JSON.parse(datar);
-				
-				console.log(obj)
+
 				if (obj.status == "error"){
 					warning_noti(obj.mes);
 				}
+
 				if (obj.status == "success"){
-					width=screen.width; // ширина  
+					width = screen.width; // ширина  
 					
 					if (width < 600) {
-						window.location.assign('grafikSmen.php');
+						window.location.href = 'grafikSmen.php';
 					}
 					else {
-						window.location.assign('index.php');
+						window.location.href = 'index.php';
 					}
 				}
 			});

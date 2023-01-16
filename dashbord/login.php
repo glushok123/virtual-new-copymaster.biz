@@ -10,6 +10,7 @@ header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
 
 function client_ip() {
     $ipaddress = '';
+
     if (isset($_SERVER['HTTP_CF_CONNECTING_IP']))
         $ipaddress = $_SERVER['HTTP_CF_CONNECTING_IP'];
     else if(isset($_SERVER['HTTP_CLIENT_IP']))
@@ -63,17 +64,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         $datat = date('Y-m-d H:i:s');
         $ip = client_ip();
 
-        $db->query("INSERT INTO user_accaunt_session
-            ( `id_user`, `date_in`, `device`,`ip`)
-            VALUES
-            ('".$info_user[0]['id']."','".$datat."','".$browserInfo['name']."/".$browserInfo['version']."/".gethostbyaddr($_SERVER['REMOTE_ADDR'])."','".$ip."')");
-
-
         $series_id = randomString(16);
         $remember_token = getSecureRandomToken(20);
-        $encryted_remember_token = password_hash($remember_token,PASSWORD_DEFAULT);
-        $expiry_time = date('Y-m-d H:i:s', strtotime(' + 30 days'));
+        $encryted_remember_token = password_hash($remember_token, PASSWORD_DEFAULT);
+        $expiry_time = date('Y-m-d H:i:s', strtotime(' + 60 days'));
         $expires = strtotime($expiry_time);
+
+        $db->query("INSERT INTO user_accaunt_session
+            ( `id_user`, `date_in`, `device`,`ip`,`series_id`,`remember_token`,`expires`)
+            VALUES
+            (
+                '".$info_user[0]['id']."',
+                '".$datat."',
+                '".$browserInfo['name']."/".$browserInfo['version']."/".gethostbyaddr($_SERVER['REMOTE_ADDR'])."',
+                '".$ip."',
+                '".$series_id."',
+                '".$encryted_remember_token."',
+                '".$expiry_time."'
+            )");
 
         setcookie('series_id', $series_id, $expires, "/");
 		setcookie('remember_token', $remember_token, $expires, "/");
@@ -81,7 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         $update_remember = array(
             'series_id'=> $series_id,
             'remember_token' => $encryted_remember_token,
-            'expires' =>$expiry_time
+            'expires' => $expiry_time
         );
 
         $db->where ('id',$id);
@@ -93,5 +101,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
         echo $json;
     }
-
 }

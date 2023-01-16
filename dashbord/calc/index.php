@@ -124,9 +124,6 @@ if (!isset($_SESSION['user_logged_in']))
 </head>
 
 <body class="bg-theme bg-theme9">
-
-
-
 	<div class="wrapper ">
 		<header class="top-header">
 			<nav class="navbar navbar-expand">
@@ -141,9 +138,6 @@ if (!isset($_SESSION['user_logged_in']))
 					<a href="javascript:;" class="toggle-btn ml-lg-auto" id="dashbord_icon"> <i class="bx bx-menu"></i>
 					</a>
 				</div>
-				<!--div class="flex-grow-1 search-bar">
-
-				</div-->
 				<div class="right-topbar ml-auto">
 					<ul class="navbar-nav">
 						<li class="nav-item search-btn-mobile">
@@ -153,14 +147,13 @@ if (!isset($_SESSION['user_logged_in']))
 
 						<li class="nav-item dropdown dropdown-user-profile">
 
-
 							<style media="screen">
-							@media screen and (max-width: 600px) {
-								#register {
-								visibility: hidden;
-								display: none;
+								@media screen and (max-width: 600px) {
+									#register {
+									visibility: hidden;
+									display: none;
+									}
 								}
-							}
 							</style>
 
 							<?php
@@ -193,8 +186,6 @@ if (!isset($_SESSION['user_logged_in']))
 			</nav>
 		</header>
 
-		<!--end header-->
-		<!--navigation-->
 		<div class="nav-container">
 			<div class="mobile-topbar-header">
 				<div class="">
@@ -282,27 +273,27 @@ if (!isset($_SESSION['user_logged_in']))
 		</div>
 	</header>
 	</div>
-			<script>
-			$(document).ready(function () {
-		$(window).on("scroll", function () {
-			if ($(this).scrollTop() > 60) {
-				$('.top-header').addClass('bg-dark');
-				$('.nav-container').addClass('bg-dark sticky-top-header');
-			} else {
-				$('.top-header').removeClass('bg-dark');
-				$('.nav-container').removeClass('bg-dark sticky-top-header');
-			}
+	<script>
+		$(document).ready(function () {
+			$(window).on("scroll", function () {
+				if ($(this).scrollTop() > 60) {
+					$('.top-header').addClass('bg-dark');
+					$('.nav-container').addClass('bg-dark sticky-top-header');
+				} else {
+					$('.top-header').removeClass('bg-dark');
+					$('.nav-container').removeClass('bg-dark sticky-top-header');
+				}
+			});
+			$('.back-to-top').on("click", function () {
+				$("html, body").animate({
+					scrollTop: 0
+				}, 600);
+				return false;
+			});
 		});
-		$('.back-to-top').on("click", function () {
-			$("html, body").animate({
-				scrollTop: 0
-			}, 600);
-			return false;
-		});
-	});
 	</script>
 
-					<div id='wrapper' class='basic' style="top: 70px;">
+	<div id='wrapper' class='basic' style="top: 70px;">
 						
 						<div id='wrapMenu'>
 							<div id='m1' class='menu a'></div>
@@ -326,23 +317,15 @@ if (!isset($_SESSION['user_logged_in']))
 							<div id='butFiz' class='butn sel'>Физ. лицо</div>
 							<div id='butUrl' class='butn'>Юр. лицо</div>
 							<div id='butChekAdd' class='butn'>Добавить в чек</div>
-
-							<!--div id='compName' class='box '><input id='inpName' placeholder='заказчик'></div-->
 						</div>
 						<div id='wrapDebily' class="hide">
 
                 			<div class="row">
-                				<!--div class="col-1">
-                					<button id="hidewrapDebily" type="button" class="btn btn-danger" style="">X</button>
-                				</div-->
-                
                 				<div class="col-5">
                 					<button id='butFizn' type="button" class="butn" style="width:210px; height:80px;">
                 						Наличный расчёт
                 					</button>
                 				</div>
-                
-
                 			</div>
 							<div class='row'>
 								<div class="col-5">
@@ -470,6 +453,7 @@ if (!isset($_SESSION['user_logged_in']))
 
 						</div>
 	</div>
+
 	<div class="switcher-wrapper">
 		<div class="switcher-btn"> <i class="bx bx-cog bx-spin"></i>
 		</div>
@@ -501,6 +485,7 @@ if (!isset($_SESSION['user_logged_in']))
 			  </ul>
 		</div>
 	</div>
+
 	<!--end switcher-->
 	<script src="assets/js/jquery.min.js"></script>
 	<script src="assets/js/popper.min.js"></script>
@@ -740,25 +725,6 @@ if (!isset($_SESSION['user_logged_in']))
 		for (k in chekDates) {
 			chekDates[k].innerHTML = `${day}.${mou}.${year}`;
 		}
-		//window.print();
-		console.log('123');
-
-	/*	var element = document.getElementById('wrapChek');
-		var opt = {
-		margin:       10,
-		filename:     'myfile.pdf',
-		image:        { type: 'jpeg', quality: 1 },
-		html2canvas:  { scale: 2, logging: true, dpi: 300, letterRendering: true},
-		jsPDF:        { unit: 'mm', format: 'a4', orientation: 'p' }
-		};
-	
-		html2pdf().set(opt).from(element).save();
-*/
-		//const element = wrapper;
-		//html2pdf().from(element).save();
-		//wrapper.className = "basic";
-
-		//setTimeout('wrapper.className = "basic";', 100);
 
 		let pdf = new jsPDF('p', 'pt', 'letter');
 		pdf.html(document.getElementById('wrapper'), {
@@ -768,28 +734,14 @@ if (!isset($_SESSION['user_logged_in']))
 			}
 		});
 
-		/*
-		html2canvas($('#wrapChek'), {
-			onrendered: function (canvas) {
-				var data = canvas.toDataURL();
-				var docDefinition = {
-					content: [{
-						image: data,
-						width: 500,
-						dpi: 400
-					}]
-				};
-				pdfMake.createPdf(docDefinition).download("price.pdf");
-			}
-		});
-		*/
+
 	});
 
 	$("body").on("click", "#hidewrapDebily", function() {
 		$('#wrapDebily').addClass('hide');
 	});
 
-	jQuery(function($){
+	/*jQuery(function($){
 		$(document).mouseup(function (e){ // событие клика по веб-документу
 			console.log(e)
 			console.log(e.target.id)
@@ -801,14 +753,14 @@ if (!isset($_SESSION['user_logged_in']))
 
 
 		});
-	});
+	});*/
 
 	function hideIsNotBlock(idBlock){
 
 		var div = $(idBlock); // тут указываем ID элемента
-			if (!div.is(e.target) // если клик был не по нашему блоку
+			if (! div.is(e.target) // если клик был не по нашему блоку
 				&& div.has(e.target).length === 0) { // и не по его дочерним элементам
-					if(!div.hasClass('hide')) {
+					if(! div.hasClass('hide')) {
 						div.addClass('hide');
 					}
 			}
