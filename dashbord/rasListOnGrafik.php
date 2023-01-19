@@ -56,8 +56,8 @@
 								<div class="col-6 col-lg-6 col-xl-6">
 									<h4>Год</h4>
 									<select id="years"  class="form-control" aria-label=".form-select-lg example">
-										<option selected value="2022">2022</option>
-										<option value="2023">2023</option>
+										<option value="2022">2022</option>
+										<option value="2023" selected>2023</option>
 									</select>
 								</div>
 							</div>
@@ -77,7 +77,7 @@
 							echo '
 								<button class="btn btn-info  m-1 px-5" type="button" name="button" id="saveTable">Сохранить</button>
 								<button class="btn btn-info  m-1 px-5"type="button" name="button" id="editTable">Редактировать</button>
-								<button class="btn btn-info  m-1 px-5"type="button" name="button" id="slogTable">Расчёт</button>
+								<!--button class="btn btn-info  m-1 px-5"type="button" name="button" id="slogTable">Расчёт</button-->
 								<button type="button" name="button" class="cvet2  cvet kras" data-chet="kras"></button>
 								<button type="button" name="button" class="cvet2  cvet jolt" data-chet="jolt"></button>
 								<button type="button" name="button" class="cvet2  cvet chern" data-chet="chern"></button>
@@ -144,6 +144,9 @@ td.itogo { vertical-align:middle; text-align:center; border-bottom:2px solid #00
 table {
  table-layout: auto;; /* Фиксированная ширина ячеек */
  max-width: 80%; /* Ширина таблицы */
+}
+.castom-input{
+	max-width:80px;
 }
 </style>
 
@@ -227,7 +230,10 @@ table {
 			saveData();
 			calculateManey();
 			requestSaveData();
-			
+
+			arrayFamily = [];
+			getTableCalcRequest();
+			getTableGrafikRequest();
 		});
 
 		$(document).on("click", "#slogTable", function(){
@@ -283,7 +289,7 @@ table {
 				$(this).find('td').each(function(cell) {
 					if ($(this).hasClass('oklad')) {
 						if ($(this).text() != ""){
-							oklad= Number($(this).text());
+							oklad = Number($(this).text());
 						}
 					}
 					if ($(this).hasClass('avans')) {
@@ -297,7 +303,7 @@ table {
 						}
 					}
 					if ($(this).hasClass('itog')) {
-						$(this).text(	ost = oklad - avans - shtraf)
+						$(this).text(ost = oklad - avans - shtraf)
 					}
 				});
 
@@ -306,7 +312,19 @@ table {
 		
 		function requestSaveData() {
 			var el = document.getElementById( 'table3' );
-			$.ajax({url: 'moneyOnGrafik.php', method: 'POST', data:{mes:$('#messec').val(),s:"save", text_new: el.outerHTML}, success: function(response){	}});
+			$.ajax({
+				url: 'moneyOnGrafik.php', 
+				method: 'POST', 
+				data:{
+					mes: $('#messec').val(),
+					s: "save", 
+					year: $('#years').val(),
+					text_new: el.outerHTML
+				}, 
+				success: function(response){	
+
+				}
+			});
 		};
 
 		function saveData() {
@@ -317,6 +335,10 @@ table {
 						$(this).html(zn);
 					}
 					if ($(this).hasClass('htraf')){
+						let zn = $(this).find('input').val();
+						$(this).html(zn);
+					}
+					if ($(this).hasClass('payByHours')){
 						let zn = $(this).find('input').val();
 						$(this).html(zn);
 					}
@@ -344,19 +366,23 @@ table {
 					let cvel = $(this).text();
 
 					if ($(this).hasClass('oklad')){
-						$(this).html('<input type="text" name="" value="'+cvel+'">');
+						$(this).html('<input class="castom-input" type="text" name="" value="'+cvel+'">');
+					}
+
+					if ($(this).hasClass('payByHours')){
+						$(this).html('<input class="castom-input" type="number" name="" value="'+cvel+'">');
 					}
 
 					if ($(this).hasClass('avans')){
-						$(this).html('<input type="text" name="" value="'+cvel+'">');
+						$(this).html('<input class="castom-input" type="number" name="" value="'+cvel+'">');
 					}
 
 					if ($(this).hasClass('htraf')){
-						$(this).html('<input type="text" name="" value="'+cvel+'">');
+						$(this).html('<input class="castom-input" type="text" name="" value="'+cvel+'">');
 					}
 
 					if ($(this).hasClass('koment')){
-						$(this).html('<input type="text" name="" value="'+cvel+'">');
+						$(this).html('<input  type="text" name="" value="'+cvel+'">');
 					}
 				});
 			});
@@ -437,14 +463,11 @@ table {
 		};
 
 		function InsertArrayFamily() {
-
 			$('#table3 tr').each(function(row) {
 				var family = ''
 				var tip = ''
 				var avance = 0
 				
-
-
 				$(this).find('td').each(function(cell) {
 					
 					let cvel = $(this).text();
@@ -458,6 +481,16 @@ table {
 
 						avance = cvel;
 					}
+					
+					if ($(this).hasClass('payByHours')){
+
+						payByHours = cvel;
+					}
+
+					if ($(this).hasClass('koment')){
+
+						koment = cvel;
+					}
 
 				});
 
@@ -468,6 +501,8 @@ table {
 							"kolTime" : 0,	
 							"avans" : avance,
 							"tip" : tip,			
+							"payByHours" : payByHours,			
+							"koment" : koment,			
 						}	
 					)
 				}
@@ -475,29 +510,37 @@ table {
 		};
 
 		function printData() {
-			console.log(arrayFamily);
 			$('#table3 tbody tr').remove()
-			var kol = 0
+			var kol = 0;
+
 			arrayFamily.forEach(function(v) {
 				kol = kol + 1;
 				let moneyTime = 'Очень много';
 
-				if (v.tip == 'day' || v.tip == 'night') {
-					moneyTime = v.kolTime * 200;
-				}
+				if (v.payByHours == '') {
+					if (v.tip == 'day' || v.tip == 'night') {
+						moneyTime = v.kolTime * 200;
+						v.payByHours = 200;
+					}
 
-				if (v.tip == 'intern' ) {
-					moneyTime = v.kolTime * 160;
+					if (v.tip == 'intern' ) {
+						moneyTime = v.kolTime * 160;
+						v.payByHours = 160;
+					}
+				}else{
+					moneyTime = v.kolTime * v.payByHours;
 				}
 
 				row = '<tr>';
 				row = row + '<td class="chern">' + kol + '</td>';
 				row = row + '<td class="fio">' + v.family + '</td>';
+				row = row + '<td class="sumByHours">' + v.kolTime + '</td>';
+				row = row + '<td class="payByHours">' + v.payByHours + '</td>';
 				row = row + '<td class="oklad">' + moneyTime + '</td>';
 				row = row + '<td class="avans">' + v.avans + '</td>';
 				row = row + '<td class="htraf"></td>';
 				row = row + '<td class="jolt itog" style="color:black">' + (moneyTime - v.avans) + '</td>';
-				row = row + '<td class="koment"></td> ';
+				row = row + '<td class="koment">' + v.koment + '</td> ';
 				row = row + '</tr>';
 				$('#table3 tbody ').append(row);
 			});
