@@ -71,9 +71,7 @@
 					}
 					else
 					{
-					    $arraAccess = ['glushok', 'Boss', 'Manager'];
-
-						if (in_array($_SESSION['login'], $arraAccess)){
+						if ($_SESSION['type'] == 'admin'){
 							echo '
 								<button class="btn btn-info  m-1 px-5" type="button" name="button" id="saveTable">Сохранить</button>
 								<button class="btn btn-info  m-1 px-5"type="button" name="button" id="editTable">Редактировать</button>
