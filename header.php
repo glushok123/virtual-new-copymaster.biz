@@ -76,7 +76,7 @@
     <nav class="navbar navbar-expand-lg fixed-top sticky " id="navbar"  >
         <div class="container-fluid">
             <a href="index.php" class="navbar-brand me-5">
-                    <img src="images/logo копия.png" class="logo-dark" alt="" height="70" />
+                    <img src="images/logo_new.png" class="logo-dark" alt="" height="70" />
                     <img src="img/24.png" class="logo-dark " id="secret1" alt="" height="70" />
             </a>
             <a href="javascript:void(0)" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

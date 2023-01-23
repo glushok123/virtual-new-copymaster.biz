@@ -258,6 +258,12 @@ if (!isset($_SESSION['user_logged_in']))
 							<li> 
 								<a href="../applications.php"><i class="bx bx-right-arrow-alt"></i>Заказ материалов</a>
 							</li>
+							<li> 
+								<a href="../reportCheck.php"><i class="bx bx-right-arrow-alt"></i>статистика калькулятора по дням</a>
+							</li>							
+							<li> 
+								<a href="../reportCheckBySmena.php"><i class="bx bx-right-arrow-alt"></i>статистика калькулятора по сменам</a>
+							</li>
 						</ul>
 					</li>
 
@@ -602,12 +608,12 @@ if (!isset($_SESSION['user_logged_in']))
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		width=screen.width; // ширина  
+	//	width=screen.width; // ширина  
 		
-		if (width > 600) {
-			$("#dashbord_icon").click();
-		}
-	});
+	//	if (width > 600) {
+	//		$("#dashbord_icon").click();
+	//	}
+	//});
 </script>
 
  

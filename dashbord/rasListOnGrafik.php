@@ -24,6 +24,9 @@
 	<script src="assets/plugins/edittable/bstable.js"></script>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
+
 	<script src="assets/js/app.js"></script>
 		<div class="page-wrapper">
 			<div class="page-content-wrapper">
@@ -73,9 +76,9 @@
 					{
 						if ($_SESSION['type'] == 'admin'){
 							echo '
-								<button class="btn btn-info  m-1 px-5" type="button" name="button" id="saveTable">Сохранить</button>
+								<!--button class="btn btn-info  m-1 px-5" type="button" name="button" id="saveTable">Сохранить</button>
 								<button class="btn btn-info  m-1 px-5"type="button" name="button" id="editTable">Редактировать</button>
-								<!--button class="btn btn-info  m-1 px-5"type="button" name="button" id="slogTable">Расчёт</button-->
+								<button class="btn btn-info  m-1 px-5"type="button" name="button" id="slogTable">Расчёт</button>
 								<button type="button" name="button" class="cvet2  cvet kras" data-chet="kras"></button>
 								<button type="button" name="button" class="cvet2  cvet jolt" data-chet="jolt"></button>
 								<button type="button" name="button" class="cvet2  cvet chern" data-chet="chern"></button>
@@ -86,7 +89,7 @@
 								<button type="button" name="button" class="cvet2  cvet filo" data-chet="filo"></button>
 								<button type="button" name="button" class="cvet2  cvet zel" data-chet="zel"></button>
 								<button type="button" name="button" class="cvet2  cvet deny" data-chet="deny"></button>
-								<button type="button" name="button" class="cvet2  cvet del" data-chet="del">ОЧИСТИТЬ</button>
+								<button-- type="button" name="button" class="cvet2  cvet del" data-chet="del">ОЧИСТИТЬ</button-->
 							';
 						}
 					}
@@ -144,7 +147,7 @@ table {
  max-width: 80%; /* Ширина таблицы */
 }
 .castom-input{
-	max-width:80px;
+	min-width:150px;
 }
 </style>
 
@@ -180,12 +183,14 @@ table {
 
 		getTableCalcRequest();
 		getTableGrafikRequest();
+		editTable();
 
 		$( "#messec" ).change(function() {
 			arrayFamily = [];
 
 			getTableCalcRequest();
 			getTableGrafikRequest();
+			editTable();
 		});
 
 		$( "#years" ).change(function() {
@@ -193,9 +198,10 @@ table {
 
 			getTableCalcRequest();
 			getTableGrafikRequest();
+			editTable();
 		});
 
-		$(document).on("click", ".cvet", function(){
+		/*$(document).on("click", ".cvet", function(){
 			chett = $(this).attr('data-chet');
 		})
 
@@ -216,12 +222,23 @@ table {
 				$(this).addClass(chett);
 			}
 		});
-
+		*/
 		$(document).on("click", "#editTable", function(){
 			$('#editTable').hide();
 			editTable();
 		});
 
+		$(document).on("change", "input", function(){
+			saveData();
+			calculateManey();
+			requestSaveData();
+
+			arrayFamily = [];
+			getTableCalcRequest();
+			getTableGrafikRequest();
+			editTable();
+		});
+	
 		$(document).on("click", "#saveTable", function(){
 			$('#editTable').show();
 
@@ -309,7 +326,7 @@ table {
 		};
 		
 		function requestSaveData() {
-			var el = document.getElementById( 'table3' );
+			var el = document.getElementById('table3');
 			$.ajax({
 				url: 'moneyOnGrafik.php', 
 				method: 'POST', 
@@ -320,7 +337,7 @@ table {
 					text_new: el.outerHTML
 				}, 
 				success: function(response){	
-
+					toastr.success('Сохранено !');
 				}
 			});
 		};
@@ -363,24 +380,24 @@ table {
 					schet =  schet + 1;
 					let cvel = $(this).text();
 
-					if ($(this).hasClass('oklad')){
-						$(this).html('<input class="castom-input" type="text" name="" value="'+cvel+'">');
-					}
+					//if ($(this).hasClass('oklad')){
+						//$(this).html('<input class="form-control castom-input" type="text" name="" value="' + cvel + '">');
+					//}
 
 					if ($(this).hasClass('payByHours')){
-						$(this).html('<input class="castom-input" type="number" name="" value="'+cvel+'">');
+						$(this).html('<input class="form-control castom-input" type="number" name="" value="' + cvel + '">');
 					}
 
 					if ($(this).hasClass('avans')){
-						$(this).html('<input class="castom-input" type="number" name="" value="'+cvel+'">');
+						$(this).html('<input class="form-control castom-input" type="number" name="" value="' + cvel + '">');
 					}
 
 					if ($(this).hasClass('htraf')){
-						$(this).html('<input class="castom-input" type="text" name="" value="'+cvel+'">');
+						$(this).html('<input class="form-control castom-input" type="text" name="" value="' + cvel + '">');
 					}
 
 					if ($(this).hasClass('koment')){
-						$(this).html('<input  type="text" name="" value="'+cvel+'">');
+						$(this).html('<input class="form-control castom-input" type="text" name="" value="' + cvel + '">');
 					}
 				});
 			});
@@ -465,6 +482,7 @@ table {
 				var family = ''
 				var tip = ''
 				var avance = 0
+				var htraf = 0
 				
 				$(this).find('td').each(function(cell) {
 					
@@ -489,6 +507,10 @@ table {
 
 						koment = cvel;
 					}
+					if ($(this).hasClass('htraf')){
+
+						htraf = cvel;
+					}
 
 				});
 
@@ -501,6 +523,7 @@ table {
 							"tip" : tip,			
 							"payByHours" : payByHours,			
 							"koment" : koment,			
+							"htraf" : htraf,			
 						}	
 					)
 				}
@@ -536,10 +559,11 @@ table {
 				row = row + '<td class="payByHours">' + v.payByHours + '</td>';
 				row = row + '<td class="oklad">' + moneyTime + '</td>';
 				row = row + '<td class="avans">' + v.avans + '</td>';
-				row = row + '<td class="htraf"></td>';
-				row = row + '<td class="jolt itog" style="color:black">' + (moneyTime - v.avans) + '</td>';
+				row = row + '<td class="htraf">' + v.htraf + '</td>';
+				row = row + '<td class="jolt itog" style="color:black">' + (moneyTime - v.avans - v.htraf) + '</td>';
 				row = row + '<td class="koment">' + v.koment + '</td> ';
 				row = row + '</tr>';
+				//console.log( v.htraf)
 				$('#table3 tbody ').append(row);
 			});
 		};
