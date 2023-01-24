@@ -44,6 +44,14 @@ color:black;
 #historyList2 table .list:hover {
 background: #9cf;
 }
+#listOrders table .list {
+cursor: pointer;
+color:black;
+}
+
+#listOrders table .list:hover {
+background: #9cf;
+}
 
 table .cash {
 background: #9f9;
@@ -398,6 +406,37 @@ display: none;
 }
 
 #historyList2 table td {
+border: solid 1px #666;
+padding: 5px 2px;
+text-align: center;
+}
+
+.basic #wrapChek {
+width: calc(50% - 20px);
+position: absolute;
+top: 10px;
+right: 10px;
+max-height: 80%;
+overflow-y: auto;
+}
+#listOrders {
+display: block;
+position: absolute;
+bottom: 150px;
+right: 3px;
+height: calc(80vh - 95px);
+background: #fff;
+overflow-y: scroll;
+border: solid 1px #000;
+box-sizing: border-box;
+min-width: 400px;
+}
+
+#listOrders.hide {
+display: none;
+}
+
+#listOrders table td {
 border: solid 1px #666;
 padding: 5px 2px;
 text-align: center;

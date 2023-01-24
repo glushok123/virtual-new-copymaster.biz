@@ -128,9 +128,6 @@ if (!isset($_SESSION['user_logged_in']))
 					<a href="javascript:;" class="toggle-btn ml-lg-auto" id="dashbord_icon"> <i class="bx bx-menu"></i>
 					</a>
 				</div>
-				<!--div class="flex-grow-1 search-bar">
-
-				</div-->
 				<div class="right-topbar ml-auto">
 					<ul class="navbar-nav">
 						<li class="nav-item search-btn-mobile">
@@ -140,14 +137,13 @@ if (!isset($_SESSION['user_logged_in']))
 
 						<li class="nav-item dropdown dropdown-user-profile">
 
-
 							<style media="screen">
-							@media screen and (max-width: 600px) {
-								#register {
-								visibility: hidden;
-								display: none;
+								@media screen and (max-width: 600px) {
+									#register {
+									visibility: hidden;
+									display: none;
+									}
 								}
-							}
 							</style>
 
 							<?php
@@ -180,8 +176,6 @@ if (!isset($_SESSION['user_logged_in']))
 			</nav>
 		</header>
 
-		<!--end header-->
-		<!--navigation-->
 		<div class="nav-container">
 			<div class="mobile-topbar-header">
 				<div class="">
@@ -235,6 +229,9 @@ if (!isset($_SESSION['user_logged_in']))
 									</a>
 									<ul>
 										<li> <a href="../priceChange.php"><i class="bx bx-right-arrow-alt"></i>Изменение калк. ФИЗ </a>
+										</li>
+										<li> 
+											<a href="../titelPriceChange.php"><i class="bx bx-right-arrow-alt"></i>Изменение номенклатуры цен калк. ФИЗ </a>
 										</li>
 									</ul>
 								</li>
@@ -565,7 +562,9 @@ if (!isset($_SESSION['user_logged_in']))
 	.switcher-wrapper{
 		display: none;
 	}
-    
+    .navbar, .nav-container, .navbar-nav{
+		display: none !important;
+	}
 </style>
 
 
