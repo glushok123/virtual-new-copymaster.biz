@@ -15,8 +15,8 @@
 	<meta http-equiv='cache-control' content='no-cache'>
 	<meta http-equiv='expires' content='0'>
 	<meta http-equiv='pragma' content='no-cache'>
-	<meta name="viewport" content="width=1000">
-
+	<!--meta name="viewport" content="width=1000"-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>КОПИМАСТЕР АДМИНКА</title>
 	<link rel="icon" href="assets/images/favicon-32x32.png" type="image/png" />
 	<link href="assets/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
@@ -37,6 +37,13 @@
 	<script src="assets/plugins/notifications/js/notification-custom-script.js"></script>
 
 </head>
+
+<style>
+	@media (max-width: 600px)  { 
+		/*#mainblock { zoom: 70%; }
+		#example2_wrapper{ zoom: 70%; }*/
+	}
+</style>
 
 <body class="bg-theme bg-theme9">
 	<div class="wrapper ">

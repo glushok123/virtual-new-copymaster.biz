@@ -28,13 +28,13 @@
 
 					<div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
 						<div class="row">
-							<div class="col-sm-12">
-								<table id="applicationsAll" class="table table-striped table-bordered dataTable"  role="grid" aria-describedby="example2_info" style="max-width:650px;">
+							<div class="col-sm-12 table-responsive">
+								<table id="applicationsAll" class="table table-striped table-bordered dataTable table-sm"  role="grid" aria-describedby="example2_info" style="max-width:650px;">
 									<thead>
 										<tr role="row">
 											<th>Дата создания</th>
 											<th>Пользователь</th>
-											<th>Заявка</th>
+											<th style="min-width:200px">Заявка</th>
 											<th>Комментарий</th>
 											<th>Статус</th>
 											<th>Действие</th></tr>

@@ -99,7 +99,7 @@
 
 					</div>
 
-					<div id="mainblock">
+					<div id="mainblock" class="table-responsive">
 
 					</div>
 
@@ -183,7 +183,12 @@ table {
 
 		getTableCalcRequest();
 		getTableGrafikRequest();
-		editTable();
+
+		<? 
+			if($_SESSION['type'] == "admin") {
+				echo 'editTable();';
+			}
+		?>
 
 		$( "#messec" ).change(function() {
 			arrayFamily = [];
@@ -568,4 +573,6 @@ table {
 			});
 		};
 	});
+
+	
 </script>

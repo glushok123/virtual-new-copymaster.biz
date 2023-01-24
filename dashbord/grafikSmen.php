@@ -105,7 +105,7 @@ include('./header.php')
 					 ?>
 					 <hr>
 
-					<div id="mainblock">
+					<div id="mainblock" class="table-responsive">
 
 					</div>
 
