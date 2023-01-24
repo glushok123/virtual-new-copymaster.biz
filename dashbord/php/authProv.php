@@ -13,15 +13,18 @@ if (isset($_COOKIE['series_id']) && isset($_COOKIE['remember_token'])) {
 
 	if ($db->count >= 1)
 	{
-		// User found. verify remember token
+		$dbNew = getDbInstance();
+		$db->where('id', $row['id_user']);
+		$rowNew = $db->getOne('user_accaunt');
+
 		if (password_verify($remember_token, $row['remember_token']))
         	{
-				$expires = strtotime($row['expires']);
+				$expires = strtotime($rowNew['expires']);
 				$_SESSION['user_logged_in'] = TRUE;
-				$_SESSION['type_user'] = $row['type_user'];
-				$_SESSION['login'] = $row['login'];
-				$_SESSION['type'] = $row['type'];
-				$_SESSION['email'] = $row['email'];
+				$_SESSION['type_user'] = $rowNew['type_user'];
+				$_SESSION['login'] = $rowNew['login'];
+				$_SESSION['type'] = $rowNew['type'];
+				$_SESSION['email'] = $rowNew['email'];
 
 			header('Location:index.php');
 		}
