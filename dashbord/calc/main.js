@@ -4216,13 +4216,28 @@ let chek = new function () {
   }
 
   this.setDisc = function (n, id) {
+    toastr.options.timeOut = 5000; // 3s
     if (n < 1) {
       n = 0;
       butSkid.className = 'box span';
       inpDiscProc.value = this.data.dip = 0;
       inpDiscRub.value = this.data.dir = 0;
+      this.show();
+  
       return;
     }
+
+    if (n > 50) {
+      n = 0;
+      butSkid.className = 'box span';
+      inpDiscProc.value = this.data.dip = 0;
+      inpDiscRub.value = this.data.dir = 0;
+      toastr.error('Запрещена скидка более 50% !');
+      this.show();
+
+      return;
+    }
+
     if ((n + '').indexOf(",") + 1) {
       n = (n + '').replace(",", ".");
     }
@@ -4236,9 +4251,31 @@ let chek = new function () {
     if (id == 1) {
       inpDiscProc.value = this.data.dip = Math.ceil(Math.round(n * 100) / 100);
       inpDiscRub.value = this.data.dir = Math.ceil(Math.round(sum * this.data.dip) / 100);
+
+      if (inpDiscProc.value > 50) {
+        n = 0;
+        butSkid.className = 'box span';
+        inpDiscProc.value = this.data.dip = 0;
+        inpDiscRub.value = this.data.dir = 0;
+        toastr.error('Запрещена скидка более 50% !');
+        this.show();
+
+        return;
+      }
     } else {
       inpDiscRub.value = this.data.dir = Math.ceil(Math.round(n * 100) / 100);
       inpDiscProc.value = this.data.dip = Math.ceil(Math.round(10000 * this.data.dir / sum) / 100);
+
+      if (inpDiscProc.value > 50) {
+        n = 0;
+        butSkid.className = 'box span';
+        inpDiscProc.value = this.data.dip = 0;
+        inpDiscRub.value = this.data.dir = 0;
+        toastr.error('Запрещена скидка более 50% !');
+        this.show();
+
+        return;
+      }
     }
     this.show();
   }
@@ -4254,7 +4291,13 @@ let chek = new function () {
   }
 
   this.fix = function (id) {
-    if (!this.data.id) {
+    console.log(chek.data.sum)
+    if (chek.data.sum < 1){
+      toastr.error('Цена меньше 1 !');
+      return;
+    }
+
+    if (! this.data.id) {
       // return;
     }
     if (butUrl.className == 'butn sel') {
