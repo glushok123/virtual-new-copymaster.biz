@@ -529,14 +529,13 @@
 
     });
 
-
-    $(document).snowfall({
+    /*$(document).snowfall({
         flakeCount: 200,
         //image :"./js/img/snow3.png", 
         minSize: 5, 
         maxSize:10,
         round: true,
         shadow: false,
-    });
+    });*/
 
 </script>
