@@ -102,7 +102,6 @@ if (!isset($_SESSION['user_logged_in']))
 	<link rel="icon" href="assets/images/favicon-32x32.png" type="image/png" />
 	<link href="assets/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
 	<link href="assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
-	<link href="assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
 	<link href="assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="assets/css/icons.css" />
@@ -116,8 +115,6 @@ if (!isset($_SESSION['user_logged_in']))
 	<script src="node_modules/tableexport/dist/js/tableexport.js"></script>
 
  	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
 
 	<script src="assets/js/jquery.min.js"></script>
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
@@ -134,7 +131,7 @@ if (!isset($_SESSION['user_logged_in']))
 						
 					</div>
 					<div>
-						<h4 class="d-none d-lg-flex logo-text">Dashbord</h4>
+						<h4 class="d-none d-lg-flex logo-text">КОПИМАСТЕР</h4>
 					</div>
 					<a href="javascript:;" class="toggle-btn ml-lg-auto" id="dashbord_icon"> <i class="bx bx-menu"></i>
 					</a>
@@ -318,7 +315,7 @@ if (!isset($_SESSION['user_logged_in']))
 							<div class='box'>Стоимость<input id='inpSum' value='0' readonly></div>
 
 							<div id='compName' class='box2'>Клиент<input id='inpName'></div>
-							<div id='comptel' class='box2'>Контакты<input id='tel'></div>
+							<div id='comptel' class='box2'>Телефон<input id='tel'></div>
 							<div id='compsrok' class='box2'>Сроки/Коммент<input id='srok'></div>
 
 							<div id='butFiz' class='butn sel'>Физ. лицо</div>
@@ -403,6 +400,11 @@ if (!isset($_SESSION['user_logged_in']))
 									<td></td>
 									<td></td>
 								</tr>
+								<tr>
+									<td colspan="5">Предоплата</td>
+									<td></td>
+									<td></td>
+								</tr>
 							</table>
 						</div>
 
@@ -451,6 +453,13 @@ if (!isset($_SESSION['user_logged_in']))
 							<div class='butn' id='butSaveCher' style="background-color:#1fcbff; color: black">В черновик</div>
 							<div class='butn' id='butHistoryCher'>Черновики</div>
 							<div class='butn' id='butOrders'>Заявки</div>
+							<div class='container'>
+								<div class='row'>
+									<div class='col'>
+										<input class="form-control" type="number" placeholder="Предоплата" id='inputPrepayment'>
+									</div>
+								</div>
+							</div>
 							
 							<!--div class='butn' id='btnExport' style="background-color:red; color: white">Экспорт в PDF</div-->
 
@@ -500,14 +509,7 @@ if (!isset($_SESSION['user_logged_in']))
 	<!--plugins-->
 	<script src="assets/plugins/simplebar/js/simplebar.min.js"></script>
 	<script src="assets/plugins/metismenu/js/metisMenu.min.js"></script>
-	<script src="assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
 	<!-- Vector map JavaScript -->
-	<script src="assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js"></script>
-	<script src="assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js"></script>
-	<script src="assets/plugins/vectormap/jquery-jvectormap-in-mill.js"></script>
-	<script src="assets/plugins/vectormap/jquery-jvectormap-us-aea-en.js"></script>
-	<script src="assets/plugins/vectormap/jquery-jvectormap-uk-mill-en.js"></script>
-	<script src="assets/plugins/vectormap/jquery-jvectormap-au-mill.js"></script>
 
 	<script src="assets/js/index.js"></script>
 	<!-- App JS -->
@@ -687,28 +689,17 @@ if (!isset($_SESSION['user_logged_in']))
 		}
 
 </style>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
+
 <script type="text/javascript">
-	$(document).ready(function() {
-	//	width=screen.width; // ширина  
-		
-		//if (width > 600) {
-		//	$("#dashbord_icon").click();
-		//}
-	});
-</script>
+	$('#tel').mask("+7 (999) 999-99-99");
 
-	<!--link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script> 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script-->
-
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.js"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/"crossorigin="anonymous"></script>
-<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
- 
-<script type="text/javascript">
 
 	$("body").on("click", "#btnExport", function () {
 
@@ -748,22 +739,7 @@ if (!isset($_SESSION['user_logged_in']))
 		$('#wrapDebily').addClass('hide');
 	});
 
-	/*jQuery(function($){
-		$(document).mouseup(function (e){ // событие клика по веб-документу
-			console.log(e)
-			console.log(e.target.id)
-			if (e.target.id !='butSave' && e.target.id !='butHistory' ) {
-				hideIsNotBlock('#wrapDebily')
-				hideIsNotBlock('#historyList2')
-			}
-
-
-
-		});
-	});*/
-
 	function hideIsNotBlock(idBlock){
-
 		var div = $(idBlock); // тут указываем ID элемента
 			if (! div.is(e.target) // если клик был не по нашему блоку
 				&& div.has(e.target).length === 0) { // и не по его дочерним элементам
@@ -771,15 +747,5 @@ if (!isset($_SESSION['user_logged_in']))
 						div.addClass('hide');
 					}
 			}
-
 	}
-	
 </script>
-
-
-
- <style>
-	.topbar-nav{
-		background-color:black;
-	}
- </style>

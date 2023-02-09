@@ -8,7 +8,7 @@ $stmt = $dbh->prepare("SELECT of.name, of.cost, of.item, of.price, of.count, of.
 $stmt->bindParam(1, $idloadcheck);
 $stmt->execute();
 $data = $stmt->fetchAll();
-$stmt = $dbh->prepare("SELECT ci.cost, ci.discount, ci.discount_percent, ci.pay_type from check_id as ci where ci.id = ?;");
+$stmt = $dbh->prepare("SELECT ci.cost, ci.discount, ci.discount_percent, ci.pay_type, ci.prepayment from check_id as ci where ci.id = ?;");
 $stmt->bindParam(1, $idloadcheck);
 $stmt->execute();
 $datacheck = $stmt->fetchAll();
@@ -45,14 +45,16 @@ if ($datacheck["0"]["discount"] !== "0") {
           <td>-".$datacheck["0"]["discount"]." руб.</td>
           </tr>";
 }
+
+if ($datacheck["0"]["prepayment"] !== "0") {
+	$text .= "<tr class=\"\"><td colspan=\"5\">Предоплата</td><td id=\"prepayment\" colspan=\"1\">".$datacheck["0"]["prepayment"]." руб.</td></tr>";
+}
+
 $text .= "
-
-
-        <tr class=\"chekItog\"><td colspan=\"5\">Итого</td><td id=\"priceConteiner\" colspan=\"1\">".$datacheck["0"]["cost"]."</td><td></td></tr>
+        <tr class=\"chekItog\"><td colspan=\"5\">Итого</td><td id=\"priceConteiner\" colspan=\"1\">".$datacheck["0"]["cost"]."</td></tr>
         <tr class=\"chekItog\">
 		  <td colspan=\"6\" id='qazwsx'>Способ оплаты: ".$pay_type."</td><td></td>
 
         </tr></table>";
-	// var_dump($text) ;
 echo $text;
 ?>

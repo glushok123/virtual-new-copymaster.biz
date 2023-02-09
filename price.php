@@ -1,21 +1,8 @@
 <?php
-$keyw="Цены на печать, печать недорого, копирование недорого, сканирование цена";
-$titl="Цены на услуги копировального центра в Москве";
-$desc="Цены на услуги печали и копирования в компании «Копимастер» - Печать афиш круглосуточно!";
-include_once 'header.php';
-
-require_once $_SERVER['DOCUMENT_ROOT'] . '/config/config.php';
-$db = getDbInstance();
-
-$res = $db->query("SELECT * FROM `pricecalc`");
-
-$price = [];
-
-foreach ($res as $z){
-    $price[$z["name"]] = $z["price"];
-}
-
-echo($price['petchat_chet_A4_0_odn']);
+    $keyw="Цены на печать, печать недорого, копирование недорого, сканирование цена";
+    $titl="Цены на услуги копировального центра в Москве";
+    $desc="Цены на услуги печали и копирования в компании «Копимастер» - Печать афиш круглосуточно!";
+    include_once 'header.php';
 ?>
 <section>
   <div class="container">
@@ -198,8 +185,6 @@ echo($price['petchat_chet_A4_0_odn']);
             </div>
 
         	<p>Указанные цены действительны при заключении договора на обслуживание и единовременном заказе от 30000 рублей. Подробную консультацию о скидках можно получить у нашего менеджера.</p>
-
-
     </div>
 </section>
 
@@ -341,9 +326,6 @@ echo($price['petchat_chet_A4_0_odn']);
                 </div>
             </div>
 
-
-
-
 <!-- Modal -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -440,7 +422,7 @@ echo($price['petchat_chet_A4_0_odn']);
 			$(document).trigger('save-order')
 		});
 
-        $('#fio').on('blur', function(){
+        $('#fio').on('blur', function() {
            conditionalFio();
         });
 

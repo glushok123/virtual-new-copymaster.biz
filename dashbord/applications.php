@@ -303,7 +303,7 @@
 		{
 			data = $('#change-order').serializeArray();
 			data.push({name: "id", value: $(order).data('order-id')});
-			console.log(data)
+
 			$.ajax({
 				url: '/dashbord/request/order/update.php',
 				method: 'post',

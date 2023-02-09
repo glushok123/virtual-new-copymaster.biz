@@ -10,8 +10,6 @@ let base = new function () {
   }})
   $.ajax({url: '../getTitelPrice.php', method: 'GET', dataType: 'json', async: false, success: function(response){
     titelBD = response;
-    console.log(titelBD['']);
-
   }})
 
   this.a = new function () {
@@ -4155,6 +4153,7 @@ let chek = new function () {
     this.dip = 0; //cкидка в процентах
     this.fx = 0; //Проведён ли чек 0 - непроведен, 1 - оплата налом, 2 - оплата картой, 3 - юр лица
     this.sum = 0 //cумма чека
+    this.prepayment = 0 //предоплата
     this.telc = tel.value; //Название компании еcли это безнал
     this.srokc = srok.value;
     this.cher = 0;
@@ -4192,6 +4191,50 @@ let chek = new function () {
     if (name) {
       tel.value = name;
       chek.data.telc = tel.value;
+
+      let data = {
+			    phone : tel.value,
+			};
+
+			$.ajax({
+				url: '/dashbord/request/clients/getByTel.php',
+				method: 'post',
+				dataType: 'json',
+				data: data,
+				success: function(data){
+          data = $.parseJSON(data)
+
+					if (data.status == 'success') {
+            if (data.discount > 0) {
+              toastr.success('Найдена скидка постоянного клиента: ' + data.discount + '%');
+              $('#butSkid').removeClass('butn')
+              $('#butSkid').removeClass('span')
+              $('#butSkid').addClass('box')
+              $('#butSkid').addClass('inp')
+              chek.setDisc(Number(data.discount), 1);
+            }
+					}
+
+				},
+				error: function (jqXHR, exception) {
+					if (jqXHR.status === 0) {
+						alert('Not connect. Verify Network.');
+					} else if (jqXHR.status == 404) {
+						alert('Requested page not found (404).');
+					} else if (jqXHR.status == 500) {
+						alert('Internal Server Error (500).');
+					} else if (exception === 'parsererror') {
+						alert('Requested JSON parse failed.');
+					} else if (exception === 'timeout') {
+						alert('Time out error.');
+					} else if (exception === 'abort') {
+						alert('Ajax request aborted.');
+					} else {
+						alert('Uncaught Error. ' + jqXHR.responseText);
+					}
+				}
+			});
+
     } else {
       return;
     }
@@ -4279,6 +4322,25 @@ let chek = new function () {
     }
     this.show();
   }
+  
+  //Установка предоплаты
+  this.setPrepayment = function (n) {
+    toastr.options.timeOut = 5000; // 3s
+  
+    if (n < 1) {
+      n = 0;
+
+      inputPrepayment.value = this.data.prepayment = 0;
+
+      this.show();
+  
+      return;
+    }
+
+    this.data.prepayment = n;
+  
+    this.show();
+  }
 
   this.new = function () {
     this.data.fx = 0;
@@ -4286,12 +4348,12 @@ let chek = new function () {
     this.setCompName(" ");
     this.setTel(" ");
     this.setSrok(" ");
+    this.setPrepayment(' ');
     this.show();
     $('#someOtherDiv').html(" ");
   }
 
   this.fix = function (id) {
-    console.log(chek.data.sum)
     if (chek.data.sum < 1){
       toastr.error('Цена меньше 1 !');
       return;
@@ -4321,14 +4383,15 @@ let chek = new function () {
 
     this.data = new this.const;
 
-      }
+  }
+
   this.fix2 = function (id) {
 
         this.data.fx = 2;
         this.saveCh();
         this.data = new this.const;
 
-          }
+  }
 
   this.print = function (id) {
 
@@ -4360,7 +4423,7 @@ let chek = new function () {
   this.show = function () {
     let sum = 0;
     let o = this.data.lst;
-    console.log(o)
+
     let n = 1;
     let table = `
       <table>
@@ -4404,6 +4467,10 @@ let chek = new function () {
     }
 
     if (this.data.dir > 0) {
+
+      this.data.dip = Math.ceil(Math.round(inpDiscProc.value * 100) / 100);
+      inpDiscRub.value = this.data.dir = Math.ceil(Math.round(sum * this.data.dip) / 100);
+
       let dir = this.data.dir;
       let dip = this.data.dip;
       sum -= dir;
@@ -4413,12 +4480,23 @@ let chek = new function () {
           <td>-${dir} р.</td>
         </tr>`;
     }
+
+    if (this.data.prepayment > 0) {
+      sum-=this.data.prepayment;
+      table += `
+      <tr class="prepayment">
+        <td colspan="5">Предоплата</td>
+        <td>${this.data.prepayment} р.</td>
+      </tr>`;
+    }
     sum = sum.toFixed(2);
+
     table += `
         <tr class="chekItog">
           <td colspan="5">Итого</td>
           <td>${sum} р.</td>
         </tr>
+
       </table>`;
     this.data.sum = sum;
     wrapChek.innerHTML = table;
@@ -4494,7 +4572,7 @@ let chek = new function () {
         data: chek.data,
         info: testobj
       };
-    console.log(obj);
+
     let funcload = (resp) => {
         console.log(resp);
           respobj = JSON.parse(resp);
@@ -4989,6 +5067,9 @@ let main = new function () {
     }, false);
     inpDiscProc.addEventListener('change', function () {
       chek.setDisc(inpDiscProc.value, 1);
+    }, false);
+    inputPrepayment.addEventListener('change', function () {
+      chek.setPrepayment(inputPrepayment.value);
     }, false);
     inpDiscRub.addEventListener('change', function () {
       chek.setDisc(inpDiscRub.value, 2);

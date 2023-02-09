@@ -201,3 +201,16 @@
        <span class="pulse-button__rings"></span>
        <span class="pulse-button__rings"></span>
      </button>
+
+<?
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/config/config.php';
+    $db = getDbInstance();
+
+    $res = $db->query("SELECT * FROM `pricecalc`");
+
+    $price = [];
+
+    foreach ($res as $z){
+        $price[$z["name"]] = $z["price"];
+    }
+?>
