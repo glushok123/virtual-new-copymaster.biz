@@ -1,12 +1,14 @@
 <?php
-session_start();
-require_once $_SERVER['DOCUMENT_ROOT'] . '/config/config.php';
+	session_start();
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/config/config.php';
 
-if (!isset($_SESSION['user_logged_in']))
-{
-	header('Location:https://copymaster.biz/dashbord/authentication-login.html');
-}
+	$token = bin2hex(openssl_random_pseudo_bytes(16));
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/dashbord/php/authOneProv.php';
 
+	if (! isset($_SESSION['user_logged_in']))
+	{
+		header('Location:https://copymaster.biz/dashbord/authentication-login.html');
+	}
 ?>
 
 <!DOCTYPE html>

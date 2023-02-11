@@ -1,4 +1,6 @@
 <?
+
+
 if (isset($_COOKIE['series_id']) && isset($_COOKIE['remember_token'])) {
 
 	// Get user credentials from cookies.
@@ -23,16 +25,22 @@ if (isset($_COOKIE['series_id']) && isset($_COOKIE['remember_token'])) {
 				$_SESSION['login'] = $rowNew['login'];
 				$_SESSION['type'] = $rowNew['type'];
 				$_SESSION['email'] = $rowNew['email'];
-
-			header('Location:index.php');
 		}
 		else
 		{
+			session_destroy();
 			clearAuthCookie();
+			session_start();
 		}
 	}
 	else
 	{
+		session_destroy();
 		clearAuthCookie();
+		session_start();
 	}
+}else{
+	session_destroy();
+	clearAuthCookie();
+	session_start();
 }

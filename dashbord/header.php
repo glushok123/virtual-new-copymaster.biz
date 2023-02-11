@@ -2,7 +2,10 @@
 	session_start();
 	require_once $_SERVER['DOCUMENT_ROOT'] . '/config/config.php';
 
-	if (! isset($_SESSION['user_logged_in'])) {
+	$token = bin2hex(openssl_random_pseudo_bytes(16));
+	require_once 'php/authOneProv.php';
+
+	if (isset($_SESSION['user_logged_in']) == false) {
 		header('Location:authentication-login.php');
 	}
 ?>
@@ -68,6 +71,7 @@
 							<a class="nav-link position-relative" href="javascript:;">	<i class="bx bx-search vertical-align-middle"></i>
 							</a>
 						</li>
+						
 
 						<li class="nav-item dropdown dropdown-user-profile">
 
@@ -118,7 +122,7 @@
 					<img src="assets/images/logo-icon.png" class="logo-icon-2" alt="" />
 				</div>
 				<div>
-					<h4 class="logo-text">Админка</h4>
+					<h4 class="logo-text">Админка <? echo $_SESSION['user_logged_in'];?> </h4>
 				</div>
 				<a href="javascript:;" class="toggle-btn ml-auto"> <i class="bx bx-menu"></i>
 				</a>
