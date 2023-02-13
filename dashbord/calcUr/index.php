@@ -123,7 +123,7 @@ if (!isset($_SESSION['user_logged_in']))
 						
 					</div>
 					<div>
-						<h4 class="d-none d-lg-flex logo-text">КОПИМАСТЕР</h4>
+						<h4 class="d-none d-lg-flex logo-text">Админка</h4>
 					</div>
 					<a href="javascript:;" class="toggle-btn ml-lg-auto" id="dashbord_icon"> <i class="bx bx-menu"></i>
 					</a>
