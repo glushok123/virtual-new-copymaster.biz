@@ -271,6 +271,9 @@
 							<li> 
 								<a href="../reportCheckBySmena.php"><i class="bx bx-right-arrow-alt"></i>статистика калькулятора по сменам</a>
 							</li>
+							<li> 
+								<a href="../customersCalculator.php"><i class="bx bx-right-arrow-alt"></i>Клиенты и скидки</a>
+							</li>
 						</ul>
 					</li>
 
@@ -433,43 +436,48 @@
 						</div>
 
 
+<style>
+	.custom-input::placeholder{
+		color: black;
+	}
 
-						<div id='wrapChekContrl'>
-							<div id='someOtherDiv'>
+</style>
+	<div id='wrapChekContrl'>
+		<div id='someOtherDiv'>
 
-							</div>
-							<div id='butNew' class='butn'>Новый чек</div>
-							<div class='butn span' id='butSkid'>
-								<span class='skidName'>Cкидка</span>
-								<input id='inpDiscProc' value='0' class='skidInputs'><span class='skidInputs'>% &nbsp;</span>
-								<input id='inpDiscRub' value='0' class='skidInputs'><span class='skidInputs'>р.</span>
-							</div>
-							<div class='butn' id='butSave'>Оплатить</div>
-							<div id='butHistory' class='butn'><span id="infoCheckSave"></span>История чеков</div>
-							<div id='historyList' class="hide"></div>
+		</div>
+		
+		<div  class='butn'>
+			<input class='custom-input' type="number" placeholder="Предоплата" id='inputPrepayment' value='0'>
+		</div>
+		<div class='butn span' id='butSkid'>
+			<span class='skidName'>Cкидка</span>
+			<input id='inpDiscProc' value='0' class='skidInputs'><span class='skidInputs'>% &nbsp;</span>
+			<input id='inpDiscRub' value='0' class='skidInputs'><span class='skidInputs'>р.</span>
+		</div>
+		<div class='butn' id='butSave'>Оплатить</div>
+		<div id='butHistory' class='butn'><span id="infoCheckSave"></span>История чеков</div>
+		<div id='historyList' class="hide"></div>
 
-							<div id='historyList2' class="hide"></div>
-							<div id='listOrders' class="hide"></div>
+		<div id='historyList2' class="hide"></div>
+		<div id='listOrders' class="hide"></div>
 
-							<div class='butn' id='butPrint'>Печать чека</div>
-							<div class='butn' id='butSaveCher' style="background-color:#1fcbff; color: black">В черновик</div>
-							<div class='butn' id='butHistoryCher'>Черновики</div>
-							<div class='butn' id='butOrders'>Заявки</div>
-							<div class='container'>
-								<div class='row'>
-									<div class='col'>
-										<input class="form-control" type="number" placeholder="Предоплата" id='inputPrepayment'>
-									</div>
-								</div>
-							</div>
-							
-							<!--div class='butn' id='btnExport' style="background-color:red; color: white">Экспорт в PDF</div-->
+		<div class='butn' id='butPrint'>Печать чека</div>
+		<div class='butn' id='butSaveCher' style="background-color:#1fcbff; color: black">В черновик</div>
+		<div class='butn' id='butHistoryCher'>Черновики</div>
+		<div class='butn' id='butOrders'>Заявки</div>
+		<div id='butNew' class='butn'>Новый чек</div>
 
-
-
-							
-
-						</div>
+		<!--div class='container'>
+			<div class='row'>
+				<div class='col'>
+					<input class="form-control" type="number" placeholder="Предоплата" id='inputPrepayment'>
+				</div>
+			</div>
+		</div-->
+		
+		<!--div class='butn' id='btnExport' style="background-color:red; color: white">Экспорт в PDF</div-->
+	</div>
 	</div>
 
 	<div class="switcher-wrapper">

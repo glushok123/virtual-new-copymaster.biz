@@ -13,23 +13,27 @@ $stmt->bindParam(1, $idloadcheck);
 $stmt->execute();
 $datacheck = $stmt->fetchAll();
 
-$text .= "<table id=\"tablecheck\" class='tabChek'><tr class=\"chekItog\"><td colspan=\"9\" >Чек номер: ".$idloadcheck."</td></tr><tr><td class='tht'>№</td><td  class='tht'>Услуга</td><td  class='tht'>Кол-во</td><td  class='tht'>Ед.</td><td  class='tht'>Цена</td><td class='tht'>Стоимость</td  class='tht'><td  class='tht'>Заказчик</td><td  class='tht'>Контакты</td><td  class='tht'>Срок</td></tr>";
+$text .= "<table id=\"tablecheck\" class='tabChek'><tr class=\"chekItog\"><td colspan=\"6\" >Чек номер: ".$idloadcheck."</td></tr><tr><td class='tht'>№</td><td  class='tht'>Услуга</td><td  class='tht'>Кол-во</td><td  class='tht'>Ед.</td><td  class='tht'>Цена</td><td class='tht'>Стоимость</td></tr>";
 	foreach ($data as $offer) {
 		// var_dump($offer);
-		$text .= "<tr class=\"list\">
-            <td>".$offer["offer_item"]."</td>
-            <td>".$offer["name"]."</td>
-            <td>".$offer["count"]."</td>
-            <td>шт.</td>
-            <td>".$offer["cost"]."</td>
-            <td>".$offer["price"]."</td>
-          
-		    <td>".$offer["name_komp"]."</td>
-			<td>".$offer["tel"]."</td>
-			<td>".$offer["srok"]."</td>
-
-        </tr>";
+                $text .= "<tr class=\"list\">
+                <td>".$offer["offer_item"]."</td>
+                <td>".$offer["name"]."</td>
+                <td>".$offer["count"]."</td>
+                <td>шт.</td>
+                <td>".$offer["cost"]."</td>
+                <td>".$offer["price"]."</td>
+                </tr>";
 	}
+
+        /*      <td  class='tht'>Заказчик</td>
+                <td  class='tht'>Контакты</td>
+                <td  class='tht'>Срок</td>
+                <td>".$offer["name_komp"]."</td>
+                <td>".$offer["tel"]."</td>
+                <td>".$offer["srok"]."</td>
+        */
+
 if ($datacheck["0"]["pay_type"] == "cash") {
 	$pay_type="Наличными";
 }elseif ($datacheck["0"]["pay_type"] == "card") {
@@ -53,7 +57,7 @@ if ($datacheck["0"]["prepayment"] !== "0") {
 $text .= "
         <tr class=\"chekItog\"><td colspan=\"5\">Итого</td><td id=\"priceConteiner\" colspan=\"1\">".$datacheck["0"]["cost"]."</td></tr>
         <tr class=\"chekItog\">
-		  <td colspan=\"6\" id='qazwsx'>Способ оплаты: ".$pay_type."</td><td></td>
+		  <td colspan=\"6\" id='qazwsx'>Способ оплаты: ".$pay_type."</td>
 
         </tr></table>";
 echo $text;

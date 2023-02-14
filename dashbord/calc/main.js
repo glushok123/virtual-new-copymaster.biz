@@ -4151,6 +4151,7 @@ let chek = new function () {
     this.cn = inpName.value; //Название компании еcли это безнал
     this.dir = 0; //cкидка в рублях
     this.dip = 0; //cкидка в процентах
+    this.boolDir = false; //cкидка в процентах
     this.fx = 0; //Проведён ли чек 0 - непроведен, 1 - оплата налом, 2 - оплата картой, 3 - юр лица
     this.sum = 0 //cумма чека
     this.prepayment = 0 //предоплата
@@ -4292,6 +4293,7 @@ let chek = new function () {
     }
 
     if (id == 1) {
+      this.data.boolDir = false;
       inpDiscProc.value = this.data.dip = Math.ceil(Math.round(n * 100) / 100);
       inpDiscRub.value = this.data.dir = Math.ceil(Math.round(sum * this.data.dip) / 100);
 
@@ -4306,6 +4308,7 @@ let chek = new function () {
         return;
       }
     } else {
+      this.data.boolDir = true;
       inpDiscRub.value = this.data.dir = Math.ceil(Math.round(n * 100) / 100);
       inpDiscProc.value = this.data.dip = Math.ceil(Math.round(10000 * this.data.dir / sum) / 100);
 
@@ -4466,10 +4469,19 @@ let chek = new function () {
       this.dataoffers = offers;
     }
 
-    if (this.data.dir > 0) {
+    if (this.data.dir > 0 || this.data.dip > 0) {
 
-      this.data.dip = Math.ceil(Math.round(inpDiscProc.value * 100) / 100);
-      inpDiscRub.value = this.data.dir = Math.ceil(Math.round(sum * this.data.dip) / 100);
+      if (this.data.boolDir == false) {
+        inpDiscProc.value = this.data.dip = Math.ceil(Math.round(this.data.dip * 100) / 100);
+        inpDiscRub.value = this.data.dir = Math.ceil(Math.round(sum * this.data.dip) / 100);
+  
+      } else {
+        inpDiscRub.value = this.data.dir = Math.ceil(Math.round(this.data.dir * 100) / 100);
+        inpDiscProc.value = this.data.dip = Math.ceil(Math.round(10000 * this.data.dir / sum) / 100);
+      }
+
+      //this.data.dip = Math.ceil(Math.round(inpDiscProc.value * 100) / 100);
+      //inpDiscRub.value = this.data.dir = Math.ceil(Math.round(sum * this.data.dip) / 100);
 
       let dir = this.data.dir;
       let dip = this.data.dip;
