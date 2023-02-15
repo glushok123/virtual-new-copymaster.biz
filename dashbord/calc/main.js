@@ -5083,6 +5083,12 @@ let main = new function () {
     inputPrepayment.addEventListener('change', function () {
       chek.setPrepayment(inputPrepayment.value);
     }, false);
+    inputPrepayment.addEventListener('keyup', function (event) {
+      event.preventDefault();
+      if (event.keyCode === 13) {
+        chek.setPrepayment(inputPrepayment.value);
+      }
+    }, false);
     inpDiscRub.addEventListener('change', function () {
       chek.setDisc(inpDiscRub.value, 2);
     }, false);
