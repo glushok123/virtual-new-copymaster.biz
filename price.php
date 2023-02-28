@@ -139,15 +139,17 @@
             </div>
 
         <div id="ur-price" class="text-center">
-            <br>  <br>
+            <br><br>
             	<h2 >Цены для юридических лиц</h2><hr>
+                <?php 
+                    $percent = 165; //глобальный коэф в процентах; 
+                ?>
         </div>
 
             <div class="table-responsive"><!--Черно - белое копирование* / печать-->
                 <?php include_once "price/YL/yl_bw.php"; ?>
             </div>
 
-            
             <div class='pometka-div'>
                 <span class='pometka'></span>
             </div>

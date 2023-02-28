@@ -24,12 +24,12 @@
          <tr>
              <td>от 6 до 51</td>
              <td>от 25 до 480</td>
-             <td>от 72,00</td>
-             <td>от 96,00</td>
+             <td>от <? echo(round(72 * $percent/100 , 2)); ?></td>
+             <td>от <? echo(round(96 * $percent/100 , 2)); ?></td>
              <td>от 5,5 до 14,3</td>
              <td>от 20 до 120</td>
-             <td>от 108,00</td>
-             <td>от 132,00</td>
+             <td>от <? echo(round(198 * $percent/100 , 2)); ?></td>
+             <td>от <? echo(round(237 * $percent/100 , 2)); ?></td>
          </tr>
      </tbody>
 </table>

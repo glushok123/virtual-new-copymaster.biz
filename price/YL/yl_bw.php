@@ -18,14 +18,14 @@
              <td>дву.</td>
          </tr>
          <tr>
-             <td>2,28</td>
-             <td>3,6</td>
-             <td>4,80</td>
-             <td>7,20</td>
-             <td>24,00</td>
-             <td>36,00</td>
-             <td>72,00</td>
-             <td>72,00</td>
+             <td><? echo(round(2.28 * $percent/100 , 2)); ?></td>
+             <td><? echo(round(3.6 * $percent/100 , 2)); ?></td>
+             <td><? echo(round(4.80 * $percent/100 , 2)); ?></td>
+             <td><? echo(round(7.20 * $percent/100 , 2)); ?></td>
+             <td><? echo(round(24 * $percent/100 , 2)); ?></td>
+             <td><? echo(round(36 * $percent/100 , 2)); ?></td>
+             <td><? echo(round(72 * $percent/100 , 2)); ?></td>
+             <td><? echo(round(72 * $percent/100 , 2)); ?></td>
          </tr>
          <tr>
              <td colspan="8">*При печати/копировании форматов А0, А1, А2 на кальке - стоимость увеличивается в 2 раза</td>

@@ -11,11 +11,11 @@
              <td>А0</td>
          </tr>
          <tr>
-             <td>3,6</td>
-             <td>6</td>
-             <td>14,4</td>
-             <td>30</td>
-             <td>78</td>
+             <td><? echo(round(13.2 * $percent/100 , 2)); ?></td>
+             <td><? echo(round(19.8 * $percent/100 , 2)); ?></td>
+             <td><? echo(round(46.2 * $percent/100 , 2)); ?></td>
+             <td><? echo(round(85.8 * $percent/100 , 2)); ?></td>
+             <td><? echo(round(145.2 * $percent/100 , 2)); ?></td>
          </tr>
          <tr>
              <td colspan="5">*Ручное сканирование форматов А4 и А3: +50% за каждый экземпляр</td>

@@ -12,10 +12,10 @@
      <td>Нест. (кв. м.)</td>
  </tr>
  <tr>
-     <td>42</td>
-     <td>60</td>
-     <td>144</td>
-     <td>144</td>
+     <td><? echo(round(42 * $percent/100 , 2)); ?></td>
+     <td><? echo(round(60 * $percent/100 , 2)); ?></td>
+     <td><? echo(round(144 * $percent/100 , 2)); ?></td>
+     <td><? echo(round(144 * $percent/100 , 2)); ?></td>
  </tr>
  <tr>
      <td colspan="5">**При заливке более 20% стоимость распечатки чертежей увеличивается в 2 раза</td>
@@ -31,10 +31,10 @@
      <td>Нест. (кв.м.)</td>
  </tr>
  <tr>
-     <td>360</td>
-     <td>492</td>
-     <td>984</td>
-     <td>984</td>
+     <td><? echo(round(360 * $percent/100 , 2)); ?></td>
+     <td><? echo(round(492 * $percent/100 , 2)); ?></td>
+     <td><? echo(round(984 * $percent/100 , 2)); ?></td>
+     <td><? echo(round(984 * $percent/100 , 2)); ?></td>
  </tr>
  <tr class="tr1">
      <td colspan="5"></td>

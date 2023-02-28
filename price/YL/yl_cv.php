@@ -8,8 +8,8 @@
              <td>А3</td>
          </tr>
          <tr>
-             <td>9,60</td>
-             <td>19,20</td>
+             <td><? echo(round(9.60 * $percent/100 , 2)); ?></td>
+             <td><? echo(round(19.20 * $percent/100 , 2)); ?></td>
          </tr>
          <tr>
              <td colspan="2">*При двустороннем копировании/печати цена удваивается</td>
