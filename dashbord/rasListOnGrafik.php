@@ -8,15 +8,6 @@
 	<!--plugins-->
 	<script src="assets/plugins/simplebar/js/simplebar.min.js"></script>
 	<script src="assets/plugins/metismenu/js/metisMenu.min.js"></script>
-
-	<!-- Vector map JavaScript -->
-	<script src="assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js"></script>
-	<script src="assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js"></script>
-	<script src="assets/plugins/vectormap/jquery-jvectormap-in-mill.js"></script>
-	<script src="assets/plugins/vectormap/jquery-jvectormap-us-aea-en.js"></script>
-	<script src="assets/plugins/vectormap/jquery-jvectormap-uk-mill-en.js"></script>
-	<script src="assets/plugins/vectormap/jquery-jvectormap-au-mill.js"></script>
-	<script src="assets/js/index.js"></script>
 	<!-- App JS -->
 	<link rel="stylesheet" href="assets/plugins/datatable/css/buttons.bootstrap4.min.css" />
 	<link rel="stylesheet" href="assets/plugins/datatable/css/dataTables.bootstrap4.min.css" />
@@ -104,61 +95,56 @@
 					</div>
 
 					 <hr>
-
 				</div>
 			</div>
 		</div>
 
 
 	</div>
-<style media="screen">
-
-select option {
-	background: rgba(0, 0, 0, 0.3);
-	color: #fff;
-	text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
-}
-
-
-td.vx { vertical-align:middle; text-align:center; border-bottom:2px solid #000000 !important; border-top:2px solid #000000 !important; border-left:2px solid #000000 !important; border-right:2px solid #000000 !important; font-weight:bold; font-style:italic; color:#000000 !important; font-family:'Arial'; font-size:12pt; background-color:#FF0000 }
-td.itogo { vertical-align:middle; text-align:center; border-bottom:2px solid #000000 !important; border-top:2px solid #000000 !important; border-left:2px solid #000000 !important; border-right:none #000000; font-weight:bold; font-style:italic; color:#000000 !important; font-family:'Arial'; font-size:12pt; background-color:#FFFF00 }
-.kras { vertical-align:middle; text-align:center; border-bottom:2px solid #000000 !important; border-top:2px solid #000000 !important; border-left:2px solid #000000 !important; border-right:2px solid #000000 !important; font-weight:bold; font-style:italic; color:#000000 !important; font-family:'Arial'; font-size:12pt; background-color:#FF0000 }
-.jolt { vertical-align:middle; text-align:center; border-bottom:2px solid #000000 !important; border-top:2px solid #000000 !important; border-left:2px solid #000000 !important; border-right:none #000000; font-weight:bold; font-style:italic; color:black !important; font-family:'Arial'; font-size:12pt; background-color:#FFFF00; color:black }
-.chern { vertical-align:middle; text-align:center; border-bottom:2px solid #000000 !important; border-top:2px solid #000000 !important; border-left:2px solid #000000 !important; border-right:2px solid #000000 !important; font-weight:bold; font-style:italic; color:#FFFFFF !important; font-family:'Arial'; font-size:12pt; background-color:#000000 }
-.bel { vertical-align:middle; text-align:center; border-bottom:2px solid #000000 !important; border-top:2px solid #000000 !important; border-left:2px solid #000000 !important; border-right:2px solid #000000 !important; font-weight:bold; font-style:italic; color:black !important; font-family:'Arial'; font-size:12pt; background-color:#FFFFFF; color:black }
-.zel { vertical-align:middle; text-align:center; border-bottom:2px solid #000000 !important; border-top:none #000000; border-left:2px solid #000000 !important; border-right:2px solid #000000 !important; font-weight:bold; font-style:italic; color:black !important; font-family:'Arial'; font-size:12pt; background-color:#00B050 }
-.kor { vertical-align:middle; text-align:center; border-bottom:2px solid #000000 !important; border-top:none #000000; border-left:2px solid #000000 !important; border-right:2px solid #000000 !important; font-weight:bold; font-style:italic; color:#000000 !important; font-family:'Arial'; font-size:12pt; background-color:#777670 }
-.filo { vertical-align:middle; text-align:center; border-bottom:2px solid #000000 !important; border-top:2px solid #000000 !important; border-left:2px solid #000000 !important; border-right:2px solid #000000 !important; color:black !important; font-family:'Arial'; font-size:12pt; background-color:#FF6699; color:black }
-.golub { vertical-align:middle; text-align:center; border-bottom:2px solid #000000 !important; border-top:2px solid #000000 !important; border-left:2px solid #000000 !important; border-right:2px solid #000000 !important; color:#000000 !important; font-family:'Arial'; font-size:12pt; background-color:#00B0F0 }
-.kor2 { vertical-align:middle; text-align:center; border-bottom:2px solid #000000 !important; border-top:none #000000; border-left:2px solid #000000 !important; border-right:none #000000; font-weight:bold; font-style:italic; color:#000000 !important; font-family:'Arial'; font-size:12pt; background-color:#B97034 }
-.deny { vertical-align:middle; text-align:center; border-bottom:2px solid #000000 !important; border-top:none #000000; border-left:2px solid #000000 !important; border-right:2px solid #000000 !important; font-weight:bold; font-style:italic; color:black !important; font-family:'Arial'; font-size:12pt; background-color:#FFC000; color:black }
-
-.cvet{
-	font-size: 18px;
-	font-weight: bold;
-}
-.cvet2{
-	weight:30px;
-	height:30px;
-}
-
-table {
- table-layout: auto;; /* Фиксированная ширина ячеек */
- max-width: 80%; /* Ширина таблицы */
-}
-.castom-input{
-	min-width:150px;
-}
-</style>
-
+	<style media="screen">
+		select option {
+			background: rgba(0, 0, 0, 0.3);
+			color: #fff;
+			text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+		}
+		td.vx { vertical-align:middle; text-align:center; border-bottom:2px solid #000000 !important; border-top:2px solid #000000 !important; border-left:2px solid #000000 !important; border-right:2px solid #000000 !important; font-weight:bold; font-style:italic; color:#000000 !important; font-family:'Arial'; font-size:12pt; background-color:#FF0000 }
+		td.itogo { vertical-align:middle; text-align:center; border-bottom:2px solid #000000 !important; border-top:2px solid #000000 !important; border-left:2px solid #000000 !important; border-right:none #000000; font-weight:bold; font-style:italic; color:#000000 !important; font-family:'Arial'; font-size:12pt; background-color:#FFFF00 }
+		.kras { vertical-align:middle; text-align:center; border-bottom:2px solid #000000 !important; border-top:2px solid #000000 !important; border-left:2px solid #000000 !important; border-right:2px solid #000000 !important; font-weight:bold; font-style:italic; color:#000000 !important; font-family:'Arial'; font-size:12pt; background-color:#FF0000 }
+		.jolt { vertical-align:middle; text-align:center; border-bottom:2px solid #000000 !important; border-top:2px solid #000000 !important; border-left:2px solid #000000 !important; border-right:none #000000; font-weight:bold; font-style:italic; color:black !important; font-family:'Arial'; font-size:12pt; background-color:#FFFF00; color:black }
+		.chern { vertical-align:middle; text-align:center; border-bottom:2px solid #000000 !important; border-top:2px solid #000000 !important; border-left:2px solid #000000 !important; border-right:2px solid #000000 !important; font-weight:bold; font-style:italic; color:#FFFFFF !important; font-family:'Arial'; font-size:12pt; background-color:#000000 }
+		.bel { vertical-align:middle; text-align:center; border-bottom:2px solid #000000 !important; border-top:2px solid #000000 !important; border-left:2px solid #000000 !important; border-right:2px solid #000000 !important; font-weight:bold; font-style:italic; color:black !important; font-family:'Arial'; font-size:12pt; background-color:#FFFFFF; color:black }
+		.zel { vertical-align:middle; text-align:center; border-bottom:2px solid #000000 !important; border-top:none #000000; border-left:2px solid #000000 !important; border-right:2px solid #000000 !important; font-weight:bold; font-style:italic; color:black !important; font-family:'Arial'; font-size:12pt; background-color:#00B050 }
+		.kor { vertical-align:middle; text-align:center; border-bottom:2px solid #000000 !important; border-top:none #000000; border-left:2px solid #000000 !important; border-right:2px solid #000000 !important; font-weight:bold; font-style:italic; color:#000000 !important; font-family:'Arial'; font-size:12pt; background-color:#777670 }
+		.filo { vertical-align:middle; text-align:center; border-bottom:2px solid #000000 !important; border-top:2px solid #000000 !important; border-left:2px solid #000000 !important; border-right:2px solid #000000 !important; color:black !important; font-family:'Arial'; font-size:12pt; background-color:#FF6699; color:black }
+		.golub { vertical-align:middle; text-align:center; border-bottom:2px solid #000000 !important; border-top:2px solid #000000 !important; border-left:2px solid #000000 !important; border-right:2px solid #000000 !important; color:#000000 !important; font-family:'Arial'; font-size:12pt; background-color:#00B0F0 }
+		.kor2 { vertical-align:middle; text-align:center; border-bottom:2px solid #000000 !important; border-top:none #000000; border-left:2px solid #000000 !important; border-right:none #000000; font-weight:bold; font-style:italic; color:#000000 !important; font-family:'Arial'; font-size:12pt; background-color:#B97034 }
+		.deny { vertical-align:middle; text-align:center; border-bottom:2px solid #000000 !important; border-top:none #000000; border-left:2px solid #000000 !important; border-right:2px solid #000000 !important; font-weight:bold; font-style:italic; color:black !important; font-family:'Arial'; font-size:12pt; background-color:#FFC000; color:black }
+		.cvet{
+			font-size: 18px;
+			font-weight: bold;
+		}
+		.cvet2{
+			weight:30px;
+			height:30px;
+		}
+		table {
+		table-layout: auto;; /* Фиксированная ширина ячеек */
+		max-width: 80%; /* Ширина таблицы */
+		}
+		.castom-input{
+			min-width:100px;
+		}
+		.castom-textarea{
+			min-width:200px;
+		}
+		#table3{
+			max-width: 500px !important;
+		}
+	</style>
 
 </body>
 </html>
-<style media="screen">
-	#table3{
-		max-width: 500px !important;
-	}
-</style>
+
 <script type="text/javascript">
 
 	$(document).ready(function(){
@@ -206,36 +192,14 @@ table {
 			editTable();
 		});
 
-		/*$(document).on("click", ".cvet", function(){
-			chett = $(this).attr('data-chet');
-		})
-
-		$(document).on("dblclick", "td", function(){
-			if (chett == "del"){
-				$(this).removeClass('kras jolt chern bel zel kor filo golub kor2 deny del');
-			}else{
-				$(this).removeClass('kras jolt chern bel zel kor filo golub kor2 deny del');
-				$(this).addClass(chett);
-			}
-		});
-
-		$(document).on("dblclick", ".fio", function(){
-			if (chett == "del"){
-				$(this).removeClass('kras jolt chern bel zel kor filo golub kor2 deny del');
-			}else{
-				$(this).removeClass('kras jolt chern bel zel kor filo golub kor2 deny del');
-				$(this).addClass(chett);
-			}
-		});
-		*/
-		$(document).on("click", "#editTable", function(){
+		$(document).on("click", "#editTable", function() {
 			$('#editTable').hide();
 			editTable();
 		});
 
-		$(document).on("change", "input", function(){
+		$(document).on("change", "input, textarea", function() {
 			saveData();
-			calculateManey();
+			calculateMoney();
 			requestSaveData();
 
 			arrayFamily = [];
@@ -244,11 +208,11 @@ table {
 			editTable();
 		});
 	
-		$(document).on("click", "#saveTable", function(){
+		$(document).on("click", "#saveTable", function() {
 			$('#editTable').show();
 
 			saveData();
-			calculateManey();
+			calculateMoney();
 			requestSaveData();
 
 			arrayFamily = [];
@@ -256,15 +220,16 @@ table {
 			getTableGrafikRequest();
 		});
 
-		$(document).on("click", "#slogTable", function(){
-			calculateManey();
+		$(document).on("click", "#slogTable", function() {
+			calculateMoney();
 		});
 
 		function getTableCalcRequest()
 		{
 			$.ajax({
 				url: 'moneyOnGrafik.php', 
-				method: 'POST', 
+				method: 'POST',
+				async: false, 
 				data: {
 					mes		: $("#messec").val(),
 					s		: "get",
@@ -282,7 +247,8 @@ table {
 		{
 			$.ajax({
 				url: 'time.php', 
-				method: 'POST', 
+				method: 'POST',
+				async: false,
 				data:{
 					mes		: $("#messec").val(),
 					s		: "get",
@@ -296,7 +262,7 @@ table {
 			});
 		}
 
-		function calculateManey()
+		function calculateMoney()
 		{
 			var sumitog = 0
 
@@ -312,21 +278,23 @@ table {
 							oklad = Number($(this).text());
 						}
 					}
+
 					if ($(this).hasClass('avans')) {
 						if ($(this).text() != ""){
-							avans= Number($(this).text());
+							avans = Number(eval($(this).text()));
 						}
 					}
+
 					if ($(this).hasClass('htraf')) {
 						if ($(this).text() != ""){
 							shtraf= Number($(this).text());
 						}
 					}
+
 					if ($(this).hasClass('itog')) {
 						$(this).text(ost = oklad - avans - shtraf)
 					}
 				});
-
 			});
 		};
 		
@@ -334,7 +302,8 @@ table {
 			var el = document.getElementById('table3');
 			$.ajax({
 				url: 'moneyOnGrafik.php', 
-				method: 'POST', 
+				method: 'POST',
+				async: false,
 				data:{
 					mes: $('#messec').val(),
 					s: "save", 
@@ -363,7 +332,7 @@ table {
 						$(this).html(zn);
 					}
 					if ($(this).hasClass('avans')){
-						let zn = $(this).find('input').val();
+						let zn = $(this).find('textarea').val();
 						$(this).html(zn);
 					}
 					if ($(this).hasClass('oklad')){
@@ -394,11 +363,12 @@ table {
 					}
 
 					if ($(this).hasClass('avans')){
-						$(this).html('<input class="form-control castom-input" type="number" name="" value="' + cvel + '">');
+						//$(this).html('<input class="form-control castom-input" type="text" name="" value="' + cvel + '">');
+						$(this).html('<textarea class="form-control castom-textarea" rows="2">' + cvel + '</textarea>');
 					}
 
 					if ($(this).hasClass('htraf')){
-						$(this).html('<input class="form-control castom-input" type="text" name="" value="' + cvel + '">');
+						$(this).html('<input class="form-control castom-input" type="number" name="" value="' + cvel + '">');
 					}
 
 					if ($(this).hasClass('koment')){
@@ -490,33 +460,30 @@ table {
 				var htraf = 0
 				
 				$(this).find('td').each(function(cell) {
-					
 					let cvel = $(this).text();
 
-					if ($(this).hasClass('fio') && cvel != '' ){
+					cvel = cvel == undefined ? ' ' : cvel;
+					cvel = cvel == 'undefined' ? ' ' : cvel;
 
+					if ($(this).hasClass('fio') && cvel != '' ) {
 						family = cvel;
 					}
 					
-					if ($(this).hasClass('avans') && cvel != '' ){
-
+					if ($(this).hasClass('avans') && cvel != '' ) {
 						avance = cvel;
 					}
 					
-					if ($(this).hasClass('payByHours')){
-
+					if ($(this).hasClass('payByHours')) {
 						payByHours = cvel;
 					}
 
-					if ($(this).hasClass('koment')){
-
+					if ($(this).hasClass('koment')) {
 						koment = cvel;
 					}
-					if ($(this).hasClass('htraf')){
 
+					if ($(this).hasClass('htraf')) {
 						htraf = cvel;
 					}
-
 				});
 
 				if (family != '') {
@@ -565,14 +532,13 @@ table {
 				row = row + '<td class="oklad">' + moneyTime + '</td>';
 				row = row + '<td class="avans">' + v.avans + '</td>';
 				row = row + '<td class="htraf">' + v.htraf + '</td>';
-				row = row + '<td class="jolt itog" style="color:black">' + (moneyTime - v.avans - v.htraf) + '</td>';
+				row = row + '<td class="jolt itog" style="color:black">' + (moneyTime - eval(v.avans) - v.htraf) + '</td>';
 				row = row + '<td class="koment">' + v.koment + '</td> ';
 				row = row + '</tr>';
-				//console.log( v.htraf)
+
 				$('#table3 tbody ').append(row);
 			});
 		};
 	});
 
-	
 </script>
