@@ -253,7 +253,7 @@ include_once 'header.php';
 
                 <div class="row justify-content-center text-center" style="margin: 20px 0 0 0 ;">
         			<div class="col-12 col-lg-4 col-xl-4">
-                        <a href="service_13.php">
+                        <a href="mugs.php">
                             <div class="card justify-content-center">
             					<img src="img/servlist_13.jpg" class="card-img-top imgserv rounded mx-auto d-block" alt="...">
             					<div class="card-body">
@@ -367,8 +367,12 @@ include_once 'header.php';
                   <h6 cl>Изготовление резинового клише</h6>
               </a>
           </div>
-
-
+          <div class="col border testplusi">
+              <a href="mugs.php">
+                  <img src="img/servlist_13.jpg" class="testplusiimg" alt="">
+                  <h6 cl>Сувенирная продукция</h6>
+              </a>
+          </div>
 
 
         </div>
