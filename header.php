@@ -79,6 +79,9 @@
                     <li class="nav-item ">
                         <a class="nav-link" href="online-pay.php"><img src="img/pay.png" height="35px" width="35px"> ОПЛАТА</a>
                     </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="mugs.php"><img src="images/1928989.png" height="35px" width="35px"> ПЕЧАТЬ НА КРУЖКАХ</a>
+                    </li>
 
                     <!--li class="nav-item ">
                         <a class="nav-link" href="kalendarProducts.php"><img src="img/kalendar.png" height="35px" width="35px"> КАЛЕНДАРИ</a>

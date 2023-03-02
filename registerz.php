@@ -292,6 +292,41 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         echo $json;
     }
 
+    if ($_POST["id"] == "mug")
+    {
+        $id_mugs = $_POST["mug_id"];
+        $name = $_POST["user_name"];
+        $email = $_POST["email"];
+        $phon = $_POST["phone"];
+
+        //$vid = $_POST["vid"];
+        //$srok = $_POST["srok"];
+
+        $db = getDbInstance();
+        $datat = date('d.m.y H:i');
+
+        $db->query("INSERT INTO zayavki
+        ( `name`, `email`, `phon`, `created_at`, `info`, `tip`, `kwiz_vid`, `kwiz_srok`)
+        VALUES
+        (
+            '" . $name . "',
+            '" . $email . "',
+            '" . $phon . "',
+            '" . $datat . "',
+            'ОБРАТНАЯ СВЯЗЬ',
+            'Печать на кружке',
+            '" . $id_mugs . "',
+            '-')");
+
+        $orderId = $db->getInsertId();
+
+        echo json_encode([
+            'success' => true,
+            'message' => 'Ваш заказ зарезервирован под № ' . $orderId . '. В течении 10 минут с вами свяжется наш менеджер.',
+            'order_id' => $orderId
+        ]);
+    }
+
     require_once 'send.php';
 
     sendmessage("info@copymaster.biz");

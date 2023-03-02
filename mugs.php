@@ -187,9 +187,10 @@
                                         <!--h5 class="card-title name">' . $mug['id'] . '</h5-->
                                         
                                         <h5 class="card-text avtor">Артикул: ' . $mug['id'] . '</h5>
+                                        <h5 class="card-text avtor">от 400 р.</h5>
                                         <hr>
                                         <button class="btn btn-primary add-in-cart"
-                                            data-painting-id="' . $mug['id'] . '"
+                                            data-mug-id="' . $mug['id'] . '"
                                         >Купить</button>
                                     </div>
                                 </div>
@@ -210,6 +211,64 @@
 		</div>
 	</div>
 <br>
+
+	<!-- Modal оформление заказа -->
+	<div class="modal fade" id="add-in-cart" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered ">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="staticBackdropLabel">Оформление заказа</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+						<p>
+							<span>Артикул кружки: </span>
+							<span id='cart-id' class='fs-5 fw-bold'></span>
+						</p>
+						<form action="">
+							<hr>
+							<div class="row text-center justify-content-center">
+								<h5>Заполните данные для обратной связи</h5>
+								<input id="user-name" type="text" class="form-control text-center "  style="max-width:500px;" placeholder="Фамилия Имя" required />
+								<input id="phone" type="text" class="form-control text-center "  style="max-width:500px;" placeholder="(999) 999-99-99" required/>
+								<input id="email" type="text" class="form-control text-center "  style="max-width:500px;" placeholder="example@user.com" required/>
+								<label for="comment" class="form-label" style='margin-top:10px'>Комментарий к заказу:</label>
+								<textarea class="form-control" id="comment" rows="3"></textarea>
+							</div>
+						</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+					<button type="button" class="btn btn-primary" id='send-order'>Отправить заявку</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal статус заявки -->
+	<div class="modal fade" id="order-status-model" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title text-center" id="exampleModalLabel">СТАТУС ЗАЯВКИ № <span id='order-id'></span></h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<form method="post" name="myForm" onsubmit="return validateForm()">
+						<div class="text-center">
+							<h4>ВАША ЗАЯВКА ЗАРЕГИСТРИРОВАНА! </h4><br>
+							<h4>С вами свяжутся в течени 10 минут!</h4>
+						</div>
+						<!-- end row -->
+					</form>
+					<!-- end form -->
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
     <?php
         include_once 'footer.php';
     ?>
@@ -222,10 +281,6 @@
     <link rel="stylesheet" href="/css/owl.theme.min.css">
     <script src="/js/owl.carousel.min.js"></script>
 
-    <script>
-
-
-    </script>
     <link rel="stylesheet" href="dashbord/assets/plugins/notifications/css/lobibox.min.css">
     <script src="dashbord/assets/plugins/notifications/js/lobibox.min.js"></script>
     <script src="dashbord/assets/plugins/notifications/js/notifications.js"></script>
@@ -233,101 +288,88 @@
     <!--Password show & hide js -->
  <script>
      $(document).ready(function () {
-         $('#famili').on('blur', function(){
-             res = ((/^([А-ЯA-Z]|[А-ЯA-Z][\x27а-яa-z]{1,}|[А-ЯA-Z][\x27а-яa-z]{1,}\-([А-ЯA-Z][\x27а-яa-z]{1,}|(оглы)|(кызы)))\040[А-ЯA-Z][\x27а-яa-z]{1,}(\040[А-ЯA-Z][\x27а-яa-z]{1,})?$/).test($("#famili").val()));
-              if (!res){
-                  warning_noti("ПРИМЕР: <br> Петров Иван!");
-              }
-         });
-         $('#email').on('blur', function(){
-             res = ((/^[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}$/i).test($("#email").val()));
-              if (!res){
-                  warning_noti("Введите в соответствии с примером! <br> example@user.com");
-              }
-         });
+        $("#phone").mask("(999) 999-99-99");
+	    toastr.options.timeOut = 5000; // 5s
 
-         $('#phon').on('blur', function(){
-             res = ((/^\d[\d\(\)\ -]{4,14}\d$/).test($("#phon").val()));
-              if (!res){
-                  warning_noti("ПРИМЕР: 8 999 999 99 99 ");
-              }
-         });
+        //Показать модальное окно для оформления заказа
+        function showModalAddInCart(mug) {
+            $('#cart-id').text(mug.data('mug-id'))
+            $('#add-in-cart').modal('show');
+        }
 
-         $("#sendz").on('click', function (event) {
-             let prov = true;
-             if ($("#famili").val() == " "){
-                 warning_noti("Необходимо ввести имя!");
-                 prov = false;
-             }
-             else {
-                 res = ((/^([А-ЯA-Z]|[А-ЯA-Z][\x27а-яa-z]{1,}|[А-ЯA-Z][\x27а-яa-z]{1,}\-([А-ЯA-Z][\x27а-яa-z]{1,}|(оглы)|(кызы)))\040[А-ЯA-Z][\x27а-яa-z]{1,}(\040[А-ЯA-Z][\x27а-яa-z]{1,})?$/).test($("#famili").val()));
-                  if (!res){
-                      warning_noti("ПРИМЕР: <br> Петров Иван!");
-                      prov = false;
-                  }
-             }
-             if ($("#email").val() == ""){
-                 warning_noti("Необходимо ввести почту!");
-                  prov = false;
-             }
-             else {
-                 res = ((/^[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}$/i).test($("#email").val()));
-                  if (!res){
-                      warning_noti("Введите в соответствии с примером! <br> example@user.com");
-                      prov = false;
-                  }
-             }
-             if ($("#phon").val() == ""){
-                 warning_noti("Необходимо ввести телефон!");
-                  prov = false;
-             }
-            else {
-                 res = ((/^\d[\d\(\)\ -]{4,14}\d$/).test($("#phon").val()));
-                  if (!res){
-                      warning_noti("Введите в соответствии с примером! <br> 8 999 999 99 99");
-                      prov = false;
-                  }
-             }
+        //валидация данных заказа
+        function validation() {
+            $("#user-name").removeClass('is-invalid');
+            $("#phone").removeClass('is-invalid');
+            $("#email").removeClass('is-invalid');
 
-            if ($("#vid").val() == ""){
-                warning_noti("Необходимо выбрать вид продукции!");
-                prov = false;
-             }
+            if (! $("#user-name").val()) {
+                $("#user-name").addClass('is-invalid');
+                toastr.error('Необходимо заполнить ваше имя !');
+                return false;
+            }
 
-             if ($("#kolit").val() == ""){
-                warning_noti("Необходимо выбрать колличество!");
-                prov = false;
-             }
+            if (! $("#phone").val()) {
+                $("#phone").addClass('is-invalid');
+                toastr.error('Необходимо заполнить номер телефона !');
+                return false;
+            }
 
-             if ($("#srok").val() == ""){
-                warning_noti("Необходимо выбрать срок!");
-                prov = false;
-             }
+            if (! $("#email").val()) {
+                $("#email").addClass('is-invalid');
+                toastr.error('Необходимо заполнить email !');
+                return false;
+            }
+        }
 
-             if (prov == true){
+        //Отправить запрос сохранения заказа
+        function sendOrderRequest() {
+            if (validation() == false) {
+                return;
+            }
+            
+            data = {
+                id          : 'mug',
+                mug_id      : $('#cart-id').text(),
+                user_name	: $("#user-name").val(),
+                phone		: $("#phone").val(),
+                email		: $("#email").val(),
+                comment		: $("#comment").val(),
+            };
 
-                 var datareg = {
-                     "id":"kalendari",
-                     "login":$("#famili").val(),
-                     "email":$("#email").val(),
-                     "phon":$("#phon").val(),
-                     "vid":$("#vid").val(),
-                     "kolit":$("#kolit").val(),
-                     "srok":$("#srok").val()
-                 };
+            $.ajax({
+                url: '/registerz.php',
+                method: 'post',
+                dataType: "json",
+                data: data,
+                success: function(data){
+                    if (data.success == true) {
+                        $('#add-in-cart').modal('hide');
+                        $('#order-id').text(data.order_id)
+                        $('#order-status-model').modal('show');
+                    }
+                },
+                error: function (jqXHR, exception) {
+                    if (jqXHR.status === 0) {
+                        alert('Not connect. Verify Network.');
+                    } else if (jqXHR.status == 404) {
+                        alert('Requested page not found (404).');
+                    } else if (jqXHR.status == 500) {
+                        alert('Internal Server Error (500).');
+                    } else if (exception === 'parsererror') {
+                        alert('Requested JSON parse failed.');
+                    } else if (exception === 'timeout') {
+                        alert('Time out error.');
+                    } else if (exception === 'abort') {
+                        alert('Ajax request aborted.');
+                    } else {
+                        alert('Uncaught Error. ' + jqXHR.responseText);
+                    }
+                }
+            });
+        }
 
-                console.log(datareg);
-
-                $.post("/registerz.php", datareg, function(data){
-
-                    var myModal = new bootstrap.Modal(document.getElementById('exampleModal3'));
-                    myModal.show();
-
-                 });
-                 
-             }
-         });
-
-
+         $(document).on('click', '.add-in-cart', function() { showModalAddInCart($(this)) });
+         $(document).on('click', '#send-order', function() { sendOrderRequest() } );
      });
- </script>
+</script>

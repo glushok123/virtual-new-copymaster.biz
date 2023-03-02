@@ -30,6 +30,9 @@ function route($method, $urlData, $formData) {
                     if ($z["tip"] == "ОБРАТНАЯ СВЯЗЬ")
                     {$z["tip"] =$z["tip"]."<hr>".$z["kwiz_vid"]."<hr>".$z["kwiz_srok"]  ; }
 
+                    if ($z["tip"] == "Печать на кружке")
+                    {$z["tip"] = $z["tip"] . "<hr> Артикул кружки: " . $z["kwiz_vid"] . "<hr>" . $z["kwiz_srok"]  ; }
+
                     $text = '{ "id":"'.$z["id"].'", "name":"'.$z["name"].'",  "email":"'.$z["email"].'",  "status":"'.$z["status"].'",  "comment":"'.$z["comment"].'","price":"'.$z["price"].'",  "created_at":"'.$z["created_at"].'",  "updated_at":"'.$z["updated_at"].'",  "phon":"'.$z["phon"].'", "tip":"'.$z["tip"].'"},';
                     $json = $json.$text;
                 }
