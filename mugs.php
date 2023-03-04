@@ -34,13 +34,13 @@
         <div class='row'>
             <h2>Печать на кружках</h2>
             <div class='col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 '>
-                
+
                 <p style="margin-top:0.5em;margin-bottom:0px;" align="justify">
                 <b>Заказать печать на кружках от 1 шт в Москве с доставкой можно у нас:</b>
                 </p><p></p><li>Более 50 различных кружек.</li>
                 <li>Печать фото на кружке - лучший способ сделать подарок уникальным.</li>
                 <li>Выбирайте кружку из нашего каталога.</li>
-                <li>Создавайте уникальный дизайн в онлайн-редакторе.</li>
+                <li>Создаем индивидуальный макет специально для Вас.</li>
                 <li>Загружайте фото с компьютера или из соц. сетей.</li>
                 <li>Выбирайте подарочную упаковку для вашего сувенира.</li>
                 <li>Получайте заказ в срок у нас в офисе или дома.</li>
@@ -61,36 +61,65 @@
                     <br><b>Выполнение заказа: </b>от 15 минут
                 </p>
             </div>
+
+            <?
+                function getMugsFoSliderByTypes()
+                {
+                    $db = getDbInstance();
+                    $mugs = $db->query("SELECT * FROM `mugs`");
+
+                    $textHeadSlider = '';
+                    $textBodySlider = '';
+                    $count = 0;
+                    $slider = 1;
+
+                    shuffle($mugs);
+
+                    foreach($mugs as $mug) {
+                        if ($count == 0) {
+                            $textHeadSlider = $textHeadSlider . '
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="' . $count . '" class="active" aria-current="true" aria-label="Slide ' . $slider . '"></button>
+                            ';
+
+                            $textBodySlider = $textBodySlider . '
+                                <div class="carousel-item active" data-bs-interval="2000">
+                                    <img src="images/mugs/' . $mug['mugs_type'] . '/' . $mug['image'] . '" class="d-block w-100" alt="...">
+                                </div>
+                            ';
+
+                            $count = $count + 1;
+                            $slider = $slider + 1;
+
+                            continue;
+                        }
+
+                        $textHeadSlider = $textHeadSlider . '
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="' . $count . '"  aria-current="true" aria-label="Slide ' . $slider . '"></button>
+                        ';
+
+                        $textBodySlider = $textBodySlider . '
+                            <div class="carousel-item" data-bs-interval="2000">
+                                <img src="images/mugs/' . $mug['mugs_type'] . '/' . $mug['image'] . '" class="d-block w-100" alt="...">
+                            </div>
+                        ';
+
+                        $count = $count + 1;
+                        $slider = $slider + 1;
+                    }
+
+                    $text = '<div class="carousel-indicators">' . $textHeadSlider . '</div><div class="carousel-inner">' . $textBodySlider . '</div>';
+
+                    return $text;
+                }
+
+            ?>
             <div class='col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 '>
                 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5" aria-label="Slide 6"></button>
-                </div>
-                <div class="carousel-inner">
-                    <div class="carousel-item active" data-bs-interval="2000">
-                        <img src="images/mugs/Приколы/Приколы 2.jpg" class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item" data-bs-interval="2000">
-                        <img src="images/mugs/Приколы/Приколы 3.jpg" class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item" data-bs-interval="2000">
-                        <img src="images/mugs/Приколы/Приколы 4.jpg" class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item " data-bs-interval="2000">
-                        <img src="images/mugs/Детское/Детское 1.jpg" class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item" data-bs-interval="2000">
-                        <img src="images/mugs/Детское/Детское 2.jpg" class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item" data-bs-interval="2000">
-                        <img src="images/mugs/Детское/Детское 3.jpg" class="d-block w-100" alt="...">
-                    </div>
-                </div>
+
+                    <?
+                        echo(getMugsFoSliderByTypes());
+                    ?>
+
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Previous</span>
