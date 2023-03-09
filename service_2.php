@@ -4,7 +4,7 @@ $titl="Переплетные работы. Переплетная мастер�
 $desc="Копировальный центр «Копимастер» - Печать чертежей круглосуточно!";
 include_once 'header.php';
  ?>
-
+<input type="text" style='display:none' id='vid-order' value="переплетные работы">
 	<section class="section">
 		<div class="container text-center">
             <h1>Переплетные работы: профессиональные услуги в короткий срок</h1><hr>
@@ -37,7 +37,7 @@ include_once 'header.php';
 <div class="conatiner">
     <div class="row justify-content-center text-center">
         <div class="wrap">
-            <button class="buttonpuls">Сделать заказ</button>
+            <button class="buttonpuls"  data-bs-toggle="modal" data-bs-target="#sendOrderInfo">Сделать заказ</button>
         </div>
     </div>
 </div>

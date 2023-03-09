@@ -45,7 +45,7 @@ include_once 'header.php';
 <div class="conatiner">
     <div class="row justify-content-center text-center">
         <div class="wrap">
-            <button class="buttonpuls">Сделать заказ</button>
+            <button class="buttonpuls"  data-bs-toggle="modal" data-bs-target="#exampleModal4">Сделать заказ</button>
         </div>
     </div>
 </div>

@@ -1,9 +1,9 @@
 <?php
-$keyw="где распечатать документы где можно распечатать документы где распечатать с флешки где распечатать в Москве где распечатать документы в Москве где распечатать с флешки в Москве";
-$titl="Где можно распечатать документы с флешки в Москве?";
-$desc="В статье описываются преимущества копировального центра";
-include_once 'header.php';
- ?>
+    $keyw="где распечатать документы где можно распечатать документы где распечатать с флешки где распечатать в Москве где распечатать документы в Москве где распечатать с флешки в Москве";
+    $titl="Где можно распечатать документы с флешки в Москве?";
+    $desc="В статье описываются преимущества копировального центра";
+    include_once 'header.php';
+?>
 
 	<section class="section">
 		<div class="container text-center">
@@ -32,7 +32,7 @@ include_once 'header.php';
 <div class="conatiner">
     <div class="row justify-content-center text-center">
         <div class="wrap">
-            <button class="buttonpuls">Сделать заказ</button>
+            <button class="buttonpuls"  data-bs-toggle="modal" data-bs-target="#exampleModal4">Сделать заказ</button>
         </div>
     </div>
 </div>

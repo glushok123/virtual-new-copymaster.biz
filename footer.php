@@ -353,6 +353,55 @@
 </div>
 <!-- end modal -->
 
+<!-- Modal -->
+<div class="modal fade" id="sendOrderInfo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <div class="row text-center justify-content-center">
+                    <h5 class="text-center">10% СКИДКА ПРИ ЗАКАЗЕ ЧЕРЕЗ САЙТ!</h5>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row text-center justify-content-center">
+                        <h3>Заполните данные для обратной связи</h3>
+                    </div>
+
+                    <div class="row text-center justify-content-center">
+                           <input id="familiOrderInfo" type="text" class="form-control text-center "  style="max-width:500px;" placeholder="фамилия имя" required />
+                    </div>
+                    <div class="row text-center justify-content-center">
+                           <input id="phoneOrderInfo" type="text" class="form-control text-center "  style="max-width:500px;" placeholder="999 999 99 99 или 8 999 999 99 99" required/>
+                    </div>
+                    <div class="row text-center justify-content-center">
+                           <input id="emailOrderInfo" type="text" class="form-control text-center "  style="max-width:500px;" placeholder="example@user.com" required/>
+                    </div>
+                    <br>
+                    <div class="row text-center justify-content-center text-center">
+                            <button type="button" id="sendOrderInfoButton" class="btn btn-sm nav-btn btn-primary mb-4 mb-lg-0  text-center w-100" name="button" style="max-width:250px">Заказать</button>
+                    </div>
+                </div>
+
+                        <div class="container">
+                          <div class="row">
+                            <div class="col-md-12 text-center">
+                                <a href="https://vk.com/public207042473"><i class="fa-brands fa-3x fa-vk"></i></a>
+                                <a href="#"><i class="fa-brands fa-3x fa-instagram"></i></a>
+                                <a href="#"><i class="fa-brands fa-3x fa-whatsapp"></i></a>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    <!-- end row -->
+                </form>
+                <!-- end form -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end modal -->
 
 <!-- feather icon -->
 <script src="js/feather.js"></script>
@@ -384,11 +433,8 @@
             else{
                 $("#listpages").addClass("secret2")
             }
-
         });
     });
-
-
 </script>
 
 </div>
@@ -412,7 +458,6 @@
                     <div class="text-center">
                         <h3>ВАША ЗАЯВКА ЗАРЕГИСТРИРОВАНА! </h3><br>
                         <h3>С вами свяжутся в течени 10 минут!</h3>
-
                     </div>
                     <!-- end row -->
                 </form>
@@ -492,9 +537,10 @@
 
                 var datareg = {
                     "id":"ОБРАТНАЯ СВЯЗЬ",
-                    "login":$("#famili2").val(),
-                    "email":$("#email2").val(),
-                    "phon":$("#phon2").val()
+                    "login" : $("#famili2").val(),
+                    "email" : $("#email2").val(),
+                    "phon" : $("#phon2").val(),
+                    "vid" : $("#vid-order").val(),
                 };
 
                 //console.log(datareg);
@@ -506,6 +552,7 @@
                 });
             }
         });
+
 
 
         var prov = 0;
@@ -538,4 +585,55 @@
         shadow: false,
     });*/
 
+
+    $("#sendOrderInfoButton").on('click', function (event) {
+
+        if ($("#familiOrderInfo").val() == ""){
+            warning_noti("Необходимо ввести Ваше имя!");
+            return;
+        }
+        else {
+            res = ((/^([А-ЯA-Z]|[А-ЯA-Z][\x27а-яa-z]{1,}|[А-ЯA-Z][\x27а-яa-z]{1,}\-([А-ЯA-Z][\x27а-яa-z]{1,}|(оглы)|(кызы)))\040[А-ЯA-Z][\x27а-яa-z]{1,}(\040[А-ЯA-Z][\x27а-яa-z]{1,})?$/).test($("#familiOrderInfo").val()));
+            if (!res){
+                warning_noti("ПРИМЕР: <br> Петров Иван!");
+                return;
+            }
+        }
+        if ($("#emailOrderInfo").val() == ""){
+            warning_noti("Необходимо ввести почту!");
+            return;
+        }
+        else {
+            res = ((/^[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}$/i).test($("#emailOrderInfo").val()));
+            if (!res){
+                warning_noti("Введите в соответствии с примером! <br> example@user.com");
+                return;
+            }
+        }
+        if ($("#phoneOrderInfo").val() == ""){
+            warning_noti("Необходимо ввести телефон!");
+            return;
+        }
+        else {
+            res = ((/^\d[\d\(\)\ -]{4,14}\d$/).test($("#phoneOrderInfo").val()));
+            if (!res){
+                warning_noti("Введите в соответствии с примером! <br> 8 999 999 99 99");
+                return;
+            }
+        }
+
+        var datareg = {
+            "id":"ОБРАТНАЯ СВЯЗЬ",
+            "login" : $("#familiOrderInfo").val(),
+            "email" : $("#emailOrderInfo").val(),
+            "phon" : $("#phoneOrderInfo").val(),
+            "vid" : $("#vid-order").val(),
+        };
+
+        $.post("/registerz.php", datareg, function(data){
+            $('#exampleModal4').modal('toggle');
+            var myModal = new bootstrap.Modal(document.getElementById('exampleModal3'));
+            myModal.show();
+        });
+    });
 </script>

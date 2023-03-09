@@ -150,8 +150,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         $vid = $_POST["vid"];
         $srok = $_POST["srok"];
 
-
-
         $db = getDbInstance();
         $datat = date('d.m.y H:i');
 
