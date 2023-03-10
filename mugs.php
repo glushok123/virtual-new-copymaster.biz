@@ -27,23 +27,27 @@
     max-width:150px;
     margin:10px;
 }
+video::-webkit-media-controls-volume-slider {
+    display:none;
+}
+video::-webkit-media-controls-mute-button {
+    display:none;
+}
+
 </style>
     <br>
 
     <div class='container'>
-        <div class='row'>
-            <video id="player" width="100%" height="auto" autoplay="autoplay" controls>
-                <source src="/vidio/MVI_8404.MP4" type="video/mp4" codecs="avc1.42E01E, mp4a.40.2">
-            </video>
-        </div>
-        <br>
-        <div class='row'>
-            <h2>Печать на кружках</h2>
-            <div class='col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 '>
 
-                <p style="margin-top:0.5em;margin-bottom:0px;" align="justify">
-                <b>Заказать печать на кружках от 1 шт в Москве с доставкой можно у нас:</b>
-                </p><p></p><li>Более 50 различных кружек.</li>
+        <br>
+        <div class='row text-center justify-content-center'>
+            <h2>Печать на кружках</h2>
+            <div class='col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 align-self-center' style='vertical-align:middle;'>
+                
+                <p>
+                    <b>Заказать печать на кружках от 1 шт в Москве с доставкой можно у нас:</b>
+                </p>
+                <p><li>Более 50 различных кружек.</li>
                 <li>Печать фото на кружке - лучший способ сделать подарок уникальным.</li>
                 <li>Выбирайте кружку из нашего каталога.</li>
                 <li>Создаем индивидуальный макет специально для Вас.</li>
@@ -58,14 +62,6 @@
                     <a href="/printing/mugs-templates/for-white" class="begin btn btn-success btn-lg left-btn">Выбрать шаблон</a>
                 </div-->
 
-                <p style="margin-top:0.5em;margin-bottom:0px;" >
-                    <b>Технические характеристики: </b>
-                    <br><b>Способ нанесения: </b>сублимация
-                    <br><b>Печать: </b>4 цвета. Белый цвет не печатается
-                    <br><b>Параметры печати: </b>RGB, 300 dpi
-                    <br><b>Минимальный тираж: </b>1 шт
-                    <br><b>Выполнение заказа: </b>от 15 минут
-                </p>
             </div>
 
             <?
@@ -135,6 +131,23 @@
                     <span class="visually-hidden">Next</span>
                 </button>
                 </div>
+            </div>
+        </div>
+        <div class='row text-center justify-content-center'>
+            <div class='col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 '>
+                <video id="player" width="100%" height="auto" autoplay="autoplay" controls muted>
+                    <source src="/vidio/MVI_8404.MP4" type="video/mp4" codecs="avc1.42E01E, mp4a.40.2">
+                </video>
+            </div>
+            <div class='col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 align-self-center'>
+                <p style="margin-top:0.5em;margin-bottom:0px;" >
+                    <b>Технические характеристики: </b>
+                    <br><b>Способ нанесения: </b>сублимация
+                    <br><b>Печать: </b>4 цвета. Белый цвет не печатается
+                    <br><b>Параметры печати: </b>RGB, 300 dpi
+                    <br><b>Минимальный тираж: </b>1 шт
+                    <br><b>Выполнение заказа: </b>от 15 минут
+                </p>
             </div>
         </div>
         <hr>
