@@ -32,6 +32,12 @@
 
     <div class='container'>
         <div class='row'>
+            <video id="player" width="100%" height="auto" autoplay="autoplay" controls>
+                <source src="/vidio/MVI_8404.MP4" type="video/mp4" codecs="avc1.42E01E, mp4a.40.2">
+            </video>
+        </div>
+        <br>
+        <div class='row'>
             <h2>Печать на кружках</h2>
             <div class='col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 '>
 
