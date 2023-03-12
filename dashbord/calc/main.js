@@ -4267,11 +4267,11 @@ let chek = new function () {
       inpDiscProc.value = this.data.dip = 0;
       inpDiscRub.value = this.data.dir = 0;
       this.show();
-  
+
       return;
     }
 
-    if (n > 50) {
+    /*if (n > 50) {
       n = 0;
       butSkid.className = 'box span';
       inpDiscProc.value = this.data.dip = 0;
@@ -4280,7 +4280,7 @@ let chek = new function () {
       this.show();
 
       return;
-    }
+    }*/
 
     if ((n + '').indexOf(",") + 1) {
       n = (n + '').replace(",", ".");
