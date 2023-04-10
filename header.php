@@ -88,7 +88,7 @@
                     </li-->
                     
                     <!--li class="nav-item ">
-                        <a class="nav-link" href="bespolk.php"><img src="img/polk1.png" eight="35px" width="35px">  БЕССМЕРТНЫЙ ПОЛК </a>
+                        <a class="nav-link" href="bespolk.php"><img src="img/polk1.png" eight="35px" width="35px"> БЕССМЕРТНЫЙ ПОЛК </a>
                     </li-->
 
                 </ul>
@@ -103,7 +103,7 @@
                                 <li><a class="dropdown-item" href="zakaz_petchat.php">Печати</a></li>
                                 <li><a class="dropdown-item" href="zakaz_petfoto.php">Печать фотографий</a></li>
                                 <li><a class="dropdown-item" href="mugs.php">Печать на кружках</a></li>
-                                <!--li><a class="dropdown-item" href="/shtender/">Конструктор штендера<br>"Бессмертный полк"</a></li-->
+                                <li><a class="dropdown-item" href="/shtender/">Конструктор штендера<br>"Бессмертный полк"</a></li>
 
                               </ul>
                             </div>
