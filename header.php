@@ -151,9 +151,9 @@
         <div id="b_4" class="carousel-item" data-bs-interval="7000">
             <a href="service_7.php"><img src="header_foto/Для ПК 4_4.jpg" class="d-block w-100" alt="..."></a>
         </div>
-        <!--div id="b_5" class="carousel-item" data-bs-interval="7000">
+        <div id="b_5" class="carousel-item" data-bs-interval="7000">
             <a href="service_11.php"><img src="header_foto/Для ПК 5_1.jpg" class="d-block w-100" alt="..."></a>
-        </div-->
+        </div>
       </div>
       <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -182,9 +182,9 @@
         <div class="carousel-item" data-bs-interval="7000">
             <a href="service_7.php"><img src="header_foto/Для моб 4_3.jpg" class="d-block w-100" alt="..."></a>
         </div>
-        <!--div class="carousel-item" data-bs-interval="7000">
+        <div class="carousel-item" data-bs-interval="7000">
             <a href="service_11.php"><img src="header_foto/Для моб 5_1.jpg" class="d-block w-100" alt="..."></a>
-        </div-->
+        </div>
       </div>
       <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval2" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
