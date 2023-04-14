@@ -87,9 +87,9 @@
                         <a class="nav-link" href="kalendarProducts.php"><img src="img/kalendar.png" height="35px" width="35px"> КАЛЕНДАРИ</a>
                     </li-->
                     
-                    <!--li class="nav-item ">
+                    <li class="nav-item ">
                         <a class="nav-link" href="bespolk.php"><img src="img/polk1.png" eight="35px" width="35px"> БЕССМЕРТНЫЙ ПОЛК </a>
-                    </li-->
+                    </li>
 
                 </ul>
                 <div class="mb-4 mb-lg-0 ">
