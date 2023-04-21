@@ -4352,6 +4352,7 @@ let chek = new function () {
     this.setTel(" ");
     this.setSrok(" ");
     this.setPrepayment(' ');
+    this.setDisc(0)
     this.show();
     $('#someOtherDiv').html(" ");
   }
