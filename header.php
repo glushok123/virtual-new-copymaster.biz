@@ -7,22 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="<? echo $desc;?>" />
     <meta name="keywords" content="<? echo $keyw;?>" />
-    <!-- favicon -->
     <link rel="shortcut icon" href="img/favicon.ico" />
-    <!-- tinyslider -->
     <link rel="stylesheet" href="css/tiny-slider.css" />
-    <!-- css -->
-
-
     <link rel="apple-touch-icon" sizes="57x57" href="apple-touch-icon-114-precomposed.png" />
     <link rel="apple-touch-icon" sizes="114x114" href="apple-touch-icon-114-precomposed.png" />
     <link rel="apple-touch-icon" sizes="72x72" href="apple-touch-icon-144-precomposed.png " />
     <link rel="apple-touch-icon" sizes="144x144" href="apple-touch-icon-144-precomposed.png" />
-
     <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="/css/bootstrap.bundle.min.js" ></script>
     <script src="/css/5fc8cb6b98.js" ></script>
-
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta name="yandex-verification" content="d8687e2e78912895">
     <meta name="geo.placename" content="Москва, Россия">
