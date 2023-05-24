@@ -223,9 +223,10 @@
 		//кнопка создания скриншота
 		$('#take_screenshoot').click(function() {
 			createScreenShots(); // 1 часть скриншота
+			rotateShit();
 
 			setTimeout(function() {
-				rotateShit(); // 2 часть скриншота
+				createScreenShots();// 2 часть скриншота
 			}, 1000);
 		});
 
