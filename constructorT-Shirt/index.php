@@ -18,7 +18,7 @@
 
 <body class="preview" data-spy="scroll" data-target=".subnav" data-offset="80">
 	<div class="container">
-		<div class="row"> <a href=""> Вернуться на сайт</a> </div>
+		<div class="row"> <a href="https://copymaster.biz"> Вернуться на сайт</a> </div>
 	</div>
 	<div class="container">
 		<section id="typography">
