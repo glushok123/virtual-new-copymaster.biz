@@ -18,7 +18,10 @@
 
 <body class="preview" data-spy="scroll" data-target=".subnav" data-offset="80">
 	<div class="container">
-		<div class="row"> <a href="https://copymaster.biz"> Вернуться на сайт</a> </div>
+		<div class="row"> 
+			
+		
+		<a href="https://copymaster.biz">◄ Вернуться на сайт</a> </div>
 	</div>
 	<div class="container">
 		<section id="typography">
@@ -26,6 +29,35 @@
 				<div class="row text-center">
 					<h1 class="text-center" style="text-align: center;">Конструктор Футболок</h1> </div>
 			</div>
+			<div class='row'>
+				<h5>Готовые решения (нажмите на картинку, что бы применить к футболке)</h5>
+				<div id="avatarlist"> 
+					<?
+						$path = './prepare_img/'; // путь к директории с изображениями
+						$extensions = array('png', 'jpg', 'JPG', 'jpeg', 'gif'); // показывать расширения
+					
+						$directoryIterator = new RecursiveDirectoryIterator($path, RecursiveDirectoryIterator::SKIP_DOTS);
+						$iteratorIterator  = new RecursiveIteratorIterator($directoryIterator, RecursiveIteratorIterator::LEAVES_ONLY);
+					
+						$images = [];
+						foreach ($iteratorIterator as $file) {
+							if (in_array($file->getExtension(), $extensions)) {
+								$images[] = $file->getPathname();
+							}
+						}
+																
+					?>
+					<?
+						foreach ($images as $item) {
+							echo '
+								<img style="cursor:pointer;" class="img-polaroid" src="' . $item . '" style="max-width:50px;"> 
+							';
+						}
+					?>
+
+				</div>
+			</div>
+			<br>
 			<div class="row justify-content-center">
 				<div class="span5">
 					<div> </div>
@@ -70,19 +102,7 @@
 								</div>
 							</div>
 							<style>
-								.img-polaroid{
-									width: auto !important;
-									height: 100px !important;
-								}
-								#avatarlist{
-									height:300px; /* высота нашего блока */
-									background: #fff; /* цвет фона, белый */
-									border: 1px solid #C1C1C1; /* размер и цвет границы блока */
-									overflow: auto; /* свойство для прокрутки по горизонтали. Автоматом, если больше блока */
-								}
-								#drawingArea:hover{
-									border:2px solid red !important;
-								}
+
 
 							</style>
 							<div class="tab-pane active" id="tab2">
@@ -90,41 +110,14 @@
 									<div class="input-append">
 										<input class="span2" id="text-string" type="text" placeholder="Введите текст">
 										<button id="add-text" class="btn" title="Add text"><i class="icon-share-alt"></i> Добавить</button>
-										<hr> </div>
+									</div>
+									<hr>
 									<div>
-										<hr>
 										<input type="file" accept="image/*" multiple> <a href="#" class="upload_files btn btn-primary">Добавить свою картинку</a> <img id="blah" src="#" alt="your image" class="img-polaroid2" style="display:none" />
-									<div class="ajax-reply"></div>
-									<br>
+										<div class="ajax-reply"></div>
+										<br>
 									</div>
-									<div id="avatarlist"> 
-										<img style="cursor:pointer;" class="img-polaroid" src="img/invisibleman.jpg"> 
-										<?
-											$path = './prepare_img/'; // путь к директории с изображениями
-											$extensions = array('png', 'jpg', 'JPG', 'jpeg', 'gif'); // показывать расширения
-										
-											$directoryIterator = new RecursiveDirectoryIterator($path, RecursiveDirectoryIterator::SKIP_DOTS);
-											$iteratorIterator  = new RecursiveIteratorIterator($directoryIterator, RecursiveIteratorIterator::LEAVES_ONLY);
-										
-											$images = [];
-											foreach ($iteratorIterator as $file) {
-												if (in_array($file->getExtension(), $extensions)) {
-													$images[] = $file->getPathname();
-												}
-											}
-																					
-										?>
-										<?
-											foreach ($images as $item) {
-												echo '
-													<img style="cursor:pointer;" class="img-polaroid" src="' . $item . '" style="max-width:50px;"> 
-												';
-											}
-										?>
 
-									</div>
-									
-									<br>
 									<div class="row ">
 										<h5>Выберите размер</h5>
 										<table class="table">
@@ -256,53 +249,23 @@
 					<!--					</div>						-->
 					<!--	/EDITOR		-->
 				</div>
-				<!--div class="span2">
-					<div class="well">
-						<h3>Выберите размер</h3>
-						<p>
-							<table class="table">
-								<tr>
-									<td>
-										<input type="checkbox">&emsp;S</td>
-								</tr>
-								<tr>
-									<td>
-										<input type="checkbox">&emsp;M</td>
-								</tr>
-								<tr>
-									<td>
-										<input type="checkbox">&emsp;L</td>
-								</tr>
-								<tr>
-									<td>
-										<input type="checkbox">&emsp;XL</td>
-								</tr>
-								<tr>
-									<td>
-										<input type="checkbox">&emsp;XXL</td>
-								</tr>
-							</table>
-						</p>
-						<button class="btn btn-primary add-in-cart"
-						>Заказать</button>
-						<button type="button" class="btn btn-large btn-block btn-success" name="addToTheBag" id="addToTheBag">Заказать <i class="icon-briefcase icon-white"></i></button>
-						<button id="take_screenshoot">Take Screenshot</button>
-					</div>
-				</div-->
 			</div>
 		</div>
 		</section>
 
 		<section style="display: none;" id="screen"> </section>
 	</div>
-
+	
 	<script src="js/app.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/tshirtEditor.js"></script>
 	<script type="text/javascript" src="js/jquery.miniColors.min.js"></script>
-	<!--script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
+
+	<script>
+		$("#phone").mask("(999) 999-99-99");
+	</script>
 </body>
 </html>

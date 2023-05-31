@@ -90,3 +90,16 @@ body {
 #drawingArea{
     touch-action: none !important;
 }
+.img-polaroid{
+    width: auto !important;
+    height: 100px !important;
+}
+#avatarlist{
+    height:170px; /* высота нашего блока */
+    background: #fff; /* цвет фона, белый */
+    border: 1px solid #C1C1C1; /* размер и цвет границы блока */
+    overflow: auto; /* свойство для прокрутки по горизонтали. Автоматом, если больше блока */
+}
+#drawingArea:hover{
+    border:2px solid red !important;
+}
