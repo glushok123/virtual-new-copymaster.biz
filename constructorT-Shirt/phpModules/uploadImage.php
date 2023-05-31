@@ -1,8 +1,7 @@
 <?php
 
 
-
-if( isset( $_POST['my_file_upload'] ) ){  
+if (isset( $_POST['my_file_upload']) ){
 	// ВАЖНО! тут должны быть все проверки безопасности передавемых файлов и вывести ошибки если нужно
 
 	$uploaddir = './uploads'; // . - текущая папка где находится submit.php
@@ -49,11 +48,10 @@ if( isset( $_POST['my_file_upload'] ) ){
                 echo "Please select a 'PNG', 'GIF'or JPEG image";
                 exit;
                 break;
-
         }
 
         //for the record move the uploaded file to the resized image directory
-        move_uploaded_file($uploaded_file, $folder_path. "Original Uploaded Image_".$file_name_id.".". $img_ext);
+        move_uploaded_file($uploaded_file, $folder_path. "Original Image_" . $file_name_id . "." . $img_ext);
 
         die(json_encode(array('name' => "Resized Image_".$file_name_id.".". $img_ext)));
 
@@ -62,8 +60,6 @@ if( isset( $_POST['my_file_upload'] ) ){
 		if( move_uploaded_file( $file['tmp_name'], "$uploaddir/$file_name" ) ){
 			$done_files[] = realpath( "$uploaddir/$file_name" );
 		}
-
-
 
         die(json_encode(array('name' => $file_name)));
 	}

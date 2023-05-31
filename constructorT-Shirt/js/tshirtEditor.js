@@ -83,8 +83,8 @@ var line4;
 	  		var el = e.target;
 	  		/*temp code*/
 	  		var offset = 50;
-	        var left = fabric.util.getRandomInt(0 + offset, 200 - offset);
-	        var top = fabric.util.getRandomInt(0 + offset, 400 - offset);
+	        var left = fabric.util.getRandomInt(0 + offset, 180 - offset);
+	        var top = fabric.util.getRandomInt(0 + offset, 300 - offset);
 	        var angle = fabric.util.getRandomInt(-20, 40);
 	        var width = fabric.util.getRandomInt(30, 50);
 	        var opacity = (function(min, max){ return Math.random() * (max - min) + min; })(0.5, 1);

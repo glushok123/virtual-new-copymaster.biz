@@ -84,3 +84,9 @@ body {
 .Engagement {
     font-family: "Engagement";
 }
+.row{
+    margin-left:0px !important;
+}
+#drawingArea{
+    touch-action: none !important;
+}

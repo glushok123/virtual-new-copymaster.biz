@@ -230,7 +230,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
            VALUES
             ('".$name."','".$email."','".$phon."','".$datat."','".$info."','штендер')");
     }
-    
+
     if ($_POST["id"] == "kalendari")
     {
         $name = $_POST["login"];
@@ -315,6 +315,49 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
             'Печать на кружке',
             '" . $id_mugs . "',
             '-')");
+
+        $orderId = $db->getInsertId();
+
+        echo json_encode([
+            'success' => true,
+            'message' => 'Ваш заказ зарезервирован под № ' . $orderId . '. В течении 10 минут с вами свяжется наш менеджер.',
+            'order_id' => $orderId
+        ]);
+    }
+
+    if ($_POST["id"] == "shirt") //футболки (конструктор)
+    {
+        $data = [];
+
+        $name = $_POST["user_name"];
+        $email = $_POST["email"];
+        $phone = $_POST["phone"];
+        $comment = $_POST["comment"];
+
+        $data = [
+            'images' => empty($_POST["images"]) === true ? [] : $_POST["images"],
+            'screenShots' => empty($_POST["screenShots"]) === true ? [] : $_POST["screenShots"],
+            'sizeShit' => empty($_POST["sizeShit"]) === true ? 'Не указано' : $_POST["sizeShit"]
+        ];
+
+        $info = serialize($data);
+
+        $db = getDbInstance();
+        $datat = date('d.m.y H:i');
+
+        $db->query("
+            INSERT INTO zayavki
+            ( `name`, `email`, `phon`, `comment`,  `created_at`, `info`,`tip`)
+            VALUES
+            (
+                '" . $name . "', 
+                '" . $email . "', 
+                '" . $phone . "', 
+                '" . $comment . "', 
+                '" . $datat . "', 
+                '" . $info . "', 
+                'Футболка')
+        ");
 
         $orderId = $db->getInsertId();
 

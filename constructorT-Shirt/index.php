@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
 	<meta charset="utf-8">
@@ -7,6 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
 	<meta name="author" content="">
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script type="text/javascript" src="js/fabric.js"></script>
 	<link type="text/css" rel="stylesheet" href="css/jquery.miniColors.css" />
@@ -26,7 +27,7 @@
 					<h1 class="text-center" style="text-align: center;">Конструктор Футболок</h1> </div>
 			</div>
 			<div class="row justify-content-center">
-				<div class="span4">
+				<div class="span5">
 					<div> </div>
 					<div class="tabbable">
 						<ul class="nav nav-tabs">
@@ -68,24 +69,136 @@
 									</ul>
 								</div>
 							</div>
+							<style>
+								.img-polaroid{
+									width: auto !important;
+									height: 100px !important;
+								}
+								#avatarlist{
+									height:300px; /* высота нашего блока */
+									background: #fff; /* цвет фона, белый */
+									border: 1px solid #C1C1C1; /* размер и цвет границы блока */
+									overflow: auto; /* свойство для прокрутки по горизонтали. Автоматом, если больше блока */
+								}
+								#drawingArea:hover{
+									border:2px solid red !important;
+								}
+
+							</style>
 							<div class="tab-pane active" id="tab2">
 								<div class="well">
 									<div class="input-append">
 										<input class="span2" id="text-string" type="text" placeholder="Введите текст">
 										<button id="add-text" class="btn" title="Add text"><i class="icon-share-alt"></i> Добавить</button>
 										<hr> </div>
-									<div id="avatarlist"> <img style="cursor:pointer;" class="img-polaroid" src="img/invisibleman.jpg"> </div>
 									<div>
 										<hr>
-										<input type="file" accept="image/*"> <a href="#" class="upload_files btn btn-primary">Добавить свою картинку</a> <img id="blah" src="#" alt="your image" class="img-polaroid2" style="display:none" />
-										<div class="ajax-reply"></div>
+										<input type="file" accept="image/*" multiple> <a href="#" class="upload_files btn btn-primary">Добавить свою картинку</a> <img id="blah" src="#" alt="your image" class="img-polaroid2" style="display:none" />
+									<div class="ajax-reply"></div>
+									<br>
+									</div>
+									<div id="avatarlist"> 
+										<img style="cursor:pointer;" class="img-polaroid" src="img/invisibleman.jpg"> 
+										<?
+											$path = './prepare_img/'; // путь к директории с изображениями
+											$extensions = array('png', 'jpg', 'JPG', 'jpeg', 'gif'); // показывать расширения
+										
+											$directoryIterator = new RecursiveDirectoryIterator($path, RecursiveDirectoryIterator::SKIP_DOTS);
+											$iteratorIterator  = new RecursiveIteratorIterator($directoryIterator, RecursiveIteratorIterator::LEAVES_ONLY);
+										
+											$images = [];
+											foreach ($iteratorIterator as $file) {
+												if (in_array($file->getExtension(), $extensions)) {
+													$images[] = $file->getPathname();
+												}
+											}
+																					
+										?>
+										<?
+											foreach ($images as $item) {
+												echo '
+													<img style="cursor:pointer;" class="img-polaroid" src="' . $item . '" style="max-width:50px;"> 
+												';
+											}
+										?>
+
+									</div>
+									
+									<br>
+									<div class="row ">
+										<h5>Выберите размер</h5>
+										<table class="table">
+											<tr>
+												<td>
+													<div class="form-check">
+														<input class="form-check-input" type="radio" name="sizeShit" value='S'>
+														<label class="form-check-label" for="flexRadioDefault1">
+															S
+														</label>
+													</div>
+												</td>
+					
+												<td>
+													<div class="form-check">
+														<input class="form-check-input" type="radio" name="sizeShit" value='M'>
+														<label class="form-check-label" for="flexRadioDefault1">
+															M
+														</label>
+													</div>
+												</td>
+
+												<td>
+													<div class="form-check">
+														<input class="form-check-input" type="radio" name="sizeShit" value='L'>
+														<label class="form-check-label" for="flexRadioDefault1">
+															L
+														</label>
+													</div>
+												</td>
+
+												<td>
+													<div class="form-check">
+														<input class="form-check-input" type="radio" name="sizeShit" value='XL'>
+														<label class="form-check-label" for="flexRadioDefault1">
+															&emsp;XL
+														</label>
+													</div>
+												</td>
+
+												<td>
+												<div class="form-check">
+														<input class="form-check-input" type="radio" name="sizeShit" value='XXL'>
+														<label class="form-check-label" for="flexRadioDefault1">
+															&emsp;XXL
+														</label>
+													</div>
+												</td>
+											</tr>
+										</table>
+										<div class=" ">
+											<h5>Заполните данные для обратной связи</h5>
+											<div class="control-group" id='status-form'>
+												<input id="user-name" type="text" class="form-control text-center "  style="max-width:500px;" placeholder="Фамилия Имя" required />
+												<input id="phone" type="text" class="form-control text-center "  style="max-width:500px;" placeholder="(999) 999-99-99" required/><br>
+												<input id="email" type="text" class="form-control text-center "  style="max-width:500px;" placeholder="example@user.com" required/>
+												
+											</div>
+
+											<label for="comment" class="form-label" style='margin-top:10px'>Комментарий к заказу:</label>
+											<textarea class="form-control" id="comment" rows="3"></textarea>
+										</div>
+									</div>
+
+									<div class="row">
+										<button class="btn btn-primary add-in-cart">Заказать</button>
 									</div>
 								</div>
+
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="span6">
+				<div class="span6" style=''>
 					<div align="center" style="min-height: 32px;">
 						<div class="clearfix">
 							<div class="btn-group inline pull-left" id="texteditor" style="display:none">
@@ -131,19 +244,19 @@
 					<!--	EDITOR      -->
 					<button id="flipback" type="button" class="btn" title="Rotate View" data-original-title="Show Back View"><i class="icon-retweet" style="height:19px;"></i></button>
 					<div id="shirtDiv" class="page" style="width: 530px; height: 630px; position: relative; background-color: rgb(255, 255, 255);"> <img name="tshirtview" id="tshirtFacing" src="img/crew_front.png">
-						<div id="drawingArea" style="position: absolute;top: 100px;left: 160px;z-index: 10;width: 200px;height: 400px;">
-							<canvas id="tcanvas" width="200" height="400" class="hover" style="-webkit-user-select: none;"></canvas>
+						<div id="drawingArea" style="position: absolute;top: 100px;left: 180px;z-index: 10;width: 170px;height: 300px;">
+							<canvas id="tcanvas" width="170" height="300" class="hover" style="-webkit-user-select: none;"></canvas>
 						</div>
 					</div>
 					<!--					<div id="shirtBack" class="page" style="width: 530px; height: 630px; position: relative; background-color: rgb(255, 255, 255); display:none;">-->
 					<!--						<img src="img/crew_back.png"></img>-->
-					<!--						<div id="drawingArea" style="position: absolute;top: 100px;left: 160px;z-index: 10;width: 200px;height: 400px;">					-->
-					<!--							<canvas id="backCanvas" width="200" height="400" class="hover" style="-webkit-user-select: none;"></canvas>-->
+					<!--						<div id="drawingArea" style="position: absolute;top: 100px;left: 180px;z-index: 10;width: 170px;height: 300px;">					-->
+					<!--							<canvas id="backCanvas" width="170" height="300" class="hover" style="-webkit-user-select: none;"></canvas>-->
 					<!--						</div>-->
 					<!--					</div>						-->
 					<!--	/EDITOR		-->
 				</div>
-				<div class="span2">
+				<!--div class="span2">
 					<div class="well">
 						<h3>Выберите размер</h3>
 						<p>
@@ -170,182 +283,26 @@
 								</tr>
 							</table>
 						</p>
+						<button class="btn btn-primary add-in-cart"
+						>Заказать</button>
 						<button type="button" class="btn btn-large btn-block btn-success" name="addToTheBag" id="addToTheBag">Заказать <i class="icon-briefcase icon-white"></i></button>
 						<button id="take_screenshoot">Take Screenshot</button>
 					</div>
-				</div>
+				</div-->
 			</div>
 		</div>
 		</section>
+
 		<section style="display: none;" id="screen"> </section>
 	</div>
 
-	
-
-	<script>
-		//Создание скриншота передней и задней части футболки
-		function createScreenShots() {
-			html2canvas(document.querySelector("#shirtDiv")).then(canvas => {
-				document.querySelector("#screen").appendChild(canvas);
-
-				dataURL = canvas.toDataURL();
-				post_data(dataURL);
-			});
-		}
-
-		//перевертывание футболки
-		function rotateShit() {
-			if(valueSelect === "img/crew_front.png") {
-				if($('#flipback').attr("data-original-title") == "Show Back View") {
-					$('#flipback').attr('data-original-title', 'Show Front View');
-					$("#tshirtFacing").attr("src", "img/crew_back.png");
-					a = JSON.stringify(canvas);
-					canvas.clear();
-					try {
-						var json = JSON.parse(b);
-						canvas.loadFromJSON(b);
-					} catch(e) {}
-				} else {
-					$('#flipback').attr('data-original-title', 'Show Back View');
-					$("#tshirtFacing").attr("src", "img/crew_front.png");
-					b = JSON.stringify(canvas);
-					canvas.clear();
-					try {
-						var json = JSON.parse(a);
-						canvas.loadFromJSON(a);
-					} catch(e) {}
-				}
-			}
-			canvas.renderAll();
-			canvas.calcOffset();
-		}
-
-		//кнопка создания скриншота
-		$('#take_screenshoot').click(function() {
-			createScreenShots(); // 1 часть скриншота
-			rotateShit();
-
-			setTimeout(function() {
-				createScreenShots();// 2 часть скриншота
-			}, 1000);
-		});
-
-		//Отправка скриншота на сервер
-		function post_data(imageURL) {
-			$.ajax({
-				url: "/constructorT-Shirt/phpModules/uploadScreen.php",
-				type: "POST",
-				data: {
-					image: imageURL
-				},
-				dataType: "html",
-				success: function() {
-					console.log("Success!!");
-				}
-			});
-		}
-
-		$(document).ready(function() {
-			$("#tshirttype").change(function() {
-				$("img[name=tshirtview]").attr("src", $(this).val());
-			});
-		});
-
-		var files; // переменная. будет содержать данные файлов
-
-		// заполняем переменную данными, при изменении значения поля file 
-		$('input[type=file]').on('change', function() {
-			files = this.files;
-		});
-
-		// обработка и отправка AJAX запроса при клике на кнопку upload_files
-		$('.upload_files').on('click', function(event) {
-			event.stopPropagation(); // остановка всех текущих JS событий
-			event.preventDefault(); // остановка дефолтного события для текущего элемента - клик для <a> тега
-			// ничего не делаем если files пустой
-			if(typeof files == 'undefined') return;
-			// создадим объект данных формы
-			var data = new FormData();
-			// заполняем объект данных файлами в подходящем для отправки формате
-			$.each(files, function(key, value) {
-				data.append(key, value);
-			});
-			// добавим переменную для идентификации запроса
-			data.append('my_file_upload', 1);
-			// AJAX запрос
-			$.ajax({
-				url: '/constructorT-Shirt/phpModules/uploadImage.php',
-				type: 'POST', // важно!
-				data: data,
-				cache: false,
-				dataType: 'json',
-				// отключаем обработку передаваемых данных, пусть передаются как есть
-				processData: false,
-				// отключаем установку заголовка типа запроса. Так jQuery скажет серверу что это строковой запрос
-				contentType: false,
-				// функция успешного ответа сервера
-				success: function(respond, status, jqXHR) {
-					// ОК - файлы загружены
-					if(typeof respond.error === 'undefined') {
-						var html = respond.name + '<br>';
-						$('#blah').attr('src', '/constructorT-Shirt/phpModules/uploads/' + respond.name);
-						$('#blah').trigger('click')
-						$('.ajax-reply').html(html);
-					}
-					// ошибка
-					else {
-						console.log('ОШИБКА: ' + respond.data);
-					}
-				},
-				// функция ошибки ответа сервера
-				error: function(jqXHR, status, errorThrown) {
-					console.log('ОШИБКА AJAX запроса: ' + status, jqXHR);
-				}
-			});
-		});
-
-		//событие клика по загруженной картинке, для применения к футболке
-		$(".img-polaroid2").click(function(e) {
-			var el = e.target;
-			var offset = 50;
-			var left = fabric.util.getRandomInt(0 + offset, 200 - offset);
-			var top = fabric.util.getRandomInt(0 + offset, 400 - offset);
-			var angle = fabric.util.getRandomInt(-20, 40);
-			var width = fabric.util.getRandomInt(30, 50);
-			var opacity = (function(min, max) {
-				return Math.random() * (max - min) + min;
-			})(0.5, 1);
-			fabric.Image.fromURL(el.src, function(image) {
-				var elWidth = image.naturalWidth || image.width;
-				var elHeight = image.naturalHeight || image.height;
-				image.set({
-					left: left,
-					top: top,
-					angle: 0,
-					padding: 10,
-					cornersize: 10,
-					hasRotatingPoint: true,
-					scaleX: 1 / elWidth,
-					scaleY: 1 / elHeight
-				});
-
-				canvas.add(image).renderAll();
-			});
-		});
-
-		var valueSelect = $("#tshirttype").val();
-		$("#tshirttype").change(function() {
-			valueSelect = $(this).val();
-		});
-
-		//БЫЛО перевертывание картинки
-		$('#flipback').click(function() {
-			rotateShit();
-		});
-	</script>
+	<script src="js/app.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/tshirtEditor.js"></script>
 	<script type="text/javascript" src="js/jquery.miniColors.min.js"></script>
 	<script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
 </body>
 </html>
