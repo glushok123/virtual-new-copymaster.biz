@@ -33,6 +33,36 @@ function route($method, $urlData, $formData) {
                     if ($z["tip"] == "Печать на кружке")
                     {$z["tip"] = $z["tip"] . "<hr> Артикул кружки: " . $z["kwiz_vid"] . "<hr>" . $z["kwiz_srok"]  ; }
 
+                    if ($z["tip"] === "Футболка") {
+                        if (!empty($z["info"])) {
+                            $info = unserialize($z["info"]);
+
+                            if (!empty($info["screenShots"])) {
+                                if (!empty($info["screenShots"][0])) {
+                                    $z["tip"] = $z["tip"] .  "<hr><a href='/constructorT-Shirt/phpModules/" . $info["screenShots"][0] . "' target='_blank'>Скрин 1(просмотр)</a>";
+                                }
+
+                                if (!empty($info["screenShots"][1])) {
+                                    $z["tip"] = $z["tip"] .  "<br><a href='/constructorT-Shirt/phpModules/" . $info["screenShots"][1] . "' target='_blank'>Скрин 2(просмотр)</a>";
+                                }
+                            }
+                            
+                            if (!empty($info["images"])) {
+                                if (!empty($info["images"][0])) {
+                                    $z["tip"] = $z["tip"] .  "<hr><a href='" . $info["images"][0] . "' target='_blank'>Image 1(просмотр)</a>";
+                                }
+
+                                if (!empty($info["images"][1])) {
+                                    $z["tip"] = $z["tip"] .  "<br><a href='" . $info["images"][1] . "' target='_blank'>Image 2(просмотр)</a>";
+                                }
+
+                                if (!empty($info["images"][2])) {
+                                    $z["tip"] = $z["tip"] .  "<br><a href='" . $info["images"][2] . "' target='_blank'>Image 3(просмотр)</a>";
+                                }
+                            }
+                        }
+                    }
+
                     $text = '{ "id":"'.$z["id"].'", "name":"'.$z["name"].'",  "email":"'.$z["email"].'",  "status":"'.$z["status"].'",  "comment":"'.$z["comment"].'","price":"'.$z["price"].'",  "created_at":"'.$z["created_at"].'",  "updated_at":"'.$z["updated_at"].'",  "phon":"'.$z["phon"].'", "tip":"'.$z["tip"].'"},';
                     $json = $json.$text;
                 }
