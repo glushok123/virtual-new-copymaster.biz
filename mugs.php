@@ -315,7 +315,8 @@ video::-webkit-media-controls-mute-button {
 		</div>
 	</div>
 
-
+    10133 l 1610 l 52 l 11114 l2632 l 40 l 4 l 1 l 0 l 480 l 385 l 0 l 0 l 6917 l 1 l 800 l0l0l0l0l0l0l 44
+    7824  l 495  l 24 l 10938 l1740 l 50 l 4 l 1 l 0 l 350 l 495 l 0 l 0 l 3515 l 1 l 821 l0l0l0l0l0l0l 18
 
     <?php
         include_once 'footer.php';
