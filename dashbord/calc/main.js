@@ -2385,6 +2385,11 @@ let base = new function () {
           }
         }
       }
+      this.bd = new function () {
+        this.nm = "клеевой переплёт";
+        this.fnm = "клеевой переплёт";
+        this.pr = 500;
+      }
       /*this.bd = new function () {
         this.fnm = titelBD['bd'];
         this.pr = pr[5][0];
