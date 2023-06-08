@@ -297,7 +297,21 @@
 				width:100% !important;
 			}
 			#shirtDiv{
-				width:100% !important;
+				width: 350px !important;
+			}
+			#drawingArea{
+				top: 70px !important;
+				left: 106px !important;
+				width: 120px !important;
+				height: 200px !important;
+			}
+			.canvas-container{
+				width: 120px !important;
+				height: 200px !important;
+			}
+			#tcanvas, .upper-canvas{
+				width: 120px !important;
+				height: 200px !important;
 			}
 		}
 		
