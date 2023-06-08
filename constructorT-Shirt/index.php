@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Онлаин конструктор Футболок</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content=" initial-scale=1">
 	<meta name="description" content="">
 	<meta name="author" content="">
 
@@ -23,15 +23,18 @@
 		
 		<a href="https://copymaster.biz">◄ Вернуться на сайт</a> </div>
 	</div>
-	<div class="container">
+	<div class="container-fluid">
 		<section id="typography">
 			<div class="page-header">
 				<div class="row text-center">
 					<h1 class="text-center" style="text-align: center;">Конструктор Футболок</h1> </div>
 			</div>
-			<div class='row'>
+
+			<br>
+			<div class="row justify-content-center">
+				<div class="span6">
 				<h5>Готовые решения (нажмите на картинку, что бы применить к футболке)</h5>
-				<div id="avatarlist"> 
+					<div id="avatarlist"> 
 					<?
 						$path = './prepare_img/'; // путь к директории с изображениями
 						$extensions = array('png', 'jpg', 'JPG', 'jpeg', 'gif'); // показывать расширения
@@ -55,11 +58,9 @@
 						}
 					?>
 
+					</div>
 				</div>
-			</div>
-			<br>
-			<div class="row justify-content-center">
-				<div class="span5">
+				<div class="span6">
 					<div> </div>
 					<div class="tabbable">
 						<ul class="nav nav-tabs">
@@ -265,8 +266,114 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
 
+	<style>
+		@media screen and (max-width: 1700px) {
+			.span6 {
+				width:470px !important;
+			}
+		}
+		@media screen and (max-width: 1600px) {
+			.span6 {
+				width:420px !important;
+			}
+		}
+		@media screen and (max-width: 1500px) {
+			.span6 {
+				width:390px !important;
+			}
+		}
+		@media screen and (max-width: 1400px) {
+			.span6 {
+				width:360px !important;
+			}
+		}
+		@media screen and (max-width: 1300px) {
+			.span6 {
+				width:310px !important;
+			}
+		}
+		@media screen and (max-width: 900px) {
+			.span6 {
+				width:100% !important;
+			}
+			#shirtDiv{
+				width:100% !important;
+			}
+		}
+		
+	</style>
 	<script>
 		$("#phone").mask("(999) 999-99-99");
+
+
+		function adaptiveSizePageScaleInit(definedStartWidth) {
+			let startWidth = definedStartWidth;
+			if (!(startWidth / 1)) {
+				let bodyMinWidthStr = getComputedStyle(document.body).minWidth;
+				let bodyMinWidthNumber = Number(bodyMinWidthStr.replace(/[^0-9]/g, ""));
+				startWidth = bodyMinWidthNumber;
+			}
+			let firstViewport;
+			function setNewMeta(startWidth) {
+				let screenWidth = screen.width;
+				if (screenWidth <= startWidth) {
+				if (!firstViewport) {
+					firstViewport = document.querySelector('meta[name="viewport"]');
+				}
+				let oldViewport = document.querySelector('meta[name="viewport"]');
+				let newViewport = document.createElement("meta");
+				newViewport.setAttribute("name", "viewport");
+				newViewport.setAttribute("content", "width=" + `${startWidth}`);
+				document.head.replaceChild(newViewport, oldViewport);
+				} else if (firstViewport && document.querySelector('meta[name="viewport"]') != firstViewport) {
+				let oldViewport = document.querySelector('meta[name="viewport"]');
+				document.head.replaceChild(firstViewport, oldViewport);
+				}
+			}
+			window.addEventListener("resize", function () {
+				setNewMeta(startWidth);
+			});
+			setNewMeta(startWidth);
+		}
+
+function startOnSpecificBrowserInit() {
+  let userAgent = window.navigator.userAgent.toLowerCase();
+  let browser;
+  switch (true) {
+    case userAgent.indexOf("edge") > -1:
+      browser = "msEdge";
+      break;
+    case userAgent.indexOf("edg/") > -1:
+      browser = "chrEdge";
+      break;
+    case userAgent.indexOf("opr") > -1 && !!window.opr:
+      browser = "opera";
+      break;
+    case userAgent.indexOf("chrome") > -1 && !!window.chrome:
+      browser = "сhrome";
+      break;
+    case userAgent.indexOf("trident") > -1:
+      browser = "ie";
+      break;
+    case userAgent.indexOf("firefox") > -1:
+      browser = "firefox";
+      break;
+    case userAgent.indexOf("safari") > -1:
+      browser = "safari";
+      break;
+    default:
+      browser = "other";
+  }
+  if (browser == "safari" || browser == "firefox") {
+    adaptiveSizePageScaleInit();
+  }
+}
+
+//adaptiveSizePageScaleInit();
+//startOnSpecificBrowserInit()
+
+//a = document.getElementsByTagName('body');
+//a[0].style.transform = "scale(0.8)";
 	</script>
 </body>
 </html>
