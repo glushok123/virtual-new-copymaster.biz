@@ -16,6 +16,11 @@
 	<link rel="shortcut icon" href="https://copymaster.biz/img/favicon.ico" /> </head>
 	<link type="text/css" rel="stylesheet" href="css/app.css" />
 
+	<? 
+	function isMobile() {
+		return preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]);
+	}
+	?>
 <body class="preview" data-spy="scroll" data-target=".subnav" data-offset="80">
 	<div class="container">
 		<div class="row"> 
@@ -235,20 +240,45 @@
 							</div>
 						</div>
 					</div>
-					<!--	EDITOR      -->
-					<button id="flipback" type="button" class="btn" title="Rotate View" data-original-title="Show Back View"><i class="icon-retweet" style="height:19px;"></i></button>
-					<div id="shirtDiv" class="page" style="width: 530px; height: 630px; position: relative; background-color: rgb(255, 255, 255);"> <img name="tshirtview" id="tshirtFacing" src="img/crew_front.png">
-						<div id="drawingArea" style="position: absolute;top: 100px;left: 180px;z-index: 10;width: 170px;height: 300px;">
-							<canvas id="tcanvas" width="170" height="300" class="hover" style="-webkit-user-select: none;"></canvas>
-						</div>
-					</div>
-					<!--					<div id="shirtBack" class="page" style="width: 530px; height: 630px; position: relative; background-color: rgb(255, 255, 255); display:none;">-->
-					<!--						<img src="img/crew_back.png"></img>-->
-					<!--						<div id="drawingArea" style="position: absolute;top: 100px;left: 180px;z-index: 10;width: 170px;height: 300px;">					-->
-					<!--							<canvas id="backCanvas" width="170" height="300" class="hover" style="-webkit-user-select: none;"></canvas>-->
-					<!--						</div>-->
-					<!--					</div>						-->
-					<!--	/EDITOR		-->
+					<?
+						if (isMobile()) {
+							echo('
+								<!--	EDITOR      -->
+								<button id="flipback" type="button" class="btn" title="Rotate View" data-original-title="Show Back View"><i class="icon-retweet" style="height:19px;"></i></button>
+								<div id="shirtDiv" class="page" style="width: 350px; height: 415px; position: relative; background-color: rgb(255, 255, 255);"> <img name="tshirtview" id="tshirtFacing" src="img/crew_front.png">
+									<div id="drawingArea" style="position: absolute;top: 70px;left: 106px;z-index: 10;width: 120px;height: 200px;">
+										<canvas id="tcanvas" width="120" height="200" class="hover" style="-webkit-user-select: none;"></canvas>
+									</div>
+								</div>
+								<!--					<div id="shirtBack" class="page" style="width: 350px; height: 415px; position: relative; background-color: rgb(255, 255, 255); display:none;">-->
+								<!--						<img src="img/crew_back.png"></img>-->
+								<!--						<div id="drawingArea" style="position: absolute;top: 70px;left: 106px;z-index: 10;width: 120px;height: 200px;">					-->
+								<!--							<canvas id="backCanvas" width="120" height="200" class="hover" style="-webkit-user-select: none;"></canvas>-->
+								<!--						</div>-->
+								<!--					</div>						-->
+								<!--	/EDITOR		-->
+							');
+						}else{
+							echo('
+								<!--	EDITOR      -->
+								<button id="flipback" type="button" class="btn" title="Rotate View" data-original-title="Show Back View"><i class="icon-retweet" style="height:19px;"></i></button>
+								<div id="shirtDiv" class="page" style="width: 530px; height: 630px; position: relative; background-color: rgb(255, 255, 255);"> <img name="tshirtview" id="tshirtFacing" src="img/crew_front.png">
+									<div id="drawingArea" style="position: absolute;top: 100px;left: 180px;z-index: 10;width: 170px;height: 300px;">
+										<canvas id="tcanvas" width="170" height="300" class="hover" style="-webkit-user-select: none;"></canvas>
+									</div>
+								</div>
+								<!--					<div id="shirtBack" class="page" style="width: 530px; height: 630px; position: relative; background-color: rgb(255, 255, 255); display:none;">-->
+								<!--						<img src="img/crew_back.png"></img>-->
+								<!--						<div id="drawingArea" style="position: absolute;top: 100px;left: 180px;z-index: 10;width: 170px;height: 300px;">					-->
+								<!--							<canvas id="backCanvas" width="170" height="300" class="hover" style="-webkit-user-select: none;"></canvas>-->
+								<!--						</div>-->
+								<!--					</div>						-->
+								<!--	/EDITOR		-->
+							');
+						}
+					
+					?>
+
 				</div>
 			</div>
 		</div>
@@ -296,7 +326,7 @@
 			.span6 {
 				width:100% !important;
 			}
-			#shirtDiv{
+			/*#shirtDiv{
 				width: 350px !important;
 			}
 			#drawingArea{
@@ -305,14 +335,10 @@
 				width: 120px !important;
 				height: 200px !important;
 			}
-			.canvas-container{
+			#tcanvas, .upper-canvas, .canvas-container{
 				width: 120px !important;
 				height: 200px !important;
-			}
-			#tcanvas, .upper-canvas{
-				width: 120px !important;
-				height: 200px !important;
-			}
+			}*/
 		}
 		
 	</style>

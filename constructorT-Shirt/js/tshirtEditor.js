@@ -57,8 +57,8 @@ var line4;
 		document.getElementById('add-text').onclick = function() {
 			var text = $("#text-string").val();
 		    var textSample = new fabric.Text(text, {
-		      left: fabric.util.getRandomInt(0, 200),
-		      top: fabric.util.getRandomInt(0, 400),
+		      left: fabric.util.getRandomInt(0, 100),
+		      top: fabric.util.getRandomInt(0, 200),
 		      fontFamily: 'helvetica',
 		      angle: 0,
 		      fill: '#000000',
@@ -83,8 +83,8 @@ var line4;
 	  		var el = e.target;
 	  		/*temp code*/
 	  		var offset = 50;
-	        var left = fabric.util.getRandomInt(0 + offset, 180 - offset);
-	        var top = fabric.util.getRandomInt(0 + offset, 300 - offset);
+	        var left = fabric.util.getRandomInt(0 + offset, 120 - offset);
+	        var top = fabric.util.getRandomInt(0 + offset, 200 - offset);
 	        var angle = fabric.util.getRandomInt(-20, 40);
 	        var width = fabric.util.getRandomInt(30, 50);
 	        var opacity = (function(min, max){ return Math.random() * (max - min) + min; })(0.5, 1);
