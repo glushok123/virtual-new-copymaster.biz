@@ -439,7 +439,7 @@ include('./header.php')
 	}
 	
 	function provAccesss() {
-	    arr = ['glushok', 'Boss', 'Manager'];
+	    arr = ['glushok', 'Boss', 'Manager', 'paulm'];
 	    
         if (! arr.includes(login)) {
             alert('!!! ЗАПРЕЩЕНО РЕДАКТИРОВАНИЕ!!!');
