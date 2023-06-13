@@ -79,6 +79,13 @@ var line4;
 		    	  canvas.renderAll();
 		      }
 	  	});
+		function clearCanvas() {
+			let obj = canvas.getObjects()
+			obj.forEach(function(object) {
+		        canvas.remove(object);
+		    });
+		}
+
 	  	$(".img-polaroid").click(function(e){
 	  		var el = e.target;
 	  		/*temp code*/
@@ -89,6 +96,8 @@ var line4;
 	        var width = fabric.util.getRandomInt(30, 50);
 	        var opacity = (function(min, max){ return Math.random() * (max - min) + min; })(0.5, 1);
 	        
+			clearCanvas();
+
 	  		fabric.Image.fromURL(el.src, function(image) {
 		          image.set({
 		            left: left,

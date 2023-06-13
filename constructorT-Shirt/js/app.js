@@ -126,6 +126,12 @@ $('.upload_files').on('click', function(event) {
     });
 });
 
+function clearCanvas() {
+    let obj = canvas.getObjects()
+    obj.forEach(function(object) {
+        canvas.remove(object);
+    });
+}
 //событие клика по загруженной картинке, для применения к футболке
 $(".img-polaroid2").click(function(e) {
     var el = e.target;
@@ -137,6 +143,9 @@ $(".img-polaroid2").click(function(e) {
     var opacity = (function(min, max) {
         return Math.random() * (max - min) + min;
     })(0.5, 1);
+
+    clearCanvas()
+
     fabric.Image.fromURL(el.src, function(image) {
         var elWidth = image.naturalWidth || image.width;
         var elHeight = image.naturalHeight || image.height;

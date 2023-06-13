@@ -33,7 +33,7 @@
                <td colspan="2">Стоимость</td>
            </tr>
            <tr>
-               <td colspan="2">Печать на автоматической оснастке Trodat (диаметр 40 мм)</td>
+               <td colspan="2">Печать на автоматической оснастке Сolop (диаметр 40 мм)</td>
                <td colspan="2"><? echo $price['dis_osn_1'] ?></td>
            </tr>
            <tr>
