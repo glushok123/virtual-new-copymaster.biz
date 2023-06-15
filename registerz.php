@@ -370,7 +370,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
     require_once 'send.php';
 
-    sendmessage("info@copymaster.biz");
-    sendmessage("Manager@copymaster.biz");
-    sendmessage("design@copymaster.biz");
+    //sendmessage("info@copymaster.biz");
+    //sendmessage("Manager@copymaster.biz");
+    //sendmessage("design@copymaster.biz");
 }
