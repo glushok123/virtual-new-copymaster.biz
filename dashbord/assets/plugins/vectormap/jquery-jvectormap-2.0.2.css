@@ -17,7 +17,9 @@
     padding: 3px;
 }
 
-.jvectormap-zoomin, .jvectormap-zoomout, .jvectormap-goback {
+.jvectormap-zoomin,
+.jvectormap-zoomout,
+.jvectormap-goback {
     position: absolute;
     left: 10px;
     border-radius: 2px;
@@ -30,7 +32,8 @@
     box-sizing: content-box;
 }
 
-.jvectormap-zoomin, .jvectormap-zoomout {
+.jvectormap-zoomin,
+.jvectormap-zoomout {
     width: 12px;
     height: 12px;
 }

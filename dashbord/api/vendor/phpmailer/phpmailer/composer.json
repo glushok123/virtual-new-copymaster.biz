@@ -2,8 +2,7 @@
     "name": "phpmailer/phpmailer",
     "type": "library",
     "description": "PHPMailer is a full-featured email creation and transfer class for PHP",
-    "authors": [
-        {
+    "authors": [{
             "name": "Marcus Bointon",
             "email": "phpmailer@synchromedia.co.uk"
         },
@@ -19,12 +18,10 @@
             "name": "Brent R. Matzelle"
         }
     ],
-    "funding": [
-        {
-            "url": "https://github.com/Synchro",
-            "type": "github"
-        }
-    ],
+    "funding": [{
+        "url": "https://github.com/Synchro",
+        "type": "github"
+    }],
     "config": {
         "allow-plugins": {
             "dealerdirect/phpcodesniffer-composer-installer": true

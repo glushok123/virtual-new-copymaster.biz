@@ -25,9 +25,10 @@ $kol = count($urls);
 
 ?>
 
-<?php echo $urls[$kol-1]; ?>
-echo "<img src=".$urls[$kol-1]." >";
-echo "<img src=".$urls[$kol-2]." >";
-echo "<img src=".$urls[$kol-3]." >";
-echo "<img src=".$urls[$kol-4]." >";
-echo "<img src=".$urls[$kol-5]." >";
+<?php echo $urls[$kol - 1]; ?>
+echo "<img src=".$urls[$kol-1].">";
+echo "<img src=".$urls[$kol-2].">";
+echo "<img src=".$urls[$kol-3].">";
+echo "<img src=".$urls[$kol-4].">";
+echo "<img src=".$urls[$kol-5].">";
+

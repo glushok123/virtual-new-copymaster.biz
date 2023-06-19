@@ -1,5 +1,8 @@
 @import 'https://fonts.googleapis.com/css?family=Dosis:400,600';
-.highcharts-title, .highcharts-subtitle, .highcharts-yaxis .highcharts-axis-title {
+
+.highcharts-title,
+.highcharts-subtitle,
+.highcharts-yaxis .highcharts-axis-title {
   text-transform: uppercase;
 }
 
@@ -52,7 +55,8 @@
   fill: #ffffff;
 }
 
-.highcharts-plot-border, .highcharts-plot-background {
+.highcharts-plot-border,
+.highcharts-plot-background {
   fill: none;
 }
 
@@ -319,7 +323,8 @@ g.highcharts-series,
   stroke-width: 0;
 }
 
-.highcharts-data-label text, text.highcharts-data-label {
+.highcharts-data-label text,
+text.highcharts-data-label {
   fill: #000;
 }
 
@@ -456,7 +461,7 @@ g.highcharts-series,
   stroke-width: 0;
 }
 
-.highcharts-legend-item > text {
+.highcharts-legend-item>text {
   fill: #000;
   font-weight: bold;
   font-size: 13px;
@@ -483,7 +488,8 @@ g.highcharts-series,
   fill: #cccccc;
 }
 
-circle.highcharts-legend-nav-active, circle.highcharts-legend-nav-inactive {
+circle.highcharts-legend-nav-active,
+circle.highcharts-legend-nav-inactive {
   /* tracker */
   fill: rgba(192, 192, 192, 0.0001);
 }
@@ -531,7 +537,8 @@ circle.highcharts-legend-nav-active, circle.highcharts-legend-nav-inactive {
 }
 
 /* Plot bands and polar pane backgrounds */
-.highcharts-plot-band, .highcharts-pane {
+.highcharts-plot-band,
+.highcharts-pane {
   fill: #404048;
   fill-opacity: 0.05;
 }
@@ -935,7 +942,8 @@ text.highcharts-drilldown-data-label,
 }
 
 /* Gantt */
-.highcharts-treegrid-node-collapsed, .highcharts-treegrid-node-expanded {
+.highcharts-treegrid-node-collapsed,
+.highcharts-treegrid-node-expanded {
   cursor: pointer;
 }
 

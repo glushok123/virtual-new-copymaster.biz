@@ -108,9 +108,9 @@ $(function () {
 			enabled: false,
 			theme: 'dark',
 		},
-		stroke:{
-         colors:['rgba(255, 255, 255, 0.0)']
-        },
+		stroke: {
+			colors: ['rgba(255, 255, 255, 0.0)']
+		},
 		labels: ['Mobile', 'Desktop', 'Unknown', 'Tablet'],
 		responsive: [{
 			breakpoint: 480,

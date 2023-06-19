@@ -260,10 +260,14 @@ class POP3
         $errno = 0;
         $errstr = '';
         $this->pop_conn = fsockopen(
-            $host, //POP3 Host
-            $port, //Port #
-            $errno, //Error Number
-            $errstr, //Error Message
+            $host,
+            //POP3 Host
+            $port,
+            //Port #
+            $errno,
+            //Error Number
+            $errstr,
+            //Error Message
             $tval
         ); //Timeout (seconds)
         //Restore the error handler
@@ -357,7 +361,7 @@ class POP3
 
         // Clean up attributes.
         $this->connected = false;
-        $this->pop_conn  = false;
+        $this->pop_conn = false;
     }
 
     /**

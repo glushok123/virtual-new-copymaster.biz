@@ -2,7 +2,9 @@ var arrayImagesDownload = [] // Все загруженные картинки �
 var arrayScreenShotsDownload = [] //Скриншоты спереди и с зади
 
 //кнопка создания скриншота
-$('#take_screenshoot').click(function() { sendScreenShots() });
+$('#take_screenshoot').click(function () {
+    sendScreenShots()
+});
 
 // Отправка скриншотов
 function sendScreenShots() {
@@ -22,8 +24,8 @@ function createScreenShots() {
 
 //перевертывание футболки
 function rotateShit() {
-    if(valueSelect === "img/crew_front.png") {
-        if($('#flipback').attr("data-original-title") == "Show Back View") {
+    if (valueSelect === "img/crew_front.png") {
+        if ($('#flipback').attr("data-original-title") == "Show Back View") {
             $('#flipback').attr('data-original-title', 'Show Front View');
             $("#tshirtFacing").attr("src", "img/crew_back.png");
             a = JSON.stringify(canvas);
@@ -31,7 +33,7 @@ function rotateShit() {
             try {
                 var json = JSON.parse(b);
                 canvas.loadFromJSON(b);
-            } catch(e) {}
+            } catch (e) {}
         } else {
             $('#flipback').attr('data-original-title', 'Show Back View');
             $("#tshirtFacing").attr("src", "img/crew_front.png");
@@ -40,7 +42,7 @@ function rotateShit() {
             try {
                 var json = JSON.parse(a);
                 canvas.loadFromJSON(a);
-            } catch(e) {}
+            } catch (e) {}
         }
     }
     canvas.renderAll();
@@ -53,18 +55,18 @@ function post_data(imageURL) {
         url: "/constructor-Mugs/phpModules/uploadScreen.php",
         type: "post",
         dataType: "json",
-        async : false,
+        async: false,
         data: {
             image: imageURL
         },
-        success: function(data) {
+        success: function (data) {
             arrayScreenShotsDownload.push(data.name)
         }
     });
 }
 
-$(document).ready(function() {
-    $("#tshirttype").change(function() {
+$(document).ready(function () {
+    $("#tshirttype").change(function () {
         $("img[name=tshirtview]").attr("src", $(this).val());
     });
 });
@@ -72,20 +74,20 @@ $(document).ready(function() {
 var files; // переменная. будет содержать данные файлов
 
 // заполняем переменную данными, при изменении значения поля file 
-$('input[type=file]').on('change', function() {
+$('input[type=file]').on('change', function () {
     files = this.files;
 });
 
 // обработка и отправка AJAX запроса при клике на кнопку upload_files
-$('.upload_files').on('click', function(event) {
+$('.upload_files').on('click', function (event) {
     event.stopPropagation(); // остановка всех текущих JS событий
     event.preventDefault(); // остановка дефолтного события для текущего элемента - клик для <a> тега
     // ничего не делаем если files пустой
-    if(typeof files == 'undefined') return;
+    if (typeof files == 'undefined') return;
     // создадим объект данных формы
     var data = new FormData();
     // заполняем объект данных файлами в подходящем для отправки формате
-    $.each(files, function(key, value) {
+    $.each(files, function (key, value) {
         data.append(key, value);
     });
     // добавим переменную для идентификации запроса
@@ -102,7 +104,7 @@ $('.upload_files').on('click', function(event) {
         // отключаем установку заголовка типа запроса. Так jQuery скажет серверу что это строковой запрос
         contentType: false,
         // функция успешного ответа сервера
-        success: function(respond, status, jqXHR) {
+        success: function (respond, status, jqXHR) {
             // ОК - файлы загружены
             if (typeof respond.error === 'undefined') {
                 var html = respond.name + '<br>';
@@ -117,7 +119,7 @@ $('.upload_files').on('click', function(event) {
             }
         },
         // функция ошибки ответа сервера
-        error: function(jqXHR, status, errorThrown) {
+        error: function (jqXHR, status, errorThrown) {
             console.log('ОШИБКА AJAX запроса: ' + status, jqXHR);
         }
     });
@@ -132,28 +134,28 @@ function clearCanvas() {
     */
 }
 //событие клика по загруженной картинке, для применения к футболке
-$(".img-polaroid2").click(function(e) {
+$(".img-polaroid2").click(function (e) {
     var el = e.target;
-    var offset = 50;
+    var offset = 25;
     var left = fabric.util.getRandomInt(0 + offset, 200 - offset);
-    var top = fabric.util.getRandomInt(0 + offset, 400 - offset);
+    var top = fabric.util.getRandomInt(0 + offset, 150 - offset);
     var angle = fabric.util.getRandomInt(-20, 40);
     var width = fabric.util.getRandomInt(30, 50);
-    var opacity = (function(min, max) {
+    var opacity = (function (min, max) {
         return Math.random() * (max - min) + min;
     })(0.5, 1);
 
     clearCanvas()
 
-    fabric.Image.fromURL(el.src, function(image) {
+    fabric.Image.fromURL(el.src, function (image) {
         var elWidth = image.naturalWidth || image.width;
         var elHeight = image.naturalHeight || image.height;
         image.set({
             left: left,
             top: top,
             angle: 0,
-            padding: 10,
-            cornersize: 10,
+            //padding: 10,
+            //cornersize: 10,
             hasRotatingPoint: true,
             scaleX: 1 / elWidth,
             scaleY: 1 / elHeight
@@ -164,7 +166,7 @@ $(".img-polaroid2").click(function(e) {
 });
 
 var valueSelect = $("#tshirttype").val();
-$("#tshirttype").change(function() {
+$("#tshirttype").change(function () {
     valueSelect = $(this).val();
 });
 
@@ -173,19 +175,19 @@ $("#tshirttype").change(function() {
 function validation() {
     $("#status-form").removeClass('error');
 
-    if (! $("#user-name").val()) {
+    if (!$("#user-name").val()) {
         $("#status-form").addClass('error');
         toastr.error('Необходимо заполнить ваше имя !');
         return false;
     }
 
-    if (! $("#phone").val()) {
+    if (!$("#phone").val()) {
         $("#status-form").addClass('error');
         toastr.error('Необходимо заполнить номер телефона !');
         return false;
     }
 
-    if (! $("#email").val()) {
+    if (!$("#email").val()) {
         $("#status-form").addClass('error');
         toastr.error('Необходимо заполнить email !');
         return false;
@@ -201,25 +203,25 @@ function sendOrderRequest() {
     sendScreenShots();
 
     data = {
-        id          : 'shirt',
-        user_name	: $("#user-name").val(),
-        phone		: $("#phone").val(),
-        email		: $("#email").val(),
-        comment		: $("#comment").val(),
-        images		: arrayImagesDownload,
-        screenShots		: arrayScreenShotsDownload,
-        sizeShit		: $('input[name="sizeShit"]:checked').val(),
+        id: 'shirt',
+        user_name: $("#user-name").val(),
+        phone: $("#phone").val(),
+        email: $("#email").val(),
+        comment: $("#comment").val(),
+        images: arrayImagesDownload,
+        screenShots: arrayScreenShotsDownload,
+        sizeShit: $('input[name="sizeShit"]:checked').val(),
     };
 
     console.log(data)
-    
+
     $.ajax({
         url: '/registerz.php',
         type: "post",
         dataType: "json",
-        async : false,
+        async: false,
         data: data,
-        success: function(data){
+        success: function (data) {
             console.log(data)
             if (data.success == true) {
                 toastr.success(data.message);
@@ -246,5 +248,9 @@ function sendOrderRequest() {
 
 }
 
-$(document).on('click', '.add-in-cart', function() { sendOrderRequest($(this)) });
-$('#flipback').click(function() {   rotateShit();}); //БЫЛО перевертывание картинки
+$(document).on('click', '.add-in-cart', function () {
+    sendOrderRequest($(this))
+});
+$('#flipback').click(function () {
+    rotateShit();
+}); //БЫЛО перевертывание картинки

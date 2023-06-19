@@ -1,6 +1,6 @@
-( function () {
+(function () {
 
-	function LWO2Parser( IFFParser ) {
+	function LWO2Parser(IFFParser) {
 
 		this.IFF = IFFParser;
 
@@ -15,7 +15,7 @@
 			const blockID = this.IFF.reader.getIDTag();
 			let length = this.IFF.reader.getUint32(); // size of data in bytes
 
-			if ( length > this.IFF.reader.dv.byteLength - this.IFF.reader.offset ) {
+			if (length > this.IFF.reader.dv.byteLength - this.IFF.reader.offset) {
 
 				this.IFF.reader.offset -= 4;
 				length = this.IFF.reader.getUint16();
@@ -25,11 +25,11 @@
 			this.IFF.debugger.dataOffset = this.IFF.reader.offset;
 			this.IFF.debugger.length = length; // Data types may be found in either LWO2 OR LWO3 spec
 
-			switch ( blockID ) {
+			switch (blockID) {
 
 				case 'FORM':
 					// form blocks may consist of sub -chunks or sub-forms
-					this.IFF.parseForm( length );
+					this.IFF.parseForm(length);
 					break;
 					// SKIPPED CHUNKS
 					// if break; is called directly, the position in the lwoTree is not created
@@ -142,15 +142,15 @@
 				case 'VCOL':
 				case 'ENAB':
 					this.IFF.debugger.skipped = true;
-					this.IFF.reader.skip( length );
+					this.IFF.reader.skip(length);
 					break;
 
 				case 'SURF':
-					this.IFF.parseSurfaceLwo2( length );
+					this.IFF.parseSurfaceLwo2(length);
 					break;
 
 				case 'CLIP':
-					this.IFF.parseClipLwo2( length );
+					this.IFF.parseClipLwo2(length);
 					break;
 					// Texture node chunks (not in spec)
 
@@ -179,7 +179,8 @@
 				case 'IINZ':
 				case 'IREF':
 					// possibly a VX for reused texture nodes
-					if ( length === 4 ) this.IFF.currentNode[ blockID ] = this.IFF.reader.getInt32(); else this.IFF.reader.skip( length );
+					if (length === 4) this.IFF.currentNode[blockID] = this.IFF.reader.getInt32();
+					else this.IFF.reader.skip(length);
 					break;
 
 				case 'OTAG':
@@ -187,38 +188,38 @@
 					break;
 
 				case 'LAYR':
-					this.IFF.parseLayer( length );
+					this.IFF.parseLayer(length);
 					break;
 
 				case 'PNTS':
-					this.IFF.parsePoints( length );
+					this.IFF.parsePoints(length);
 					break;
 
 				case 'VMAP':
-					this.IFF.parseVertexMapping( length );
+					this.IFF.parseVertexMapping(length);
 					break;
 
 				case 'AUVU':
 				case 'AUVN':
-					this.IFF.reader.skip( length - 1 );
+					this.IFF.reader.skip(length - 1);
 					this.IFF.reader.getVariableLengthIndex(); // VX
 
 					break;
 
 				case 'POLS':
-					this.IFF.parsePolygonList( length );
+					this.IFF.parsePolygonList(length);
 					break;
 
 				case 'TAGS':
-					this.IFF.parseTagStrings( length );
+					this.IFF.parseTagStrings(length);
 					break;
 
 				case 'PTAG':
-					this.IFF.parsePolygonTagMapping( length );
+					this.IFF.parsePolygonTagMapping(length);
 					break;
 
 				case 'VMAD':
-					this.IFF.parseVertexMapping( length, true );
+					this.IFF.parseVertexMapping(length, true);
 					break;
 					// Misc CHUNKS
 
@@ -280,28 +281,28 @@
 
 				case 'NNME':
 					this.IFF.currentForm.refName = this.IFF.reader.getString();
-					this.IFF.currentSurface.nodes[ this.IFF.currentForm.refName ] = this.IFF.currentForm;
+					this.IFF.currentSurface.nodes[this.IFF.currentForm.refName] = this.IFF.currentForm;
 					break;
 					// Nodal Blocks : connections
 
 				case 'INME':
-					if ( ! this.IFF.currentForm.nodeName ) this.IFF.currentForm.nodeName = [];
-					this.IFF.currentForm.nodeName.push( this.IFF.reader.getString() );
+					if (!this.IFF.currentForm.nodeName) this.IFF.currentForm.nodeName = [];
+					this.IFF.currentForm.nodeName.push(this.IFF.reader.getString());
 					break;
 
 				case 'IINN':
-					if ( ! this.IFF.currentForm.inputNodeName ) this.IFF.currentForm.inputNodeName = [];
-					this.IFF.currentForm.inputNodeName.push( this.IFF.reader.getString() );
+					if (!this.IFF.currentForm.inputNodeName) this.IFF.currentForm.inputNodeName = [];
+					this.IFF.currentForm.inputNodeName.push(this.IFF.reader.getString());
 					break;
 
 				case 'IINM':
-					if ( ! this.IFF.currentForm.inputName ) this.IFF.currentForm.inputName = [];
-					this.IFF.currentForm.inputName.push( this.IFF.reader.getString() );
+					if (!this.IFF.currentForm.inputName) this.IFF.currentForm.inputName = [];
+					this.IFF.currentForm.inputName.push(this.IFF.reader.getString());
 					break;
 
 				case 'IONM':
-					if ( ! this.IFF.currentForm.inputOutputName ) this.IFF.currentForm.inputOutputName = [];
-					this.IFF.currentForm.inputOutputName.push( this.IFF.reader.getString() );
+					if (!this.IFF.currentForm.inputOutputName) this.IFF.currentForm.inputOutputName = [];
+					this.IFF.currentForm.inputOutputName.push(this.IFF.reader.getString());
 					break;
 
 				case 'FNAM':
@@ -310,7 +311,8 @@
 
 				case 'CHAN':
 					// NOTE: ENVL Forms may also have CHAN chunk, however ENVL is currently ignored
-					if ( length === 4 ) this.IFF.currentForm.textureChannel = this.IFF.reader.getIDTag(); else this.IFF.reader.skip( length );
+					if (length === 4) this.IFF.currentForm.textureChannel = this.IFF.reader.getIDTag();
+					else this.IFF.reader.skip(length);
 					break;
 					// LWO2 Spec chunks: these are needed since the SURF FORMs are often in LWO2 format
 
@@ -322,9 +324,9 @@
 
 				case 'COLR':
 					this.IFF.currentSurface.attributes.Color = {
-						value: this.IFF.reader.getFloat32Array( 3 )
+						value: this.IFF.reader.getFloat32Array(3)
 					};
-					this.IFF.reader.skip( 2 ); // VX: envelope
+					this.IFF.reader.skip(2); // VX: envelope
 
 					break;
 
@@ -332,45 +334,45 @@
 					this.IFF.currentSurface.attributes.Luminosity = {
 						value: this.IFF.reader.getFloat32()
 					};
-					this.IFF.reader.skip( 2 );
+					this.IFF.reader.skip(2);
 					break;
 
 				case 'SPEC':
 					this.IFF.currentSurface.attributes.Specular = {
 						value: this.IFF.reader.getFloat32()
 					};
-					this.IFF.reader.skip( 2 );
+					this.IFF.reader.skip(2);
 					break;
 
 				case 'DIFF':
 					this.IFF.currentSurface.attributes.Diffuse = {
 						value: this.IFF.reader.getFloat32()
 					};
-					this.IFF.reader.skip( 2 );
+					this.IFF.reader.skip(2);
 					break;
 
 				case 'REFL':
 					this.IFF.currentSurface.attributes.Reflection = {
 						value: this.IFF.reader.getFloat32()
 					};
-					this.IFF.reader.skip( 2 );
+					this.IFF.reader.skip(2);
 					break;
 
 				case 'GLOS':
 					this.IFF.currentSurface.attributes.Glossiness = {
 						value: this.IFF.reader.getFloat32()
 					};
-					this.IFF.reader.skip( 2 );
+					this.IFF.reader.skip(2);
 					break;
 
 				case 'TRAN':
 					this.IFF.currentSurface.attributes.opacity = this.IFF.reader.getFloat32();
-					this.IFF.reader.skip( 2 );
+					this.IFF.reader.skip(2);
 					break;
 
 				case 'BUMP':
 					this.IFF.currentSurface.attributes.bumpStrength = this.IFF.reader.getFloat32();
-					this.IFF.reader.skip( 2 );
+					this.IFF.reader.skip(2);
 					break;
 
 				case 'SIDE':
@@ -383,7 +385,7 @@
 
 				case 'RIND':
 					this.IFF.currentSurface.attributes.refractiveIndex = this.IFF.reader.getFloat32();
-					this.IFF.reader.skip( 2 );
+					this.IFF.reader.skip(2);
 					break;
 
 				case 'TIMG':
@@ -391,18 +393,18 @@
 					break;
 
 				case 'IMAP':
-					this.IFF.reader.skip( 2 );
+					this.IFF.reader.skip(2);
 					break;
 
 				case 'TMAP':
 					this.IFF.debugger.skipped = true;
-					this.IFF.reader.skip( length ); // needs implementing
+					this.IFF.reader.skip(length); // needs implementing
 
 					break;
 
 				case 'IUVI':
 					// uv channel name
-					this.IFF.currentNode.UVChannel = this.IFF.reader.getString( length );
+					this.IFF.currentNode.UVChannel = this.IFF.reader.getString(length);
 					break;
 
 				case 'IUTL':
@@ -421,11 +423,11 @@
 					break;
 
 				default:
-					this.IFF.parseUnknownCHUNK( blockID, length );
+					this.IFF.parseUnknownCHUNK(blockID, length);
 
 			}
 
-			if ( blockID != 'FORM' ) {
+			if (blockID != 'FORM') {
 
 				this.IFF.debugger.node = 1;
 				this.IFF.debugger.nodeID = blockID;
@@ -433,7 +435,7 @@
 
 			}
 
-			if ( this.IFF.reader.offset >= this.IFF.currentFormEnd ) {
+			if (this.IFF.reader.offset >= this.IFF.currentFormEnd) {
 
 				this.IFF.currentForm = this.IFF.parentForm;
 
@@ -444,4 +446,4 @@
 
 	THREE.LWO2Parser = LWO2Parser;
 
-} )();
+})();

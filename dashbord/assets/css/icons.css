@@ -1,4 +1,3 @@
-
 /*
 Template Name: Syntrans Admin
 Author: codervent
@@ -8,9 +7,7 @@ File: app.css
 
 /* boxicons font */
 
-@font-face
-
-{
+@font-face {
 
 	font-family: 'boxicons';
 
@@ -58,7 +55,7 @@ File: app.css
 
 }
 
-.bx-ul > li {
+.bx-ul>li {
 
 	position: relative;
 
@@ -646,19 +643,19 @@ File: app.css
 
 .bx-xs {
 
-	font-size: 1rem!important;
+	font-size: 1rem !important;
 
 }
 
 .bx-sm {
 
-	font-size: 1.55rem!important;
+	font-size: 1.55rem !important;
 
 }
 
 .bx-md {
 
-	font-size: 2.25rem!important;
+	font-size: 2.25rem !important;
 
 }
 
@@ -672,7 +669,7 @@ File: app.css
 
 	height: .8em;
 
-	margin-top: -.2em!important;
+	margin-top: -.2em !important;
 
 	vertical-align: middle;
 
@@ -680,7 +677,7 @@ File: app.css
 
 .bx-lg {
 
-	font-size: 3.0rem!important;
+	font-size: 3.0rem !important;
 
 }
 
@@ -688,7 +685,7 @@ File: app.css
 
 	float: left;
 
-	margin-right: .3em!important;
+	margin-right: .3em !important;
 
 }
 
@@ -696,7 +693,7 @@ File: app.css
 
 	float: right;
 
-	margin-left: .3em!important;
+	margin-left: .3em !important;
 
 }
 

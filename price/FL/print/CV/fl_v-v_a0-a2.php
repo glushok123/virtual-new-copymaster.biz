@@ -1,15 +1,18 @@
-<table id="table_4"><!--Широкоформатная цветная печать и копирование-->
+<table
+    id="table_4">
+    <!--Широкоформатная цветная печать и копирование-->
     <tbody>
         <tr class="tr1">
             <td colspan="6">Широкоформатная цветная печать и копирование</td>
         </tr>
         <tr>
             <td colspan="2">Цветные чертежи (заливка до 20%)
-            <br>бумага 80 гр./м² **</td>
+                <br>бумага 80 гр./м² **</td>
             <td>А2</td>
             <td>А1</td>
             <td>А0</td>
-            <td>1 м<sup>2</sup></td>
+            <td>1 м<sup>2</sup>
+            </td>
         </tr>
         <tr data-status="">
             <td colspan="2">1 - 10</td>
@@ -43,32 +46,33 @@
             <td><? echo $price['petchat_chet_ns_mat'] ?></td>
         </tr>
         <!--tr data-status="">
-            <td colspan="2">Глянцевая фотобумага HP (235 гр./м²)</td>
-            <td><? //echo $price['petchat_chet_A2_gl'] ?></td>
-            <td><? //echo $price['petchat_chet_A1_gl'] ?></td>
-            <td><? //echo $price['petchat_chet_A0_gl'] ?></td>
-            <td><? // echo $price['petchat_chet_ns_gl'] ?></td>
-        </tr>
-        <tr data-status="">
-            <td colspan="2">Калька Xerox (90 гр./м²)</td>
-            <td><? //echo $price['petchat_chet_A2_kalka'] ?></td>
-            <td><? //echo $price['petchat_chet_A1_kalka'] ?></td>
-            <td><? //echo $price['petchat_chet_A0_kalka'] ?></td>
-            <td><? //echo $price['petchat_chet_ns_kalka'] ?></td>
-        </tr>
-        <tr data-status="">
-            <td colspan="2">Самоклейка (90 гр./м²)</td>
-            <td><? //echo $price['petchat_chet_A2_samokl'] ?></td>
-            <td><? //echo $price['petchat_chet_A1_samokl'] ?></td>
-            <td><? //echo $price['petchat_chet_A0_samokl'] ?></td>
-            <td><? //echo $price['petchat_chet_ns_samokl'] ?></td>
-        </tr-->
+                    <td colspan="2">Глянцевая фотобумага HP (235 гр./м²)</td>
+                    <td><? //echo $price['petchat_chet_A2_gl'] ?></td>
+                    <td><? //echo $price['petchat_chet_A1_gl'] ?></td>
+                    <td><? //echo $price['petchat_chet_A0_gl'] ?></td>
+                    <td><? // echo $price['petchat_chet_ns_gl'] ?></td>
+                </tr>
+                <tr data-status="">
+                    <td colspan="2">Калька Xerox (90 гр./м²)</td>
+                    <td><? //echo $price['petchat_chet_A2_kalka'] ?></td>
+                    <td><? //echo $price['petchat_chet_A1_kalka'] ?></td>
+                    <td><? //echo $price['petchat_chet_A0_kalka'] ?></td>
+                    <td><? //echo $price['petchat_chet_ns_kalka'] ?></td>
+                </tr>
+                <tr data-status="">
+                    <td colspan="2">Самоклейка (90 гр./м²)</td>
+                    <td><? //echo $price['petchat_chet_A2_samokl'] ?></td>
+                    <td><? //echo $price['petchat_chet_A1_samokl'] ?></td>
+                    <td><? //echo $price['petchat_chet_A0_samokl'] ?></td>
+                    <td><? //echo $price['petchat_chet_ns_samokl'] ?></td>
+                </tr-->
         <!--tr data-status="">
-            <td colspan="2">Печать на холсте (320 гр./м²)</td>
-            <td><? //echo $price['petchat_chet_A2_xolst'] ?></td>
-            <td><? //echo $price['petchat_chet_A1_xolst'] ?></td>
-            <td><? //echo $price['petchat_chet_A0_xolst'] ?></td>
-            <td><? //echo $price['petchat_chet_ns_xolst'] ?></td>
-        </tr-->
-          </tbody>
+                    <td colspan="2">Печать на холсте (320 гр./м²)</td>
+                    <td><? //echo $price['petchat_chet_A2_xolst'] ?></td>
+                    <td><? //echo $price['petchat_chet_A1_xolst'] ?></td>
+                    <td><? //echo $price['petchat_chet_A0_xolst'] ?></td>
+                    <td><? //echo $price['petchat_chet_ns_xolst'] ?></td>
+                </tr-->
+    </tbody>
 </table>
+

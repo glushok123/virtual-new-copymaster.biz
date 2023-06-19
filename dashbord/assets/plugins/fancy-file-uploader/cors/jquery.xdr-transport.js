@@ -14,7 +14,8 @@
 
 /* global define, require, window, XDomainRequest */
 
-;(function (factory) {
+;
+(function (factory) {
     'use strict';
     if (typeof define === 'function' && define.amd) {
         // Register as an anonymous AMD module:
@@ -39,6 +40,7 @@
                 return {
                     send: function (headers, completeCallback) {
                         var addParamChar = /\?/.test(s.url) ? '&' : '?';
+
                         function callback(status, statusText, responses, responseHeaders) {
                             xdr.onload = xdr.onerror = xdr.ontimeout = $.noop;
                             xdr = null;
@@ -60,8 +62,9 @@
                         xdr.onload = function () {
                             callback(
                                 200,
-                                'OK',
-                                {text: xdr.responseText},
+                                'OK', {
+                                    text: xdr.responseText
+                                },
                                 'Content-Type: ' + xdr.contentType
                             );
                         };

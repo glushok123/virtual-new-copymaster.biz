@@ -10,11 +10,14 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script type="text/javascript" src="js/fabric.js"></script>
+	
 	<link type="text/css" rel="stylesheet" href="css/jquery.miniColors.css" />
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/bootstrap-responsive.min.css" rel="stylesheet">
 	<link rel="shortcut icon" href="https://copymaster.biz/img/favicon.ico" /> </head>
 	<link type="text/css" rel="stylesheet" href="css/app.css" />
+
+
 
 	
 	<? 
@@ -25,7 +28,8 @@
 <body class="preview" data-spy="scroll" data-target=".subnav" data-offset="80">
 	<div class="container">
 		<div class="row"> 
-		<button id="download">Download Canvas</button>
+		<button id="download">Скачать макет</button>
+		<button id="test">Применить к 3D модели</button>
 		
 		<a href="https://copymaster.biz">◄ Вернуться на сайт</a> </div>
 	</div>
@@ -33,13 +37,99 @@
 		<section id="typography">
 			<div class="page-header">
 				<div class="row text-center">
-					<h1 class="text-center" style="text-align: center;">Конструктор Кружек</h1> </div>
+					<h1 class="text-center" style="text-align: center;">Конструктор Кружек</h1> 
+				</div>
 			</div>
 
 			<br>
+
+			<div class="row justify-content-center">
+				<div class="span7">
+					<div id="test-div2">
+				
+					</div>
+				</div>
+				<div class="span6" style=''>
+					<div align="center" style="min-height: 32px;">
+						<div class="clearfix">
+							<div class="btn-group inline pull-left" id="texteditor" style="display:none">
+								<button id="font-family" class="btn dropdown-toggle" data-toggle="dropdown" title="Шрифт"><i class="icon-font" style="width:19px;height:19px;"></i></button>
+								<ul class="dropdown-menu" role="menu" aria-labelledby="font-family-X">
+									<li><a tabindex="-1" href="#" onclick="setFont('Arial');" class="Arial">Arial</a></li>
+									<li><a tabindex="-1" href="#" onclick="setFont('Helvetica');" class="Helvetica">Helvetica</a></li>
+									<li><a tabindex="-1" href="#" onclick="setFont('Myriad Pro');" class="MyriadPro">Myriad Pro</a></li>
+									<li><a tabindex="-1" href="#" onclick="setFont('Delicious');" class="Delicious">Delicious</a></li>
+									<li><a tabindex="-1" href="#" onclick="setFont('Verdana');" class="Verdana">Verdana</a></li>
+									<li><a tabindex="-1" href="#" onclick="setFont('Georgia');" class="Georgia">Georgia</a></li>
+									<li><a tabindex="-1" href="#" onclick="setFont('Courier');" class="Courier">Courier</a></li>
+									<li><a tabindex="-1" href="#" onclick="setFont('Comic Sans MS');" class="ComicSansMS">Comic Sans MS</a></li>
+									<li><a tabindex="-1" href="#" onclick="setFont('Impact');" class="Impact">Impact</a></li>
+									<li><a tabindex="-1" href="#" onclick="setFont('Monaco');" class="Monaco">Monaco</a></li>
+									<li><a tabindex="-1" href="#" onclick="setFont('Optima');" class="Optima">Optima</a></li>
+									<li><a tabindex="-1" href="#" onclick="setFont('Hoefler Text');" class="Hoefler Text">Hoefler Text</a></li>
+									<li><a tabindex="-1" href="#" onclick="setFont('Plaster');" class="Plaster">Plaster</a></li>
+									<li><a tabindex="-1" href="#" onclick="setFont('Engagement');" class="Engagement">Engagement</a></li>
+								</ul>
+								<button id="text-bold" class="btn" data-original-title="Bold"><img src="img/font_bold.png" height="" width=""></button>
+								<button id="text-italic" class="btn" data-original-title="Italic"><img src="img/font_italic.png" height="" width=""></button>
+								<button id="text-strike" class="btn" title="Strike" style=""><img src="img/font_strikethrough.png" height="" width=""></button>
+								<button id="text-underline" class="btn" title="Underline" style=""><img src="img/font_underline.png"></button>
+								<a class="btn" href="#" rel="tooltip" data-placement="top" data-original-title="Цвет текста">
+									<input type="hidden" id="text-fontcolor" class="color-picker" size="7" value="#000000">
+								</a>
+								<a class="btn" href="#" rel="tooltip" data-placement="top" data-original-title="Цвет рамки">
+									<input type="hidden" id="text-strokecolor" class="color-picker" size="7" value="#000000">
+								</a>
+							</div>
+							<div class="pull-right" align="" id="imageeditor" style="display:none">
+								<div class="btn-group">
+									<button class="btn" id="bring-to-front" title="Спереди"><i class="icon-fast-backward rotate" style="height:19px;"></i></button>
+									<button class="btn" id="send-to-back" title="Send to Back"><i class="icon-fast-forward rotate" style="height:19px;"></i></button>
+									<button id="flip" type="button" class="btn" title="Show Back View"><i class="icon-retweet" style="height:19px;"></i></button>
+									<button id="remove-selected" class="btn" title="Delete selected item"><i class="icon-trash" style="height:19px;"></i></button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<?
+						if (isMobile()) {
+							echo('
+								<!--	EDITOR      -->
+
+								<div id="shirtDiv" class="page" style="width: 350px; height: 415px; position: relative; background-color: rgb(255, 255, 255);"> <img name="tshirtview" id="tshirtFacing" src="img/crew_front.png">
+									<div id="drawingArea" style="position: absolute;top: 70px;left: 106px;z-index: 10;width: 120px;height: 200px;">
+										<canvas id="tcanvas" width="120" height="200" class="hover" style="-webkit-user-select: none;"></canvas>
+									</div>
+								</div>
+								<!--					<div id="shirtBack" class="page" style="width: 350px; height: 415px; position: relative; background-color: rgb(255, 255, 255); display:none;">-->
+								<!--						<img src="img/crew_back.png"></img>-->
+								<!--						<div id="drawingArea" style="position: absolute;top: 70px;left: 106px;z-index: 10;width: 120px;height: 200px;">					-->
+								<!--							<canvas id="backCanvas" width="120" height="200" class="hover" style="-webkit-user-select: none;"></canvas>-->
+								<!--						</div>-->
+								<!--					</div>						-->
+								<!--	/EDITOR		-->
+							');
+						}else{
+							echo('
+								<!--	EDITOR      -->
+									<div id="shirtDiv" class="page" style="width: 530px; height: 630px; position: relative; background-color: rgb(255, 255, 255);"> 
+										<img name="tshirtview" id="tshirtFacing" src="img/crew_front.png">
+										<div id="drawingArea" style="position: absolute;top: 192px;left: 95px;z-index: 10;width: 336px;height: 144px;">
+											<canvas id="tcanvas" width="336" height="144" style="-webkit-user-select: none;"></canvas>
+										</div>
+									</div>
+								<!--	/EDITOR		-->
+							');
+						}
+					
+					?>
+
+				</div>
+			</div>
+
 			<div class="row justify-content-center">
 				<div class="span6">
-				<h5>Готовые решения (нажмите на картинку, что бы применить к футболке)</h5>
+					<h5>Готовые решения (нажмите на картинку, что бы применить к футболке)</h5>
 					<div id="avatarlist"> 
 					<?
 						$path = './prepare_img/'; // путь к директории с изображениями
@@ -198,83 +288,8 @@
 						</div>
 					</div>
 				</div>
-				<div class="span6" style=''>
-					<div align="center" style="min-height: 32px;">
-						<div class="clearfix">
-							<div class="btn-group inline pull-left" id="texteditor" style="display:none">
-								<button id="font-family" class="btn dropdown-toggle" data-toggle="dropdown" title="Шрифт"><i class="icon-font" style="width:19px;height:19px;"></i></button>
-								<ul class="dropdown-menu" role="menu" aria-labelledby="font-family-X">
-									<li><a tabindex="-1" href="#" onclick="setFont('Arial');" class="Arial">Arial</a></li>
-									<li><a tabindex="-1" href="#" onclick="setFont('Helvetica');" class="Helvetica">Helvetica</a></li>
-									<li><a tabindex="-1" href="#" onclick="setFont('Myriad Pro');" class="MyriadPro">Myriad Pro</a></li>
-									<li><a tabindex="-1" href="#" onclick="setFont('Delicious');" class="Delicious">Delicious</a></li>
-									<li><a tabindex="-1" href="#" onclick="setFont('Verdana');" class="Verdana">Verdana</a></li>
-									<li><a tabindex="-1" href="#" onclick="setFont('Georgia');" class="Georgia">Georgia</a></li>
-									<li><a tabindex="-1" href="#" onclick="setFont('Courier');" class="Courier">Courier</a></li>
-									<li><a tabindex="-1" href="#" onclick="setFont('Comic Sans MS');" class="ComicSansMS">Comic Sans MS</a></li>
-									<li><a tabindex="-1" href="#" onclick="setFont('Impact');" class="Impact">Impact</a></li>
-									<li><a tabindex="-1" href="#" onclick="setFont('Monaco');" class="Monaco">Monaco</a></li>
-									<li><a tabindex="-1" href="#" onclick="setFont('Optima');" class="Optima">Optima</a></li>
-									<li><a tabindex="-1" href="#" onclick="setFont('Hoefler Text');" class="Hoefler Text">Hoefler Text</a></li>
-									<li><a tabindex="-1" href="#" onclick="setFont('Plaster');" class="Plaster">Plaster</a></li>
-									<li><a tabindex="-1" href="#" onclick="setFont('Engagement');" class="Engagement">Engagement</a></li>
-								</ul>
-								<button id="text-bold" class="btn" data-original-title="Bold"><img src="img/font_bold.png" height="" width=""></button>
-								<button id="text-italic" class="btn" data-original-title="Italic"><img src="img/font_italic.png" height="" width=""></button>
-								<button id="text-strike" class="btn" title="Strike" style=""><img src="img/font_strikethrough.png" height="" width=""></button>
-								<button id="text-underline" class="btn" title="Underline" style=""><img src="img/font_underline.png"></button>
-								<a class="btn" href="#" rel="tooltip" data-placement="top" data-original-title="Цвет текста">
-									<input type="hidden" id="text-fontcolor" class="color-picker" size="7" value="#000000">
-								</a>
-								<a class="btn" href="#" rel="tooltip" data-placement="top" data-original-title="Цвет рамки">
-									<input type="hidden" id="text-strokecolor" class="color-picker" size="7" value="#000000">
-								</a>
-								<!--- Background <input type="hidden" id="text-bgcolor" class="color-picker" size="7" value="#ffffff"> --->
-							</div>
-							<div class="pull-right" align="" id="imageeditor" style="display:none">
-								<div class="btn-group">
-									<button class="btn" id="bring-to-front" title="Спереди"><i class="icon-fast-backward rotate" style="height:19px;"></i></button>
-									<button class="btn" id="send-to-back" title="Send to Back"><i class="icon-fast-forward rotate" style="height:19px;"></i></button>
-									<button id="flip" type="button" class="btn" title="Show Back View"><i class="icon-retweet" style="height:19px;"></i></button>
-									<button id="remove-selected" class="btn" title="Delete selected item"><i class="icon-trash" style="height:19px;"></i></button>
-								</div>
-							</div>
-						</div>
-					</div>
-					<?
-						if (isMobile()) {
-							echo('
-								<!--	EDITOR      -->
+				
 
-								<div id="shirtDiv" class="page" style="width: 350px; height: 415px; position: relative; background-color: rgb(255, 255, 255);"> <img name="tshirtview" id="tshirtFacing" src="img/crew_front.png">
-									<div id="drawingArea" style="position: absolute;top: 70px;left: 106px;z-index: 10;width: 120px;height: 200px;">
-										<canvas id="tcanvas" width="120" height="200" class="hover" style="-webkit-user-select: none;"></canvas>
-									</div>
-								</div>
-								<!--					<div id="shirtBack" class="page" style="width: 350px; height: 415px; position: relative; background-color: rgb(255, 255, 255); display:none;">-->
-								<!--						<img src="img/crew_back.png"></img>-->
-								<!--						<div id="drawingArea" style="position: absolute;top: 70px;left: 106px;z-index: 10;width: 120px;height: 200px;">					-->
-								<!--							<canvas id="backCanvas" width="120" height="200" class="hover" style="-webkit-user-select: none;"></canvas>-->
-								<!--						</div>-->
-								<!--					</div>						-->
-								<!--	/EDITOR		-->
-							');
-						}else{
-							echo('
-								<!--	EDITOR      -->
-									<div id="shirtDiv" class="page" style="width: 530px; height: 630px; position: relative; background-color: rgb(255, 255, 255);"> 
-										<img name="tshirtview" id="tshirtFacing" src="img/crew_front.png">
-										<div id="drawingArea" style="position: absolute;top: 192px;left: 95px;z-index: 10;width: 336px;height: 144px;">
-											<canvas id="tcanvas" style="-webkit-user-select: none;"></canvas>
-										</div>
-									</div>
-								<!--	/EDITOR		-->
-							');
-						}
-					
-					?>
-
-				</div>
 			</div>
 		</div>
 		</section>
@@ -333,32 +348,212 @@
 			#tcanvas, .upper-canvas, .canvas-container{
 				width: 120px !important;
 				height: 200px !important;
-			}*/
-		}
-		canvas {
+			}
+					canvas {
 			width: 400px !important;
 			height: 170px !important;
 
+		}*/
 		}
 
+
+		#test-div{
+			width: 500px !important;
+		}
 	</style>
-	<script>
-		$('#tcanvas').attr('width', 800);
+
+
+
+<script type="module">
+	import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.114/build/three.module.js';
+
+	import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.114/examples/jsm/controls/OrbitControls.js';
+	import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.114/examples/jsm/loaders/GLTFLoader.js';
+	import { RGBELoader } from 'https://cdn.jsdelivr.net/npm/three@0.114/examples/jsm/loaders/RGBELoader.js';
+
+	var container, controls;
+	var camera, scene, renderer, mixer, clock;
+
+	init();
+	animate();
+
+	function init(img = null) {
+	$('#test-div2').html(' ')
+	container = document.getElementById('test-div2');
+
+	camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.25, 20 );
+	camera.position.set( - 2.8, 0.6, 3.7 );
+
+	scene = new THREE.Scene();
+	
+	clock = new THREE.Clock();
+
+	new RGBELoader()
+		.setDataType( THREE.FloatType  )
+		.setPath('https://threejs.org/examples/textures/equirectangular/')
+		.load('royal_esplanade_1k.hdr', function ( texture ) {
+
+		var envMap = pmremGenerator.fromEquirectangular( texture ).texture;
+
+		//scene.background = envMap;
+		scene.environment = envMap;
+
+		texture.flipY = false;
+		texture.dispose();
+		
+		pmremGenerator.dispose();
+
+		// model
+		var loader = new GLTFLoader();
+		loader.load('model.gltf', function ( gltf ) {
+			console.log(gltf)
+
+			mixer = new THREE.AnimationMixer( gltf.scene );
+			gltf.animations.forEach( ( clip ) => {
+				mixer.clipAction( clip ).play();
+			});
+
+			gltf.scene.traverse( function ( child ) {
+				if ( child.isMesh ) {
+					child.material.envMap = envMap;
+				}
+			} );
+
+			if (img != null) {
+				var tex = new THREE.TextureLoader().load(img);
+				tex.flipY = false; // for glTF models.
+				
+				let k = 0
+				gltf.scene.traverse( function ( child) {
+					if( k == 3) { //3
+						child.material.map = tex;
+					}
+					k = k + 1
+				})
+			}
+
+			scene.add( gltf.scene );
+		});
+	});
+
+	renderer = new THREE.WebGLRenderer( { antialias: true } );
+	renderer.setPixelRatio( window.devicePixelRatio );
+	renderer.setSize( 600, 400 );
+	renderer.toneMapping = THREE.ACESFilmicToneMapping;
+	renderer.toneMappingExposure = 0.8;
+	renderer.outputEncoding = THREE.sRGBEncoding;
+	container.appendChild( renderer.domElement );
+
+	var pmremGenerator = new THREE.PMREMGenerator( renderer );
+	pmremGenerator.compileEquirectangularShader();
+
+	controls = new OrbitControls( camera, renderer.domElement );
+	controls.minDistance = 2;
+	controls.maxDistance = 10
+	controls.target.set( 0, 0, - 0.2 );
+	controls.update();
+
+	window.addEventListener( 'resize', onWindowResize, false );
+
+	}
+
+	function onWindowResize() {
+
+	camera.aspect = window.innerWidth / window.innerHeight;
+	camera.updateProjectionMatrix();
+
+	renderer.setSize( window.innerWidth, window.innerHeight );
+
+	}
+
+	//
+
+	function animate() {
+	
+	requestAnimationFrame( animate );
+	
+	var delta = clock.getDelta();
+	
+	if ( mixer ) mixer.update( delta );
+
+	renderer.render( scene, camera );
+
+	}
+
+
+	function GetCanvasAtResoution(scaleMultiplier)
+    {
+		/*$('#tcanvas').attr('width', 800);
 		$('#tcanvas').attr('height', 340);
 
 		$('.upper-canvas').attr('width', 800);
-		$('.upper-canvas').attr('height', 340);
+		$('.upper-canvas').attr('height', 340);*/
+
+		var objects = canvas.getObjects();
+
+		for (var i in objects) {
+			objects[i].scaleX = objects[i].scaleX * scaleMultiplier;
+			objects[i].scaleY = objects[i].scaleY * scaleMultiplier;
+			objects[i].left = objects[i].left * scaleMultiplier;
+			objects[i].top = (objects[i].top) * scaleMultiplier;
+
+			objects[i].setCoords();
+		}
+
+		/*var obj = canvas.backgroundImage;
+		if(obj){
+			obj.scaleX = obj.scaleX * scaleMultiplier;
+			obj.scaleY = obj.scaleY * scaleMultiplier;
+		}*/
+
+		canvas.discardActiveObject();
+
+		canvas.setWidth(canvas.getWidth() * scaleMultiplier);
+		canvas.setHeight(canvas.getHeight() * scaleMultiplier);
+		canvas.renderAll();
+		canvas.calcOffset();
+    }
+
+		//$('#tcanvas').attr('width', 800);
+		//$('#tcanvas').attr('height', 340);
+
+		//$('.upper-canvas').attr('width', 800);
+		//$('.upper-canvas').attr('height', 340);
 		
 
 
 		document.getElementById('download').addEventListener('click', function(e) {
-			let canvasUrl = canvas.toDataURL("image/jpeg", 0.5);
-			console.log(canvasUrl);
+			GetCanvasAtResoution(3)
+			let canvasUrl = canvas.toDataURL("image/jpeg");
 			const createEl = document.createElement('a');
 			createEl.href = canvasUrl;
 			createEl.download = "download-this-canvas";
 			createEl.click();
 			createEl.remove();
+			GetCanvasAtResoution(0.3333)
+		});
+		
+		document.getElementById('test').addEventListener('click', function(e) {
+			GetCanvasAtResoution(3)
+			let canvasUrl = canvas.toDataURL("image/jpg");
+			GetCanvasAtResoution(0.3333)
+
+			$.ajax({
+				url: "/constructor-Mugs/phpModules/uploadScreen.php",
+				type: "post",
+				dataType: "json",
+				async: false,
+				data: {
+					image: canvasUrl
+				},
+				success: function (data) {
+					console.log(data.name)
+					init('phpModules/' + data.name);
+					animate();
+				}
+			});
+
+
 		});
 
 		$("#phone").mask("(999) 999-99-99");

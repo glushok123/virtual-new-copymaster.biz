@@ -4,8 +4,8 @@ var Lobibox = Lobibox || {};
 (function () {
 
     Lobibox.counter = 0;
-//------------------------------------------------------------------------------
-//------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------
 
     //User can set default properties for prompt in the following way
     //Lobibox.prompt.DEFAULT_OPTIONS = object;
@@ -171,8 +171,8 @@ var Lobibox = Lobibox || {};
         _onButtonClick: function (buttonOptions, type) {
             var me = this;
 
-            if ((type === 'ok' && me.$type === 'prompt' && me.isValid() || me.$type !== 'prompt' || type !== 'ok')
-                && buttonOptions && buttonOptions.closeOnClick) {
+            if ((type === 'ok' && me.$type === 'prompt' && me.isValid() || me.$type !== 'prompt' || type !== 'ok') &&
+                buttonOptions && buttonOptions.closeOnClick) {
                 me.destroy();
             }
         },
@@ -194,8 +194,7 @@ var Lobibox = Lobibox || {};
             var lobibox = $('<div class="lobibox"></div>');
             lobibox.attr('data-is-modal', me.$options.modal);
             var header = $('<div class="lobibox-header"></div>')
-                .append('<span class="lobibox-title"></span>')
-                ;
+                .append('<span class="lobibox-title"></span>');
             var body = $('<div class="lobibox-body"></div>');
             lobibox.append(header);
             lobibox.append(body);
@@ -208,8 +207,7 @@ var Lobibox = Lobibox || {};
                 }
             }
             me.$el = lobibox
-                .addClass(Lobibox.base.OPTIONS.modalClasses[me.$type])
-            ;
+                .addClass(Lobibox.base.OPTIONS.modalClasses[me.$type]);
         },
         _setSize: function () {
             var me = this;
@@ -332,12 +330,12 @@ var Lobibox = Lobibox || {};
             var me = this;
             Lobibox.counter++;
             me.$el.attr('data-nth', Lobibox.counter);
-            if (!me.$options.draggable){
-                $(window).on('resize.lobibox-'+me.$el.attr('data-nth'), function(){
+            if (!me.$options.draggable) {
+                $(window).on('resize.lobibox-' + me.$el.attr('data-nth'), function () {
                     me.refreshWidth();
                     me.refreshHeight();
-                    me.$el.css('left', '50%').css('margin-left', '-'+(me.$el.width()/2)+'px');
-                    me.$el.css('top', '50%').css('margin-top', '-'+(me.$el.height()/2)+'px');
+                    me.$el.css('left', '50%').css('margin-left', '-' + (me.$el.width() / 2) + 'px');
+                    me.$el.css('top', '50%').css('margin-top', '-' + (me.$el.height() / 2) + 'px');
                 });
             }
 
@@ -351,14 +349,14 @@ var Lobibox = Lobibox || {};
 
         _afterClose: function () {
             var me = this;
-            if (!me.$options.draggable){
-                $(window).off('resize.lobibox-'+me.$el.attr('data-nth'));
+            if (!me.$options.draggable) {
+                $(window).off('resize.lobibox-' + me.$el.attr('data-nth'));
             }
             me._triggerEvent('closed');
         },
-//------------------------------------------------------------------------------
-//--------------------------PUBLIC METHODS--------------------------------------
-//------------------------------------------------------------------------------
+        //------------------------------------------------------------------------------
+        //--------------------------PUBLIC METHODS--------------------------------------
+        //------------------------------------------------------------------------------
 
         /**
          * Hide the messagebox
@@ -376,6 +374,7 @@ var Lobibox = Lobibox || {};
             } else {
                 callback();
             }
+
             function callback() {
                 me.$el.addClass('lobibox-hidden');
                 if ($('.lobibox[data-is-modal=true]:not(.lobibox-hidden)').length === 0) {
@@ -403,6 +402,7 @@ var Lobibox = Lobibox || {};
             } else {
                 callback();
             }
+
             function callback() {
                 me.$el.remove();
                 if ($('.lobibox[data-is-modal=true]').length === 0) {
@@ -427,11 +427,11 @@ var Lobibox = Lobibox || {};
             return me;
         },
 
-        refreshWidth: function(){
+        refreshWidth: function () {
             this.setWidth(this.$el.width());
         },
 
-        refreshHeight: function(){
+        refreshHeight: function () {
             this.setHeight(this.$el.height());
         },
 
@@ -589,23 +589,23 @@ var Lobibox = Lobibox || {};
         }
     };
     Lobibox.base.DEFAULTS = {
-        horizontalOffset: 5,                //If the messagebox is larger (in width) than window's width. The messagebox's width is reduced to window width - 2 * horizontalOffset
-        verticalOffset: 5,                  //If the messagebox is larger (in height) than window's height. The messagebox's height is reduced to window height - 2 * verticalOffset
+        horizontalOffset: 5, //If the messagebox is larger (in width) than window's width. The messagebox's width is reduced to window width - 2 * horizontalOffset
+        verticalOffset: 5, //If the messagebox is larger (in height) than window's height. The messagebox's height is reduced to window height - 2 * verticalOffset
         width: 600,
-        height: 'auto',                     // Height is automatically calculated by width
-        closeButton: true,                  // Show close button or not
-        draggable: false,                   // Make messagebox draggable
+        height: 'auto', // Height is automatically calculated by width
+        closeButton: true, // Show close button or not
+        draggable: false, // Make messagebox draggable
         customBtnClass: 'lobibox-btn lobibox-btn-default', // Class for custom buttons
         modal: true,
         debug: false,
-        buttonsAlign: 'center',             // Position where buttons should be aligned
-        closeOnEsc: true,                   // Close messagebox on Esc press
-        delayToRemove: 200,                 // Time after which lobibox will be removed after remove call. (This option is for hide animation to finish)
-        delay: false,                       // Time to remove lobibox after shown
-        baseClass: 'animated-super-fast',   // Base class to add all messageboxes
-        showClass: 'zoomIn',                // Show animation class
-        hideClass: 'zoomOut',               // Hide animation class
-        iconSource: 'bootstrap',            // "bootstrap" or "fontAwesome" the library which will be used for icons
+        buttonsAlign: 'center', // Position where buttons should be aligned
+        closeOnEsc: true, // Close messagebox on Esc press
+        delayToRemove: 200, // Time after which lobibox will be removed after remove call. (This option is for hide animation to finish)
+        delay: false, // Time to remove lobibox after shown
+        baseClass: 'animated-super-fast', // Base class to add all messageboxes
+        showClass: 'zoomIn', // Show animation class
+        hideClass: 'zoomOut', // Hide animation class
+        iconSource: 'bootstrap', // "bootstrap" or "fontAwesome" the library which will be used for icons
 
         //events
         //When messagebox show is called but before it is actually shown
@@ -617,9 +617,9 @@ var Lobibox = Lobibox || {};
         //After messagebox is hidden
         closed: null
     };
-//------------------------------------------------------------------------------
-//-------------------------LobiboxPrompt----------------------------------------
-//------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------
+    //-------------------------LobiboxPrompt----------------------------------------
+    //------------------------------------------------------------------------------
     function LobiboxPrompt(type, options) {
         this.$input = null;
         this.$type = 'prompt';
@@ -703,10 +703,10 @@ var Lobibox = Lobibox || {};
             var me = this,
                 $error = me.$el.find('.lobibox-input-error-message');
 
-            if (me.$options.required && !me.getValue()){
+            if (me.$options.required && !me.getValue()) {
                 me.$input.addClass('invalid');
-                if ($error.length === 0){
-                    me.$el.find('.lobibox-body').append('<p class="lobibox-input-error-message">'+me.$options.errorMessage+'</p>');
+                if ($error.length === 0) {
+                    me.$el.find('.lobibox-body').append('<p class="lobibox-input-error-message">' + me.$options.errorMessage + '</p>');
                     me._position();
                     me.$input.focus();
                 }
@@ -723,22 +723,22 @@ var Lobibox = Lobibox || {};
 
     LobiboxPrompt.DEFAULT_OPTIONS = {
         width: 400,
-        attrs: {},          // Object of any valid attribute of input field
-        value: '',          // Value which is given to textfield when messagebox is created
-        multiline: false,   // Set this true for multiline prompt
-        lines: 3,           // This works only for multiline prompt. Number of lines
-        type: 'text',       // Prompt type. Available types (text|number|color)
-        label: '',          // Set some text which will be shown exactly on top of textfield
+        attrs: {}, // Object of any valid attribute of input field
+        value: '', // Value which is given to textfield when messagebox is created
+        multiline: false, // Set this true for multiline prompt
+        lines: 3, // This works only for multiline prompt. Number of lines
+        type: 'text', // Prompt type. Available types (text|number|color)
+        label: '', // Set some text which will be shown exactly on top of textfield
         required: true,
         errorMessage: 'The field is required'
     };
-//------------------------------------------------------------------------------
-//-------------------------LobiboxConfirm---------------------------------------
-//------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------
+    //-------------------------LobiboxConfirm---------------------------------------
+    //------------------------------------------------------------------------------
     function LobiboxConfirm(options) {
         this.$type = 'confirm';
 
-//        options = $.extend({}, Lobibox.confirm.DEFAULT_OPTIONS, options);
+        //        options = $.extend({}, Lobibox.confirm.DEFAULT_OPTIONS, options);
 
         this.$options = this._processInput(options);
         this._init();
@@ -773,8 +773,7 @@ var Lobibox = Lobibox || {};
             var d = $('<div></div>');
             if (me.$options.iconClass) {
                 d.append($('<div class="lobibox-icon-wrapper"></div>')
-                    .append('<i class="lobibox-icon ' + me.$options.iconClass + '"></i>'))
-                ;
+                    .append('<i class="lobibox-icon ' + me.$options.iconClass + '"></i>'));
             }
             d.append('<div class="lobibox-body-text-wrapper"><span class="lobibox-body-text">' + me.$options.msg + '</span></div>');
             me._setContent(d.html());
@@ -789,13 +788,13 @@ var Lobibox = Lobibox || {};
         title: 'Question',
         width: 500
     };
-//------------------------------------------------------------------------------
-//-------------------------LobiboxAlert------------------------------------------
-//------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------
+    //-------------------------LobiboxAlert------------------------------------------
+    //------------------------------------------------------------------------------
     function LobiboxAlert(type, options) {
         this.$type = type;
 
-//        options = $.extend({}, Lobibox.alert.DEFAULT_OPTIONS, Lobibox[type].DEFAULT_OPTIONS, options);
+        //        options = $.extend({}, Lobibox.alert.DEFAULT_OPTIONS, Lobibox[type].DEFAULT_OPTIONS, options);
 
         this.$options = this._processInput(options);
 
@@ -808,7 +807,7 @@ var Lobibox = Lobibox || {};
 
         _processInput: function (options) {
 
-//            ALERT_OPTIONS = $.extend({}, LobiboxAlert.OPTIONS, Lobibox.alert.DEFAULTS);
+            //            ALERT_OPTIONS = $.extend({}, LobiboxAlert.OPTIONS, Lobibox.alert.DEFAULTS);
             var me = this;
             var mergedOptions = LobiboxBase._processInput.call(me, options);
             mergedOptions.buttons = {
@@ -832,8 +831,7 @@ var Lobibox = Lobibox || {};
             var d = $('<div></div>');
             if (me.$options.iconClass) {
                 d.append($('<div class="lobibox-icon-wrapper"></div>')
-                    .append('<i class="lobibox-icon ' + me.$options.iconClass + '"></i>'))
-                ;
+                    .append('<i class="lobibox-icon ' + me.$options.iconClass + '"></i>'));
             }
             d.append('<div class="lobibox-body-text-wrapper"><span class="lobibox-body-text">' + me.$options.msg + '</span></div>');
             me._setContent(d.html());
@@ -858,9 +856,9 @@ var Lobibox = Lobibox || {};
     };
     //User can set default options by this variable
     Lobibox.alert.DEFAULTS = {};
-//------------------------------------------------------------------------------
-//-------------------------LobiboxProgress--------------------------------------
-//------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------
+    //-------------------------LobiboxProgress--------------------------------------
+    //------------------------------------------------------------------------------
     function LobiboxProgress(options) {
         this.$type = 'progress';
         this.$progressBarElement = null;
@@ -911,8 +909,7 @@ var Lobibox = Lobibox || {};
         _createProgressbar: function () {
             var me = this;
             var outer = $('<div class="lobibox-progress-bar-wrapper lobibox-progress-outer"></div>')
-                .append('<div class="lobibox-progress-bar lobibox-progress-element"></div>')
-                ;
+                .append('<div class="lobibox-progress-bar lobibox-progress-element"></div>');
             if (me.$options.showProgressLabel) {
                 outer.append('<span class="lobibox-progress-text" data-role="progress-text"></span>');
             }
@@ -954,17 +951,17 @@ var Lobibox = Lobibox || {};
 
     Lobibox.progress.DEFAULTS = {
         width: 500,
-        showProgressLabel: true,  // Show percentage of progress
-        label: '',  // Show progress label
-        progressTpl: false,  //Template of progress bar
+        showProgressLabel: true, // Show percentage of progress
+        label: '', // Show progress label
+        progressTpl: false, //Template of progress bar
 
         //Events
         progressUpdated: null,
         progressCompleted: null
     };
-//------------------------------------------------------------------------------
-//-------------------------LobiboxWindow----------------------------------------
-//------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------
+    //-------------------------LobiboxWindow----------------------------------------
+    //------------------------------------------------------------------------------
     function LobiboxWindow(type, options) {
         this.$type = type;
 
@@ -1124,13 +1121,13 @@ var Lobibox = Lobibox || {};
     Lobibox.window.DEFAULTS = {
         width: 480,
         height: 600,
-        content: '',  // HTML Content of window
-        url: '',  // URL which will be used to load content
-        draggable: true,  // Override default option
-        autoload: true,  // Auto load from given url when window is created
-        loadMethod: 'GET',  // Ajax method to load content
-        showAfterLoad: true,  // Show window after content is loaded or show and then load content
-        params: {}  // Parameters which will be send by ajax for loading content
+        content: '', // HTML Content of window
+        url: '', // URL which will be used to load content
+        draggable: true, // Override default option
+        autoload: true, // Auto load from given url when window is created
+        loadMethod: 'GET', // Ajax method to load content
+        showAfterLoad: true, // Show window after content is loaded or show and then load content
+        params: {} // Parameters which will be send by ajax for loading content
     };
 
 })();

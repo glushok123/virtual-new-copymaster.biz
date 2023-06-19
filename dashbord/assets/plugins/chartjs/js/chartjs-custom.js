@@ -170,17 +170,17 @@ $(function () {
 				text: 'Distribution in % of world population'
 			},
 			legend: {
-				 position :"right",	
-				 display: true,
-				    labels: {
-					  fontColor: '#fff',  
-					  boxWidth:15
-				   }
-				},
+				position: "right",
+				display: true,
+				labels: {
+					fontColor: '#fff',
+					boxWidth: 15
+				}
+			},
 			scale: {
-			  gridLines: {
-				   color: "rgba(221, 221, 221, 0.12)" 
-				 }, 
+				gridLines: {
+					color: "rgba(221, 221, 221, 0.12)"
+				},
 			}
 		}
 	});
@@ -203,17 +203,17 @@ $(function () {
 				text: 'Predicted world population (millions) in 2050'
 			},
 			legend: {
-				 position :"right",	
-				 display: true,
-				    labels: {
-					  fontColor: '#fff',  
-					  boxWidth:15
-				   }
-				},
+				position: "right",
+				display: true,
+				labels: {
+					fontColor: '#fff',
+					boxWidth: 15
+				}
+			},
 			scale: {
-			  gridLines: {
-				   color: "rgba(221, 221, 221, 0.12)" 
-				 }, 
+				gridLines: {
+					color: "rgba(221, 221, 221, 0.12)"
+				},
 			}
 		}
 	});
@@ -310,13 +310,13 @@ $(function () {
 				text: 'Population growth (millions)'
 			},
 			legend: {
-				 position :"top",	
-				 display: true,
-				    labels: {
-					  fontColor: '#fff',  
-					  boxWidth:15
-				   }
-				},
+				position: "top",
+				display: true,
+				labels: {
+					fontColor: '#fff',
+					boxWidth: 15
+				}
+			},
 			scales: {
 				xAxes: [{
 					ticks: {
@@ -378,13 +378,13 @@ $(function () {
 				text: 'Population growth (millions): Europe & Africa'
 			},
 			legend: {
-				 position :"top",	
-				 display: true,
-				    labels: {
-					  fontColor: '#fff',  
-					  boxWidth:15
-				   }
-				},
+				position: "top",
+				display: true,
+				labels: {
+					fontColor: '#fff',
+					boxWidth: 15
+				}
+			},
 			scales: {
 				xAxes: [{
 					ticks: {
@@ -459,13 +459,13 @@ $(function () {
 				text: 'Predicted world population (millions) in 2050'
 			},
 			legend: {
-				 position :"top",	
-				 display: true,
-				    labels: {
-					  fontColor: '#fff',  
-					  boxWidth:15
-				   }
-				},
+				position: "top",
+				display: true,
+				labels: {
+					fontColor: '#fff',
+					boxWidth: 15
+				}
+			},
 			scales: {
 				xAxes: [{
 					ticks: {

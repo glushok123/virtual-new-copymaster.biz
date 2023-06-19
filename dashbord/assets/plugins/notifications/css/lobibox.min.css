@@ -1,13 +1,30 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:600,700,400,300);
-.lobibox .lobibox-btn.lobibox-btn-cancel.active, .lobibox .lobibox-btn.lobibox-btn-cancel:active, .lobibox .lobibox-btn.lobibox-btn-default.active, .lobibox .lobibox-btn.lobibox-btn-default:active, .lobibox .lobibox-btn.lobibox-btn-no.active, .lobibox .lobibox-btn.lobibox-btn-no:active, .lobibox .lobibox-btn.lobibox-btn-ok.active, .lobibox .lobibox-btn.lobibox-btn-ok:active, .lobibox .lobibox-btn.lobibox-btn-yes.active, .lobibox .lobibox-btn.lobibox-btn-yes:active, .open>.dropdown-toggle.lobibox .lobibox-btn.lobibox-btn-cancel, .open>.dropdown-toggle.lobibox .lobibox-btn.lobibox-btn-default, .open>.dropdown-toggle.lobibox .lobibox-btn.lobibox-btn-no, .open>.dropdown-toggle.lobibox .lobibox-btn.lobibox-btn-ok, .open>.dropdown-toggle.lobibox .lobibox-btn.lobibox-btn-yes {
+
+.lobibox .lobibox-btn.lobibox-btn-cancel.active,
+.lobibox .lobibox-btn.lobibox-btn-cancel:active,
+.lobibox .lobibox-btn.lobibox-btn-default.active,
+.lobibox .lobibox-btn.lobibox-btn-default:active,
+.lobibox .lobibox-btn.lobibox-btn-no.active,
+.lobibox .lobibox-btn.lobibox-btn-no:active,
+.lobibox .lobibox-btn.lobibox-btn-ok.active,
+.lobibox .lobibox-btn.lobibox-btn-ok:active,
+.lobibox .lobibox-btn.lobibox-btn-yes.active,
+.lobibox .lobibox-btn.lobibox-btn-yes:active,
+.open>.dropdown-toggle.lobibox .lobibox-btn.lobibox-btn-cancel,
+.open>.dropdown-toggle.lobibox .lobibox-btn.lobibox-btn-default,
+.open>.dropdown-toggle.lobibox .lobibox-btn.lobibox-btn-no,
+.open>.dropdown-toggle.lobibox .lobibox-btn.lobibox-btn-ok,
+.open>.dropdown-toggle.lobibox .lobibox-btn.lobibox-btn-yes {
 	background-image: none
 }
 
-.lobibox, .lobibox-notify {
+.lobibox,
+.lobibox-notify {
 	font-family: 'Open Sans', Arial, Helvetica, sans-serif
 }
 
-.lobibox-notify-wrapper-large.bottom, .lobibox-notify-wrapper.bottom {
+.lobibox-notify-wrapper-large.bottom,
+.lobibox-notify-wrapper.bottom {
 	bottom: 0
 }
 
@@ -18,7 +35,8 @@
 	animation-fill-mode: both
 }
 
-.animated, .animated-fast {
+.animated,
+.animated-fast {
 	-webkit-animation-fill-mode: both
 }
 
@@ -42,14 +60,21 @@
 }
 
 @-webkit-keyframes bounce {
-	0%, 100%, 20%, 50%, 80% {
+
+	0%,
+	100%,
+	20%,
+	50%,
+	80% {
 		-webkit-transform: translateY(0);
 		transform: translateY(0)
 	}
+
 	40% {
 		-webkit-transform: translateY(-30px);
 		transform: translateY(-30px)
 	}
+
 	60% {
 		-webkit-transform: translateY(-15px);
 		transform: translateY(-15px)
@@ -57,12 +82,19 @@
 }
 
 @keyframes bounce {
-	0%, 100%, 20%, 50%, 80% {
+
+	0%,
+	100%,
+	20%,
+	50%,
+	80% {
 		transform: translateY(0)
 	}
+
 	40% {
 		transform: translateY(-30px)
 	}
+
 	60% {
 		transform: translateY(-15px)
 	}
@@ -73,13 +105,16 @@
 		-webkit-transform: translate3d(0, calc(230%), 0) scale3d(0, 1, 1);
 		-webkit-animation-timing-function: ease-in
 	}
+
 	40% {
 		-webkit-transform: translate3d(0, 0, 0) scale3d(.02, 1.1, 1);
 		-webkit-animation-timing-function: ease-out
 	}
+
 	70% {
 		-webkit-transform: translate3d(0, -40px, 0) scale3d(.8, 1.1, 1)
 	}
+
 	100% {
 		-webkit-transform: translate3d(0, 0, 0) scale3d(1, 1, 1)
 	}
@@ -90,13 +125,16 @@
 		transform: translate3d(0, calc(230%), 0) scale3d(0, 1, 1);
 		animation-timing-function: ease-in
 	}
+
 	40% {
 		transform: translate3d(0, 0, 0) scale3d(.02, 1.1, 1);
 		animation-timing-function: ease-out
 	}
+
 	70% {
 		transform: translate3d(0, -40px, 0) scale3d(.8, 1.1, 1)
 	}
+
 	100% {
 		transform: translate3d(0, 0, 0) scale3d(1, 1, 1)
 	}
@@ -106,15 +144,19 @@
 	0% {
 		-webkit-transform: scale(1.8)
 	}
+
 	50% {
 		-webkit-transform: scale(.95)
 	}
+
 	80% {
 		-webkit-transform: scale(1.05)
 	}
+
 	90% {
 		-webkit-transform: scale(.98)
 	}
+
 	100% {
 		-webkit-transform: scale(1)
 	}
@@ -124,15 +166,19 @@
 	0% {
 		transform: scale(1.8)
 	}
+
 	50% {
 		transform: scale(.95)
 	}
+
 	80% {
 		transform: scale(1.05)
 	}
+
 	90% {
 		transform: scale(.98)
 	}
+
 	100% {
 		transform: scale(1)
 	}
@@ -143,6 +189,7 @@
 		transform: scale(0);
 		opacity: 0
 	}
+
 	100% {
 		transform: scale(1);
 		opacity: 1
@@ -154,6 +201,7 @@
 		-webkit-transform: scale(0);
 		opacity: 0
 	}
+
 	100% {
 		-webkit-transform: scale(1);
 		opacity: 1
@@ -166,6 +214,7 @@
 		-webkit-transform: scale(.3);
 		transform: scale(.3)
 	}
+
 	50% {
 		opacity: 1
 	}
@@ -178,6 +227,7 @@
 		-ms-transform: scale(.3);
 		transform: scale(.3)
 	}
+
 	50% {
 		opacity: 1
 	}
@@ -189,11 +239,13 @@
 		-webkit-transform: scale(1);
 		transform: scale(1)
 	}
+
 	50% {
 		opacity: 0;
 		-webkit-transform: scale(.3);
 		transform: scale(.3)
 	}
+
 	100% {
 		opacity: 0
 	}
@@ -206,12 +258,14 @@
 		-ms-transform: scale(1);
 		transform: scale(1)
 	}
+
 	50% {
 		opacity: 0;
 		-webkit-transform: scale(.3);
 		-ms-transform: scale(.3);
 		transform: scale(.3)
 	}
+
 	100% {
 		opacity: 0
 	}
@@ -223,6 +277,7 @@
 		-webkit-transform: translate3d(0, -100%, 0);
 		transform: translate3d(0, -100%, 0)
 	}
+
 	to {
 		opacity: 1;
 		-webkit-transform: none;
@@ -236,6 +291,7 @@
 		-webkit-transform: translate3d(0, -100%, 0);
 		transform: translate3d(0, -100%, 0)
 	}
+
 	to {
 		opacity: 1;
 		-webkit-transform: none;
@@ -584,13 +640,35 @@ body.lobibox-open {
 	border-color: #CA2121
 }
 
-.lobibox .lobibox-btn.lobibox-btn-cancel.active, .lobibox .lobibox-btn.lobibox-btn-cancel.focus, .lobibox .lobibox-btn.lobibox-btn-cancel:active, .lobibox .lobibox-btn.lobibox-btn-cancel:focus, .lobibox .lobibox-btn.lobibox-btn-cancel:hover, .open>.dropdown-toggle.lobibox .lobibox-btn.lobibox-btn-cancel {
+.lobibox .lobibox-btn.lobibox-btn-cancel.active,
+.lobibox .lobibox-btn.lobibox-btn-cancel.focus,
+.lobibox .lobibox-btn.lobibox-btn-cancel:active,
+.lobibox .lobibox-btn.lobibox-btn-cancel:focus,
+.lobibox .lobibox-btn.lobibox-btn-cancel:hover,
+.open>.dropdown-toggle.lobibox .lobibox-btn.lobibox-btn-cancel {
 	color: #FFF;
 	background-color: #9e1a1a;
 	border-color: #951818
 }
 
-.lobibox .lobibox-btn.lobibox-btn-cancel.disabled, .lobibox .lobibox-btn.lobibox-btn-cancel.disabled.active, .lobibox .lobibox-btn.lobibox-btn-cancel.disabled.focus, .lobibox .lobibox-btn.lobibox-btn-cancel.disabled:active, .lobibox .lobibox-btn.lobibox-btn-cancel.disabled:focus, .lobibox .lobibox-btn.lobibox-btn-cancel.disabled:hover, .lobibox .lobibox-btn.lobibox-btn-cancel[disabled], .lobibox .lobibox-btn.lobibox-btn-cancel[disabled].active, .lobibox .lobibox-btn.lobibox-btn-cancel[disabled].focus, .lobibox .lobibox-btn.lobibox-btn-cancel[disabled]:active, .lobibox .lobibox-btn.lobibox-btn-cancel[disabled]:focus, .lobibox .lobibox-btn.lobibox-btn-cancel[disabled]:hover, fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-cancel, fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-cancel.active, fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-cancel.focus, fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-cancel:active, fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-cancel:focus, fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-cancel:hover {
+.lobibox .lobibox-btn.lobibox-btn-cancel.disabled,
+.lobibox .lobibox-btn.lobibox-btn-cancel.disabled.active,
+.lobibox .lobibox-btn.lobibox-btn-cancel.disabled.focus,
+.lobibox .lobibox-btn.lobibox-btn-cancel.disabled:active,
+.lobibox .lobibox-btn.lobibox-btn-cancel.disabled:focus,
+.lobibox .lobibox-btn.lobibox-btn-cancel.disabled:hover,
+.lobibox .lobibox-btn.lobibox-btn-cancel[disabled],
+.lobibox .lobibox-btn.lobibox-btn-cancel[disabled].active,
+.lobibox .lobibox-btn.lobibox-btn-cancel[disabled].focus,
+.lobibox .lobibox-btn.lobibox-btn-cancel[disabled]:active,
+.lobibox .lobibox-btn.lobibox-btn-cancel[disabled]:focus,
+.lobibox .lobibox-btn.lobibox-btn-cancel[disabled]:hover,
+fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-cancel,
+fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-cancel.active,
+fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-cancel.focus,
+fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-cancel:active,
+fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-cancel:focus,
+fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-cancel:hover {
 	background-color: #CA2121;
 	border-color: #CA2121
 }
@@ -606,13 +684,35 @@ body.lobibox-open {
 	border-color: #29B87E
 }
 
-.lobibox .lobibox-btn.lobibox-btn-yes.active, .lobibox .lobibox-btn.lobibox-btn-yes.focus, .lobibox .lobibox-btn.lobibox-btn-yes:active, .lobibox .lobibox-btn.lobibox-btn-yes:focus, .lobibox .lobibox-btn.lobibox-btn-yes:hover, .open>.dropdown-toggle.lobibox .lobibox-btn.lobibox-btn-yes {
+.lobibox .lobibox-btn.lobibox-btn-yes.active,
+.lobibox .lobibox-btn.lobibox-btn-yes.focus,
+.lobibox .lobibox-btn.lobibox-btn-yes:active,
+.lobibox .lobibox-btn.lobibox-btn-yes:focus,
+.lobibox .lobibox-btn.lobibox-btn-yes:hover,
+.open>.dropdown-toggle.lobibox .lobibox-btn.lobibox-btn-yes {
 	color: #FFF;
 	background-color: #208e61;
 	border-color: #1e865c
 }
 
-.lobibox .lobibox-btn.lobibox-btn-yes.disabled, .lobibox .lobibox-btn.lobibox-btn-yes.disabled.active, .lobibox .lobibox-btn.lobibox-btn-yes.disabled.focus, .lobibox .lobibox-btn.lobibox-btn-yes.disabled:active, .lobibox .lobibox-btn.lobibox-btn-yes.disabled:focus, .lobibox .lobibox-btn.lobibox-btn-yes.disabled:hover, .lobibox .lobibox-btn.lobibox-btn-yes[disabled], .lobibox .lobibox-btn.lobibox-btn-yes[disabled].active, .lobibox .lobibox-btn.lobibox-btn-yes[disabled].focus, .lobibox .lobibox-btn.lobibox-btn-yes[disabled]:active, .lobibox .lobibox-btn.lobibox-btn-yes[disabled]:focus, .lobibox .lobibox-btn.lobibox-btn-yes[disabled]:hover, fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-yes, fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-yes.active, fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-yes.focus, fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-yes:active, fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-yes:focus, fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-yes:hover {
+.lobibox .lobibox-btn.lobibox-btn-yes.disabled,
+.lobibox .lobibox-btn.lobibox-btn-yes.disabled.active,
+.lobibox .lobibox-btn.lobibox-btn-yes.disabled.focus,
+.lobibox .lobibox-btn.lobibox-btn-yes.disabled:active,
+.lobibox .lobibox-btn.lobibox-btn-yes.disabled:focus,
+.lobibox .lobibox-btn.lobibox-btn-yes.disabled:hover,
+.lobibox .lobibox-btn.lobibox-btn-yes[disabled],
+.lobibox .lobibox-btn.lobibox-btn-yes[disabled].active,
+.lobibox .lobibox-btn.lobibox-btn-yes[disabled].focus,
+.lobibox .lobibox-btn.lobibox-btn-yes[disabled]:active,
+.lobibox .lobibox-btn.lobibox-btn-yes[disabled]:focus,
+.lobibox .lobibox-btn.lobibox-btn-yes[disabled]:hover,
+fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-yes,
+fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-yes.active,
+fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-yes.focus,
+fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-yes:active,
+fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-yes:focus,
+fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-yes:hover {
 	background-color: #29B87E;
 	border-color: #29B87E
 }
@@ -628,13 +728,35 @@ body.lobibox-open {
 	border-color: #0760B3
 }
 
-.lobibox .lobibox-btn.lobibox-btn-no.active, .lobibox .lobibox-btn.lobibox-btn-no.focus, .lobibox .lobibox-btn.lobibox-btn-no:active, .lobibox .lobibox-btn.lobibox-btn-no:focus, .lobibox .lobibox-btn.lobibox-btn-no:hover, .open>.dropdown-toggle.lobibox .lobibox-btn.lobibox-btn-no {
+.lobibox .lobibox-btn.lobibox-btn-no.active,
+.lobibox .lobibox-btn.lobibox-btn-no.focus,
+.lobibox .lobibox-btn.lobibox-btn-no:active,
+.lobibox .lobibox-btn.lobibox-btn-no:focus,
+.lobibox .lobibox-btn.lobibox-btn-no:hover,
+.open>.dropdown-toggle.lobibox .lobibox-btn.lobibox-btn-no {
 	color: #FFF;
 	background-color: #054682;
 	border-color: #054078
 }
 
-.lobibox .lobibox-btn.lobibox-btn-no.disabled, .lobibox .lobibox-btn.lobibox-btn-no.disabled.active, .lobibox .lobibox-btn.lobibox-btn-no.disabled.focus, .lobibox .lobibox-btn.lobibox-btn-no.disabled:active, .lobibox .lobibox-btn.lobibox-btn-no.disabled:focus, .lobibox .lobibox-btn.lobibox-btn-no.disabled:hover, .lobibox .lobibox-btn.lobibox-btn-no[disabled], .lobibox .lobibox-btn.lobibox-btn-no[disabled].active, .lobibox .lobibox-btn.lobibox-btn-no[disabled].focus, .lobibox .lobibox-btn.lobibox-btn-no[disabled]:active, .lobibox .lobibox-btn.lobibox-btn-no[disabled]:focus, .lobibox .lobibox-btn.lobibox-btn-no[disabled]:hover, fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-no, fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-no.active, fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-no.focus, fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-no:active, fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-no:focus, fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-no:hover {
+.lobibox .lobibox-btn.lobibox-btn-no.disabled,
+.lobibox .lobibox-btn.lobibox-btn-no.disabled.active,
+.lobibox .lobibox-btn.lobibox-btn-no.disabled.focus,
+.lobibox .lobibox-btn.lobibox-btn-no.disabled:active,
+.lobibox .lobibox-btn.lobibox-btn-no.disabled:focus,
+.lobibox .lobibox-btn.lobibox-btn-no.disabled:hover,
+.lobibox .lobibox-btn.lobibox-btn-no[disabled],
+.lobibox .lobibox-btn.lobibox-btn-no[disabled].active,
+.lobibox .lobibox-btn.lobibox-btn-no[disabled].focus,
+.lobibox .lobibox-btn.lobibox-btn-no[disabled]:active,
+.lobibox .lobibox-btn.lobibox-btn-no[disabled]:focus,
+.lobibox .lobibox-btn.lobibox-btn-no[disabled]:hover,
+fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-no,
+fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-no.active,
+fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-no.focus,
+fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-no:active,
+fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-no:focus,
+fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-no:hover {
 	background-color: #0760B3;
 	border-color: #0760B3
 }
@@ -650,13 +772,35 @@ body.lobibox-open {
 	border-color: #0760B3
 }
 
-.lobibox .lobibox-btn.lobibox-btn-ok.active, .lobibox .lobibox-btn.lobibox-btn-ok.focus, .lobibox .lobibox-btn.lobibox-btn-ok:active, .lobibox .lobibox-btn.lobibox-btn-ok:focus, .lobibox .lobibox-btn.lobibox-btn-ok:hover, .open>.dropdown-toggle.lobibox .lobibox-btn.lobibox-btn-ok {
+.lobibox .lobibox-btn.lobibox-btn-ok.active,
+.lobibox .lobibox-btn.lobibox-btn-ok.focus,
+.lobibox .lobibox-btn.lobibox-btn-ok:active,
+.lobibox .lobibox-btn.lobibox-btn-ok:focus,
+.lobibox .lobibox-btn.lobibox-btn-ok:hover,
+.open>.dropdown-toggle.lobibox .lobibox-btn.lobibox-btn-ok {
 	color: #FFF;
 	background-color: #054682;
 	border-color: #054078
 }
 
-.lobibox .lobibox-btn.lobibox-btn-ok.disabled, .lobibox .lobibox-btn.lobibox-btn-ok.disabled.active, .lobibox .lobibox-btn.lobibox-btn-ok.disabled.focus, .lobibox .lobibox-btn.lobibox-btn-ok.disabled:active, .lobibox .lobibox-btn.lobibox-btn-ok.disabled:focus, .lobibox .lobibox-btn.lobibox-btn-ok.disabled:hover, .lobibox .lobibox-btn.lobibox-btn-ok[disabled], .lobibox .lobibox-btn.lobibox-btn-ok[disabled].active, .lobibox .lobibox-btn.lobibox-btn-ok[disabled].focus, .lobibox .lobibox-btn.lobibox-btn-ok[disabled]:active, .lobibox .lobibox-btn.lobibox-btn-ok[disabled]:focus, .lobibox .lobibox-btn.lobibox-btn-ok[disabled]:hover, fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-ok, fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-ok.active, fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-ok.focus, fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-ok:active, fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-ok:focus, fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-ok:hover {
+.lobibox .lobibox-btn.lobibox-btn-ok.disabled,
+.lobibox .lobibox-btn.lobibox-btn-ok.disabled.active,
+.lobibox .lobibox-btn.lobibox-btn-ok.disabled.focus,
+.lobibox .lobibox-btn.lobibox-btn-ok.disabled:active,
+.lobibox .lobibox-btn.lobibox-btn-ok.disabled:focus,
+.lobibox .lobibox-btn.lobibox-btn-ok.disabled:hover,
+.lobibox .lobibox-btn.lobibox-btn-ok[disabled],
+.lobibox .lobibox-btn.lobibox-btn-ok[disabled].active,
+.lobibox .lobibox-btn.lobibox-btn-ok[disabled].focus,
+.lobibox .lobibox-btn.lobibox-btn-ok[disabled]:active,
+.lobibox .lobibox-btn.lobibox-btn-ok[disabled]:focus,
+.lobibox .lobibox-btn.lobibox-btn-ok[disabled]:hover,
+fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-ok,
+fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-ok.active,
+fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-ok.focus,
+fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-ok:active,
+fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-ok:focus,
+fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-ok:hover {
 	background-color: #0760B3;
 	border-color: #0760B3
 }
@@ -672,13 +816,35 @@ body.lobibox-open {
 	border-color: #dadada
 }
 
-.lobibox .lobibox-btn.lobibox-btn-default.active, .lobibox .lobibox-btn.lobibox-btn-default.focus, .lobibox .lobibox-btn.lobibox-btn-default:active, .lobibox .lobibox-btn.lobibox-btn-default:focus, .lobibox .lobibox-btn.lobibox-btn-default:hover, .open>.dropdown-toggle.lobibox .lobibox-btn.lobibox-btn-default {
+.lobibox .lobibox-btn.lobibox-btn-default.active,
+.lobibox .lobibox-btn.lobibox-btn-default.focus,
+.lobibox .lobibox-btn.lobibox-btn-default:active,
+.lobibox .lobibox-btn.lobibox-btn-default:focus,
+.lobibox .lobibox-btn.lobibox-btn-default:hover,
+.open>.dropdown-toggle.lobibox .lobibox-btn.lobibox-btn-default {
 	color: #000;
 	background-color: #c9c9c9;
 	border-color: #bcbcbc
 }
 
-.lobibox .lobibox-btn.lobibox-btn-default.disabled, .lobibox .lobibox-btn.lobibox-btn-default.disabled.active, .lobibox .lobibox-btn.lobibox-btn-default.disabled.focus, .lobibox .lobibox-btn.lobibox-btn-default.disabled:active, .lobibox .lobibox-btn.lobibox-btn-default.disabled:focus, .lobibox .lobibox-btn.lobibox-btn-default.disabled:hover, .lobibox .lobibox-btn.lobibox-btn-default[disabled], .lobibox .lobibox-btn.lobibox-btn-default[disabled].active, .lobibox .lobibox-btn.lobibox-btn-default[disabled].focus, .lobibox .lobibox-btn.lobibox-btn-default[disabled]:active, .lobibox .lobibox-btn.lobibox-btn-default[disabled]:focus, .lobibox .lobibox-btn.lobibox-btn-default[disabled]:hover, fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-default, fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-default.active, fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-default.focus, fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-default:active, fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-default:focus, fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-default:hover {
+.lobibox .lobibox-btn.lobibox-btn-default.disabled,
+.lobibox .lobibox-btn.lobibox-btn-default.disabled.active,
+.lobibox .lobibox-btn.lobibox-btn-default.disabled.focus,
+.lobibox .lobibox-btn.lobibox-btn-default.disabled:active,
+.lobibox .lobibox-btn.lobibox-btn-default.disabled:focus,
+.lobibox .lobibox-btn.lobibox-btn-default.disabled:hover,
+.lobibox .lobibox-btn.lobibox-btn-default[disabled],
+.lobibox .lobibox-btn.lobibox-btn-default[disabled].active,
+.lobibox .lobibox-btn.lobibox-btn-default[disabled].focus,
+.lobibox .lobibox-btn.lobibox-btn-default[disabled]:active,
+.lobibox .lobibox-btn.lobibox-btn-default[disabled]:focus,
+.lobibox .lobibox-btn.lobibox-btn-default[disabled]:hover,
+fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-default,
+fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-default.active,
+fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-default.focus,
+fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-default:active,
+fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-default:focus,
+fieldset[disabled] .lobibox .lobibox-btn.lobibox-btn-default:hover {
 	background-color: #e2e2e2;
 	border-color: #dadada
 }
@@ -702,7 +868,8 @@ body.lobibox-open {
 	background-color: rgba(0, 0, 0, .5)
 }
 
-.lobibox-notify-wrapper, .lobibox-notify-wrapper-large {
+.lobibox-notify-wrapper,
+.lobibox-notify-wrapper-large {
 	z-index: 5000;
 	position: fixed
 }
@@ -769,7 +936,10 @@ body.lobibox-open {
 	opacity: .6
 }
 
-.lobibox-notify-wrapper-large .lb-notify-tabs>li>a:active, .lobibox-notify-wrapper-large .lb-notify-tabs>li>a:focus, .lobibox-notify-wrapper-large .lb-notify-tabs>li>a:hover, .lobibox-notify-wrapper-large .lb-notify-tabs>li>a:hover:active {
+.lobibox-notify-wrapper-large .lb-notify-tabs>li>a:active,
+.lobibox-notify-wrapper-large .lb-notify-tabs>li>a:focus,
+.lobibox-notify-wrapper-large .lb-notify-tabs>li>a:hover,
+.lobibox-notify-wrapper-large .lb-notify-tabs>li>a:hover:active {
 	color: #FFF
 }
 

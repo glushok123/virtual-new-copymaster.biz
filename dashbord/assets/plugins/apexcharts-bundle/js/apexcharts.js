@@ -5,9 +5,10 @@
  */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-  typeof define === 'function' && define.amd ? define(factory) :
-  (global = global || self, global.ApexCharts = factory());
-}(this, (function () { 'use strict';
+    typeof define === 'function' && define.amd ? define(factory) :
+    (global = global || self, global.ApexCharts = factory());
+}(this, (function () {
+  'use strict';
 
   function _typeof(obj) {
     "@babel/helpers - typeof";
@@ -166,7 +167,7 @@
   /*
    ** Generic functions which are not dependent on ApexCharts
    */
-  var Utils = /*#__PURE__*/function () {
+  var Utils = /*#__PURE__*/ function () {
     function Utils() {
       _classCallCheck(this, Utils);
     }
@@ -175,22 +176,22 @@
       key: "shadeRGBColor",
       value: function shadeRGBColor(percent, color) {
         var f = color.split(','),
-            t = percent < 0 ? 0 : 255,
-            p = percent < 0 ? percent * -1 : percent,
-            R = parseInt(f[0].slice(4), 10),
-            G = parseInt(f[1], 10),
-            B = parseInt(f[2], 10);
+          t = percent < 0 ? 0 : 255,
+          p = percent < 0 ? percent * -1 : percent,
+          R = parseInt(f[0].slice(4), 10),
+          G = parseInt(f[1], 10),
+          B = parseInt(f[2], 10);
         return 'rgb(' + (Math.round((t - R) * p) + R) + ',' + (Math.round((t - G) * p) + G) + ',' + (Math.round((t - B) * p) + B) + ')';
       }
     }, {
       key: "shadeHexColor",
       value: function shadeHexColor(percent, color) {
         var f = parseInt(color.slice(1), 16),
-            t = percent < 0 ? 0 : 255,
-            p = percent < 0 ? percent * -1 : percent,
-            R = f >> 16,
-            G = f >> 8 & 0x00ff,
-            B = f & 0x0000ff;
+          t = percent < 0 ? 0 : 255,
+          p = percent < 0 ? percent * -1 : percent,
+          R = f >> 16,
+          G = f >> 8 & 0x00ff,
+          B = f & 0x0000ff;
         return '#' + (0x1000000 + (Math.round((t - R) * p) + R) * 0x10000 + (Math.round((t - G) * p) + G) * 0x100 + (Math.round((t - B) * p) + B)).toString(16).slice(1);
       } // beautiful color shading blending code
       // http://stackoverflow.com/questions/5560248/programmatically-lighten-or-darken-a-hex-color-or-rgb-and-blend-colors
@@ -220,7 +221,7 @@
       key: "listToArray",
       value: function listToArray(list) {
         var i,
-            array = [];
+          array = [];
 
         for (i = 0; i < list.length; i++) {
           array[i] = list[i];
@@ -354,9 +355,9 @@
         var data = String(val).split(/[eE]/);
         if (data.length === 1) return data[0];
         var z = '',
-            sign = val < 0 ? '-' : '',
-            str = data[0].replace('.', ''),
-            mag = Number(data[1]) + 1;
+          sign = val < 0 ? '-' : '',
+          str = data[0].replace('.', ''),
+          mag = Number(data[1]) + 1;
 
         if (mag < 0) {
           z = sign + '0.';
@@ -498,8 +499,7 @@
     }, {
       key: "findAncestor",
       value: function findAncestor(el, cls) {
-        while ((el = el.parentElement) && !el.classList.contains(cls)) {
-        }
+        while ((el = el.parentElement) && !el.classList.contains(cls)) {}
 
         return el;
       }
@@ -579,7 +579,7 @@
    * @module Formatters
    **/
 
-  var Filters = /*#__PURE__*/function () {
+  var Filters = /*#__PURE__*/ function () {
     function Filters(ctx) {
       _classCallCheck(this, Filters);
 
@@ -691,27 +691,24 @@
         var intensity = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 0.5;
 
         switch (filter) {
-          case 'none':
-            {
-              this.addNormalFilter(el, i);
-              break;
-            }
+          case 'none': {
+            this.addNormalFilter(el, i);
+            break;
+          }
 
-          case 'lighten':
-            {
-              this.addLightenFilter(el, i, {
-                intensity: intensity
-              });
-              break;
-            }
+          case 'lighten': {
+            this.addLightenFilter(el, i, {
+              intensity: intensity
+            });
+            break;
+          }
 
-          case 'darken':
-            {
-              this.addDarkenFilter(el, i, {
-                intensity: intensity
-              });
-              break;
-            }
+          case 'darken': {
+            this.addDarkenFilter(el, i, {
+              intensity: intensity
+            });
+            break;
+          }
         }
       } // appends dropShadow to the filter object which can be chained with other filter effects
 
@@ -719,10 +716,10 @@
       key: "addShadow",
       value: function addShadow(add, i, attrs) {
         var blur = attrs.blur,
-            top = attrs.top,
-            left = attrs.left,
-            color = attrs.color,
-            opacity = attrs.opacity;
+          top = attrs.top,
+          left = attrs.left,
+          color = attrs.color,
+          opacity = attrs.opacity;
         var shadowBlur = add.flood(Array.isArray(color) ? color[i] : color, opacity).composite(add.sourceAlpha, 'in').offset(left, top).gaussianBlur(blur).merge(add.source);
         return add.blend(add.source, shadowBlur);
       } // directly adds dropShadow to the element and returns the same element.
@@ -733,11 +730,11 @@
       value: function dropShadow(el, attrs) {
         var i = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
         var top = attrs.top,
-            left = attrs.left,
-            blur = attrs.blur,
-            color = attrs.color,
-            opacity = attrs.opacity,
-            noUserSpaceOnUse = attrs.noUserSpaceOnUse;
+          left = attrs.left,
+          blur = attrs.blur,
+          color = attrs.color,
+          opacity = attrs.opacity,
+          noUserSpaceOnUse = attrs.noUserSpaceOnUse;
         var w = this.w;
         el.unfilter(true);
 
@@ -813,7 +810,7 @@
    * @module Animations
    **/
 
-  var Animations = /*#__PURE__*/function () {
+  var Animations = /*#__PURE__*/ function () {
     function Animations(ctx) {
       _classCallCheck(this, Animations);
 
@@ -830,76 +827,68 @@
         var userDefinedEasing = this.w.config.chart.animations.easing;
 
         switch (userDefinedEasing) {
-          case 'linear':
-            {
-              easing = '-';
-              break;
-            }
+          case 'linear': {
+            easing = '-';
+            break;
+          }
 
-          case 'easein':
-            {
-              easing = '<';
-              break;
-            }
+          case 'easein': {
+            easing = '<';
+            break;
+          }
 
-          case 'easeout':
-            {
-              easing = '>';
-              break;
-            }
+          case 'easeout': {
+            easing = '>';
+            break;
+          }
 
-          case 'easeinout':
-            {
-              easing = '<>';
-              break;
-            }
+          case 'easeinout': {
+            easing = '<>';
+            break;
+          }
 
-          case 'swing':
-            {
-              easing = function easing(pos) {
-                var s = 1.70158;
-                var ret = (pos -= 1) * pos * ((s + 1) * pos + s) + 1;
-                return ret;
-              };
+          case 'swing': {
+            easing = function easing(pos) {
+              var s = 1.70158;
+              var ret = (pos -= 1) * pos * ((s + 1) * pos + s) + 1;
+              return ret;
+            };
 
-              break;
-            }
+            break;
+          }
 
-          case 'bounce':
-            {
-              easing = function easing(pos) {
-                var ret = '';
+          case 'bounce': {
+            easing = function easing(pos) {
+              var ret = '';
 
-                if (pos < 1 / 2.75) {
-                  ret = 7.5625 * pos * pos;
-                } else if (pos < 2 / 2.75) {
-                  ret = 7.5625 * (pos -= 1.5 / 2.75) * pos + 0.75;
-                } else if (pos < 2.5 / 2.75) {
-                  ret = 7.5625 * (pos -= 2.25 / 2.75) * pos + 0.9375;
-                } else {
-                  ret = 7.5625 * (pos -= 2.625 / 2.75) * pos + 0.984375;
-                }
+              if (pos < 1 / 2.75) {
+                ret = 7.5625 * pos * pos;
+              } else if (pos < 2 / 2.75) {
+                ret = 7.5625 * (pos -= 1.5 / 2.75) * pos + 0.75;
+              } else if (pos < 2.5 / 2.75) {
+                ret = 7.5625 * (pos -= 2.25 / 2.75) * pos + 0.9375;
+              } else {
+                ret = 7.5625 * (pos -= 2.625 / 2.75) * pos + 0.984375;
+              }
 
-                return ret;
-              };
+              return ret;
+            };
 
-              break;
-            }
+            break;
+          }
 
-          case 'elastic':
-            {
-              easing = function easing(pos) {
-                if (pos === !!pos) return pos;
-                return Math.pow(2, -10 * pos) * Math.sin((pos - 0.075) * (2 * Math.PI) / 0.3) + 1;
-              };
+          case 'elastic': {
+            easing = function easing(pos) {
+              if (pos === !!pos) return pos;
+              return Math.pow(2, -10 * pos) * Math.sin((pos - 0.075) * (2 * Math.PI) / 0.3) + 1;
+            };
 
-              break;
-            }
+            break;
+          }
 
-          default:
-            {
-              easing = '<>';
-            }
+          default: {
+            easing = '<>';
+          }
         }
 
         this.w.globals.easing = easing;
@@ -957,13 +946,13 @@
       key: "animatePathsGradually",
       value: function animatePathsGradually(params) {
         var el = params.el,
-            realIndex = params.realIndex,
-            j = params.j,
-            fill = params.fill,
-            pathFrom = params.pathFrom,
-            pathTo = params.pathTo,
-            speed = params.speed,
-            delay = params.delay;
+          realIndex = params.realIndex,
+          j = params.j,
+          fill = params.fill,
+          pathFrom = params.pathFrom,
+          pathTo = params.pathTo,
+          speed = params.speed,
+          delay = params.delay;
         var me = this;
         var w = this.w;
         var delayFactor = 0;
@@ -1066,7 +1055,7 @@
    * @module Graphics
    **/
 
-  var Graphics = /*#__PURE__*/function () {
+  var Graphics = /*#__PURE__*/ function () {
     function Graphics(ctx) {
       _classCallCheck(this, Graphics);
 
@@ -1154,21 +1143,21 @@
       key: "drawPath",
       value: function drawPath(_ref) {
         var _ref$d = _ref.d,
-            d = _ref$d === void 0 ? '' : _ref$d,
-            _ref$stroke = _ref.stroke,
-            stroke = _ref$stroke === void 0 ? '#a8a8a8' : _ref$stroke,
-            _ref$strokeWidth = _ref.strokeWidth,
-            strokeWidth = _ref$strokeWidth === void 0 ? 1 : _ref$strokeWidth,
-            fill = _ref.fill,
-            _ref$fillOpacity = _ref.fillOpacity,
-            fillOpacity = _ref$fillOpacity === void 0 ? 1 : _ref$fillOpacity,
-            _ref$strokeOpacity = _ref.strokeOpacity,
-            strokeOpacity = _ref$strokeOpacity === void 0 ? 1 : _ref$strokeOpacity,
-            classes = _ref.classes,
-            _ref$strokeLinecap = _ref.strokeLinecap,
-            strokeLinecap = _ref$strokeLinecap === void 0 ? null : _ref$strokeLinecap,
-            _ref$strokeDashArray = _ref.strokeDashArray,
-            strokeDashArray = _ref$strokeDashArray === void 0 ? 0 : _ref$strokeDashArray;
+          d = _ref$d === void 0 ? '' : _ref$d,
+          _ref$stroke = _ref.stroke,
+          stroke = _ref$stroke === void 0 ? '#a8a8a8' : _ref$stroke,
+          _ref$strokeWidth = _ref.strokeWidth,
+          strokeWidth = _ref$strokeWidth === void 0 ? 1 : _ref$strokeWidth,
+          fill = _ref.fill,
+          _ref$fillOpacity = _ref.fillOpacity,
+          fillOpacity = _ref$fillOpacity === void 0 ? 1 : _ref$fillOpacity,
+          _ref$strokeOpacity = _ref.strokeOpacity,
+          strokeOpacity = _ref$strokeOpacity === void 0 ? 1 : _ref$strokeOpacity,
+          classes = _ref.classes,
+          _ref$strokeLinecap = _ref.strokeLinecap,
+          strokeLinecap = _ref$strokeLinecap === void 0 ? null : _ref$strokeLinecap,
+          _ref$strokeDashArray = _ref.strokeDashArray,
+          strokeDashArray = _ref$strokeDashArray === void 0 ? 0 : _ref$strokeDashArray;
         var w = this.w;
 
         if (strokeLinecap === null) {
@@ -1267,23 +1256,23 @@
       key: "renderPaths",
       value: function renderPaths(_ref2) {
         var j = _ref2.j,
-            realIndex = _ref2.realIndex,
-            pathFrom = _ref2.pathFrom,
-            pathTo = _ref2.pathTo,
-            stroke = _ref2.stroke,
-            strokeWidth = _ref2.strokeWidth,
-            strokeLinecap = _ref2.strokeLinecap,
-            fill = _ref2.fill,
-            animationDelay = _ref2.animationDelay,
-            initialSpeed = _ref2.initialSpeed,
-            dataChangeSpeed = _ref2.dataChangeSpeed,
-            className = _ref2.className,
-            _ref2$shouldClipToGri = _ref2.shouldClipToGrid,
-            shouldClipToGrid = _ref2$shouldClipToGri === void 0 ? true : _ref2$shouldClipToGri,
-            _ref2$bindEventsOnPat = _ref2.bindEventsOnPaths,
-            bindEventsOnPaths = _ref2$bindEventsOnPat === void 0 ? true : _ref2$bindEventsOnPat,
-            _ref2$drawShadow = _ref2.drawShadow,
-            drawShadow = _ref2$drawShadow === void 0 ? true : _ref2$drawShadow;
+          realIndex = _ref2.realIndex,
+          pathFrom = _ref2.pathFrom,
+          pathTo = _ref2.pathTo,
+          stroke = _ref2.stroke,
+          strokeWidth = _ref2.strokeWidth,
+          strokeLinecap = _ref2.strokeLinecap,
+          fill = _ref2.fill,
+          animationDelay = _ref2.animationDelay,
+          initialSpeed = _ref2.initialSpeed,
+          dataChangeSpeed = _ref2.dataChangeSpeed,
+          className = _ref2.className,
+          _ref2$shouldClipToGri = _ref2.shouldClipToGrid,
+          shouldClipToGrid = _ref2$shouldClipToGri === void 0 ? true : _ref2$shouldClipToGri,
+          _ref2$bindEventsOnPat = _ref2.bindEventsOnPaths,
+          bindEventsOnPaths = _ref2$bindEventsOnPat === void 0 ? true : _ref2$bindEventsOnPat,
+          _ref2$drawShadow = _ref2.drawShadow,
+          drawShadow = _ref2$drawShadow === void 0 ? true : _ref2$drawShadow;
         var w = this.w;
         var filters = new Filters(this.ctx);
         var anim = new Animations(this.ctx);
@@ -1503,18 +1492,18 @@
       key: "drawText",
       value: function drawText(_ref3) {
         var x = _ref3.x,
-            y = _ref3.y,
-            text = _ref3.text,
-            textAnchor = _ref3.textAnchor,
-            fontSize = _ref3.fontSize,
-            fontFamily = _ref3.fontFamily,
-            fontWeight = _ref3.fontWeight,
-            foreColor = _ref3.foreColor,
-            opacity = _ref3.opacity,
-            _ref3$cssClass = _ref3.cssClass,
-            cssClass = _ref3$cssClass === void 0 ? '' : _ref3$cssClass,
-            _ref3$isPlainText = _ref3.isPlainText,
-            isPlainText = _ref3$isPlainText === void 0 ? true : _ref3$isPlainText;
+          y = _ref3.y,
+          text = _ref3.text,
+          textAnchor = _ref3.textAnchor,
+          fontSize = _ref3.fontSize,
+          fontFamily = _ref3.fontFamily,
+          fontWeight = _ref3.fontWeight,
+          foreColor = _ref3.foreColor,
+          opacity = _ref3.opacity,
+          _ref3$cssClass = _ref3.cssClass,
+          cssClass = _ref3$cssClass === void 0 ? '' : _ref3$cssClass,
+          _ref3$isPlainText = _ref3.isPlainText,
+          isPlainText = _ref3$isPlainText === void 0 ? true : _ref3$isPlainText;
         var w = this.w;
         if (typeof text === 'undefined') text = '';
 
@@ -1832,7 +1821,7 @@
     return Graphics;
   }();
 
-  var Helpers = /*#__PURE__*/function () {
+  var Helpers = /*#__PURE__*/ function () {
     function Helpers(annoCtx) {
       _classCallCheck(this, Helpers);
 
@@ -1991,7 +1980,7 @@
     return Helpers;
   }();
 
-  var XAnnotations = /*#__PURE__*/function () {
+  var XAnnotations = /*#__PURE__*/ function () {
     function XAnnotations(annoCtx) {
       _classCallCheck(this, XAnnotations);
 
@@ -2024,12 +2013,12 @@
 
         if (anno.x2 === null || typeof anno.x2 === 'undefined') {
           var line = this.annoCtx.graphics.drawLine(x1 + anno.offsetX, // x1
-          0 + anno.offsetY, // y1
-          x1 + anno.offsetX, // x2
-          w.globals.gridHeight + anno.offsetY, // y2
-          anno.borderColor, // lineColor
-          strokeDashArray, //dashArray
-          anno.borderWidth);
+            0 + anno.offsetY, // y1
+            x1 + anno.offsetX, // x2
+            w.globals.gridHeight + anno.offsetY, // y2
+            anno.borderColor, // lineColor
+            strokeDashArray, //dashArray
+            anno.borderWidth);
           parent.appendChild(line.node);
 
           if (anno.id) {
@@ -2053,15 +2042,15 @@
           }
 
           var rect = this.annoCtx.graphics.drawRect(x1 + anno.offsetX, // x1
-          0 + anno.offsetY, // y1
-          x2 - x1, // x2
-          w.globals.gridHeight + anno.offsetY, // y2
-          0, // radius
-          anno.fillColor, // color
-          anno.opacity, // opacity,
-          1, // strokeWidth
-          anno.borderColor, // strokeColor
-          strokeDashArray // stokeDashArray
+            0 + anno.offsetY, // y1
+            x2 - x1, // x2
+            w.globals.gridHeight + anno.offsetY, // y2
+            0, // radius
+            anno.fillColor, // color
+            anno.opacity, // opacity,
+            1, // strokeWidth
+            anno.borderColor, // strokeColor
+            strokeDashArray // stokeDashArray
           );
           rect.node.classList.add('apexcharts-annotation-rect');
           rect.attr('clip-path', "url(#gridRectMask".concat(w.globals.cuid, ")"));
@@ -2114,7 +2103,7 @@
   /*
    ** Util functions which are dependent on ApexCharts instance
    */
-  var CoreUtils = /*#__PURE__*/function () {
+  var CoreUtils = /*#__PURE__*/ function () {
     function CoreUtils(ctx) {
       _classCallCheck(this, CoreUtils);
 
@@ -2488,7 +2477,7 @@
     return CoreUtils;
   }();
 
-  var YAnnotations = /*#__PURE__*/function () {
+  var YAnnotations = /*#__PURE__*/ function () {
     function YAnnotations(annoCtx) {
       _classCallCheck(this, YAnnotations);
 
@@ -2509,12 +2498,12 @@
 
         if (anno.y2 === null || typeof anno.y2 === 'undefined') {
           var line = this.annoCtx.graphics.drawLine(0 + anno.offsetX, // x1
-          y1 + anno.offsetY, // y1
-          w.globals.gridWidth + anno.offsetX, // x2
-          y1 + anno.offsetY, // y2
-          anno.borderColor, // lineColor
-          strokeDashArray, // dashArray
-          anno.borderWidth);
+            y1 + anno.offsetY, // y1
+            w.globals.gridWidth + anno.offsetX, // x2
+            y1 + anno.offsetY, // y2
+            anno.borderColor, // lineColor
+            strokeDashArray, // dashArray
+            anno.borderWidth);
           parent.appendChild(line.node);
 
           if (anno.id) {
@@ -2530,15 +2519,15 @@
           }
 
           var rect = this.annoCtx.graphics.drawRect(0 + anno.offsetX, // x1
-          y2 + anno.offsetY, // y1
-          w.globals.gridWidth + anno.offsetX, // x2
-          y1 - y2, // y2
-          0, // radius
-          anno.fillColor, // color
-          anno.opacity, // opacity,
-          1, // strokeWidth
-          anno.borderColor, // strokeColor
-          strokeDashArray // stokeDashArray
+            y2 + anno.offsetY, // y1
+            w.globals.gridWidth + anno.offsetX, // x2
+            y1 - y2, // y2
+            0, // radius
+            anno.fillColor, // color
+            anno.opacity, // opacity,
+            1, // strokeWidth
+            anno.borderColor, // strokeColor
+            strokeDashArray // stokeDashArray
           );
           rect.node.classList.add('apexcharts-annotation-rect');
           rect.attr('clip-path', "url(#gridRectMask".concat(w.globals.cuid, ")"));
@@ -2624,7 +2613,7 @@
     return YAnnotations;
   }();
 
-  var PointAnnotations = /*#__PURE__*/function () {
+  var PointAnnotations = /*#__PURE__*/ function () {
     function PointAnnotations(annoCtx) {
       _classCallCheck(this, PointAnnotations);
 
@@ -2754,71 +2743,71 @@
 
   const name = "en";
   const options = {
-  	months: [
-  		"January",
-  		"February",
-  		"March",
-  		"April",
-  		"May",
-  		"June",
-  		"July",
-  		"August",
-  		"September",
-  		"October",
-  		"November",
-  		"December"
-  	],
-  	shortMonths: [
-  		"Jan",
-  		"Feb",
-  		"Mar",
-  		"Apr",
-  		"May",
-  		"Jun",
-  		"Jul",
-  		"Aug",
-  		"Sep",
-  		"Oct",
-  		"Nov",
-  		"Dec"
-  	],
-  	days: [
-  		"Sunday",
-  		"Monday",
-  		"Tuesday",
-  		"Wednesday",
-  		"Thursday",
-  		"Friday",
-  		"Saturday"
-  	],
-  	shortDays: [
-  		"Sun",
-  		"Mon",
-  		"Tue",
-  		"Wed",
-  		"Thu",
-  		"Fri",
-  		"Sat"
-  	],
-  	toolbar: {
-  		exportToSVG: "Download SVG",
-  		exportToPNG: "Download PNG",
-  		exportToCSV: "Download CSV",
-  		menu: "Menu",
-  		selection: "Selection",
-  		selectionZoom: "Selection Zoom",
-  		zoomIn: "Zoom In",
-  		zoomOut: "Zoom Out",
-  		pan: "Panning",
-  		reset: "Reset Zoom"
-  	}
+    months: [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ],
+    shortMonths: [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec"
+    ],
+    days: [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ],
+    shortDays: [
+      "Sun",
+      "Mon",
+      "Tue",
+      "Wed",
+      "Thu",
+      "Fri",
+      "Sat"
+    ],
+    toolbar: {
+      exportToSVG: "Download SVG",
+      exportToPNG: "Download PNG",
+      exportToCSV: "Download CSV",
+      menu: "Menu",
+      selection: "Selection",
+      selectionZoom: "Selection Zoom",
+      zoomIn: "Zoom In",
+      zoomOut: "Zoom Out",
+      pan: "Panning",
+      reset: "Reset Zoom"
+    }
   };
   var en = {
-  	name: name,
-  	options: options
+    name: name,
+    options: options
   };
 
-  var Options = /*#__PURE__*/function () {
+  var Options = /*#__PURE__*/ function () {
     function Options() {
       _classCallCheck(this, Options);
 
@@ -3850,7 +3839,7 @@
    * @module Annotations
    **/
 
-  var Annotations = /*#__PURE__*/function () {
+  var Annotations = /*#__PURE__*/ function () {
     function Annotations(ctx) {
       _classCallCheck(this, Annotations);
 
@@ -3956,29 +3945,29 @@
       key: "addText",
       value: function addText(params, index) {
         var x = params.x,
-            y = params.y,
-            text = params.text,
-            textAnchor = params.textAnchor,
-            foreColor = params.foreColor,
-            fontSize = params.fontSize,
-            fontFamily = params.fontFamily,
-            fontWeight = params.fontWeight,
-            cssClass = params.cssClass,
-            backgroundColor = params.backgroundColor,
-            borderWidth = params.borderWidth,
-            strokeDashArray = params.strokeDashArray,
-            borderRadius = params.borderRadius,
-            borderColor = params.borderColor,
-            _params$appendTo = params.appendTo,
-            appendTo = _params$appendTo === void 0 ? '.apexcharts-annotations' : _params$appendTo,
-            _params$paddingLeft = params.paddingLeft,
-            paddingLeft = _params$paddingLeft === void 0 ? 4 : _params$paddingLeft,
-            _params$paddingRight = params.paddingRight,
-            paddingRight = _params$paddingRight === void 0 ? 4 : _params$paddingRight,
-            _params$paddingBottom = params.paddingBottom,
-            paddingBottom = _params$paddingBottom === void 0 ? 2 : _params$paddingBottom,
-            _params$paddingTop = params.paddingTop,
-            paddingTop = _params$paddingTop === void 0 ? 2 : _params$paddingTop;
+          y = params.y,
+          text = params.text,
+          textAnchor = params.textAnchor,
+          foreColor = params.foreColor,
+          fontSize = params.fontSize,
+          fontFamily = params.fontFamily,
+          fontWeight = params.fontWeight,
+          cssClass = params.cssClass,
+          backgroundColor = params.backgroundColor,
+          borderWidth = params.borderWidth,
+          strokeDashArray = params.strokeDashArray,
+          borderRadius = params.borderRadius,
+          borderColor = params.borderColor,
+          _params$appendTo = params.appendTo,
+          appendTo = _params$appendTo === void 0 ? '.apexcharts-annotations' : _params$appendTo,
+          _params$paddingLeft = params.paddingLeft,
+          paddingLeft = _params$paddingLeft === void 0 ? 4 : _params$paddingLeft,
+          _params$paddingRight = params.paddingRight,
+          paddingRight = _params$paddingRight === void 0 ? 4 : _params$paddingRight,
+          _params$paddingBottom = params.paddingBottom,
+          paddingBottom = _params$paddingBottom === void 0 ? 2 : _params$paddingBottom,
+          _params$paddingTop = params.paddingTop,
+          paddingTop = _params$paddingTop === void 0 ? 2 : _params$paddingTop;
         var w = this.w;
         var elText = this.graphics.drawText({
           x: x,
@@ -4062,16 +4051,16 @@
       value: function addImage(params, index) {
         var w = this.w;
         var path = params.path,
-            _params$x = params.x,
-            x = _params$x === void 0 ? 0 : _params$x,
-            _params$y = params.y,
-            y = _params$y === void 0 ? 0 : _params$y,
-            _params$width = params.width,
-            width = _params$width === void 0 ? 20 : _params$width,
-            _params$height = params.height,
-            height = _params$height === void 0 ? 20 : _params$height,
-            _params$appendTo2 = params.appendTo,
-            appendTo = _params$appendTo2 === void 0 ? '.apexcharts-annotations' : _params$appendTo2;
+          _params$x = params.x,
+          x = _params$x === void 0 ? 0 : _params$x,
+          _params$y = params.y,
+          y = _params$y === void 0 ? 0 : _params$y,
+          _params$width = params.width,
+          width = _params$width === void 0 ? 20 : _params$width,
+          _params$height = params.height,
+          height = _params$height === void 0 ? 20 : _params$height,
+          _params$appendTo2 = params.appendTo,
+          appendTo = _params$appendTo2 === void 0 ? '.apexcharts-annotations' : _params$appendTo2;
         var img = w.globals.dom.Paper.image(path);
         img.size(width, height).move(x, y);
         var parent = w.globals.dom.baseEl.querySelector(appendTo);
@@ -4130,10 +4119,10 @@
       key: "addAnnotationExternal",
       value: function addAnnotationExternal(_ref) {
         var params = _ref.params,
-            pushToMemory = _ref.pushToMemory,
-            context = _ref.context,
-            type = _ref.type,
-            contextMethod = _ref.contextMethod;
+          pushToMemory = _ref.pushToMemory,
+          context = _ref.context,
+          type = _ref.type,
+          contextMethod = _ref.contextMethod;
         var me = context;
         var w = me.w;
         var parent = w.globals.dom.baseEl.querySelector(".apexcharts-".concat(type, "-annotations"));
@@ -4223,7 +4212,7 @@
    * @module Fill
    **/
 
-  var Fill = /*#__PURE__*/function () {
+  var Fill = /*#__PURE__*/ function () {
     function Fill(ctx) {
       _classCallCheck(this, Fill);
 
@@ -4512,7 +4501,7 @@
    * @module Markers
    **/
 
-  var Markers = /*#__PURE__*/function () {
+  var Markers = /*#__PURE__*/ function () {
     function Markers(ctx, opts) {
       _classCallCheck(this, Markers);
 
@@ -4688,7 +4677,7 @@
    * @module Scatter
    **/
 
-  var Scatter = /*#__PURE__*/function () {
+  var Scatter = /*#__PURE__*/ function () {
     function Scatter(ctx) {
       _classCallCheck(this, Scatter);
 
@@ -4880,7 +4869,7 @@
    * @module DataLabels
    **/
 
-  var DataLabels = /*#__PURE__*/function () {
+  var DataLabels = /*#__PURE__*/ function () {
     function DataLabels(ctx) {
       _classCallCheck(this, DataLabels);
 
@@ -4916,11 +4905,11 @@
           var lastDataLabelRect = w.globals.dataLabelsRects[i][lastDrawnIndex];
 
           if ( // next label forward and x not intersecting
-          x > lastDataLabelRect.x + lastDataLabelRect.width + 2 || y > lastDataLabelRect.y + lastDataLabelRect.height + 2 || x + width < lastDataLabelRect.x // next label is going to be drawn backwards
+            x > lastDataLabelRect.x + lastDataLabelRect.width + 2 || y > lastDataLabelRect.y + lastDataLabelRect.height + 2 || x + width < lastDataLabelRect.x // next label is going to be drawn backwards
           ) {
-              // the 2 indexes don't override, so OK to draw next label
-              drawnextLabel = true;
-            }
+            // the 2 indexes don't override, so OK to draw next label
+            drawnextLabel = true;
+          }
         }
 
         if (dataPointIndex === 0 || alwaysDrawDataLabel) {
@@ -5011,16 +5000,16 @@
         var w = this.w;
         var graphics = new Graphics(this.ctx);
         var x = opts.x,
-            y = opts.y,
-            i = opts.i,
-            j = opts.j,
-            text = opts.text,
-            textAnchor = opts.textAnchor,
-            parent = opts.parent,
-            dataLabelsConfig = opts.dataLabelsConfig,
-            color = opts.color,
-            alwaysDrawDataLabel = opts.alwaysDrawDataLabel,
-            offsetCorrection = opts.offsetCorrection;
+          y = opts.y,
+          i = opts.i,
+          j = opts.j,
+          text = opts.text,
+          textAnchor = opts.textAnchor,
+          parent = opts.parent,
+          dataLabelsConfig = opts.dataLabelsConfig,
+          color = opts.color,
+          alwaysDrawDataLabel = opts.alwaysDrawDataLabel,
+          offsetCorrection = opts.offsetCorrection;
 
         if (Array.isArray(w.config.dataLabels.enabledOnSeries)) {
           if (w.config.dataLabels.enabledOnSeries.indexOf(i) < 0) {
@@ -5179,7 +5168,7 @@
     return DataLabels;
   }();
 
-  var BarDataLabels = /*#__PURE__*/function () {
+  var BarDataLabels = /*#__PURE__*/ function () {
     function BarDataLabels(barCtx) {
       _classCallCheck(this, BarDataLabels);
 
@@ -5200,18 +5189,18 @@
       key: "handleBarDataLabels",
       value: function handleBarDataLabels(opts) {
         var x = opts.x,
-            y = opts.y,
-            y1 = opts.y1,
-            y2 = opts.y2,
-            i = opts.i,
-            j = opts.j,
-            realIndex = opts.realIndex,
-            series = opts.series,
-            barHeight = opts.barHeight,
-            barWidth = opts.barWidth,
-            barYPosition = opts.barYPosition,
-            visibleSeries = opts.visibleSeries,
-            renderedPath = opts.renderedPath;
+          y = opts.y,
+          y1 = opts.y1,
+          y2 = opts.y2,
+          i = opts.i,
+          j = opts.j,
+          realIndex = opts.realIndex,
+          series = opts.series,
+          barHeight = opts.barHeight,
+          barWidth = opts.barWidth,
+          barYPosition = opts.barYPosition,
+          visibleSeries = opts.visibleSeries,
+          renderedPath = opts.renderedPath;
         var w = this.w;
         var graphics = new Graphics(this.barCtx.ctx);
         var strokeWidth = Array.isArray(this.barCtx.strokeWidth) ? this.barCtx.strokeWidth[realIndex] : this.barCtx.strokeWidth;
@@ -5298,17 +5287,17 @@
       value: function calculateColumnsDataLabelsPosition(opts) {
         var w = this.w;
         var i = opts.i,
-            j = opts.j,
-            y = opts.y,
-            bcx = opts.bcx,
-            barWidth = opts.barWidth,
-            barHeight = opts.barHeight,
-            textRects = opts.textRects,
-            dataLabelsY = opts.dataLabelsY,
-            barDataLabelsConfig = opts.barDataLabelsConfig,
-            strokeWidth = opts.strokeWidth,
-            offX = opts.offX,
-            offY = opts.offY;
+          j = opts.j,
+          y = opts.y,
+          bcx = opts.bcx,
+          barWidth = opts.barWidth,
+          barHeight = opts.barHeight,
+          textRects = opts.textRects,
+          dataLabelsY = opts.dataLabelsY,
+          barDataLabelsConfig = opts.barDataLabelsConfig,
+          strokeWidth = opts.strokeWidth,
+          offX = opts.offX,
+          offY = opts.offY;
         var dataLabelsX;
         barHeight = Math.abs(barHeight);
         var vertical = w.config.plotOptions.bar.dataLabels.orientation === 'vertical';
@@ -5407,17 +5396,17 @@
       value: function calculateBarsDataLabelsPosition(opts) {
         var w = this.w;
         var x = opts.x,
-            i = opts.i,
-            j = opts.j,
-            bcy = opts.bcy,
-            barHeight = opts.barHeight,
-            barWidth = opts.barWidth,
-            textRects = opts.textRects,
-            dataLabelsX = opts.dataLabelsX,
-            strokeWidth = opts.strokeWidth,
-            barDataLabelsConfig = opts.barDataLabelsConfig,
-            offX = opts.offX,
-            offY = opts.offY;
+          i = opts.i,
+          j = opts.j,
+          bcy = opts.bcy,
+          barHeight = opts.barHeight,
+          barWidth = opts.barWidth,
+          textRects = opts.textRects,
+          dataLabelsX = opts.dataLabelsX,
+          strokeWidth = opts.strokeWidth,
+          barDataLabelsConfig = opts.barDataLabelsConfig,
+          offX = opts.offX,
+          offY = opts.offY;
         var dataPointsDividedHeight = w.globals.gridHeight / w.globals.dataPoints;
         barWidth = Math.abs(barWidth);
         var dataLabelsY = bcy - (this.barCtx.isTimelineBar ? 0 : dataPointsDividedHeight) + barHeight / 2 + textRects.height / 2 + offY - 3;
@@ -5477,14 +5466,14 @@
       key: "drawCalculatedDataLabels",
       value: function drawCalculatedDataLabels(_ref) {
         var x = _ref.x,
-            y = _ref.y,
-            val = _ref.val,
-            i = _ref.i,
-            j = _ref.j,
-            textRects = _ref.textRects,
-            barHeight = _ref.barHeight,
-            barWidth = _ref.barWidth,
-            dataLabelsConfig = _ref.dataLabelsConfig;
+          y = _ref.y,
+          val = _ref.val,
+          i = _ref.i,
+          j = _ref.j,
+          textRects = _ref.textRects,
+          barHeight = _ref.barHeight,
+          barWidth = _ref.barWidth,
+          dataLabelsConfig = _ref.dataLabelsConfig;
         var w = this.w;
         var rotate = 'rotate(0)';
         if (w.config.plotOptions.bar.dataLabels.orientation === 'vertical') rotate = "rotate(-90, ".concat(x, ", ").concat(y, ")");
@@ -5519,7 +5508,8 @@
 
           if (w.config.plotOptions.bar.dataLabels.orientation === 'vertical') {
             if (position === 'top') {
-              if (valIsNegative) dataLabelsConfig.textAnchor = 'end';else dataLabelsConfig.textAnchor = 'start';
+              if (valIsNegative) dataLabelsConfig.textAnchor = 'end';
+              else dataLabelsConfig.textAnchor = 'start';
             }
 
             if (position === 'center') {
@@ -5527,7 +5517,8 @@
             }
 
             if (position === 'bottom') {
-              if (valIsNegative) dataLabelsConfig.textAnchor = 'end';else dataLabelsConfig.textAnchor = 'start';
+              if (valIsNegative) dataLabelsConfig.textAnchor = 'end';
+              else dataLabelsConfig.textAnchor = 'start';
             }
           }
 
@@ -5598,7 +5589,7 @@
    * @module Series
    **/
 
-  var Series = /*#__PURE__*/function () {
+  var Series = /*#__PURE__*/ function () {
     function Series(ctx) {
       _classCallCheck(this, Series);
 
@@ -6002,7 +5993,7 @@
     return Series;
   }();
 
-  var Helpers$1 = /*#__PURE__*/function () {
+  var Helpers$1 = /*#__PURE__*/ function () {
     function Helpers(barCtx) {
       _classCallCheck(this, Helpers);
 
@@ -6166,12 +6157,12 @@
       key: "barBackground",
       value: function barBackground(_ref) {
         var bc = _ref.bc,
-            i = _ref.i,
-            x1 = _ref.x1,
-            x2 = _ref.x2,
-            y1 = _ref.y1,
-            y2 = _ref.y2,
-            elSeries = _ref.elSeries;
+          i = _ref.i,
+          x1 = _ref.x1,
+          x2 = _ref.x2,
+          y1 = _ref.y1,
+          y2 = _ref.y2,
+          elSeries = _ref.elSeries;
         var w = this.w;
         var graphics = new Graphics(this.barCtx.ctx);
         var sr = new Series(this.barCtx.ctx);
@@ -6192,16 +6183,16 @@
       key: "getColumnPaths",
       value: function getColumnPaths(_ref2) {
         var barWidth = _ref2.barWidth,
-            barXPosition = _ref2.barXPosition,
-            yRatio = _ref2.yRatio,
-            y1 = _ref2.y1,
-            y2 = _ref2.y2,
-            strokeWidth = _ref2.strokeWidth,
-            series = _ref2.series,
-            realIndex = _ref2.realIndex,
-            i = _ref2.i,
-            j = _ref2.j,
-            w = _ref2.w;
+          barXPosition = _ref2.barXPosition,
+          yRatio = _ref2.yRatio,
+          y1 = _ref2.y1,
+          y2 = _ref2.y2,
+          strokeWidth = _ref2.strokeWidth,
+          series = _ref2.series,
+          realIndex = _ref2.realIndex,
+          i = _ref2.i,
+          j = _ref2.j,
+          w = _ref2.w;
         var graphics = new Graphics(this.barCtx.ctx);
         strokeWidth = Array.isArray(strokeWidth) ? strokeWidth[realIndex] : strokeWidth;
         if (!strokeWidth) strokeWidth = 0;
@@ -6234,15 +6225,15 @@
       key: "getBarpaths",
       value: function getBarpaths(_ref3) {
         var barYPosition = _ref3.barYPosition,
-            barHeight = _ref3.barHeight,
-            x1 = _ref3.x1,
-            x2 = _ref3.x2,
-            strokeWidth = _ref3.strokeWidth,
-            series = _ref3.series,
-            realIndex = _ref3.realIndex,
-            i = _ref3.i,
-            j = _ref3.j,
-            w = _ref3.w;
+          barHeight = _ref3.barHeight,
+          x1 = _ref3.x1,
+          x2 = _ref3.x2,
+          strokeWidth = _ref3.strokeWidth,
+          series = _ref3.series,
+          realIndex = _ref3.realIndex,
+          i = _ref3.i,
+          j = _ref3.j,
+          w = _ref3.w;
         var graphics = new Graphics(this.barCtx.ctx);
         strokeWidth = Array.isArray(strokeWidth) ? strokeWidth[realIndex] : strokeWidth;
         if (!strokeWidth) strokeWidth = 0;
@@ -6404,7 +6395,7 @@
    * @module Bar
    **/
 
-  var Bar = /*#__PURE__*/function () {
+  var Bar = /*#__PURE__*/ function () {
     function Bar(ctx, xyRatios) {
       _classCallCheck(this, Bar);
 
@@ -6462,14 +6453,14 @@
 
         for (var i = 0, bc = 0; i < series.length; i++, bc++) {
           var x = void 0,
-              y = void 0,
-              xDivision = void 0,
-              // xDivision is the GRIDWIDTH divided by number of datapoints (columns)
-          yDivision = void 0,
-              // yDivision is the GRIDHEIGHT divided by number of datapoints (bars)
-          zeroH = void 0,
-              // zeroH is the baseline where 0 meets y axis
-          zeroW = void 0; // zeroW is the baseline where 0 meets x axis
+            y = void 0,
+            xDivision = void 0,
+            // xDivision is the GRIDWIDTH divided by number of datapoints (columns)
+            yDivision = void 0,
+            // yDivision is the GRIDHEIGHT divided by number of datapoints (bars)
+            zeroH = void 0,
+            // zeroH is the baseline where 0 meets y axis
+            zeroW = void 0; // zeroW is the baseline where 0 meets x axis
 
           var yArrj = []; // hold y values of current iterating series
 
@@ -6590,25 +6581,25 @@
       key: "renderSeries",
       value: function renderSeries(_ref) {
         var realIndex = _ref.realIndex,
-            pathFill = _ref.pathFill,
-            lineFill = _ref.lineFill,
-            j = _ref.j,
-            i = _ref.i,
-            pathFrom = _ref.pathFrom,
-            pathTo = _ref.pathTo,
-            strokeWidth = _ref.strokeWidth,
-            elSeries = _ref.elSeries,
-            x = _ref.x,
-            y = _ref.y,
-            y1 = _ref.y1,
-            y2 = _ref.y2,
-            series = _ref.series,
-            barHeight = _ref.barHeight,
-            barWidth = _ref.barWidth,
-            barYPosition = _ref.barYPosition,
-            elDataLabelsWrap = _ref.elDataLabelsWrap,
-            visibleSeries = _ref.visibleSeries,
-            type = _ref.type;
+          pathFill = _ref.pathFill,
+          lineFill = _ref.lineFill,
+          j = _ref.j,
+          i = _ref.i,
+          pathFrom = _ref.pathFrom,
+          pathTo = _ref.pathTo,
+          strokeWidth = _ref.strokeWidth,
+          elSeries = _ref.elSeries,
+          x = _ref.x,
+          y = _ref.y,
+          y1 = _ref.y1,
+          y2 = _ref.y2,
+          series = _ref.series,
+          barHeight = _ref.barHeight,
+          barWidth = _ref.barWidth,
+          barYPosition = _ref.barYPosition,
+          elDataLabelsWrap = _ref.elDataLabelsWrap,
+          visibleSeries = _ref.visibleSeries,
+          type = _ref.type;
         var w = this.w;
         var graphics = new Graphics(this.ctx);
 
@@ -6679,13 +6670,13 @@
       key: "drawBarPaths",
       value: function drawBarPaths(_ref2) {
         var indexes = _ref2.indexes,
-            barHeight = _ref2.barHeight,
-            strokeWidth = _ref2.strokeWidth,
-            zeroW = _ref2.zeroW,
-            x = _ref2.x,
-            y = _ref2.y,
-            yDivision = _ref2.yDivision,
-            elSeries = _ref2.elSeries;
+          barHeight = _ref2.barHeight,
+          strokeWidth = _ref2.strokeWidth,
+          zeroW = _ref2.zeroW,
+          x = _ref2.x,
+          y = _ref2.y,
+          yDivision = _ref2.yDivision,
+          elSeries = _ref2.elSeries;
         var w = this.w;
         var i = indexes.i;
         var j = indexes.j;
@@ -6739,13 +6730,13 @@
       key: "drawColumnPaths",
       value: function drawColumnPaths(_ref3) {
         var indexes = _ref3.indexes,
-            x = _ref3.x,
-            y = _ref3.y,
-            xDivision = _ref3.xDivision,
-            barWidth = _ref3.barWidth,
-            zeroH = _ref3.zeroH,
-            strokeWidth = _ref3.strokeWidth,
-            elSeries = _ref3.elSeries;
+          x = _ref3.x,
+          y = _ref3.y,
+          xDivision = _ref3.xDivision,
+          barWidth = _ref3.barWidth,
+          zeroH = _ref3.zeroH,
+          strokeWidth = _ref3.strokeWidth,
+          elSeries = _ref3.elSeries;
         var w = this.w;
         var i = indexes.i;
         var j = indexes.j;
@@ -6837,7 +6828,7 @@
    * @module DateTime
    **/
 
-  var DateTime = /*#__PURE__*/function () {
+  var DateTime = /*#__PURE__*/ function () {
     function DateTime(ctx) {
       _classCallCheck(this, DateTime);
 
@@ -7061,7 +7052,7 @@
    * @module RangeBar
    **/
 
-  var RangeBar = /*#__PURE__*/function (_Bar) {
+  var RangeBar = /*#__PURE__*/ function (_Bar) {
     _inherits(RangeBar, _Bar);
 
     function RangeBar() {
@@ -7086,14 +7077,14 @@
 
         for (var i = 0; i < series.length; i++) {
           var x = void 0,
-              y = void 0,
-              xDivision = void 0,
-              // xDivision is the GRIDWIDTH divided by number of datapoints (columns)
-          yDivision = void 0,
-              // yDivision is the GRIDHEIGHT divided by number of datapoints (bars)
-          zeroH = void 0,
-              // zeroH is the baseline where 0 meets y axis
-          zeroW = void 0; // zeroW is the baseline where 0 meets x axis
+            y = void 0,
+            xDivision = void 0,
+            // xDivision is the GRIDWIDTH divided by number of datapoints (columns)
+            yDivision = void 0,
+            // yDivision is the GRIDHEIGHT divided by number of datapoints (bars)
+            zeroH = void 0,
+            // zeroH is the baseline where 0 meets y axis
+            zeroW = void 0; // zeroW is the baseline where 0 meets x axis
 
           var realIndex = w.globals.comboCharts ? seriesIndex[i] : i; // el to which series will be drawn
 
@@ -7232,12 +7223,12 @@
       key: "detectOverlappingBars",
       value: function detectOverlappingBars(_ref) {
         var i = _ref.i,
-            j = _ref.j,
-            barYPosition = _ref.barYPosition,
-            srty = _ref.srty,
-            barHeight = _ref.barHeight,
-            yDivision = _ref.yDivision,
-            initPositions = _ref.initPositions;
+          j = _ref.j,
+          barYPosition = _ref.barYPosition,
+          srty = _ref.srty,
+          barHeight = _ref.barHeight,
+          yDivision = _ref.yDivision,
+          initPositions = _ref.initPositions;
         var w = this.w;
         var overlaps = [];
         var rangeName = w.config.series[i].data[j].rangeName;
@@ -7266,11 +7257,11 @@
       key: "drawRangeColumnPaths",
       value: function drawRangeColumnPaths(_ref2) {
         var indexes = _ref2.indexes,
-            x = _ref2.x,
-            strokeWidth = _ref2.strokeWidth,
-            xDivision = _ref2.xDivision,
-            barWidth = _ref2.barWidth,
-            zeroH = _ref2.zeroH;
+          x = _ref2.x,
+          strokeWidth = _ref2.strokeWidth,
+          xDivision = _ref2.xDivision,
+          barWidth = _ref2.barWidth,
+          zeroH = _ref2.zeroH;
         var w = this.w;
         var i = indexes.i;
         var j = indexes.j;
@@ -7323,13 +7314,13 @@
       key: "drawRangeBarPaths",
       value: function drawRangeBarPaths(_ref3) {
         var indexes = _ref3.indexes,
-            y = _ref3.y,
-            y1 = _ref3.y1,
-            y2 = _ref3.y2,
-            yDivision = _ref3.yDivision,
-            barHeight = _ref3.barHeight,
-            barYPosition = _ref3.barYPosition,
-            zeroW = _ref3.zeroW;
+          y = _ref3.y,
+          y1 = _ref3.y1,
+          y2 = _ref3.y2,
+          yDivision = _ref3.yDivision,
+          barHeight = _ref3.barHeight,
+          barYPosition = _ref3.barYPosition,
+          zeroW = _ref3.zeroW;
         var w = this.w;
         var x1 = zeroW + y1 / this.invertedYRatio;
         var x2 = zeroW + y2 / this.invertedYRatio;
@@ -7371,11 +7362,11 @@
       key: "getTooltipValues",
       value: function getTooltipValues(_ref4) {
         var ctx = _ref4.ctx,
-            seriesIndex = _ref4.seriesIndex,
-            dataPointIndex = _ref4.dataPointIndex,
-            y1 = _ref4.y1,
-            y2 = _ref4.y2,
-            w = _ref4.w;
+          seriesIndex = _ref4.seriesIndex,
+          dataPointIndex = _ref4.dataPointIndex,
+          y1 = _ref4.y1,
+          y2 = _ref4.y2,
+          w = _ref4.w;
         var start = w.globals.seriesRangeStart[seriesIndex][dataPointIndex];
         var end = w.globals.seriesRangeEnd[seriesIndex][dataPointIndex];
         var ylabel = w.globals.labels[dataPointIndex];
@@ -7437,10 +7428,10 @@
       key: "buildCustomTooltipHTML",
       value: function buildCustomTooltipHTML(_ref5) {
         var color = _ref5.color,
-            seriesName = _ref5.seriesName,
-            ylabel = _ref5.ylabel,
-            start = _ref5.start,
-            end = _ref5.end;
+          seriesName = _ref5.seriesName,
+          ylabel = _ref5.ylabel,
+          start = _ref5.start,
+          end = _ref5.end;
         return '<div class="apexcharts-tooltip-rangebar">' + '<div> <span class="series-name" style="color: ' + color + '">' + (seriesName ? seriesName : '') + '</span></div>' + '<div> <span class="category">' + ylabel + ' </span> <span class="value start-value">' + start + '</span> <span class="separator">-</span> <span class="value end-value">' + end + '</span></div>' + '</div>';
       }
     }]);
@@ -7454,7 +7445,7 @@
    * @module Defaults
    **/
 
-  var Defaults = /*#__PURE__*/function () {
+  var Defaults = /*#__PURE__*/ function () {
     function Defaults(opts) {
       _classCallCheck(this, Defaults);
 
@@ -7620,8 +7611,8 @@
             shared: true,
             custom: function custom(_ref) {
               var seriesIndex = _ref.seriesIndex,
-                  dataPointIndex = _ref.dataPointIndex,
-                  w = _ref.w;
+                dataPointIndex = _ref.dataPointIndex,
+                w = _ref.w;
               var o = w.globals.seriesCandleO[seriesIndex][dataPointIndex];
               var h = w.globals.seriesCandleH[seriesIndex][dataPointIndex];
               var l = w.globals.seriesCandleL[seriesIndex][dataPointIndex];
@@ -7650,11 +7641,11 @@
           var rangeCtx = new RangeBar(opts.ctx, null);
 
           var _rangeCtx$getTooltipV = rangeCtx.getTooltipValues(opts),
-              color = _rangeCtx$getTooltipV.color,
-              seriesName = _rangeCtx$getTooltipV.seriesName,
-              ylabel = _rangeCtx$getTooltipV.ylabel,
-              startVal = _rangeCtx$getTooltipV.startVal,
-              endVal = _rangeCtx$getTooltipV.endVal;
+            color = _rangeCtx$getTooltipV.color,
+            seriesName = _rangeCtx$getTooltipV.seriesName,
+            ylabel = _rangeCtx$getTooltipV.ylabel,
+            startVal = _rangeCtx$getTooltipV.startVal,
+            endVal = _rangeCtx$getTooltipV.endVal;
 
           return rangeCtx.buildCustomTooltipHTML({
             color: color,
@@ -7669,11 +7660,11 @@
           var rangeCtx = new RangeBar(opts.ctx, null);
 
           var _rangeCtx$getTooltipV2 = rangeCtx.getTooltipValues(opts),
-              color = _rangeCtx$getTooltipV2.color,
-              seriesName = _rangeCtx$getTooltipV2.seriesName,
-              ylabel = _rangeCtx$getTooltipV2.ylabel,
-              start = _rangeCtx$getTooltipV2.start,
-              end = _rangeCtx$getTooltipV2.end;
+            color = _rangeCtx$getTooltipV2.color,
+            seriesName = _rangeCtx$getTooltipV2.seriesName,
+            ylabel = _rangeCtx$getTooltipV2.ylabel,
+            start = _rangeCtx$getTooltipV2.start,
+            end = _rangeCtx$getTooltipV2.end;
 
           return rangeCtx.buildCustomTooltipHTML({
             color: color,
@@ -7700,9 +7691,9 @@
             enabled: false,
             formatter: function formatter(val, _ref2) {
               var ctx = _ref2.ctx,
-                  seriesIndex = _ref2.seriesIndex,
-                  dataPointIndex = _ref2.dataPointIndex,
-                  w = _ref2.w;
+                seriesIndex = _ref2.seriesIndex,
+                dataPointIndex = _ref2.dataPointIndex,
+                w = _ref2.w;
               var start = w.globals.seriesRangeStart[seriesIndex][dataPointIndex];
               var end = w.globals.seriesRangeEnd[seriesIndex][dataPointIndex];
               return end - start;
@@ -8168,7 +8159,7 @@
    * @module Config
    **/
 
-  var Config = /*#__PURE__*/function () {
+  var Config = /*#__PURE__*/ function () {
     function Config(opts) {
       _classCallCheck(this, Config);
 
@@ -8455,7 +8446,7 @@
     return Config;
   }();
 
-  var Globals = /*#__PURE__*/function () {
+  var Globals = /*#__PURE__*/ function () {
     function Globals() {
       _classCallCheck(this, Globals);
     }
@@ -8730,7 +8721,7 @@
    * @module Base
    **/
 
-  var Base = /*#__PURE__*/function () {
+  var Base = /*#__PURE__*/ function () {
     function Base(opts) {
       _classCallCheck(this, Base);
 
@@ -8755,7 +8746,7 @@
     return Base;
   }();
 
-  var Data = /*#__PURE__*/function () {
+  var Data = /*#__PURE__*/ function () {
     function Data(ctx) {
       _classCallCheck(this, Data);
 
@@ -9396,7 +9387,7 @@
    * @module Formatters
    **/
 
-  var Formatters = /*#__PURE__*/function () {
+  var Formatters = /*#__PURE__*/ function () {
     function Formatters(ctx) {
       _classCallCheck(this, Formatters);
 
@@ -9570,7 +9561,7 @@
     return Formatters;
   }();
 
-  var AxesUtils = /*#__PURE__*/function () {
+  var AxesUtils = /*#__PURE__*/ function () {
     function AxesUtils(ctx) {
       _classCallCheck(this, AxesUtils);
 
@@ -9726,7 +9717,7 @@
     return AxesUtils;
   }();
 
-  var Exports = /*#__PURE__*/function () {
+  var Exports = /*#__PURE__*/ function () {
     function Exports(ctx) {
       _classCallCheck(this, Exports);
 
@@ -9870,7 +9861,7 @@
 
         this.dataURI().then(function (_ref) {
           var imgURI = _ref.imgURI,
-              blob = _ref.blob;
+            blob = _ref.blob;
 
           if (blob) {
             navigator.msSaveOrOpenBlob(blob, _this2.w.globals.chartID + '.png');
@@ -9885,10 +9876,10 @@
         var _this3 = this;
 
         var series = _ref2.series,
-            _ref2$columnDelimiter = _ref2.columnDelimiter,
-            columnDelimiter = _ref2$columnDelimiter === void 0 ? ',' : _ref2$columnDelimiter,
-            _ref2$lineDelimiter = _ref2.lineDelimiter,
-            lineDelimiter = _ref2$lineDelimiter === void 0 ? '\n' : _ref2$lineDelimiter;
+          _ref2$columnDelimiter = _ref2.columnDelimiter,
+          columnDelimiter = _ref2$columnDelimiter === void 0 ? ',' : _ref2$columnDelimiter,
+          _ref2$lineDelimiter = _ref2.lineDelimiter,
+          lineDelimiter = _ref2$lineDelimiter === void 0 ? '\n' : _ref2$lineDelimiter;
         var w = this.w;
         var columns = [];
         var rows = [];
@@ -10025,7 +10016,7 @@
    * @module XAxis
    **/
 
-  var XAxis = /*#__PURE__*/function () {
+  var XAxis = /*#__PURE__*/ function () {
     function XAxis(ctx) {
       _classCallCheck(this, XAxis);
 
@@ -10435,7 +10426,7 @@
    * @module Grid
    **/
 
-  var Grid = /*#__PURE__*/function () {
+  var Grid = /*#__PURE__*/ function () {
     function Grid(ctx) {
       _classCallCheck(this, Grid);
 
@@ -10538,12 +10529,12 @@
       key: "_drawGridLines",
       value: function _drawGridLines(_ref) {
         var i = _ref.i,
-            x1 = _ref.x1,
-            y1 = _ref.y1,
-            x2 = _ref.x2,
-            y2 = _ref.y2,
-            xCount = _ref.xCount,
-            parent = _ref.parent;
+          x1 = _ref.x1,
+          y1 = _ref.y1,
+          x2 = _ref.x2,
+          y2 = _ref.y2,
+          xCount = _ref.xCount,
+          parent = _ref.parent;
         var w = this.w;
 
         var shouldDraw = function shouldDraw() {
@@ -10581,10 +10572,10 @@
       key: "_drawGridLine",
       value: function _drawGridLine(_ref2) {
         var x1 = _ref2.x1,
-            y1 = _ref2.y1,
-            x2 = _ref2.x2,
-            y2 = _ref2.y2,
-            parent = _ref2.parent;
+          y1 = _ref2.y1,
+          x2 = _ref2.x2,
+          y2 = _ref2.y2,
+          parent = _ref2.parent;
         var w = this.w;
         var isHorzLine = parent.node.classList.contains('apexcharts-gridlines-horizontal');
         var strokeDashArray = w.config.grid.strokeDashArray;
@@ -10598,11 +10589,11 @@
       key: "_drawGridBandRect",
       value: function _drawGridBandRect(_ref3) {
         var c = _ref3.c,
-            x1 = _ref3.x1,
-            y1 = _ref3.y1,
-            x2 = _ref3.x2,
-            y2 = _ref3.y2,
-            type = _ref3.type;
+          x1 = _ref3.x1,
+          y1 = _ref3.y1,
+          x2 = _ref3.x2,
+          y2 = _ref3.y2,
+          type = _ref3.type;
         var w = this.w;
         var graphics = new Graphics(this.ctx);
         var offX = w.globals.barPadForNumericAxis;
@@ -10619,15 +10610,15 @@
         var _this = this;
 
         var xCount = _ref4.xCount,
-            tickAmount = _ref4.tickAmount;
+          tickAmount = _ref4.tickAmount;
         var w = this.w;
 
         var datetimeLines = function datetimeLines(_ref5) {
           var xC = _ref5.xC,
-              x1 = _ref5.x1,
-              y1 = _ref5.y1,
-              x2 = _ref5.x2,
-              y2 = _ref5.y2;
+            x1 = _ref5.x1,
+            y1 = _ref5.y1,
+            x2 = _ref5.x2,
+            y2 = _ref5.y2;
 
           for (var i = 0; i < xC; i++) {
             x1 = _this.xaxisLabels[i].position;
@@ -10647,10 +10638,10 @@
 
         var categoryLines = function categoryLines(_ref6) {
           var xC = _ref6.xC,
-              x1 = _ref6.x1,
-              y1 = _ref6.y1,
-              x2 = _ref6.x2,
-              y2 = _ref6.y2;
+            x1 = _ref6.x1,
+            y1 = _ref6.y1,
+            x2 = _ref6.x2,
+            y2 = _ref6.y2;
 
           for (var i = 0; i < xC + (w.globals.isXNumeric ? 0 : 1); i++) {
             if (i === 0 && xC === 1 && w.globals.dataPoints === 1) {
@@ -10911,7 +10902,7 @@
     return Grid;
   }();
 
-  var Range = /*#__PURE__*/function () {
+  var Range = /*#__PURE__*/ function () {
     function Range(ctx) {
       _classCallCheck(this, Range);
 
@@ -11133,7 +11124,7 @@
             } else {
               var noMinMaxProvided = cnf.yaxis[index].max === undefined && cnf.yaxis[index].min === undefined || cnf.yaxis[index].forceNiceScale;
               gl.yAxisScale[index] = this.niceScale(minY, maxY, y.tickAmount ? y.tickAmount : diff < 5 && diff > 1 ? diff + 1 : 5, index, // fix https://github.com/apexcharts/apexcharts.js/issues/397
-              noMinMaxProvided);
+                noMinMaxProvided);
             }
           }
         }
@@ -11431,7 +11422,7 @@
    * @module Range
    **/
 
-  var Range$1 = /*#__PURE__*/function () {
+  var Range$1 = /*#__PURE__*/ function () {
     function Range$1(ctx) {
       _classCallCheck(this, Range$1);
 
@@ -11563,26 +11554,26 @@
         if (cnf.chart.type === 'line' || cnf.chart.type === 'area' || cnf.chart.type === 'candlestick' || cnf.chart.type === 'rangeBar' && !gl.isBarHorizontal) {
           if (gl.minY === Number.MIN_VALUE && lowestYInAllSeries !== -Number.MAX_VALUE && lowestYInAllSeries !== gl.maxY // single value possibility
           ) {
-              var diff = gl.maxY - lowestYInAllSeries;
+            var diff = gl.maxY - lowestYInAllSeries;
 
-              if (lowestYInAllSeries >= 0 && lowestYInAllSeries <= 10) {
-                // if minY is already 0/low value, we don't want to go negatives here - so this check is essential.
-                diff = 0;
-              }
-
-              gl.minY = lowestYInAllSeries - diff * 5 / 100;
-              /* fix https://github.com/apexcharts/apexcharts.js/issues/614 */
-
-              /* fix https://github.com/apexcharts/apexcharts.js/issues/968 */
-
-              if (lowestYInAllSeries > 0 && gl.minY < 0) {
-                gl.minY = 0;
-              }
-              /* fix https://github.com/apexcharts/apexcharts.js/issues/426 */
-
-
-              gl.maxY = gl.maxY + diff * 5 / 100;
+            if (lowestYInAllSeries >= 0 && lowestYInAllSeries <= 10) {
+              // if minY is already 0/low value, we don't want to go negatives here - so this check is essential.
+              diff = 0;
             }
+
+            gl.minY = lowestYInAllSeries - diff * 5 / 100;
+            /* fix https://github.com/apexcharts/apexcharts.js/issues/614 */
+
+            /* fix https://github.com/apexcharts/apexcharts.js/issues/968 */
+
+            if (lowestYInAllSeries > 0 && gl.minY < 0) {
+              gl.minY = 0;
+            }
+            /* fix https://github.com/apexcharts/apexcharts.js/issues/426 */
+
+
+            gl.maxY = gl.maxY + diff * 5 / 100;
+          }
         }
 
         cnf.yaxis.forEach(function (yaxe, index) {
@@ -11888,7 +11879,7 @@
    * @module YAxis
    **/
 
-  var YAxis = /*#__PURE__*/function () {
+  var YAxis = /*#__PURE__*/ function () {
     function YAxis(ctx) {
       _classCallCheck(this, YAxis);
 
@@ -12310,7 +12301,7 @@
     return YAxis;
   }();
 
-  var Events = /*#__PURE__*/function () {
+  var Events = /*#__PURE__*/ function () {
     function Events(ctx) {
       _classCallCheck(this, Events);
 
@@ -12433,7 +12424,7 @@
     return Events;
   }();
 
-  var Localization = /*#__PURE__*/function () {
+  var Localization = /*#__PURE__*/ function () {
     function Localization(ctx) {
       _classCallCheck(this, Localization);
 
@@ -12470,7 +12461,7 @@
     return Localization;
   }();
 
-  var Axes = /*#__PURE__*/function () {
+  var Axes = /*#__PURE__*/ function () {
     function Axes(ctx) {
       _classCallCheck(this, Axes);
 
@@ -12517,7 +12508,7 @@
     return Axes;
   }();
 
-  var Crosshairs = /*#__PURE__*/function () {
+  var Crosshairs = /*#__PURE__*/ function () {
     function Crosshairs(ctx) {
       _classCallCheck(this, Crosshairs);
 
@@ -12622,7 +12613,7 @@
    * @module Responsive
    **/
 
-  var Responsive = /*#__PURE__*/function () {
+  var Responsive = /*#__PURE__*/ function () {
     function Responsive(ctx) {
       _classCallCheck(this, Responsive);
 
@@ -12698,7 +12689,7 @@
    * @module Theme
    **/
 
-  var Theme = /*#__PURE__*/function () {
+  var Theme = /*#__PURE__*/ function () {
     function Theme(ctx) {
       _classCallCheck(this, Theme);
 
@@ -12915,7 +12906,7 @@
     return Theme;
   }();
 
-  var TitleSubtitle = /*#__PURE__*/function () {
+  var TitleSubtitle = /*#__PURE__*/ function () {
     function TitleSubtitle(ctx) {
       _classCallCheck(this, TitleSubtitle);
 
@@ -12971,7 +12962,7 @@
     return TitleSubtitle;
   }();
 
-  var Helpers$2 = /*#__PURE__*/function () {
+  var Helpers$2 = /*#__PURE__*/ function () {
     function Helpers(dCtx) {
       _classCallCheck(this, Helpers);
 
@@ -13060,7 +13051,7 @@
     return Helpers;
   }();
 
-  var DimXAxis = /*#__PURE__*/function () {
+  var DimXAxis = /*#__PURE__*/ function () {
     function DimXAxis(dCtx) {
       _classCallCheck(this, DimXAxis);
 
@@ -13251,11 +13242,11 @@
             var firstimescaleLabel = _this.dCtx.timescaleLabels[0];
             var lastTimescaleLabel = _this.dCtx.timescaleLabels[_this.dCtx.timescaleLabels.length - 1];
             var lastLabelPosition = lastTimescaleLabel.position + lbWidth / 1.75 - // replace + with - ;
-            // allow the last label to intersect with the right y axis
-            _this.dCtx.yAxisWidthRight;
+              // allow the last label to intersect with the right y axis
+              _this.dCtx.yAxisWidthRight;
             var firstLabelPosition = firstimescaleLabel.position - lbWidth / 1.75 + // remove conditional since the first label is always at the very left
-            // allow the first label to intersect with the left y axes
-            _this.dCtx.yAxisWidthLeft;
+              // allow the first label to intersect with the left y axes
+              _this.dCtx.yAxisWidthLeft;
 
             if (lastLabelPosition > gl.gridWidth) {
               gl.skipLastTimelinelabel = true;
@@ -13305,7 +13296,7 @@
     return DimXAxis;
   }();
 
-  var DimYAxis = /*#__PURE__*/function () {
+  var DimYAxis = /*#__PURE__*/ function () {
     function DimYAxis(dCtx) {
       _classCallCheck(this, DimYAxis);
 
@@ -13464,7 +13455,7 @@
     return DimYAxis;
   }();
 
-  var DimGrid = /*#__PURE__*/function () {
+  var DimGrid = /*#__PURE__*/ function () {
     function DimGrid(dCtx) {
       _classCallCheck(this, DimGrid);
 
@@ -13583,7 +13574,7 @@
    * @module Dimensions
    **/
 
-  var Dimensions = /*#__PURE__*/function () {
+  var Dimensions = /*#__PURE__*/ function () {
     function Dimensions(ctx) {
       _classCallCheck(this, Dimensions);
 
@@ -13831,7 +13822,7 @@
     return Dimensions;
   }();
 
-  var Helpers$3 = /*#__PURE__*/function () {
+  var Helpers$3 = /*#__PURE__*/ function () {
     function Helpers(lgCtx) {
       _classCallCheck(this, Helpers);
 
@@ -13937,7 +13928,7 @@
       key: "hideSeries",
       value: function hideSeries(_ref) {
         var seriesEl = _ref.seriesEl,
-            realIndex = _ref.realIndex;
+          realIndex = _ref.realIndex;
         var w = this.w;
         var series = Utils.clone(w.config.series);
 
@@ -14030,7 +14021,7 @@
    * @module Legend
    **/
 
-  var Legend = /*#__PURE__*/function () {
+  var Legend = /*#__PURE__*/ function () {
     function Legend(ctx, opts) {
       _classCallCheck(this, Legend);
 
@@ -14383,7 +14374,7 @@
    * @module Toolbar
    **/
 
-  var Toolbar = /*#__PURE__*/function () {
+  var Toolbar = /*#__PURE__*/ function () {
     function Toolbar(ctx) {
       _classCallCheck(this, Toolbar);
 
@@ -14863,7 +14854,7 @@
    * @module ZoomPanSelection
    **/
 
-  var ZoomPanSelection = /*#__PURE__*/function (_Toolbar) {
+  var ZoomPanSelection = /*#__PURE__*/ function (_Toolbar) {
     _inherits(ZoomPanSelection, _Toolbar);
 
     function ZoomPanSelection(ctx) {
@@ -15097,13 +15088,13 @@
       key: "drawSelectionRect",
       value: function drawSelectionRect(_ref2) {
         var x = _ref2.x,
-            y = _ref2.y,
-            width = _ref2.width,
-            height = _ref2.height,
-            _ref2$translateX = _ref2.translateX,
-            translateX = _ref2$translateX === void 0 ? 0 : _ref2$translateX,
-            _ref2$translateY = _ref2.translateY,
-            translateY = _ref2$translateY === void 0 ? 0 : _ref2$translateY;
+          y = _ref2.y,
+          width = _ref2.width,
+          height = _ref2.height,
+          _ref2$translateX = _ref2.translateX,
+          translateX = _ref2$translateX === void 0 ? 0 : _ref2$translateX,
+          _ref2$translateY = _ref2.translateY,
+          translateY = _ref2$translateY === void 0 ? 0 : _ref2$translateY;
         var w = this.w;
         var zoomRect = this.zoomRect;
         var selectionRect = this.selectionRect;
@@ -15165,7 +15156,7 @@
       key: "selectionDrawing",
       value: function selectionDrawing(_ref3) {
         var context = _ref3.context,
-            zoomtype = _ref3.zoomtype;
+          zoomtype = _ref3.zoomtype;
         var w = this.w;
         var me = context;
         var gridRectDim = this.gridRect.getBoundingClientRect();
@@ -15285,7 +15276,7 @@
       key: "selectionDrawn",
       value: function selectionDrawn(_ref4) {
         var context = _ref4.context,
-            zoomtype = _ref4.zoomtype;
+          zoomtype = _ref4.zoomtype;
         var w = this.w;
         var me = context;
         var xyRatios = this.xyRatios;
@@ -15541,7 +15532,7 @@
     return ZoomPanSelection;
   }(Toolbar);
 
-  var Utils$1 = /*#__PURE__*/function () {
+  var Utils$1 = /*#__PURE__*/ function () {
     function Utils$1(tooltipContext) {
       _classCallCheck(this, Utils$1);
 
@@ -15563,9 +15554,9 @@
       key: "getNearestValues",
       value: function getNearestValues(_ref) {
         var hoverArea = _ref.hoverArea,
-            elGrid = _ref.elGrid,
-            clientX = _ref.clientX,
-            clientY = _ref.clientY;
+          elGrid = _ref.elGrid,
+          clientX = _ref.clientX,
+          clientY = _ref.clientY;
         var w = this.w;
         var hoverWidth = w.globals.gridWidth;
         var xDivisor = hoverWidth / (w.globals.dataPoints - 1);
@@ -15865,7 +15856,7 @@
    * @module Tooltip.Labels
    **/
 
-  var Labels = /*#__PURE__*/function () {
+  var Labels = /*#__PURE__*/ function () {
     function Labels(tooltipContext) {
       _classCallCheck(this, Labels);
 
@@ -15879,14 +15870,14 @@
       key: "drawSeriesTexts",
       value: function drawSeriesTexts(_ref) {
         var _ref$shared = _ref.shared,
-            shared = _ref$shared === void 0 ? true : _ref$shared,
-            ttItems = _ref.ttItems,
-            _ref$i = _ref.i,
-            i = _ref$i === void 0 ? 0 : _ref$i,
-            _ref$j = _ref.j,
-            j = _ref$j === void 0 ? null : _ref$j,
-            y1 = _ref.y1,
-            y2 = _ref.y2;
+          shared = _ref$shared === void 0 ? true : _ref$shared,
+          ttItems = _ref.ttItems,
+          _ref$i = _ref.i,
+          i = _ref$i === void 0 ? 0 : _ref$i,
+          _ref$j = _ref.j,
+          j = _ref$j === void 0 ? null : _ref$j,
+          y1 = _ref.y1,
+          y2 = _ref.y2;
         var w = this.w;
 
         if (w.config.tooltip.custom !== undefined) {
@@ -15923,15 +15914,15 @@
         var _this = this;
 
         var i = _ref2.i,
-            j = _ref2.j,
-            values = _ref2.values,
-            ttItems = _ref2.ttItems,
-            shared = _ref2.shared;
+          j = _ref2.j,
+          values = _ref2.values,
+          ttItems = _ref2.ttItems,
+          shared = _ref2.shared;
         var w = this.w;
         var val;
         var xVal = values.xVal,
-            zVal = values.zVal,
-            xAxisTTVal = values.xAxisTTVal;
+          zVal = values.zVal,
+          xAxisTTVal = values.xAxisTTVal;
         var seriesName = '';
         var pColor = w.globals.colors[i];
 
@@ -16048,9 +16039,9 @@
       key: "getSeriesName",
       value: function getSeriesName(_ref3) {
         var fn = _ref3.fn,
-            index = _ref3.index,
-            seriesIndex = _ref3.seriesIndex,
-            j = _ref3.j;
+          index = _ref3.index,
+          seriesIndex = _ref3.seriesIndex,
+          j = _ref3.j;
         var w = this.w;
         return fn(String(w.globals.seriesNames[index]), {
           series: w.globals.series,
@@ -16063,19 +16054,19 @@
       key: "DOMHandling",
       value: function DOMHandling(_ref4) {
         var i = _ref4.i,
-            t = _ref4.t,
-            j = _ref4.j,
-            ttItems = _ref4.ttItems,
-            values = _ref4.values,
-            seriesName = _ref4.seriesName,
-            shared = _ref4.shared,
-            pColor = _ref4.pColor;
+          t = _ref4.t,
+          j = _ref4.j,
+          ttItems = _ref4.ttItems,
+          values = _ref4.values,
+          seriesName = _ref4.seriesName,
+          shared = _ref4.shared,
+          pColor = _ref4.pColor;
         var w = this.w;
         var ttCtx = this.ttCtx;
         var val = values.val,
-            xVal = values.xVal,
-            xAxisTTVal = values.xAxisTTVal,
-            zVal = values.zVal;
+          xVal = values.xVal,
+          xAxisTTVal = values.xAxisTTVal,
+          zVal = values.zVal;
         var ttItemsChildren = null;
         ttItemsChildren = ttItems[t].children;
 
@@ -16183,7 +16174,7 @@
       key: "getValuesToPrint",
       value: function getValuesToPrint(_ref5) {
         var i = _ref5.i,
-            j = _ref5.j;
+          j = _ref5.j;
         var w = this.w;
         var filteredSeriesX = this.ctx.series.filteredSeriesX();
         var xVal = '';
@@ -16251,10 +16242,10 @@
       key: "handleCustomTooltip",
       value: function handleCustomTooltip(_ref6) {
         var i = _ref6.i,
-            j = _ref6.j,
-            y1 = _ref6.y1,
-            y2 = _ref6.y2,
-            w = _ref6.w;
+          j = _ref6.j,
+          y1 = _ref6.y1,
+          y2 = _ref6.y2,
+          w = _ref6.w;
         var tooltipEl = this.ttCtx.getElTooltip();
         var fn = w.config.tooltip.custom;
 
@@ -16284,7 +16275,7 @@
    * @module Tooltip.Position
    **/
 
-  var Position = /*#__PURE__*/function () {
+  var Position = /*#__PURE__*/ function () {
     function Position(tooltipContext) {
       _classCallCheck(this, Position);
 
@@ -16648,7 +16639,7 @@
    * @module Tooltip.Marker
    **/
 
-  var Marker = /*#__PURE__*/function () {
+  var Marker = /*#__PURE__*/ function () {
     function Marker(tooltipContext) {
       _classCallCheck(this, Marker);
 
@@ -16805,7 +16796,7 @@
    * @module Tooltip.Intersect
    **/
 
-  var Intersect = /*#__PURE__*/function () {
+  var Intersect = /*#__PURE__*/ function () {
     function Intersect(tooltipContext) {
       _classCallCheck(this, Intersect);
 
@@ -16822,9 +16813,9 @@
       key: "handleHeatTooltip",
       value: function handleHeatTooltip(_ref) {
         var e = _ref.e,
-            opt = _ref.opt,
-            x = _ref.x,
-            y = _ref.y;
+          opt = _ref.opt,
+          x = _ref.x,
+          y = _ref.y;
         var ttCtx = this.ttCtx;
         var w = this.w;
 
@@ -16868,9 +16859,9 @@
       key: "handleMarkerTooltip",
       value: function handleMarkerTooltip(_ref2) {
         var e = _ref2.e,
-            opt = _ref2.opt,
-            x = _ref2.x,
-            y = _ref2.y;
+          opt = _ref2.opt,
+          x = _ref2.x,
+          y = _ref2.y;
         var w = this.w;
         var ttCtx = this.ttCtx;
         var i;
@@ -16929,7 +16920,7 @@
       key: "handleBarTooltip",
       value: function handleBarTooltip(_ref3) {
         var e = _ref3.e,
-            opt = _ref3.opt;
+          opt = _ref3.opt;
         var w = this.w;
         var ttCtx = this.ttCtx;
         var tooltipEl = ttCtx.getElTooltip();
@@ -17022,7 +17013,7 @@
       key: "getBarTooltipXY",
       value: function getBarTooltipXY(_ref4) {
         var e = _ref4.e,
-            opt = _ref4.opt;
+          opt = _ref4.opt;
         var w = this.w;
         var j = null;
         var ttCtx = this.ttCtx;
@@ -17122,7 +17113,7 @@
    *
    * @module Tooltip.AxesTooltip
    **/
-  var AxesTooltip = /*#__PURE__*/function () {
+  var AxesTooltip = /*#__PURE__*/ function () {
     function AxesTooltip(tooltipContext) {
       _classCallCheck(this, AxesTooltip);
 
@@ -17288,7 +17279,7 @@
    * @module Tooltip
    **/
 
-  var Tooltip = /*#__PURE__*/function () {
+  var Tooltip = /*#__PURE__*/ function () {
     function Tooltip(ctx) {
       _classCallCheck(this, Tooltip);
 
@@ -17633,9 +17624,9 @@
       key: "seriesHoverByContext",
       value: function seriesHoverByContext(_ref) {
         var chartCtx = _ref.chartCtx,
-            ttCtx = _ref.ttCtx,
-            opt = _ref.opt,
-            e = _ref.e;
+          ttCtx = _ref.ttCtx,
+          opt = _ref.opt,
+          e = _ref.e;
         var w = chartCtx.w;
         var tooltipEl = this.getElTooltip(); // tooltipRect is calculated on every mousemove, because the text is dynamic
 
@@ -17678,7 +17669,7 @@
       key: "axisChartsTooltips",
       value: function axisChartsTooltips(_ref2) {
         var e = _ref2.e,
-            opt = _ref2.opt;
+          opt = _ref2.opt;
         var w = this.w;
         var x, y;
         var seriesBound = opt.elGrid.getBoundingClientRect();
@@ -17774,8 +17765,8 @@
       key: "nonAxisChartsTooltips",
       value: function nonAxisChartsTooltips(_ref3) {
         var e = _ref3.e,
-            opt = _ref3.opt,
-            tooltipRect = _ref3.tooltipRect;
+          opt = _ref3.opt,
+          tooltipRect = _ref3.tooltipRect;
         var w = this.w;
         var rel = opt.paths.getAttribute('rel');
         var tooltipEl = this.getElTooltip();
@@ -18027,7 +18018,7 @@
    * hence it makes sense to derive a new class for it extending most of the props of Parent Bar
    **/
 
-  var BarStacked = /*#__PURE__*/function (_Bar) {
+  var BarStacked = /*#__PURE__*/ function (_Bar) {
     _inherits(BarStacked, _Bar);
 
     function BarStacked() {
@@ -18151,8 +18142,8 @@
           // sol: if only 1 arr in this.prevY(this.prevY.length === 1) and all are NaN
 
           if (_this.prevY.length === 1 && _this.prevY[0].every(function (val) {
-            return isNaN(val);
-          })) {
+              return isNaN(val);
+            })) {
             // make this.prevY[0] all zeroH
             _this.prevY[0] = _this.prevY[0].map(function (val) {
               return zeroH;
@@ -18294,13 +18285,13 @@
       key: "drawStackedBarPaths",
       value: function drawStackedBarPaths(_ref) {
         var indexes = _ref.indexes,
-            barHeight = _ref.barHeight,
-            strokeWidth = _ref.strokeWidth,
-            zeroW = _ref.zeroW,
-            x = _ref.x,
-            y = _ref.y,
-            yDivision = _ref.yDivision,
-            elSeries = _ref.elSeries;
+          barHeight = _ref.barHeight,
+          strokeWidth = _ref.strokeWidth,
+          zeroW = _ref.zeroW,
+          x = _ref.x,
+          y = _ref.y,
+          yDivision = _ref.yDivision,
+          elSeries = _ref.elSeries;
         var w = this.w;
         var barYPosition = y;
         var barXPosition;
@@ -18368,13 +18359,13 @@
       key: "drawStackedColumnPaths",
       value: function drawStackedColumnPaths(_ref2) {
         var indexes = _ref2.indexes,
-            x = _ref2.x,
-            y = _ref2.y,
-            xDivision = _ref2.xDivision,
-            barWidth = _ref2.barWidth,
-            zeroH = _ref2.zeroH,
-            strokeWidth = _ref2.strokeWidth,
-            elSeries = _ref2.elSeries;
+          x = _ref2.x,
+          y = _ref2.y,
+          xDivision = _ref2.xDivision,
+          barWidth = _ref2.barWidth,
+          zeroH = _ref2.zeroH,
+          strokeWidth = _ref2.strokeWidth,
+          elSeries = _ref2.elSeries;
         var w = this.w;
         var i = indexes.i;
         var j = indexes.j;
@@ -18429,12 +18420,12 @@
           // AND every arr starting from the second only contains NaN
 
           if (this.prevYF[0].every(function (val) {
-            return val === 0;
-          }) && this.prevYF.slice(1, i).every(function (arr) {
-            return arr.every(function (val) {
-              return isNaN(val);
-            });
-          })) {
+              return val === 0;
+            }) && this.prevYF.slice(1, i).every(function (arr) {
+              return arr.every(function (val) {
+                return isNaN(val);
+              });
+            })) {
             // Use the same calc way as line #485
             barYPosition = w.globals.gridHeight - zeroH;
           } else {
@@ -18489,7 +18480,7 @@
    * @module CandleStick
    **/
 
-  var CandleStick = /*#__PURE__*/function (_Bar) {
+  var CandleStick = /*#__PURE__*/ function (_Bar) {
     _inherits(CandleStick, _Bar);
 
     function CandleStick() {
@@ -18516,10 +18507,10 @@
 
         for (var i = 0; i < series.length; i++) {
           var x = void 0,
-              y = void 0,
-              xDivision = void 0,
-              // xDivision is the GRIDWIDTH divided by number of datapoints (columns)
-          zeroH = void 0; // zeroH is the baseline where 0 meets y axis
+            y = void 0,
+            xDivision = void 0,
+            // xDivision is the GRIDWIDTH divided by number of datapoints (columns)
+            zeroH = void 0; // zeroH is the baseline where 0 meets y axis
 
           var yArrj = []; // hold y values of current iterating series
 
@@ -18625,12 +18616,12 @@
       key: "drawCandleStickPaths",
       value: function drawCandleStickPaths(_ref) {
         var indexes = _ref.indexes,
-            x = _ref.x,
-            y = _ref.y,
-            xDivision = _ref.xDivision,
-            barWidth = _ref.barWidth,
-            zeroH = _ref.zeroH,
-            strokeWidth = _ref.strokeWidth;
+          x = _ref.x,
+          y = _ref.y,
+          xDivision = _ref.xDivision,
+          barWidth = _ref.barWidth,
+          zeroH = _ref.zeroH,
+          strokeWidth = _ref.strokeWidth;
         var w = this.w;
         var graphics = new Graphics(this.ctx);
         var i = indexes.i;
@@ -18710,7 +18701,7 @@
    * @module HeatMap
    **/
 
-  var HeatMap = /*#__PURE__*/function () {
+  var HeatMap = /*#__PURE__*/ function () {
     function HeatMap(ctx, xyRatios) {
       _classCallCheck(this, HeatMap);
 
@@ -18951,13 +18942,13 @@
       key: "calculateHeatmapDataLabels",
       value: function calculateHeatmapDataLabels(_ref) {
         var x = _ref.x,
-            y = _ref.y,
-            i = _ref.i,
-            j = _ref.j,
-            heatColorProps = _ref.heatColorProps,
-            series = _ref.series,
-            rectHeight = _ref.rectHeight,
-            rectWidth = _ref.rectWidth;
+          y = _ref.y,
+          i = _ref.i,
+          j = _ref.j,
+          heatColorProps = _ref.heatColorProps,
+          series = _ref.series,
+          rectHeight = _ref.rectHeight,
+          rectWidth = _ref.rectWidth;
         var w = this.w; // let graphics = new Graphics(this.ctx)
 
         var dataLabelsConfig = w.config.dataLabels;
@@ -19025,7 +19016,7 @@
     return HeatMap;
   }();
 
-  var CircularChartsHelpers = /*#__PURE__*/function () {
+  var CircularChartsHelpers = /*#__PURE__*/ function () {
     function CircularChartsHelpers(ctx) {
       _classCallCheck(this, CircularChartsHelpers);
 
@@ -19061,7 +19052,7 @@
    * @module Pie
    **/
 
-  var Pie = /*#__PURE__*/function () {
+  var Pie = /*#__PURE__*/ function () {
     function Pie(ctx) {
       _classCallCheck(this, Pie);
 
@@ -19548,9 +19539,9 @@
       key: "getPiePath",
       value: function getPiePath(_ref) {
         var me = _ref.me,
-            startAngle = _ref.startAngle,
-            angle = _ref.angle,
-            size = _ref.size;
+          startAngle = _ref.startAngle,
+          angle = _ref.angle,
+          size = _ref.size;
         var path;
         var startDeg = startAngle;
         var startRadians = Math.PI * (startDeg - 90) / 180;
@@ -19780,7 +19771,7 @@
 
         var selectSlice = function selectSlice(_ref2) {
           var makeSliceOut = _ref2.makeSliceOut,
-              printLabel = _ref2.printLabel;
+            printLabel = _ref2.printLabel;
           Array.prototype.forEach.call(slices, function (s) {
             if (s.getAttribute('data:pieClicked') === 'true') {
               if (makeSliceOut) {
@@ -19841,7 +19832,7 @@
    * @module Radar
    **/
 
-  var Radar = /*#__PURE__*/function () {
+  var Radar = /*#__PURE__*/ function () {
     function Radar(ctx) {
       _classCallCheck(this, Radar);
 
@@ -20296,7 +20287,7 @@
    * @module Radial
    **/
 
-  var Radial = /*#__PURE__*/function (_Pie) {
+  var Radial = /*#__PURE__*/ function (_Pie) {
     _inherits(Radial, _Pie);
 
     function Radial(ctx) {
@@ -20683,7 +20674,7 @@
     return Radial;
   }(Pie);
 
-  var Helpers$4 = /*#__PURE__*/function () {
+  var Helpers$4 = /*#__PURE__*/ function () {
     function Helpers(lineCtx) {
       _classCallCheck(this, Helpers);
 
@@ -20714,12 +20705,12 @@
       key: "calculatePoints",
       value: function calculatePoints(_ref) {
         var series = _ref.series,
-            realIndex = _ref.realIndex,
-            x = _ref.x,
-            y = _ref.y,
-            i = _ref.i,
-            j = _ref.j,
-            prevY = _ref.prevY;
+          realIndex = _ref.realIndex,
+          x = _ref.x,
+          y = _ref.y,
+          i = _ref.i,
+          j = _ref.j,
+          prevY = _ref.prevY;
         var w = this.w;
         var ptX = [];
         var ptY = [];
@@ -20753,8 +20744,8 @@
       key: "checkPreviousPaths",
       value: function checkPreviousPaths(_ref2) {
         var pathFromLine = _ref2.pathFromLine,
-            pathFromArea = _ref2.pathFromArea,
-            realIndex = _ref2.realIndex;
+          pathFromArea = _ref2.pathFromArea,
+          realIndex = _ref2.realIndex;
         var w = this.w;
 
         for (var pp = 0; pp < w.globals.previousPaths.length; pp++) {
@@ -20784,9 +20775,9 @@
       key: "determineFirstPrevY",
       value: function determineFirstPrevY(_ref3) {
         var i = _ref3.i,
-            series = _ref3.series,
-            prevY = _ref3.prevY,
-            lineYPosition = _ref3.lineYPosition;
+          series = _ref3.series,
+          prevY = _ref3.prevY,
+          lineYPosition = _ref3.lineYPosition;
         var w = this.w;
 
         if (typeof series[i][0] !== 'undefined') {
@@ -20834,7 +20825,7 @@
    * @module Line
    **/
 
-  var Line = /*#__PURE__*/function () {
+  var Line = /*#__PURE__*/ function () {
     function Line(ctx, xyRatios, isPointsChart) {
       _classCallCheck(this, Line);
 
@@ -21000,10 +20991,10 @@
       key: "_calculatePathsFrom",
       value: function _calculatePathsFrom(_ref) {
         var series = _ref.series,
-            i = _ref.i,
-            realIndex = _ref.realIndex,
-            prevX = _ref.prevX,
-            prevY = _ref.prevY;
+          i = _ref.i,
+          realIndex = _ref.realIndex,
+          prevX = _ref.prevX,
+          prevY = _ref.prevY;
         var w = this.w;
         var graphics = new Graphics(this.ctx);
         var linePath, areaPath, pathFromLine, pathFromArea;
@@ -21050,9 +21041,9 @@
       key: "_handlePaths",
       value: function _handlePaths(_ref2) {
         var type = _ref2.type,
-            realIndex = _ref2.realIndex,
-            i = _ref2.i,
-            paths = _ref2.paths;
+          realIndex = _ref2.realIndex,
+          i = _ref2.i,
+          paths = _ref2.paths;
         var w = this.w;
         var graphics = new Graphics(this.ctx);
         var fill = new Fill(this.ctx); // push all current y values array to main PrevY Array
@@ -21127,27 +21118,27 @@
       key: "_iterateOverDataPoints",
       value: function _iterateOverDataPoints(_ref3) {
         var series = _ref3.series,
-            realIndex = _ref3.realIndex,
-            i = _ref3.i,
-            x = _ref3.x,
-            y = _ref3.y,
-            pX = _ref3.pX,
-            pY = _ref3.pY,
-            pathsFrom = _ref3.pathsFrom,
-            linePaths = _ref3.linePaths,
-            areaPaths = _ref3.areaPaths,
-            seriesIndex = _ref3.seriesIndex,
-            lineYPosition = _ref3.lineYPosition,
-            xArrj = _ref3.xArrj,
-            yArrj = _ref3.yArrj;
+          realIndex = _ref3.realIndex,
+          i = _ref3.i,
+          x = _ref3.x,
+          y = _ref3.y,
+          pX = _ref3.pX,
+          pY = _ref3.pY,
+          pathsFrom = _ref3.pathsFrom,
+          linePaths = _ref3.linePaths,
+          areaPaths = _ref3.areaPaths,
+          seriesIndex = _ref3.seriesIndex,
+          lineYPosition = _ref3.lineYPosition,
+          xArrj = _ref3.xArrj,
+          yArrj = _ref3.yArrj;
         var w = this.w;
         var graphics = new Graphics(this.ctx);
         var yRatio = this.yRatio;
         var prevY = pathsFrom.prevY,
-            linePath = pathsFrom.linePath,
-            areaPath = pathsFrom.areaPath,
-            pathFromLine = pathsFrom.pathFromLine,
-            pathFromArea = pathsFrom.pathFromArea;
+          linePath = pathsFrom.linePath,
+          areaPath = pathsFrom.areaPath,
+          pathFromLine = pathsFrom.pathFromLine,
+          pathFromArea = pathsFrom.pathFromArea;
         var minY = Utils.isNumber(w.globals.minYArr[realIndex]) ? w.globals.minYArr[realIndex] : w.globals.minY;
         var iterations = w.globals.dataPoints > 1 ? w.globals.dataPoints - 1 : w.globals.dataPoints;
 
@@ -21267,13 +21258,13 @@
       key: "_handleMarkersAndLabels",
       value: function _handleMarkersAndLabels(_ref4) {
         var pointsPos = _ref4.pointsPos,
-            series = _ref4.series,
-            x = _ref4.x,
-            y = _ref4.y,
-            prevY = _ref4.prevY,
-            i = _ref4.i,
-            j = _ref4.j,
-            realIndex = _ref4.realIndex;
+          series = _ref4.series,
+          x = _ref4.x,
+          y = _ref4.y,
+          prevY = _ref4.prevY,
+          i = _ref4.i,
+          j = _ref4.j,
+          realIndex = _ref4.realIndex;
         var w = this.w;
         var dataLabels = new DataLabels(this.ctx);
 
@@ -21307,18 +21298,18 @@
       key: "_createPaths",
       value: function _createPaths(_ref5) {
         var series = _ref5.series,
-            i = _ref5.i,
-            realIndex = _ref5.realIndex,
-            j = _ref5.j,
-            x = _ref5.x,
-            y = _ref5.y,
-            pX = _ref5.pX,
-            pY = _ref5.pY,
-            linePath = _ref5.linePath,
-            areaPath = _ref5.areaPath,
-            linePaths = _ref5.linePaths,
-            areaPaths = _ref5.areaPaths,
-            seriesIndex = _ref5.seriesIndex;
+          i = _ref5.i,
+          realIndex = _ref5.realIndex,
+          j = _ref5.j,
+          x = _ref5.x,
+          y = _ref5.y,
+          pX = _ref5.pX,
+          pY = _ref5.pY,
+          linePath = _ref5.linePath,
+          areaPath = _ref5.areaPath,
+          linePaths = _ref5.linePaths,
+          areaPaths = _ref5.areaPaths,
+          seriesIndex = _ref5.seriesIndex;
         var w = this.w;
         var graphics = new Graphics(this.ctx);
         var curve = w.config.stroke.curve;
@@ -21429,7 +21420,7 @@
    * @module TimeScale
    **/
 
-  var TimeScale = /*#__PURE__*/function () {
+  var TimeScale = /*#__PURE__*/ function () {
     function TimeScale(ctx) {
       _classCallCheck(this, TimeScale);
 
@@ -21505,33 +21496,29 @@
         };
 
         switch (this.tickInterval) {
-          case 'years':
-            {
-              this.generateYearScale(params);
-              break;
-            }
+          case 'years': {
+            this.generateYearScale(params);
+            break;
+          }
 
           case 'months':
-          case 'half_year':
-            {
-              this.generateMonthScale(params);
-              break;
-            }
+          case 'half_year': {
+            this.generateMonthScale(params);
+            break;
+          }
 
           case 'months_days':
           case 'months_fortnight':
           case 'days':
-          case 'week_days':
-            {
-              this.generateDayScale(params);
-              break;
-            }
+          case 'week_days': {
+            this.generateDayScale(params);
+            break;
+          }
 
-          case 'hours':
-            {
-              this.generateHourScale(params);
-              break;
-            }
+          case 'hours': {
+            this.generateHourScale(params);
+            break;
+          }
 
           case 'minutes':
             this.generateMinuteScale(params);
@@ -21749,10 +21736,10 @@
       key: "generateYearScale",
       value: function generateYearScale(_ref) {
         var firstVal = _ref.firstVal,
-            currentMonth = _ref.currentMonth,
-            currentYear = _ref.currentYear,
-            daysWidthOnXAxis = _ref.daysWidthOnXAxis,
-            numberOfYears = _ref.numberOfYears;
+          currentMonth = _ref.currentMonth,
+          currentYear = _ref.currentYear,
+          daysWidthOnXAxis = _ref.daysWidthOnXAxis,
+          numberOfYears = _ref.numberOfYears;
         var firstTickValue = firstVal.minYear;
         var firstTickPosition = 0;
         var dt = new DateTime(this.ctx);
@@ -21803,11 +21790,11 @@
       key: "generateMonthScale",
       value: function generateMonthScale(_ref2) {
         var firstVal = _ref2.firstVal,
-            currentMonthDate = _ref2.currentMonthDate,
-            currentMonth = _ref2.currentMonth,
-            currentYear = _ref2.currentYear,
-            daysWidthOnXAxis = _ref2.daysWidthOnXAxis,
-            numberOfMonths = _ref2.numberOfMonths;
+          currentMonthDate = _ref2.currentMonthDate,
+          currentMonth = _ref2.currentMonth,
+          currentYear = _ref2.currentYear,
+          daysWidthOnXAxis = _ref2.daysWidthOnXAxis,
+          numberOfMonths = _ref2.numberOfMonths;
         var firstTickValue = currentMonth;
         var firstTickPosition = 0;
         var dt = new DateTime(this.ctx);
@@ -21884,10 +21871,10 @@
       key: "generateDayScale",
       value: function generateDayScale(_ref3) {
         var firstVal = _ref3.firstVal,
-            currentMonth = _ref3.currentMonth,
-            currentYear = _ref3.currentYear,
-            hoursWidthOnXAxis = _ref3.hoursWidthOnXAxis,
-            numberOfDays = _ref3.numberOfDays;
+          currentMonth = _ref3.currentMonth,
+          currentYear = _ref3.currentYear,
+          hoursWidthOnXAxis = _ref3.hoursWidthOnXAxis,
+          numberOfDays = _ref3.numberOfDays;
         var dt = new DateTime(this.ctx);
         var unit = 'day';
         var firstTickValue = firstVal.minDate + 1;
@@ -21957,11 +21944,11 @@
       key: "generateHourScale",
       value: function generateHourScale(_ref4) {
         var firstVal = _ref4.firstVal,
-            currentDate = _ref4.currentDate,
-            currentMonth = _ref4.currentMonth,
-            currentYear = _ref4.currentYear,
-            minutesWidthOnXAxis = _ref4.minutesWidthOnXAxis,
-            numberOfHours = _ref4.numberOfHours;
+          currentDate = _ref4.currentDate,
+          currentMonth = _ref4.currentMonth,
+          currentYear = _ref4.currentYear,
+          minutesWidthOnXAxis = _ref4.minutesWidthOnXAxis,
+          numberOfHours = _ref4.numberOfHours;
         var dt = new DateTime(this.ctx);
         var yrCounter = 0;
         var unit = 'hour';
@@ -22048,13 +22035,13 @@
       key: "generateMinuteScale",
       value: function generateMinuteScale(_ref5) {
         var firstVal = _ref5.firstVal,
-            currentMinute = _ref5.currentMinute,
-            currentHour = _ref5.currentHour,
-            currentDate = _ref5.currentDate,
-            currentMonth = _ref5.currentMonth,
-            currentYear = _ref5.currentYear,
-            minutesWidthOnXAxis = _ref5.minutesWidthOnXAxis,
-            numberOfMinutes = _ref5.numberOfMinutes;
+          currentMinute = _ref5.currentMinute,
+          currentHour = _ref5.currentHour,
+          currentDate = _ref5.currentDate,
+          currentMonth = _ref5.currentMonth,
+          currentYear = _ref5.currentYear,
+          minutesWidthOnXAxis = _ref5.minutesWidthOnXAxis,
+          numberOfMinutes = _ref5.numberOfMinutes;
         var yrCounter = 0;
         var unit = 'minute';
         var remainingMins = currentMinute - firstVal.minMinute;
@@ -22179,22 +22166,24 @@
         var constantLabelWidth; // If true, what is the constant length to use
 
         if (arr.length > 0 && // check arr length
-        arr[0].value && // check arr[0] contains value
-        arr.every(function (lb) {
-          return lb.value.length === arr[0].value.length;
-        }) // check every arr label value is the same as the first one
+          arr[0].value && // check arr[0] contains value
+          arr.every(function (lb) {
+            return lb.value.length === arr[0].value.length;
+          }) // check every arr label value is the same as the first one
         ) {
-            equalLabelLengthFlag = true; // These labels got same length
+          equalLabelLengthFlag = true; // These labels got same length
 
-            constantLabelWidth = graphics.getTextRects(arr[0].value).width; // The constant label width to use
-          }
+          constantLabelWidth = graphics.getTextRects(arr[0].value).width; // The constant label width to use
+        }
 
         var lastDrawnIndex = 0;
         var filteredArray = arr.map(function (item, index) {
           if (index > 0 && _this3.w.config.xaxis.labels.hideOverlappingLabels) {
             var prevLabelWidth = !equalLabelLengthFlag // if vary in label length
-            ? graphics.getTextRects(arr[lastDrawnIndex].value).width // get individual length
-            : constantLabelWidth; // else: use constant length
+              ?
+              graphics.getTextRects(arr[lastDrawnIndex].value).width // get individual length
+              :
+              constantLabelWidth; // else: use constant length
 
             var prevPos = arr[lastDrawnIndex].position;
             var pos = item.position;
@@ -22230,7 +22219,7 @@
    * @module Core
    **/
 
-  var Core = /*#__PURE__*/function () {
+  var Core = /*#__PURE__*/ function () {
     function Core(el, ctx) {
       _classCallCheck(this, Core);
 
@@ -22697,7 +22686,7 @@
     return Core;
   }();
 
-  var UpdateHelpers = /*#__PURE__*/function () {
+  var UpdateHelpers = /*#__PURE__*/ function () {
     function UpdateHelpers(ctx) {
       _classCallCheck(this, UpdateHelpers);
 
@@ -23080,7 +23069,7 @@
     SVG.prepare = function () {
       // Select document body and create invisible svg element
       var body = document.getElementsByTagName('body')[0],
-          draw = (body ? new SVG.Doc(body) : SVG.adopt(document.documentElement).nested()).size(2, 0); // Create parser object
+        draw = (body ? new SVG.Doc(body) : SVG.adopt(document.documentElement).nested()).size(2, 0); // Create parser object
 
       SVG.parser = {
         body: body || document.documentElement,
@@ -23145,7 +23134,7 @@
       // Map function
       map: function map(array, block) {
         var il = array.length,
-            result = [];
+          result = [];
 
         for (var i = 0; i < il; i++) {
           result.push(block(array[i]));
@@ -23156,7 +23145,7 @@
       // Filter function
       filter: function filter(array, block) {
         var il = array.length,
-            result = [];
+          result = [];
 
         for (var i = 0; i < il; i++) {
           if (block(array[i])) {
@@ -23322,7 +23311,9 @@
     }); // Poly points array
 
     SVG.PointArray = function (array, fallback) {
-      SVG.Array.call(this, array, fallback || [[0, 0]]);
+      SVG.Array.call(this, array, fallback || [
+        [0, 0]
+      ]);
     }; // Inherit from SVG.Array
 
 
@@ -23368,7 +23359,9 @@
     for (var i = 0, il = mlhvqtcsa.length; i < il; ++i) {
       pathHandlers[mlhvqtcsa[i]] = function (i) {
         return function (c, p, p0) {
-          if (i == 'H') c[0] = c[0] + p.x;else if (i == 'V') c[0] = c[0] + p.y;else if (i == 'A') {
+          if (i == 'H') c[0] = c[0] + p.x;
+          else if (i == 'V') c[0] = c[0] + p.y;
+          else if (i == 'A') {
             c[5] = c[5] + p.x, c[6] = c[6] + p.y;
           } else {
             for (var j = 0, jl = c.length; j < jl; ++j) {
@@ -23382,7 +23375,9 @@
 
 
     SVG.PathArray = function (array, fallback) {
-      SVG.Array.call(this, array, fallback || [['M', 0, 0]]);
+      SVG.Array.call(this, array, fallback || [
+        ['M', 0, 0]
+      ]);
     }; // Inherit from SVG.Array
 
 
@@ -23407,11 +23402,11 @@
         // make sure a destination is defined
         if (!this.destination) return this;
         var sourceArray = this.value,
-            destinationArray = this.destination.value,
-            array = [],
-            pathArray = new SVG.PathArray(),
-            il,
-            jl; // Animate has specified in the SVG spec
+          destinationArray = this.destination.value,
+          array = [],
+          pathArray = new SVG.PathArray(),
+          il,
+          jl; // Animate has specified in the SVG spec
         // See: https://www.w3.org/TR/SVG11/paths.html#PathElement
 
         for (var i = 0, il = sourceArray.length; i < il; i++) {
@@ -23442,26 +23437,26 @@
         if (array instanceof SVG.PathArray) return array.valueOf(); // prepare for parsing
 
         var s,
-            arr,
-            paramCnt = {
-          'M': 2,
-          'L': 2,
-          'H': 1,
-          'V': 1,
-          'C': 6,
-          'S': 4,
-          'Q': 4,
-          'T': 2,
-          'A': 7,
-          'Z': 0
-        };
+          arr,
+          paramCnt = {
+            'M': 2,
+            'L': 2,
+            'H': 1,
+            'V': 1,
+            'C': 6,
+            'S': 4,
+            'Q': 4,
+            'T': 2,
+            'A': 7,
+            'Z': 0
+          };
 
         if (typeof array === 'string') {
           array = array.replace(SVG.regex.numbersWithDots, pathRegReplace) // convert 45.123.123 to 45.123 .123
-          .replace(SVG.regex.pathLetters, ' $& ') // put some room between letters and numbers
-          .replace(SVG.regex.hyphen, '$1 -') // add space before hyphen
-          .trim() // trim
-          .split(SVG.regex.delimiter); // split into array
+            .replace(SVG.regex.pathLetters, ' $& ') // put some room between letters and numbers
+            .replace(SVG.regex.hyphen, '$1 -') // add space before hyphen
+            .trim() // trim
+            .split(SVG.regex.delimiter); // split into array
         } else {
           array = array.reduce(function (prev, curr) {
             return [].concat.call(prev, curr);
@@ -23470,10 +23465,10 @@
 
 
         var arr = [],
-            p = new SVG.Point(),
-            p0 = new SVG.Point(),
-            index = 0,
-            len = array.length;
+          p = new SVG.Point(),
+          p0 = new SVG.Point(),
+          index = 0,
+          len = array.length;
 
         do {
           // Test if we have a path letter
@@ -23659,7 +23654,8 @@
 
           var clone = assignNewId(this.node.cloneNode(true)); // insert the clone in the given parent or after myself
 
-          if (parent) parent.add(clone);else this.after(clone);
+          if (parent) parent.add(clone);
+          else this.after(clone);
           return clone;
         },
         // Remove element
@@ -23763,7 +23759,7 @@
         // return array of all ancestors of given type up to the root svg
         parents: function parents(type) {
           var parents = [],
-              parent = this;
+            parent = this;
 
           do {
             parent = parent.parent(type);
@@ -23873,19 +23869,19 @@
 
         this.loop = 0;
         this.loops = false;
-        this.animations = {// functionToCall: [list of morphable objects]
+        this.animations = { // functionToCall: [list of morphable objects]
           // e.g. move: [SVG.Number, SVG.Number]
         };
-        this.attrs = {// holds all attributes which are not represented from a function svg.js provides
+        this.attrs = { // holds all attributes which are not represented from a function svg.js provides
           // e.g. someAttr: SVG.Number
         };
-        this.styles = {// holds all styles which should be animated
+        this.styles = { // holds all styles which should be animated
           // e.g. fill-color: SVG.Color
         };
-        this.transforms = [// holds all transformations as transformation objects
+        this.transforms = [ // holds all transformations as transformation objects
           // e.g. [SVG.Rotate, SVG.Translate, SVG.Matrix]
         ];
-        this.once = {// functions to fire at a specific position
+        this.once = { // functions to fire at a specific position
           // e.g. "0.5": function foo(){}
         };
       }
@@ -23929,16 +23925,16 @@
         },
 
         /**
-        * sets a delay before the next element of the queue is called
-        * @param delay Duration of delay in milliseconds
-        * @return this.target()
-        */
+         * sets a delay before the next element of the queue is called
+         * @param delay Duration of delay in milliseconds
+         * @return this.target()
+         */
 
         /**
-        * sets or returns the target of this animation
-        * @param null || target SVG.Element which should be set as new target
-        * @return target || this
-        */
+         * sets or returns the target of this animation
+         * @param null || target SVG.Element which should be set as new target
+         * @return target || this
+         */
         target: function target(_target) {
           if (_target && _target instanceof SVG.Element) {
             this._target = _target;
@@ -23984,10 +23980,10 @@
         },
 
         /**
-        * adds a function / Situation to the animation queue
-        * @param fn function / situation to add
-        * @return this
-        */
+         * adds a function / Situation to the animation queue
+         * @param fn function / situation to add
+         * @return this
+         */
         queue: function queue(fn) {
           if (typeof fn === 'function' || fn instanceof SVG.Situation) {
             this.situations.push(fn);
@@ -23998,9 +23994,9 @@
         },
 
         /**
-        * pulls next element from the queue and execute it
-        * @return this
-        */
+         * pulls next element from the queue and execute it
+         * @return this
+         */
         dequeue: function dequeue() {
           // stop current animation
           this.stop(); // get next animation from queue
@@ -24072,10 +24068,10 @@
         },
 
         /** stops the animation immediately
-        * @param jumpToEnd A Boolean indicating whether to complete the current animation immediately.
-        * @param clearQueue A Boolean indicating whether to remove queued animation as well.
-        * @return this
-        */
+         * @param jumpToEnd A Boolean indicating whether to complete the current animation immediately.
+         * @param clearQueue A Boolean indicating whether to remove queued animation as well.
+         * @return this
+         */
         stop: function stop(jumpToEnd, clearQueue) {
           var active = this.active;
           this.active = false;
@@ -24095,12 +24091,12 @@
         },
         after: function after(fn) {
           var c = this.last(),
-              wrapper = function wrapper(e) {
-            if (e.detail.situation == c) {
-              fn.call(this, c);
-              this.off('finished.fx', wrapper); // prevent memory leak
-            }
-          };
+            wrapper = function wrapper(e) {
+              if (e.detail.situation == c) {
+                fn.call(this, c);
+                this.off('finished.fx', wrapper); // prevent memory leak
+              }
+            };
 
           this.target().on('finished.fx', wrapper);
           return this._callStart();
@@ -24108,11 +24104,11 @@
         // adds a callback which is called whenever one animation step is performed
         during: function during(fn) {
           var c = this.last(),
-              wrapper = function wrapper(e) {
-            if (e.detail.situation == c) {
-              fn.call(this, e.detail.pos, SVG.morph(e.detail.pos), e.detail.eased, c);
-            }
-          }; // see above
+            wrapper = function wrapper(e) {
+              if (e.detail.situation == c) {
+                fn.call(this, e.detail.pos, SVG.morph(e.detail.pos), e.detail.eased, c);
+              }
+            }; // see above
 
 
           this.target().off('during.fx', wrapper).on('during.fx', wrapper);
@@ -24142,9 +24138,9 @@
         },
 
         /** perform one step of the animation
-        *  @param ignoreTime Boolean indicating whether to ignore time and use position directly or recalculate position based on time
-        *  @return this
-        */
+         *  @param ignoreTime Boolean indicating whether to ignore time and use position directly or recalculate position based on time
+         *  @return this
+         */
         step: function step(ignoreTime) {
           // convert current time to an absolute position
           if (!ignoreTime) this.absPos = this.timeToAbsPos(+new Date()); // This part convert an absolute position to a position
@@ -24226,7 +24222,8 @@
             } // start next animation
 
 
-            if (this.active) this.dequeue();else this.clearCurrent();
+            if (this.active) this.dequeue();
+            else this.clearCurrent();
           } else if (!this.paused && this.active) {
             // we continue animating when we are not at the end
             this.startAnimFrame();
@@ -24239,10 +24236,10 @@
         // calculates the step for every property and calls block with it
         eachAt: function eachAt() {
           var len,
-              at,
-              self = this,
-              target = this.target(),
-              s = this.situation; // apply animations which can be called trough a method
+            at,
+            self = this,
+            target = this.target(),
+            s = this.situation; // apply animations which can be called trough a method
 
           for (var i in s.animations) {
             at = [].concat(s.animations[i]).map(function (el) {
@@ -24389,7 +24386,7 @@
           return this.plot([a, b, c, d]);
         }
 
-        return this.add('plot', new (this.target().morphArray)(a));
+        return this.add('plot', new(this.target().morphArray)(a));
       }
     });
     SVG.Box = SVG.invent({
@@ -24486,8 +24483,8 @@
         extract: function extract() {
           // find delta transform points
           var px = deltaTransformPoint(this, 0, 1),
-              py = deltaTransformPoint(this, 1, 0),
-              skewX = 180 / Math.PI * Math.atan2(px.y, px.x) - 90;
+            py = deltaTransformPoint(this, 1, 0),
+            skewX = 180 / Math.PI * Math.atan2(px.y, px.x) - 90;
           return {
             // translation
             x: this.e,
@@ -24573,10 +24570,10 @@
       // Initialize
       create: function create(x, y) {
         var source,
-            base = {
-          x: 0,
-          y: 0
-        }; // ensure source as object
+          base = {
+            x: 0,
+            y: 0
+          }; // ensure source as object
 
         source = Array.isArray(x) ? {
           x: x[0],
@@ -24665,11 +24662,11 @@
             v = new SVG.Number(v);
           } // ensure full hex color
           else if (SVG.Color.isColor(v)) {
-              v = new SVG.Color(v);
-            } // parse array values
-            else if (Array.isArray(v)) {
-                v = new SVG.Array(v);
-              } // if the passed attribute is leading...
+            v = new SVG.Color(v);
+          } // parse array values
+          else if (Array.isArray(v)) {
+            v = new SVG.Array(v);
+          } // if the passed attribute is leading...
 
 
           if (a == 'leading') {
@@ -24696,8 +24693,8 @@
       transform: function transform(o, relative) {
         // get target in case of the fx module, otherwise reference this
         var target = this,
-            matrix;
-   // act as a getter
+          matrix;
+        // act as a getter
 
         if (_typeof(o) !== 'object') {
           // get current matrix
@@ -24712,8 +24709,10 @@
 
         if (o.a != null) {
           matrix = relative // relative
-          ? matrix.multiply(new SVG.Matrix(o)) // absolute
-          : new SVG.Matrix(o);
+            ?
+            matrix.multiply(new SVG.Matrix(o)) // absolute
+            :
+            new SVG.Matrix(o);
         }
 
         return this.attr('transform', matrix);
@@ -24728,16 +24727,16 @@
       matrixify: function matrixify() {
         var matrix = (this.attr('transform') || ''). // split transformations
         split(SVG.regex.transforms).slice(0, -1).map(function (str) {
-          // generate key => value pairs
-          var kv = str.trim().split('(');
-          return [kv[0], kv[1].split(SVG.regex.delimiter).map(function (str) {
-            return parseFloat(str);
-          })];
-        }) // merge every transformation into one matrix
-        .reduce(function (matrix, transform) {
-          if (transform[0] == 'matrix') return matrix.multiply(arrayToMatrix(transform[1]));
-          return matrix[transform[0]].apply(matrix, transform[1]);
-        }, new SVG.Matrix());
+            // generate key => value pairs
+            var kv = str.trim().split('(');
+            return [kv[0], kv[1].split(SVG.regex.delimiter).map(function (str) {
+              return parseFloat(str);
+            })];
+          }) // merge every transformation into one matrix
+          .reduce(function (matrix, transform) {
+            if (transform[0] == 'matrix') return matrix.multiply(arrayToMatrix(transform[1]));
+            return matrix[transform[0]].apply(matrix, transform[1]);
+          }, new SVG.Matrix());
         return matrix;
       },
       // add an element to another parent without changing the visual representation on the screen
@@ -24802,11 +24801,11 @@
           } else if (SVG.regex.isCss.test(s)) {
             // parse css string
             s = s.split(/\s*;\s*/) // filter out suffix ; and stuff like ;;
-            .filter(function (e) {
-              return !!e;
-            }).map(function (e) {
-              return e.split(/\s*:\s*/);
-            }); // apply every definition individually
+              .filter(function (e) {
+                return !!e;
+              }).map(function (e) {
+                return e.split(/\s*:\s*/);
+              }); // apply every definition individually
 
             while (v = s.pop()) {
               this.style(v[0], v[1]);
@@ -24875,7 +24874,7 @@
         // Iterates over all children and invokes a given block
         each: function each(block, deep) {
           var il,
-              children = this.children();
+            children = this.children();
 
           for (var i = 0, il = children.length; i < il; i++) {
             if (children[i] instanceof SVG.Element) {
@@ -24944,8 +24943,9 @@
     }) // Add events to elements
     ;
     ['click', 'dblclick', 'mousedown', 'mouseup', 'mouseover', 'mouseout', 'mousemove', // , 'mouseenter' -> not supported by IE
-    // , 'mouseleave' -> not supported by IE
-    'touchstart', 'touchmove', 'touchleave', 'touchend', 'touchcancel'].forEach(function (event) {
+      // , 'mouseleave' -> not supported by IE
+      'touchstart', 'touchmove', 'touchleave', 'touchend', 'touchcancel'
+    ].forEach(function (event) {
       // add event to SVG.Element
       SVG.Element.prototype[event] = function (f) {
         // bind event to element rather than element node
@@ -24961,9 +24961,9 @@
     SVG.on = function (node, event, listener, binding, options) {
       // create listener, get object-index
       var l = listener.bind(binding || node.instance || node),
-          index = (SVG.handlerMap.indexOf(node) + 1 || SVG.handlerMap.push(node)) - 1,
-          ev = event.split('.')[0],
-          ns = event.split('.')[1] || '*'; // ensure valid object
+        index = (SVG.handlerMap.indexOf(node) + 1 || SVG.handlerMap.push(node)) - 1,
+        ev = event.split('.')[0],
+        ns = event.split('.')[1] || '*'; // ensure valid object
 
       SVG.listeners[index] = SVG.listeners[index] || {};
       SVG.listeners[index][ev] = SVG.listeners[index][ev] || {};
@@ -24982,9 +24982,9 @@
 
     SVG.off = function (node, event, listener) {
       var index = SVG.handlerMap.indexOf(node),
-          ev = event && event.split('.')[0],
-          ns = event && event.split('.')[1],
-          namespace = '';
+        ev = event && event.split('.')[0],
+        ns = event && event.split('.')[1],
+        namespace = '';
       if (index == -1) return;
 
       if (listener) {
@@ -25189,7 +25189,7 @@
     }); // ### This module adds backward / forward functionality to elements.
     //
 
-    SVG.extend(SVG.Element, {// Get all siblings, including myself
+    SVG.extend(SVG.Element, { // Get all siblings, including myself
     });
     SVG.Gradient = SVG.invent({
       // Initialize node
@@ -25487,7 +25487,10 @@
       extend: {
         // Get array
         array: function array() {
-          return new SVG.PointArray([[this.attr('x1'), this.attr('y1')], [this.attr('x2'), this.attr('y2')]]);
+          return new SVG.PointArray([
+            [this.attr('x1'), this.attr('y1')],
+            [this.attr('x2'), this.attr('y2')]
+          ]);
         },
         // Overwrite native plot() method
         plot: function plot(x1, y1, x2, y2) {
@@ -25645,7 +25648,7 @@
         load: function load(url) {
           if (!url) return this;
           var self = this,
-              img = new window.Image(); // preload image	
+            img = new window.Image(); // preload image	
 
           SVG.on(img, 'load', function () {
             SVG.off(img);
@@ -25797,8 +25800,8 @@
 
           if (this._rebuild) {
             var self = this,
-                blankLineOffset = 0,
-                dy = this.dom.leading * new SVG.Number(this.attr('font-size'));
+              blankLineOffset = 0,
+              dy = this.dom.leading * new SVG.Number(this.attr('font-size'));
             this.lines().each(function () {
               if (this.dom.newLined) {
                 if (!self.textPath()) {
@@ -25889,7 +25892,7 @@
       // Create a tspan
       tspan: function tspan(text) {
         var node = (this.textPath && this.textPath() || this).node,
-            tspan = new SVG.Tspan(); // clear if build mode is disabled
+          tspan = new SVG.Tspan(); // clear if build mode is disabled
 
         if (this._build === false) {
           this.clear();
@@ -25932,7 +25935,7 @@
         // Plot path if any
         plot: function plot(d) {
           var track = this.track(),
-              pathArray = null;
+            pathArray = null;
 
           if (track) {
             pathArray = track.plot(d);
@@ -25992,13 +25995,13 @@
         if (typeof o === 'string' || SVG.Color.isRgb(o) || o && typeof o.fill === 'function') {
           this.attr(m, o);
         } else // set all attributes from sugar.fill and sugar.stroke list
-          {
-            for (var i = sugar[m].length - 1; i >= 0; i--) {
-              if (o[sugar[m][i]] != null) {
-                this.attr(sugar.prefix(m, sugar[m][i]), o[sugar[m][i]]);
-              }
+        {
+          for (var i = sugar[m].length - 1; i >= 0; i--) {
+            if (o[sugar[m][i]] != null) {
+              this.attr(sugar.prefix(m, sugar[m][i]), o[sugar[m][i]]);
             }
           }
+        }
 
         return this;
       };
@@ -26051,7 +26054,7 @@
         // Add element to set
         add: function add() {
           var il,
-              elements = [].slice.call(arguments);
+            elements = [].slice.call(arguments);
 
           for (var i = 0, il = elements.length; i < il; i++) {
             this.members.push(elements[i]);
@@ -26181,11 +26184,11 @@
           }
         } // retrieve memory
         else if (arguments.length == 1) {
-            return this.memory()[k];
-          } // store memory
-          else {
-              this.memory()[k] = v;
-            }
+          return this.memory()[k];
+        } // store memory
+        else {
+          this.memory()[k] = v;
+        }
 
         return this;
       },
@@ -26415,9 +26418,9 @@
   });
 
   /*! svg.filter.js - v2.0.2 - 2016-02-24
-  * https://github.com/wout/svg.filter.js
-  * Copyright (c) 2016 Wout Fierens; Licensed MIT */
-  (function() {
+   * https://github.com/wout/svg.filter.js
+   * Copyright (c) 2016 Wout Fierens; Licensed MIT */
+  (function () {
 
     // Main filter class
     SVG.Filter = SVG.invent({
@@ -26425,96 +26428,96 @@
       inherit: SVG.Parent,
       extend: {
         // Static strings
-        source:           'SourceGraphic',
-        sourceAlpha:      'SourceAlpha',
-        background:       'BackgroundImage',
-        backgroundAlpha:  'BackgroundAlpha',
-        fill:             'FillPaint',
-        stroke:           'StrokePaint',
+        source: 'SourceGraphic',
+        sourceAlpha: 'SourceAlpha',
+        background: 'BackgroundImage',
+        backgroundAlpha: 'BackgroundAlpha',
+        fill: 'FillPaint',
+        stroke: 'StrokePaint',
 
         autoSetIn: true,
         // Custom put method for leaner code
-        put: function(element, i) {
+        put: function (element, i) {
           this.add(element, i);
 
-          if(!element.attr('in') && this.autoSetIn){
-            element.attr('in',this.source);
+          if (!element.attr('in') && this.autoSetIn) {
+            element.attr('in', this.source);
           }
-          if(!element.attr('result')){
-            element.attr('result',element);
+          if (!element.attr('result')) {
+            element.attr('result', element);
           }
 
           return element
         },
         // Blend effect
-        blend: function(in1, in2, mode) {
+        blend: function (in1, in2, mode) {
           return this.put(new SVG.BlendEffect(in1, in2, mode))
         },
         // ColorMatrix effect
-        colorMatrix: function(type, values) {
+        colorMatrix: function (type, values) {
           return this.put(new SVG.ColorMatrixEffect(type, values))
         },
         // ConvolveMatrix effect
-        convolveMatrix: function(matrix) {
+        convolveMatrix: function (matrix) {
           return this.put(new SVG.ConvolveMatrixEffect(matrix))
         },
         // ComponentTransfer effect
-        componentTransfer: function(components) {
+        componentTransfer: function (components) {
           return this.put(new SVG.ComponentTransferEffect(components))
         },
         // Composite effect
-        composite: function(in1, in2, operator) {
+        composite: function (in1, in2, operator) {
           return this.put(new SVG.CompositeEffect(in1, in2, operator))
         },
         // Flood effect
-        flood: function(color, opacity) {
+        flood: function (color, opacity) {
           return this.put(new SVG.FloodEffect(color, opacity))
         },
         // Offset effect
-        offset: function(x, y) {
-          return this.put(new SVG.OffsetEffect(x,y))
+        offset: function (x, y) {
+          return this.put(new SVG.OffsetEffect(x, y))
         },
         // Image effect
-        image: function(src) {
+        image: function (src) {
           return this.put(new SVG.ImageEffect(src))
         },
         // Merge effect
-        merge: function() {
+        merge: function () {
           //pass the array of arguments to the constructor because we dont know if the user gave us an array as the first arguemnt or wether they listed the effects in the arguments
           var args = [undefined];
-          for(var i in arguments) args.push(arguments[i]);
-          return this.put(new (SVG.MergeEffect.bind.apply(SVG.MergeEffect,args)))
+          for (var i in arguments) args.push(arguments[i]);
+          return this.put(new(SVG.MergeEffect.bind.apply(SVG.MergeEffect, args)))
         },
         // Gaussian Blur effect
-        gaussianBlur: function(x,y) {
-          return this.put(new SVG.GaussianBlurEffect(x,y))
+        gaussianBlur: function (x, y) {
+          return this.put(new SVG.GaussianBlurEffect(x, y))
         },
         // Morphology effect
-        morphology: function(operator,radius){
-          return this.put(new SVG.MorphologyEffect(operator,radius))
+        morphology: function (operator, radius) {
+          return this.put(new SVG.MorphologyEffect(operator, radius))
         },
         // DiffuseLighting effect
-        diffuseLighting: function(surfaceScale,diffuseConstant,kernelUnitLength){
-          return this.put(new SVG.DiffuseLightingEffect(surfaceScale,diffuseConstant,kernelUnitLength))
+        diffuseLighting: function (surfaceScale, diffuseConstant, kernelUnitLength) {
+          return this.put(new SVG.DiffuseLightingEffect(surfaceScale, diffuseConstant, kernelUnitLength))
         },
         // DisplacementMap effect
-        displacementMap: function(in1,in2,scale,xChannelSelector,yChannelSelector){
-          return this.put(new SVG.DisplacementMapEffect(in1,in2,scale,xChannelSelector,yChannelSelector))
+        displacementMap: function (in1, in2, scale, xChannelSelector, yChannelSelector) {
+          return this.put(new SVG.DisplacementMapEffect(in1, in2, scale, xChannelSelector, yChannelSelector))
         },
         // SpecularLighting effect
-        specularLighting: function(surfaceScale,diffuseConstant,specularExponent,kernelUnitLength){
-          return this.put(new SVG.SpecularLightingEffect(surfaceScale,diffuseConstant,specularExponent,kernelUnitLength))
+        specularLighting: function (surfaceScale, diffuseConstant, specularExponent, kernelUnitLength) {
+          return this.put(new SVG.SpecularLightingEffect(surfaceScale, diffuseConstant, specularExponent, kernelUnitLength))
         },
         // Tile effect
-        tile: function(){
+        tile: function () {
           return this.put(new SVG.TileEffect());
         },
         // Turbulence effect
-        turbulence: function(baseFrequency,numOctaves,seed,stitchTiles,type){
-          return this.put(new SVG.TurbulenceEffect(baseFrequency,numOctaves,seed,stitchTiles,type))
+        turbulence: function (baseFrequency, numOctaves, seed, stitchTiles, type) {
+          return this.put(new SVG.TurbulenceEffect(baseFrequency, numOctaves, seed, stitchTiles, type))
         },
         // Default string value
-        toString: function() {
+        toString: function () {
           return 'url(#' + this.attr('id') + ')'
         }
       }
@@ -26523,7 +26526,7 @@
     //add .filter function
     SVG.extend(SVG.Defs, {
       // Define filter
-      filter: function(block) {
+      filter: function (block) {
         var filter = this.put(new SVG.Filter);
 
         /* invoke passed block */
@@ -26535,17 +26538,17 @@
     });
     SVG.extend(SVG.Container, {
       // Define filter on defs
-      filter: function(block) {
+      filter: function (block) {
         return this.defs().filter(block)
       }
     });
     SVG.extend(SVG.Element, SVG.G, SVG.Nested, {
       // Create filter element in defs and store reference
-      filter: function(block) {
+      filter: function (block) {
         this.filterer = block instanceof SVG.Element ?
           block : this.doc().filter(block);
 
-        if(this.doc() && this.filterer.doc() !== this.doc()){
+        if (this.doc() && this.filterer.doc() !== this.doc()) {
           this.doc().defs().add(this.filterer);
         }
 
@@ -26554,7 +26557,7 @@
         return this.filterer
       },
       // Remove filter
-      unfilter: function(remove) {
+      unfilter: function (remove) {
         /* also remove the filter node */
         if (this.filterer && remove === true)
           this.filterer.remove();
@@ -26569,21 +26572,21 @@
 
     // Create SVG.Effect class
     SVG.Effect = SVG.invent({
-      create: function(){
+      create: function () {
         this.constructor.call(this);
       },
       inherit: SVG.Element,
       extend: {
         // Set in attribute
-        in: function(effect) {
-          return effect == null? this.parent() && this.parent().select('[result="'+this.attr('in')+'"]').get(0) || this.attr('in') : this.attr('in', effect)
+        in: function (effect) {
+          return effect == null ? this.parent() && this.parent().select('[result="' + this.attr('in') + '"]').get(0) || this.attr('in') : this.attr('in', effect)
         },
         // Named result
-        result: function(result) {
-          return result == null? this.attr('result') : this.attr('result',result)
+        result: function (result) {
+          return result == null ? this.attr('result') : this.attr('result', result)
         },
         // Stringification
-        toString: function() {
+        toString: function () {
           return this.result()
         }
       }
@@ -26592,21 +26595,21 @@
     // create class for parent effects like merge
     // Inherit from SVG.Parent
     SVG.ParentEffect = SVG.invent({
-      create: function(){
+      create: function () {
         this.constructor.call(this);
       },
       inherit: SVG.Parent,
       extend: {
         // Set in attribute
-        in: function(effect) {
-          return effect == null? this.parent() && this.parent().select('[result="'+this.attr('in')+'"]').get(0) || this.attr('in') : this.attr('in', effect)
+        in: function (effect) {
+          return effect == null ? this.parent() && this.parent().select('[result="' + this.attr('in') + '"]').get(0) || this.attr('in') : this.attr('in', effect)
         },
         // Named result
-        result: function(result) {
-          return result == null? this.attr('result') : this.attr('result',result)
+        result: function (result) {
+          return result == null ? this.attr('result') : this.attr('result', result)
         },
         // Stringification
-        toString: function() {
+        toString: function () {
           return this.result()
         }
       }
@@ -26615,134 +26618,134 @@
     //chaining
     var chainingEffects = {
       // Blend effect
-      blend: function(in2, mode) {
+      blend: function (in2, mode) {
         return this.parent() && this.parent().blend(this, in2, mode) //pass this as the first input
       },
       // ColorMatrix effect
-      colorMatrix: function(type, values) {
+      colorMatrix: function (type, values) {
         return this.parent() && this.parent().colorMatrix(type, values).in(this)
       },
       // ConvolveMatrix effect
-      convolveMatrix: function(matrix) {
+      convolveMatrix: function (matrix) {
         return this.parent() && this.parent().convolveMatrix(matrix).in(this)
       },
       // ComponentTransfer effect
-      componentTransfer: function(components) {
+      componentTransfer: function (components) {
         return this.parent() && this.parent().componentTransfer(components).in(this)
       },
       // Composite effect
-      composite: function(in2, operator) {
+      composite: function (in2, operator) {
         return this.parent() && this.parent().composite(this, in2, operator) //pass this as the first input
       },
       // Flood effect
-      flood: function(color, opacity) {
+      flood: function (color, opacity) {
         return this.parent() && this.parent().flood(color, opacity) //this effect dont have inputs
       },
       // Offset effect
-      offset: function(x, y) {
-        return this.parent() && this.parent().offset(x,y).in(this)
+      offset: function (x, y) {
+        return this.parent() && this.parent().offset(x, y).in(this)
       },
       // Image effect
-      image: function(src) {
+      image: function (src) {
         return this.parent() && this.parent().image(src) //this effect dont have inputs
       },
       // Merge effect
-      merge: function() {
-        return this.parent() && this.parent().merge.apply(this.parent(),[this].concat(arguments)) //pass this as the first argument
+      merge: function () {
+        return this.parent() && this.parent().merge.apply(this.parent(), [this].concat(arguments)) //pass this as the first argument
       },
       // Gaussian Blur effect
-      gaussianBlur: function(x,y) {
-        return this.parent() && this.parent().gaussianBlur(x,y).in(this)
+      gaussianBlur: function (x, y) {
+        return this.parent() && this.parent().gaussianBlur(x, y).in(this)
       },
       // Morphology effect
-      morphology: function(operator,radius){
-        return this.parent() && this.parent().morphology(operator,radius).in(this)
+      morphology: function (operator, radius) {
+        return this.parent() && this.parent().morphology(operator, radius).in(this)
       },
       // DiffuseLighting effect
-      diffuseLighting: function(surfaceScale,diffuseConstant,kernelUnitLength){
-        return this.parent() && this.parent().diffuseLighting(surfaceScale,diffuseConstant,kernelUnitLength).in(this)
+      diffuseLighting: function (surfaceScale, diffuseConstant, kernelUnitLength) {
+        return this.parent() && this.parent().diffuseLighting(surfaceScale, diffuseConstant, kernelUnitLength).in(this)
       },
       // DisplacementMap effect
-      displacementMap: function(in2,scale,xChannelSelector,yChannelSelector){
-        return this.parent() && this.parent().displacementMap(this,in2,scale,xChannelSelector,yChannelSelector) //pass this as the first input
+      displacementMap: function (in2, scale, xChannelSelector, yChannelSelector) {
+        return this.parent() && this.parent().displacementMap(this, in2, scale, xChannelSelector, yChannelSelector) //pass this as the first input
       },
       // SpecularLighting effect
-      specularLighting: function(surfaceScale,diffuseConstant,specularExponent,kernelUnitLength){
-        return this.parent() && this.parent().specularLighting(surfaceScale,diffuseConstant,specularExponent,kernelUnitLength).in(this)
+      specularLighting: function (surfaceScale, diffuseConstant, specularExponent, kernelUnitLength) {
+        return this.parent() && this.parent().specularLighting(surfaceScale, diffuseConstant, specularExponent, kernelUnitLength).in(this)
       },
       // Tile effect
-      tile: function(){
+      tile: function () {
         return this.parent() && this.parent().tile().in(this)
       },
       // Turbulence effect
-      turbulence: function(baseFrequency,numOctaves,seed,stitchTiles,type){
-        return this.parent() && this.parent().turbulence(baseFrequency,numOctaves,seed,stitchTiles,type).in(this)
+      turbulence: function (baseFrequency, numOctaves, seed, stitchTiles, type) {
+        return this.parent() && this.parent().turbulence(baseFrequency, numOctaves, seed, stitchTiles, type).in(this)
       }
     };
-    SVG.extend(SVG.Effect,chainingEffects);
-    SVG.extend(SVG.ParentEffect,chainingEffects);
+    SVG.extend(SVG.Effect, chainingEffects);
+    SVG.extend(SVG.ParentEffect, chainingEffects);
 
     //crea class for child effects, like MergeNode, FuncR and lights
     SVG.ChildEffect = SVG.invent({
-      create: function(){
+      create: function () {
         this.constructor.call(this);
       },
       inherit: SVG.Element,
       extend: {
-      in: function(effect){
-        this.attr('in',effect);
-      }
-      //dont include any "result" functions because these types of nodes dont have them
+        in: function (effect) {
+          this.attr('in', effect);
+        }
+        //dont include any "result" functions because these types of nodes dont have them
       }
     });
 
     // Create all different effects
     var effects = {
-      blend: function(in1,in2,mode){
+      blend: function (in1, in2, mode) {
         this.attr({
           in: in1,
           in2: in2,
           mode: mode || 'normal'
         });
       },
-      colorMatrix: function(type,values){
+      colorMatrix: function (type, values) {
         if (type == 'matrix')
           values = normaliseMatrix(values);
 
         this.attr({
-          type:   type
-        , values: typeof values == 'undefined' ? null : values
+          type: type,
+          values: typeof values == 'undefined' ? null : values
         });
       },
-      convolveMatrix: function(matrix){
+      convolveMatrix: function (matrix) {
         matrix = normaliseMatrix(matrix);
 
         this.attr({
-          order:        Math.sqrt(matrix.split(' ').length)
-        , kernelMatrix: matrix
+          order: Math.sqrt(matrix.split(' ').length),
+          kernelMatrix: matrix
         });
       },
-      composite: function(in1, in2, operator){
+      composite: function (in1, in2, operator) {
         this.attr({
           in: in1,
           in2: in2,
           operator: operator
         });
       },
-      flood: function(color,opacity){
-        this.attr('flood-color',color);
-        if(opacity != null) this.attr('flood-opacity',opacity);
+      flood: function (color, opacity) {
+        this.attr('flood-color', color);
+        if (opacity != null) this.attr('flood-opacity', opacity);
       },
-      offset: function(x,y){
+      offset: function (x, y) {
         this.attr({
           dx: x,
           dy: y
         });
       },
-      image: function(src){
+      image: function (src) {
         this.attr('href', src, SVG.xlink);
       },
-      displacementMap: function(in1,in2,scale,xChannelSelector,yChannelSelector){
+      displacementMap: function (in1, in2, scale, xChannelSelector, yChannelSelector) {
         this.attr({
           in: in1,
           in2: in2,
@@ -26751,22 +26754,22 @@
           yChannelSelector: yChannelSelector
         });
       },
-      gaussianBlur: function(x,y){
-        if(x != null || y != null)
+      gaussianBlur: function (x, y) {
+        if (x != null || y != null)
           this.attr('stdDeviation', listString(Array.prototype.slice.call(arguments)));
         else
           this.attr('stdDeviation', '0 0');
       },
-      morphology: function(operator,radius){
+      morphology: function (operator, radius) {
         this.attr({
           operator: operator,
           radius: radius
         });
       },
-      tile: function(){
+      tile: function () {
 
       },
-      turbulence: function(baseFrequency,numOctaves,seed,stitchTiles,type){
+      turbulence: function (baseFrequency, numOctaves, seed, stitchTiles, type) {
         this.attr({
           numOctaves: numOctaves,
           seed: seed,
@@ -26779,40 +26782,39 @@
 
     // Create all parent effects
     var parentEffects = {
-      merge: function(){
+      merge: function () {
         var children;
 
         //test to see if we have a set
-        if(arguments[0] instanceof SVG.Set){
+        if (arguments[0] instanceof SVG.Set) {
           var that = this;
-          arguments[0].each(function(i){
-            if(this instanceof SVG.MergeNode)
+          arguments[0].each(function (i) {
+            if (this instanceof SVG.MergeNode)
               that.put(this);
-            else if(this instanceof SVG.Effect || this instanceof SVG.ParentEffect)
+            else if (this instanceof SVG.Effect || this instanceof SVG.ParentEffect)
               that.put(new SVG.MergeNode(this));
           });
-        }
-        else{
+        } else {
           //if the first argument is an array use it
-          if(Array.isArray(arguments[0]))
+          if (Array.isArray(arguments[0]))
             children = arguments[0];
           else
             children = arguments;
 
-          for(var i = 0; i < children.length; i++){
-            if(children[i] instanceof SVG.MergeNode){
+          for (var i = 0; i < children.length; i++) {
+            if (children[i] instanceof SVG.MergeNode) {
               this.put(children[i]);
-            }
-            else this.put(new SVG.MergeNode(children[i]));
+            } else this.put(new SVG.MergeNode(children[i]));
           }
         }
       },
-      componentTransfer: function(compontents){
+      componentTransfer: function (compontents) {
         /* create rgb set */
         this.rgb = new SVG.Set
 
         /* create components */
-        ;(['r', 'g', 'b', 'a']).forEach(function(c) {
+        ;
+        (['r', 'g', 'b', 'a']).forEach(function (c) {
           /* create component */
           this[c] = new SVG['Func' + c.toUpperCase()]('identity');
 
@@ -26826,7 +26828,7 @@
         /* set components */
         if (compontents) {
           if (compontents.rgb) {
-  (['r', 'g', 'b']).forEach(function(c) {
+            (['r', 'g', 'b']).forEach(function (c) {
               this[c].attr(compontents.rgb);
             }.bind(this));
 
@@ -26838,14 +26840,14 @@
             this[c].attr(compontents[c]);
         }
       },
-      diffuseLighting: function(surfaceScale,diffuseConstant,kernelUnitLength){
+      diffuseLighting: function (surfaceScale, diffuseConstant, kernelUnitLength) {
         this.attr({
           surfaceScale: surfaceScale,
           diffuseConstant: diffuseConstant,
           kernelUnitLength: kernelUnitLength
         });
       },
-      specularLighting: function(surfaceScale,diffuseConstant,specularExponent,kernelUnitLength){
+      specularLighting: function (surfaceScale, diffuseConstant, specularExponent, kernelUnitLength) {
         this.attr({
           surfaceScale: surfaceScale,
           diffuseConstant: diffuseConstant,
@@ -26857,20 +26859,20 @@
 
     // Create child effects like PointLight and MergeNode
     var childEffects = {
-      distantLight: function(azimuth, elevation){
+      distantLight: function (azimuth, elevation) {
         this.attr({
           azimuth: azimuth,
           elevation: elevation
         });
       },
-      pointLight: function(x,y,z){
+      pointLight: function (x, y, z) {
         this.attr({
           x: x,
           y: y,
           z: z
         });
       },
-      spotLight: function(x,y,z,pointsAtX,pointsAtY,pointsAtZ){
+      spotLight: function (x, y, z, pointsAtX, pointsAtY, pointsAtZ) {
         this.attr({
           x: x,
           y: y,
@@ -26880,37 +26882,38 @@
           pointsAtZ: pointsAtZ
         });
       },
-      mergeNode: function(in1){
-        this.attr('in',in1);
+      mergeNode: function (in1) {
+        this.attr('in', in1);
       }
     }
 
     // Create compontent functions
-    ;(['r', 'g', 'b', 'a']).forEach(function(c) {
+    ;
+    (['r', 'g', 'b', 'a']).forEach(function (c) {
       /* create class */
-      childEffects['Func' + c.toUpperCase()] = function(type) {
-        this.attr('type',type);
+      childEffects['Func' + c.toUpperCase()] = function (type) {
+        this.attr('type', type);
 
         // take diffent arguments based on the type
-        switch(type){
+        switch (type) {
           case 'table':
-            this.attr('tableValues',arguments[1]);
+            this.attr('tableValues', arguments[1]);
             break
           case 'linear':
-            this.attr('slope',arguments[1]);
-            this.attr('intercept',arguments[2]);
+            this.attr('slope', arguments[1]);
+            this.attr('intercept', arguments[2]);
             break
           case 'gamma':
-            this.attr('amplitude',arguments[1]);
-            this.attr('exponent',arguments[2]);
-            this.attr('offset',arguments[2]);
+            this.attr('amplitude', arguments[1]);
+            this.attr('exponent', arguments[2]);
+            this.attr('offset', arguments[2]);
             break
         }
       };
     });
 
     //create effects
-    foreach(effects,function(effect,i){
+    foreach(effects, function (effect, i) {
 
       /* capitalize name */
       var name = i.charAt(0).toUpperCase() + i.slice(1);
@@ -26918,12 +26921,12 @@
 
       /* create class */
       SVG[name + 'Effect'] = SVG.invent({
-        create: function() {
+        create: function () {
           //call super
           this.constructor.call(this, SVG.create('fe' + name));
 
           //call constructor for this effect
-          effect.apply(this,arguments);
+          effect.apply(this, arguments);
 
           //set the result
           this.result(this.attr('id') + 'Out');
@@ -26934,7 +26937,7 @@
     });
 
     //create parent effects
-    foreach(parentEffects,function(effect,i){
+    foreach(parentEffects, function (effect, i) {
 
       /* capitalize name */
       var name = i.charAt(0).toUpperCase() + i.slice(1);
@@ -26942,12 +26945,12 @@
 
       /* create class */
       SVG[name + 'Effect'] = SVG.invent({
-        create: function() {
+        create: function () {
           //call super
           this.constructor.call(this, SVG.create('fe' + name));
 
           //call constructor for this effect
-          effect.apply(this,arguments);
+          effect.apply(this, arguments);
 
           //set the result
           this.result(this.attr('id') + 'Out');
@@ -26958,7 +26961,7 @@
     });
 
     //create child effects
-    foreach(childEffects,function(effect,i){
+    foreach(childEffects, function (effect, i) {
 
       /* capitalize name */
       var name = i.charAt(0).toUpperCase() + i.slice(1);
@@ -26966,12 +26969,12 @@
 
       /* create class */
       SVG[name] = SVG.invent({
-        create: function() {
+        create: function () {
           //call super
           this.constructor.call(this, SVG.create('fe' + name));
 
           //call constructor for this effect
-          effect.apply(this,arguments);
+          effect.apply(this, arguments);
         },
         inherit: SVG.ChildEffect,
         extend: proto
@@ -26979,28 +26982,25 @@
     });
 
     // Effect-specific extensions
-    SVG.extend(SVG.MergeEffect,{
-      in: function(effect){
-        if(effect instanceof SVG.MergeNode)
-          this.add(effect,0);
+    SVG.extend(SVG.MergeEffect, {
+      in: function (effect) {
+        if (effect instanceof SVG.MergeNode)
+          this.add(effect, 0);
         else
-          this.add(new SVG.MergeNode(effect),0);
+          this.add(new SVG.MergeNode(effect), 0);
 
         return this
       }
     });
-    SVG.extend(SVG.CompositeEffect,SVG.BlendEffect,SVG.DisplacementMapEffect,{
-      in2: function(effect){
-          return effect == null? this.parent() && this.parent().select('[result="'+this.attr('in2')+'"]').get(0) || this.attr('in2') : this.attr('in2', effect)
+    SVG.extend(SVG.CompositeEffect, SVG.BlendEffect, SVG.DisplacementMapEffect, {
+      in2: function (effect) {
+        return effect == null ? this.parent() && this.parent().select('[result="' + this.attr('in2') + '"]').get(0) || this.attr('in2') : this.attr('in2', effect)
       }
     });
 
     // Presets
     SVG.filter = {
-      sepiatone:  [ .343, .669, .119, 0, 0
-                  , .249, .626, .130, 0, 0
-                  , .172, .334, .111, 0, 0
-                  , .000, .000, .000, 1, 0 ]
+      sepiatone: [.343, .669, .119, 0, 0, .249, .626, .130, 0, 0, .172, .334, .111, 0, 0, .000, .000, .000, 1, 0]
     };
 
     // Helpers
@@ -27023,313 +27023,329 @@
       return s.join(' ')
     }
 
-    function foreach(){ //loops through mutiple objects
-      var fn = function(){};
-      if(typeof arguments[arguments.length-1] == 'function'){
-        fn = arguments[arguments.length-1];
-        Array.prototype.splice.call(arguments,arguments.length-1,1);
+    function foreach() { //loops through mutiple objects
+      var fn = function () {};
+      if (typeof arguments[arguments.length - 1] == 'function') {
+        fn = arguments[arguments.length - 1];
+        Array.prototype.splice.call(arguments, arguments.length - 1, 1);
       }
-      for(var k in arguments){
-        for(var i in arguments[k]){
-          fn(arguments[k][i],i,arguments[k]);
+      for (var k in arguments) {
+        for (var i in arguments[k]) {
+          fn(arguments[k][i], i, arguments[k]);
         }
       }
     }
 
   }).call(undefined);
 
-  (function() {
+  (function () {
 
-  SVG.extend(SVG.PathArray, {
-    morph: function(array) {
+    SVG.extend(SVG.PathArray, {
+      morph: function (array) {
 
-      var startArr = this.value
-        ,  destArr = this.parse(array);
+        var startArr = this.value,
+          destArr = this.parse(array);
 
-      var startOffsetM = 0
-        ,  destOffsetM = 0;
+        var startOffsetM = 0,
+          destOffsetM = 0;
 
-      var startOffsetNextM = false
-        ,  destOffsetNextM = false;
+        var startOffsetNextM = false,
+          destOffsetNextM = false;
 
-      while(true){
-        // stop if there is no M anymore
-        if(startOffsetM === false && destOffsetM === false) break
+        while (true) {
+          // stop if there is no M anymore
+          if (startOffsetM === false && destOffsetM === false) break
 
-        // find the next M in path array
-        startOffsetNextM = findNextM(startArr, startOffsetM === false ? false : startOffsetM+1);
-         destOffsetNextM = findNextM( destArr,  destOffsetM === false ? false :  destOffsetM+1);
+          // find the next M in path array
+          startOffsetNextM = findNextM(startArr, startOffsetM === false ? false : startOffsetM + 1);
+          destOffsetNextM = findNextM(destArr, destOffsetM === false ? false : destOffsetM + 1);
 
-        // We have to add one M to the startArray
-        if(startOffsetM === false){
-          var bbox = new SVG.PathArray(result.start).bbox();
+          // We have to add one M to the startArray
+          if (startOffsetM === false) {
+            var bbox = new SVG.PathArray(result.start).bbox();
 
-          // when the last block had no bounding box we simply take the first M we got
-          if(bbox.height == 0 || bbox.width == 0){
-            startOffsetM =  startArr.push(startArr[0]) - 1;
-          }else{
-            // we take the middle of the bbox instead when we got one
-            startOffsetM = startArr.push( ['M', bbox.x + bbox.width/2, bbox.y + bbox.height/2 ] ) - 1;
+            // when the last block had no bounding box we simply take the first M we got
+            if (bbox.height == 0 || bbox.width == 0) {
+              startOffsetM = startArr.push(startArr[0]) - 1;
+            } else {
+              // we take the middle of the bbox instead when we got one
+              startOffsetM = startArr.push(['M', bbox.x + bbox.width / 2, bbox.y + bbox.height / 2]) - 1;
+            }
           }
+
+          // We have to add one M to the destArray
+          if (destOffsetM === false) {
+            var bbox = new SVG.PathArray(result.dest).bbox();
+
+            if (bbox.height == 0 || bbox.width == 0) {
+              destOffsetM = destArr.push(destArr[0]) - 1;
+            } else {
+              destOffsetM = destArr.push(['M', bbox.x + bbox.width / 2, bbox.y + bbox.height / 2]) - 1;
+            }
+          }
+
+          // handle block from M to next M
+          var result = handleBlock(startArr, startOffsetM, startOffsetNextM, destArr, destOffsetM, destOffsetNextM);
+
+          // update the arrays to their new values
+          startArr = startArr.slice(0, startOffsetM).concat(result.start, startOffsetNextM === false ? [] : startArr.slice(startOffsetNextM));
+          destArr = destArr.slice(0, destOffsetM).concat(result.dest, destOffsetNextM === false ? [] : destArr.slice(destOffsetNextM));
+
+          // update offsets
+          startOffsetM = startOffsetNextM === false ? false : startOffsetM + result.start.length;
+          destOffsetM = destOffsetNextM === false ? false : destOffsetM + result.dest.length;
+
         }
 
-        // We have to add one M to the destArray
-        if( destOffsetM === false){
-          var bbox = new SVG.PathArray(result.dest).bbox();
+        // copy back arrays
+        this.value = startArr;
+        this.destination = new SVG.PathArray();
+        this.destination.value = destArr;
 
-          if(bbox.height == 0 || bbox.width == 0){
-            destOffsetM =  destArr.push(destArr[0]) - 1;
-          }else{
-            destOffsetM =  destArr.push( ['M', bbox.x + bbox.width/2, bbox.y + bbox.height/2 ] ) - 1;
-          }
-        }
-
-        // handle block from M to next M
-        var result = handleBlock(startArr, startOffsetM, startOffsetNextM, destArr, destOffsetM, destOffsetNextM);
-
-        // update the arrays to their new values
-        startArr = startArr.slice(0, startOffsetM).concat(result.start, startOffsetNextM === false ? [] : startArr.slice(startOffsetNextM));
-         destArr =  destArr.slice(0,  destOffsetM).concat(result.dest ,  destOffsetNextM === false ? [] :  destArr.slice( destOffsetNextM));
-
-        // update offsets
-        startOffsetM = startOffsetNextM === false ? false : startOffsetM + result.start.length;
-         destOffsetM =  destOffsetNextM === false ? false :  destOffsetM + result.dest.length;
-
+        return this
       }
-
-      // copy back arrays
-      this.value = startArr;
-      this.destination = new SVG.PathArray();
-      this.destination.value = destArr;
-
-      return this
-    }
-  });
+    });
 
 
 
-  // sorry for the long declaration
-  // slices out one block (from M to M) and syncronize it so the types and length match
-  function handleBlock(startArr, startOffsetM, startOffsetNextM, destArr, destOffsetM, destOffsetNextM, undefined$1){
+    // sorry for the long declaration
+    // slices out one block (from M to M) and syncronize it so the types and length match
+    function handleBlock(startArr, startOffsetM, startOffsetNextM, destArr, destOffsetM, destOffsetNextM, undefined$1) {
 
-    // slice out the block we need
-    var startArrTemp = startArr.slice(startOffsetM, startOffsetNextM || undefined$1)
-      ,  destArrTemp =  destArr.slice( destOffsetM,  destOffsetNextM || undefined$1);
+      // slice out the block we need
+      var startArrTemp = startArr.slice(startOffsetM, startOffsetNextM || undefined$1),
+        destArrTemp = destArr.slice(destOffsetM, destOffsetNextM || undefined$1);
 
-    var i = 0
-      , posStart = {pos:[0,0], start:[0,0]}
-      , posDest  = {pos:[0,0], start:[0,0]};
+      var i = 0,
+        posStart = {
+          pos: [0, 0],
+          start: [0, 0]
+        },
+        posDest = {
+          pos: [0, 0],
+          start: [0, 0]
+        };
 
-    do{
+      do {
 
-      // convert shorthand types to long form
-      startArrTemp[i] = simplyfy.call(posStart, startArrTemp[i]);
-       destArrTemp[i] = simplyfy.call(posDest ,  destArrTemp[i]);
+        // convert shorthand types to long form
+        startArrTemp[i] = simplyfy.call(posStart, startArrTemp[i]);
+        destArrTemp[i] = simplyfy.call(posDest, destArrTemp[i]);
 
-      // check if both shape types match
-      // 2 elliptical arc curve commands ('A'), are considered different if the
-      // flags (large-arc-flag, sweep-flag) don't match
-      if(startArrTemp[i][0] != destArrTemp[i][0] || startArrTemp[i][0] == 'M' ||
+        // check if both shape types match
+        // 2 elliptical arc curve commands ('A'), are considered different if the
+        // flags (large-arc-flag, sweep-flag) don't match
+        if (startArrTemp[i][0] != destArrTemp[i][0] || startArrTemp[i][0] == 'M' ||
           (startArrTemp[i][0] == 'A' &&
             (startArrTemp[i][4] != destArrTemp[i][4] || startArrTemp[i][5] != destArrTemp[i][5])
           )
         ) {
 
-        // if not, convert shapes to beziere
-        Array.prototype.splice.apply(startArrTemp, [i, 1].concat(toBeziere.call(posStart, startArrTemp[i])));
-         Array.prototype.splice.apply(destArrTemp, [i, 1].concat(toBeziere.call(posDest, destArrTemp[i])));
+          // if not, convert shapes to beziere
+          Array.prototype.splice.apply(startArrTemp, [i, 1].concat(toBeziere.call(posStart, startArrTemp[i])));
+          Array.prototype.splice.apply(destArrTemp, [i, 1].concat(toBeziere.call(posDest, destArrTemp[i])));
 
-      } else {
+        } else {
 
-        // only update positions otherwise
-        startArrTemp[i] = setPosAndReflection.call(posStart, startArrTemp[i]);
-         destArrTemp[i] = setPosAndReflection.call(posDest ,  destArrTemp[i]);
+          // only update positions otherwise
+          startArrTemp[i] = setPosAndReflection.call(posStart, startArrTemp[i]);
+          destArrTemp[i] = setPosAndReflection.call(posDest, destArrTemp[i]);
 
+        }
+
+        // we are at the end at both arrays. stop here
+        if (++i == startArrTemp.length && i == destArrTemp.length) break
+
+        // destArray is longer. Add one element
+        if (i == startArrTemp.length) {
+          startArrTemp.push([
+            'C',
+            posStart.pos[0],
+            posStart.pos[1],
+            posStart.pos[0],
+            posStart.pos[1],
+            posStart.pos[0],
+            posStart.pos[1],
+          ]);
+        }
+
+        // startArr is longer. Add one element
+        if (i == destArrTemp.length) {
+          destArrTemp.push([
+            'C',
+            posDest.pos[0],
+            posDest.pos[1],
+            posDest.pos[0],
+            posDest.pos[1],
+            posDest.pos[0],
+            posDest.pos[1]
+          ]);
+        }
+
+
+      } while (true)
+
+      // return the updated block
+      return {
+        start: startArrTemp,
+        dest: destArrTemp
       }
-
-      // we are at the end at both arrays. stop here
-      if(++i == startArrTemp.length && i == destArrTemp.length) break
-
-      // destArray is longer. Add one element
-      if(i == startArrTemp.length){
-        startArrTemp.push([
-          'C',
-          posStart.pos[0],
-          posStart.pos[1],
-          posStart.pos[0],
-          posStart.pos[1],
-          posStart.pos[0],
-          posStart.pos[1],
-        ]);
-      }
-
-      // startArr is longer. Add one element
-      if(i == destArrTemp.length){
-        destArrTemp.push([
-          'C',
-          posDest.pos[0],
-          posDest.pos[1],
-          posDest.pos[0],
-          posDest.pos[1],
-          posDest.pos[0],
-          posDest.pos[1]
-        ]);
-      }
-
-
-    }while(true)
-
-    // return the updated block
-    return {start:startArrTemp, dest:destArrTemp}
-  }
-
-  // converts shorthand types to long form
-  function simplyfy(val){
-
-    switch(val[0]){
-      case 'z': // shorthand line to start
-      case 'Z':
-        val[0] = 'L';
-        val[1] = this.start[0];
-        val[2] = this.start[1];
-        break
-      case 'H': // shorthand horizontal line
-        val[0] = 'L';
-        val[2] = this.pos[1];
-        break
-      case 'V': // shorthand vertical line
-        val[0] = 'L';
-        val[2] = val[1];
-        val[1] = this.pos[0];
-        break
-      case 'T': // shorthand quadratic beziere
-        val[0] = 'Q';
-        val[3] = val[1];
-        val[4] = val[2];
-        val[1] = this.reflection[1];
-        val[2] = this.reflection[0];
-        break
-      case 'S': // shorthand cubic beziere
-        val[0] = 'C';
-        val[6] = val[4];
-        val[5] = val[3];
-        val[4] = val[2];
-        val[3] = val[1];
-        val[2] = this.reflection[1];
-        val[1] = this.reflection[0];
-        break
     }
 
-    return val
+    // converts shorthand types to long form
+    function simplyfy(val) {
 
-  }
+      switch (val[0]) {
+        case 'z': // shorthand line to start
+        case 'Z':
+          val[0] = 'L';
+          val[1] = this.start[0];
+          val[2] = this.start[1];
+          break
+        case 'H': // shorthand horizontal line
+          val[0] = 'L';
+          val[2] = this.pos[1];
+          break
+        case 'V': // shorthand vertical line
+          val[0] = 'L';
+          val[2] = val[1];
+          val[1] = this.pos[0];
+          break
+        case 'T': // shorthand quadratic beziere
+          val[0] = 'Q';
+          val[3] = val[1];
+          val[4] = val[2];
+          val[1] = this.reflection[1];
+          val[2] = this.reflection[0];
+          break
+        case 'S': // shorthand cubic beziere
+          val[0] = 'C';
+          val[6] = val[4];
+          val[5] = val[3];
+          val[4] = val[2];
+          val[3] = val[1];
+          val[2] = this.reflection[1];
+          val[1] = this.reflection[0];
+          break
+      }
 
-  // updates reflection point and current position
-  function setPosAndReflection(val){
-
-    var len = val.length;
-
-    this.pos = [ val[len-2], val[len-1] ];
-
-    if('SCQT'.indexOf(val[0]) != -1)
-      this.reflection = [ 2 * this.pos[0] - val[len-4], 2 * this.pos[1] - val[len-3] ];
-
-    return val
-  }
-
-  // converts all types to cubic beziere
-  function toBeziere(val){
-    var retVal = [val];
-
-    switch(val[0]){
-      case 'M': // special handling for M
-        this.pos = this.start = [val[1], val[2]];
-        return retVal
-      case 'L':
-        val[5] = val[3] = val[1];
-        val[6] = val[4] = val[2];
-        val[1] = this.pos[0];
-        val[2] = this.pos[1];
-        break
-      case 'Q':
-        val[6] = val[4];
-        val[5] = val[3];
-        val[4] = val[4] * 1/3 + val[2] * 2/3;
-        val[3] = val[3] * 1/3 + val[1] * 2/3;
-        val[2] = this.pos[1] * 1/3 + val[2] * 2/3;
-        val[1] = this.pos[0] * 1/3 + val[1] * 2/3;
-        break
-      case 'A':
-        retVal = arcToBeziere(this.pos, val);
-        val = retVal[0];
-        break
-    }
-
-    val[0] = 'C';
-    this.pos = [val[5], val[6]];
-    this.reflection = [2 * val[5] - val[3], 2 * val[6] - val[4]];
-
-    return retVal
-
-  }
-
-  // finds the next position of type M
-  function findNextM(arr, offset){
-
-    if(offset === false) return false
-
-    for(var i = offset, len = arr.length;i < len;++i){
-
-      if(arr[i][0] == 'M') return i
+      return val
 
     }
 
-    return false
-  }
+    // updates reflection point and current position
+    function setPosAndReflection(val) {
+
+      var len = val.length;
+
+      this.pos = [val[len - 2], val[len - 1]];
+
+      if ('SCQT'.indexOf(val[0]) != -1)
+        this.reflection = [2 * this.pos[0] - val[len - 4], 2 * this.pos[1] - val[len - 3]];
+
+      return val
+    }
+
+    // converts all types to cubic beziere
+    function toBeziere(val) {
+      var retVal = [val];
+
+      switch (val[0]) {
+        case 'M': // special handling for M
+          this.pos = this.start = [val[1], val[2]];
+          return retVal
+        case 'L':
+          val[5] = val[3] = val[1];
+          val[6] = val[4] = val[2];
+          val[1] = this.pos[0];
+          val[2] = this.pos[1];
+          break
+        case 'Q':
+          val[6] = val[4];
+          val[5] = val[3];
+          val[4] = val[4] * 1 / 3 + val[2] * 2 / 3;
+          val[3] = val[3] * 1 / 3 + val[1] * 2 / 3;
+          val[2] = this.pos[1] * 1 / 3 + val[2] * 2 / 3;
+          val[1] = this.pos[0] * 1 / 3 + val[1] * 2 / 3;
+          break
+        case 'A':
+          retVal = arcToBeziere(this.pos, val);
+          val = retVal[0];
+          break
+      }
+
+      val[0] = 'C';
+      this.pos = [val[5], val[6]];
+      this.reflection = [2 * val[5] - val[3], 2 * val[6] - val[4]];
+
+      return retVal
+
+    }
+
+    // finds the next position of type M
+    function findNextM(arr, offset) {
+
+      if (offset === false) return false
+
+      for (var i = offset, len = arr.length; i < len; ++i) {
+
+        if (arr[i][0] == 'M') return i
+
+      }
+
+      return false
+    }
 
 
 
-  // Convert an arc segment into equivalent cubic Bezier curves
-  // Depending on the arc, up to 4 curves might be used to represent it since a
-  // curve gives a good approximation for only a quarter of an ellipse
-  // The curves are returned as an array of SVG curve commands:
-  // [ ['C', x1, y1, x2, y2, x, y] ... ]
-  function arcToBeziere(pos, val) {
+    // Convert an arc segment into equivalent cubic Bezier curves
+    // Depending on the arc, up to 4 curves might be used to represent it since a
+    // curve gives a good approximation for only a quarter of an ellipse
+    // The curves are returned as an array of SVG curve commands:
+    // [ ['C', x1, y1, x2, y2, x, y] ... ]
+    function arcToBeziere(pos, val) {
       // Parameters extraction, handle out-of-range parameters as specified in the SVG spec
       // See: https://www.w3.org/TR/SVG11/implnote.html#ArcOutOfRangeParameters
-      var rx = Math.abs(val[1]), ry = Math.abs(val[2]), xAxisRotation = val[3] % 360
-        , largeArcFlag = val[4], sweepFlag = val[5], x = val[6], y = val[7]
-        , A = new SVG.Point(pos), B = new SVG.Point(x, y)
-        , primedCoord, lambda, mat, k, c, cSquare, t, O, OA, OB, tetaStart, tetaEnd
-        , deltaTeta, nbSectors, f, arcSegPoints, angle, sinAngle, cosAngle, pt, i, il
-        , retVal = [], x1, y1, x2, y2;
+      var rx = Math.abs(val[1]),
+        ry = Math.abs(val[2]),
+        xAxisRotation = val[3] % 360,
+        largeArcFlag = val[4],
+        sweepFlag = val[5],
+        x = val[6],
+        y = val[7],
+        A = new SVG.Point(pos),
+        B = new SVG.Point(x, y),
+        primedCoord, lambda, mat, k, c, cSquare, t, O, OA, OB, tetaStart, tetaEnd, deltaTeta, nbSectors, f, arcSegPoints, angle, sinAngle, cosAngle, pt, i, il, retVal = [],
+        x1, y1, x2, y2;
 
       // Ensure radii are non-zero
-      if(rx === 0 || ry === 0 || (A.x === B.x && A.y === B.y)) {
+      if (rx === 0 || ry === 0 || (A.x === B.x && A.y === B.y)) {
         // treat this arc as a straight line segment
-        return [['C', A.x, A.y, B.x, B.y, B.x, B.y]]
+        return [
+          ['C', A.x, A.y, B.x, B.y, B.x, B.y]
+        ]
       }
 
       // Ensure radii are large enough using the algorithm provided in the SVG spec
       // See: https://www.w3.org/TR/SVG11/implnote.html#ArcCorrectionOutOfRangeRadii
-      primedCoord = new SVG.Point((A.x-B.x)/2, (A.y-B.y)/2).transform(new SVG.Matrix().rotate(xAxisRotation));
+      primedCoord = new SVG.Point((A.x - B.x) / 2, (A.y - B.y) / 2).transform(new SVG.Matrix().rotate(xAxisRotation));
       lambda = (primedCoord.x * primedCoord.x) / (rx * rx) + (primedCoord.y * primedCoord.y) / (ry * ry);
-      if(lambda > 1) {
+      if (lambda > 1) {
         lambda = Math.sqrt(lambda);
-        rx = lambda*rx;
-        ry = lambda*ry;
+        rx = lambda * rx;
+        ry = lambda * ry;
       }
 
       // To simplify calculations, we make the arc part of a unit circle (rayon is 1) instead of an ellipse
-      mat = new SVG.Matrix().rotate(xAxisRotation).scale(1/rx, 1/ry).rotate(-xAxisRotation);
+      mat = new SVG.Matrix().rotate(xAxisRotation).scale(1 / rx, 1 / ry).rotate(-xAxisRotation);
       A = A.transform(mat);
       B = B.transform(mat);
 
       // Calculate the horizontal and vertical distance between the initial and final point of the arc
-      k = [B.x-A.x, B.y-A.y];
+      k = [B.x - A.x, B.y - A.y];
 
       // Find the length of the chord formed by A and B
-      cSquare = k[0]*k[0] + k[1]*k[1];
+      cSquare = k[0] * k[0] + k[1] * k[1];
       c = Math.sqrt(cSquare);
 
       // Calculate the ratios of the horizontal and vertical distance on the length of the chord
@@ -27344,7 +27360,7 @@
       // Because of the imprecision of floating point numbers, cSquare might end
       // up being slightly above 4 which would result in a negative radicand
       // To prevent that, a test is made before computing the square root
-      t = (cSquare < 4) ? Math.sqrt(1 - cSquare/4) : 0;
+      t = (cSquare < 4) ? Math.sqrt(1 - cSquare / 4) : 0;
 
       // For most situations, there are actually two different ellipses that
       // satisfy the constraints imposed by the points A and B, the radii rx and ry,
@@ -27352,8 +27368,8 @@
       // When the flags largeArcFlag and sweepFlag are equal, it means that the
       // second ellipse is used as a solution
       // See: https://www.w3.org/TR/SVG/paths.html#PathDataEllipticalArcCommands
-      if(largeArcFlag === sweepFlag) {
-          t *= -1;
+      if (largeArcFlag === sweepFlag) {
+        t *= -1;
       }
 
       // Calculate the coordinates of the center of the circle from the midpoint of the chord
@@ -27364,17 +27380,17 @@
       // the horizontal distance ratio is used to modify the y coordinate
       // That is because the center of the circle is perpendicular to the chord and perpendicular
       // lines are negative reciprocals
-      O = new SVG.Point((B.x+A.x)/2 + t*-k[1], (B.y+A.y)/2 + t*k[0]);
+      O = new SVG.Point((B.x + A.x) / 2 + t * -k[1], (B.y + A.y) / 2 + t * k[0]);
       // Move the center of the circle at the origin
-      OA = new SVG.Point(A.x-O.x, A.y-O.y);
-      OB = new SVG.Point(B.x-O.x, B.y-O.y);
+      OA = new SVG.Point(A.x - O.x, A.y - O.y);
+      OB = new SVG.Point(B.x - O.x, B.y - O.y);
 
       // Calculate the start and end angle
-      tetaStart = Math.acos(OA.x/Math.sqrt(OA.x*OA.x + OA.y*OA.y));
+      tetaStart = Math.acos(OA.x / Math.sqrt(OA.x * OA.x + OA.y * OA.y));
       if (OA.y < 0) {
         tetaStart *= -1;
       }
-      tetaEnd = Math.acos(OB.x/Math.sqrt(OB.x*OB.x + OB.y*OB.y));
+      tetaEnd = Math.acos(OB.x / Math.sqrt(OB.x * OB.x + OB.y * OB.y));
       if (OB.y < 0) {
         tetaEnd *= -1;
       }
@@ -27382,30 +27398,30 @@
       // If sweep-flag is '1', then the arc will be drawn in a "positive-angle" direction,
       // make sure that the end angle is above the start angle
       if (sweepFlag && tetaStart > tetaEnd) {
-        tetaEnd += 2*Math.PI;
+        tetaEnd += 2 * Math.PI;
       }
       // If sweep-flag is '0', then the arc will be drawn in a "negative-angle" direction,
       // make sure that the end angle is below the start angle
       if (!sweepFlag && tetaStart < tetaEnd) {
-        tetaEnd -= 2*Math.PI;
+        tetaEnd -= 2 * Math.PI;
       }
 
       // Find the number of Bezier curves that are required to represent the arc
       // A cubic Bezier curve gives a good enough approximation when representing at most a quarter of a circle
-      nbSectors = Math.ceil(Math.abs(tetaStart-tetaEnd) * 2/Math.PI);
+      nbSectors = Math.ceil(Math.abs(tetaStart - tetaEnd) * 2 / Math.PI);
 
       // Calculate the coordinates of the points of all the Bezier curves required to represent the arc
       // For an in-depth explanation of this part see: http://pomax.github.io/bezierinfo/#circles_cubic
       arcSegPoints = [];
       angle = tetaStart;
-      deltaTeta = (tetaEnd-tetaStart)/nbSectors;
-      f = 4*Math.tan(deltaTeta/4)/3;
+      deltaTeta = (tetaEnd - tetaStart) / nbSectors;
+      f = 4 * Math.tan(deltaTeta / 4) / 3;
       for (i = 0; i <= nbSectors; i++) { // The <= is because a Bezier curve have a start and a endpoint
         cosAngle = Math.cos(angle);
         sinAngle = Math.sin(angle);
 
-        pt = new SVG.Point(O.x+cosAngle, O.y+sinAngle);
-        arcSegPoints[i] = [new SVG.Point(pt.x+f*sinAngle, pt.y-f*cosAngle), pt, new SVG.Point(pt.x-f*sinAngle, pt.y+f*cosAngle)];
+        pt = new SVG.Point(O.x + cosAngle, O.y + sinAngle);
+        arcSegPoints[i] = [new SVG.Point(pt.x + f * sinAngle, pt.y - f * cosAngle), pt, new SVG.Point(pt.x - f * sinAngle, pt.y + f * cosAngle)];
 
         angle += deltaTeta;
       }
@@ -27413,7 +27429,7 @@
       // Remove the first control point of the first segment point and remove the second control point of the last segment point
       // These two control points are not used in the approximation of the arc, that is why they are removed
       arcSegPoints[0][0] = arcSegPoints[0][1].clone();
-      arcSegPoints[arcSegPoints.length-1][2] = arcSegPoints[arcSegPoints.length-1][1].clone();
+      arcSegPoints[arcSegPoints.length - 1][2] = arcSegPoints[arcSegPoints.length - 1][1].clone();
 
       // Revert the transformation that was applied to make the arc part of a unit circle instead of an ellipse
       mat = new SVG.Matrix().rotate(xAxisRotation).scale(rx, ry).rotate(-xAxisRotation);
@@ -27426,7 +27442,7 @@
 
       // Convert the segments points to SVG curve commands
       for (i = 1, il = arcSegPoints.length; i < il; i++) {
-        pt = arcSegPoints[i-1][2];
+        pt = arcSegPoints[i - 1][2];
         x1 = pt.x;
         y1 = pt.y;
 
@@ -27442,45 +27458,49 @@
       }
 
       return retVal
-  }
+    }
   }());
 
   /*! svg.draggable.js - v2.2.2 - 2019-01-08
-  * https://github.com/svgdotjs/svg.draggable.js
-  * Copyright (c) 2019 Wout Fierens; Licensed MIT */
-  (function() {
+   * https://github.com/svgdotjs/svg.draggable.js
+   * Copyright (c) 2019 Wout Fierens; Licensed MIT */
+  (function () {
 
     // creates handler, saves it
-    function DragHandler(el){
+    function DragHandler(el) {
       el.remember('_draggable', this);
       this.el = el;
     }
 
 
     // Sets new parameter, starts dragging
-    DragHandler.prototype.init = function(constraint, val){
+    DragHandler.prototype.init = function (constraint, val) {
       var _this = this;
       this.constraint = constraint;
       this.value = val;
-      this.el.on('mousedown.drag', function(e){ _this.start(e); });
-      this.el.on('touchstart.drag', function(e){ _this.start(e); });
+      this.el.on('mousedown.drag', function (e) {
+        _this.start(e);
+      });
+      this.el.on('touchstart.drag', function (e) {
+        _this.start(e);
+      });
     };
 
     // transforms one point from screen to user coords
-    DragHandler.prototype.transformPoint = function(event, offset){
-        event = event || window.event;
-        var touches = event.changedTouches && event.changedTouches[0] || event;
-        this.p.x = touches.clientX - (offset || 0);
-        this.p.y = touches.clientY;
-        return this.p.matrixTransform(this.m)
+    DragHandler.prototype.transformPoint = function (event, offset) {
+      event = event || window.event;
+      var touches = event.changedTouches && event.changedTouches[0] || event;
+      this.p.x = touches.clientX - (offset || 0);
+      this.p.y = touches.clientY;
+      return this.p.matrixTransform(this.m)
     };
 
     // gets elements bounding box with special handling of groups, nested and use
-    DragHandler.prototype.getBBox = function(){
+    DragHandler.prototype.getBBox = function () {
 
       var box = this.el.bbox();
 
-      if(this.el instanceof SVG.Nested) box = this.el.rbox();
+      if (this.el instanceof SVG.Nested) box = this.el.rbox();
 
       if (this.el instanceof SVG.G || this.el instanceof SVG.Use || this.el instanceof SVG.Nested) {
         box.x = this.el.x();
@@ -27491,20 +27511,23 @@
     };
 
     // start dragging
-    DragHandler.prototype.start = function(e){
+    DragHandler.prototype.start = function (e) {
 
       // check for left button
-      if(e.type == 'click'|| e.type == 'mousedown' || e.type == 'mousemove'){
-        if((e.which || e.buttons) != 1){
-            return
+      if (e.type == 'click' || e.type == 'mousedown' || e.type == 'mousemove') {
+        if ((e.which || e.buttons) != 1) {
+          return
         }
       }
 
       var _this = this;
 
       // fire beforedrag event
-      this.el.fire('beforedrag', { event: e, handler: this });
-      if(this.el.event().defaultPrevented) return;
+      this.el.fire('beforedrag', {
+        event: e,
+        handler: this
+      });
+      if (this.el.event().defaultPrevented) return;
 
       // prevent browser drag behavior as soon as possible
       e.preventDefault();
@@ -27525,10 +27548,10 @@
       var anchorOffset;
 
       // fix text-anchor in text-element (#37)
-      if(this.el instanceof SVG.Text){
+      if (this.el instanceof SVG.Text) {
         anchorOffset = this.el.node.getComputedTextLength();
 
-        switch(this.el.attr('text-anchor')){
+        switch (this.el.attr('text-anchor')) {
           case 'middle':
             anchorOffset /= 2;
             break
@@ -27541,39 +27564,52 @@
       this.startPoints = {
         // We take absolute coordinates since we are just using a delta here
         point: this.transformPoint(e, anchorOffset),
-        box:   box,
+        box: box,
         transform: this.el.transform()
       };
 
       // add drag and end events to window
-      SVG.on(window, 'mousemove.drag', function(e){ _this.drag(e); });
-      SVG.on(window, 'touchmove.drag', function(e){ _this.drag(e); });
-      SVG.on(window, 'mouseup.drag', function(e){ _this.end(e); });
-      SVG.on(window, 'touchend.drag', function(e){ _this.end(e); });
+      SVG.on(window, 'mousemove.drag', function (e) {
+        _this.drag(e);
+      });
+      SVG.on(window, 'touchmove.drag', function (e) {
+        _this.drag(e);
+      });
+      SVG.on(window, 'mouseup.drag', function (e) {
+        _this.end(e);
+      });
+      SVG.on(window, 'touchend.drag', function (e) {
+        _this.end(e);
+      });
 
       // fire dragstart event
-      this.el.fire('dragstart', {event: e, p: this.startPoints.point, m: this.m, handler: this});
+      this.el.fire('dragstart', {
+        event: e,
+        p: this.startPoints.point,
+        m: this.m,
+        handler: this
+      });
     };
 
     // while dragging
-    DragHandler.prototype.drag = function(e){
+    DragHandler.prototype.drag = function (e) {
 
-      var box = this.getBBox()
-        , p   = this.transformPoint(e)
-        , x   = this.startPoints.box.x + p.x - this.startPoints.point.x
-        , y   = this.startPoints.box.y + p.y - this.startPoints.point.y
-        , c   = this.constraint
-        , gx  = p.x - this.startPoints.point.x
-        , gy  = p.y - this.startPoints.point.y;
+      var box = this.getBBox(),
+        p = this.transformPoint(e),
+        x = this.startPoints.box.x + p.x - this.startPoints.point.x,
+        y = this.startPoints.box.y + p.y - this.startPoints.point.y,
+        c = this.constraint,
+        gx = p.x - this.startPoints.point.x,
+        gy = p.y - this.startPoints.point.y;
 
       this.el.fire('dragmove', {
-          event: e
-        , p: p
-        , m: this.m
-        , handler: this
+        event: e,
+        p: p,
+        m: this.m,
+        handler: this
       });
 
-      if(this.el.event().defaultPrevented) return p
+      if (this.el.event().defaultPrevented) return p
 
       // move the element to its new position, if possible by constraint
       if (typeof c == 'function') {
@@ -27610,7 +27646,8 @@
         } else if (c.maxX != null && x > c.maxX - box.width) {
           x = c.maxX - box.width;
           gx = x - this.startPoints.box.x;
-        } if (c.minY != null && y < c.minY) {
+        }
+        if (c.minY != null && y < c.minY) {
           y = c.minY;
           gy = y - this.startPoints.box.y;
         } else if (c.maxY != null && y > c.maxY - box.height) {
@@ -27625,8 +27662,11 @@
           gy = gy - (gy % c.snapToGrid);
         }
 
-        if(this.el instanceof SVG.G)
-          this.el.matrix(this.startPoints.transform).transform({x:gx, y: gy}, true);
+        if (this.el instanceof SVG.G)
+          this.el.matrix(this.startPoints.transform).transform({
+            x: gx,
+            y: gy
+          }, true);
         else
           this.el.move(x, y);
       }
@@ -27635,13 +27675,18 @@
       return p
     };
 
-    DragHandler.prototype.end = function(e){
+    DragHandler.prototype.end = function (e) {
 
       // final drag
       var p = this.drag(e);
 
       // fire dragend event
-      this.el.fire('dragend', { event: e, p: p, m: this.m, handler: this });
+      this.el.fire('dragend', {
+        event: e,
+        p: p,
+        m: this.m,
+        handler: this
+      });
 
       // unbind events
       SVG.off(window, 'mousemove.drag');
@@ -27655,7 +27700,7 @@
       // Make element draggable
       // Constraint might be an object (as described in readme.md) or a function in the form "function (x, y)" that gets called before every move.
       // The function can return a boolean or an object of the form {x, y}, to which the element will be moved. "False" skips moving, true moves to raw x, y.
-      draggable: function(value, constraint) {
+      draggable: function (value, constraint) {
 
         // Check the parameters and reassign if needed
         if (typeof value == 'function' || typeof value == 'object') {
@@ -27668,7 +27713,7 @@
         // When no parameter is given, value is true
         value = typeof value === 'undefined' ? true : value;
 
-        if(value) dragHandler.init(constraint || {}, value);
+        if (value) dragHandler.init(constraint || {}, value);
         else {
           this.off('mousedown.drag');
           this.off('touchstart.drag');
@@ -27681,25 +27726,29 @@
 
   }).call(undefined);
 
-  (function() {
+  (function () {
 
-  function SelectHandler(el) {
+    function SelectHandler(el) {
 
       this.el = el;
       el.remember('_selectHandler', this);
-      this.pointSelection = {isSelected: false};
-      this.rectSelection = {isSelected: false};
+      this.pointSelection = {
+        isSelected: false
+      };
+      this.rectSelection = {
+        isSelected: false
+      };
 
       // helper list with position settings of each type of point
       this.pointsList = {
-        lt: [ 0, 0 ],
-        rt: [ 'width', 0 ],
-        rb: [ 'width', 'height' ],
-        lb: [ 0, 'height' ],
-        t: [ 'width', 0 ],
-        r: [ 'width', 'height' ],
-        b: [ 'width', 'height' ],
-        l: [ 0, 'height' ]
+        lt: [0, 0],
+        rt: ['width', 0],
+        rb: ['width', 'height'],
+        lb: [0, 'height'],
+        t: ['width', 0],
+        r: ['width', 'height'],
+        b: ['width', 'height'],
+        l: [0, 'height']
       };
 
       // helper function to get point coordinates based on settings above and an object (bbox in our case)
@@ -27717,9 +27766,9 @@
           y: this.pointCoord(settings[1], object, (point === 'r' || point === 'l'))
         }
       };
-  }
+    }
 
-  SelectHandler.prototype.init = function (value, options) {
+    SelectHandler.prototype.init = function (value, options) {
 
       var bbox = this.el.bbox();
       this.options = {};
@@ -27729,10 +27778,10 @@
 
       // Merging the defaults and the options-object together
       for (var i in this.el.selectize.defaults) {
-          this.options[i] = this.el.selectize.defaults[i];
-          if (options[i] !== undefined) {
-              this.options[i] = options[i];
-          }
+        this.options[i] = this.el.selectize.defaults[i];
+        if (options[i] !== undefined) {
+          this.options[i] = options[i];
+        }
       }
 
       // prepare & validate list of points to be added (or excluded)
@@ -27758,7 +27807,7 @@
 
       // intersect correct all points options with users config (exclude unwanted points)
       // ES5 -> NO arrow functions nor Array.includes()
-      this.options.points = [ points, this.options.points ].reduce(
+      this.options.points = [points, this.options.points].reduce(
         function (a, b) {
           return a.filter(
             function (c) {
@@ -27769,7 +27818,7 @@
       );
 
       // exclude pointsExclude, if wanted
-      this.options.points = [ this.options.points, this.options.pointsExclude ].reduce(
+      this.options.points = [this.options.points, this.options.pointsExclude].reduce(
         function (a, b) {
           return a.filter(
             function (c) {
@@ -27785,23 +27834,23 @@
 
       // When deepSelect is enabled and the element is a line/polyline/polygon, draw only points for moving
       if (this.options.deepSelect && ['line', 'polyline', 'polygon'].indexOf(this.el.type) !== -1) {
-          this.selectPoints(value);
+        this.selectPoints(value);
       } else {
-          this.selectRect(value);
+        this.selectRect(value);
       }
 
       this.observe();
       this.cleanup();
 
-  };
+    };
 
-  SelectHandler.prototype.selectPoints = function (value) {
+    SelectHandler.prototype.selectPoints = function (value) {
 
       this.pointSelection.isSelected = value;
 
       // When set is already there we dont have to create one
       if (this.pointSelection.set) {
-          return this;
+        return this;
       }
 
       // Create our set of elements
@@ -27811,96 +27860,103 @@
 
       return this;
 
-  };
+    };
 
-  // create the point-array which contains the 2 points of a line or simply the points-array of polyline/polygon
-  SelectHandler.prototype.getPointArray = function () {
+    // create the point-array which contains the 2 points of a line or simply the points-array of polyline/polygon
+    SelectHandler.prototype.getPointArray = function () {
       var bbox = this.el.bbox();
 
       return this.el.array().valueOf().map(function (el) {
-          return [el[0] - bbox.x, el[1] - bbox.y];
+        return [el[0] - bbox.x, el[1] - bbox.y];
       });
-  };
+    };
 
-  // Draws a points
-  SelectHandler.prototype.drawPoints = function () {
+    // Draws a points
+    SelectHandler.prototype.drawPoints = function () {
 
-      var _this = this, array = this.getPointArray();
+      var _this = this,
+        array = this.getPointArray();
 
       // go through the array of points
       for (var i = 0, len = array.length; i < len; ++i) {
 
-          var curriedEvent = (function (k) {
-              return function (ev) {
-                  ev = ev || window.event;
-                  ev.preventDefault ? ev.preventDefault() : ev.returnValue = false;
-                  ev.stopPropagation();
+        var curriedEvent = (function (k) {
+          return function (ev) {
+            ev = ev || window.event;
+            ev.preventDefault ? ev.preventDefault() : ev.returnValue = false;
+            ev.stopPropagation();
 
-                  var x = ev.pageX || ev.touches[0].pageX;
-                  var y = ev.pageY || ev.touches[0].pageY;
-                  _this.el.fire('point', {x: x, y: y, i: k, event: ev});
-              };
-          })(i);
+            var x = ev.pageX || ev.touches[0].pageX;
+            var y = ev.pageY || ev.touches[0].pageY;
+            _this.el.fire('point', {
+              x: x,
+              y: y,
+              i: k,
+              event: ev
+            });
+          };
+        })(i);
 
-          // add every point to the set
-          // add css-classes and a touchstart-event which fires our event for moving points
-          var point = this.drawPoint(array[i][0], array[i][1])
-                          .addClass(this.options.classPoints)
-                          .addClass(this.options.classPoints + '_point')
-                          .on('touchstart', curriedEvent)
-                          .on('mousedown', curriedEvent);
-          this.pointSelection.set.add(point);
+        // add every point to the set
+        // add css-classes and a touchstart-event which fires our event for moving points
+        var point = this.drawPoint(array[i][0], array[i][1])
+          .addClass(this.options.classPoints)
+          .addClass(this.options.classPoints + '_point')
+          .on('touchstart', curriedEvent)
+          .on('mousedown', curriedEvent);
+        this.pointSelection.set.add(point);
       }
-  };
+    };
 
-  // The function to draw single point
-  SelectHandler.prototype.drawPoint = function (cx, cy) {
+    // The function to draw single point
+    SelectHandler.prototype.drawPoint = function (cx, cy) {
       var pointType = this.options.pointType;
 
       switch (pointType) {
-          case 'circle':
-              return this.drawCircle(cx, cy);
-          case 'rect':
-              return this.drawRect(cx, cy);
-          default:
-              if (typeof pointType === 'function') {
-                  return pointType.call(this, cx, cy);
-              }
+        case 'circle':
+          return this.drawCircle(cx, cy);
+        case 'rect':
+          return this.drawRect(cx, cy);
+        default:
+          if (typeof pointType === 'function') {
+            return pointType.call(this, cx, cy);
+          }
 
-              throw new Error('Unknown ' + pointType + ' point type!');
+          throw new Error('Unknown ' + pointType + ' point type!');
       }
-  };
+    };
 
-  // The function to draw the circle point
-  SelectHandler.prototype.drawCircle = function (cx, cy) {
+    // The function to draw the circle point
+    SelectHandler.prototype.drawCircle = function (cx, cy) {
       return this.nested.circle(this.options.pointSize)
-                        .center(cx, cy);
-  };
+        .center(cx, cy);
+    };
 
-  // The function to draw the rect point
-  SelectHandler.prototype.drawRect = function (cx, cy) {
+    // The function to draw the rect point
+    SelectHandler.prototype.drawRect = function (cx, cy) {
       return this.nested.rect(this.options.pointSize, this.options.pointSize)
-                        .center(cx, cy);
-  };
+        .center(cx, cy);
+    };
 
-  // every time a point is moved, we have to update the positions of our point
-  SelectHandler.prototype.updatePointSelection = function () {
+    // every time a point is moved, we have to update the positions of our point
+    SelectHandler.prototype.updatePointSelection = function () {
       var array = this.getPointArray();
 
       this.pointSelection.set.each(function (i) {
-          if (this.cx() === array[i][0] && this.cy() === array[i][1]) {
-              return;
-          }
-          this.center(array[i][0], array[i][1]);
+        if (this.cx() === array[i][0] && this.cy() === array[i][1]) {
+          return;
+        }
+        this.center(array[i][0], array[i][1]);
       });
-  };
+    };
 
-  SelectHandler.prototype.updateRectSelection = function () {
-      var _this = this, bbox = this.el.bbox();
+    SelectHandler.prototype.updateRectSelection = function () {
+      var _this = this,
+        bbox = this.el.bbox();
 
       this.rectSelection.set.get(0).attr({
-          width: bbox.width,
-          height: bbox.height
+        width: bbox.width,
+        height: bbox.height
       });
 
       // set.get(1) is always in the upper left corner. no need to move it
@@ -27913,15 +27969,16 @@
       }
 
       if (this.options.rotationPoint) {
-          var length = this.rectSelection.set.length();
+        var length = this.rectSelection.set.length();
 
-          this.rectSelection.set.get(length - 1).center(bbox.width / 2, 20);
+        this.rectSelection.set.get(length - 1).center(bbox.width / 2, 20);
       }
-  };
+    };
 
-  SelectHandler.prototype.selectRect = function (value) {
+    SelectHandler.prototype.selectRect = function (value) {
 
-      var _this = this, bbox = this.el.bbox();
+      var _this = this,
+        bbox = this.el.bbox();
 
       this.rectSelection.isSelected = value;
 
@@ -27930,657 +27987,703 @@
 
       // helperFunction to create a mouse-down function which triggers the event specified in `eventName`
       function getMoseDownFunc(eventName) {
-          return function (ev) {
-              ev = ev || window.event;
-              ev.preventDefault ? ev.preventDefault() : ev.returnValue = false;
-              ev.stopPropagation();
+        return function (ev) {
+          ev = ev || window.event;
+          ev.preventDefault ? ev.preventDefault() : ev.returnValue = false;
+          ev.stopPropagation();
 
-              var x = ev.pageX || ev.touches[0].pageX;
-              var y = ev.pageY || ev.touches[0].pageY;
-              _this.el.fire(eventName, {x: x, y: y, event: ev});
-          };
+          var x = ev.pageX || ev.touches[0].pageX;
+          var y = ev.pageY || ev.touches[0].pageY;
+          _this.el.fire(eventName, {
+            x: x,
+            y: y,
+            event: ev
+          });
+        };
       }
 
       // create the selection-rectangle and add the css-class
       if (!this.rectSelection.set.get(0)) {
-          this.rectSelection.set.add(this.nested.rect(bbox.width, bbox.height).addClass(this.options.classRect));
+        this.rectSelection.set.add(this.nested.rect(bbox.width, bbox.height).addClass(this.options.classRect));
       }
 
       // Draw Points at the edges, if enabled
       if (this.options.points.length && this.rectSelection.set.length() < 2) {
-          var ename ="touchstart", mname = "mousedown";
+        var ename = "touchstart",
+          mname = "mousedown";
 
-          this.options.points.map(function (point, index) {
-              var coords = _this.pointCoords(point, bbox);
+        this.options.points.map(function (point, index) {
+          var coords = _this.pointCoords(point, bbox);
 
-              var pointElement = _this.drawPoint(coords.x, coords.y)
-                                      .attr('class', _this.options.classPoints + '_' + point)
-                                      .on(mname, getMoseDownFunc(point))
-                                      .on(ename, getMoseDownFunc(point));
-              _this.rectSelection.set.add(pointElement);
-          });
+          var pointElement = _this.drawPoint(coords.x, coords.y)
+            .attr('class', _this.options.classPoints + '_' + point)
+            .on(mname, getMoseDownFunc(point))
+            .on(ename, getMoseDownFunc(point));
+          _this.rectSelection.set.add(pointElement);
+        });
 
-          this.rectSelection.set.each(function () {
-              this.addClass(_this.options.classPoints);
-          });
+        this.rectSelection.set.each(function () {
+          this.addClass(_this.options.classPoints);
+        });
       }
 
       // draw rotationPint, if enabled
       if (this.options.rotationPoint && ((this.options.points && !this.rectSelection.set.get(9)) || (!this.options.points && !this.rectSelection.set.get(1)))) {
 
-          var curriedEvent = function (ev) {
-              ev = ev || window.event;
-              ev.preventDefault ? ev.preventDefault() : ev.returnValue = false;
-              ev.stopPropagation();
+        var curriedEvent = function (ev) {
+          ev = ev || window.event;
+          ev.preventDefault ? ev.preventDefault() : ev.returnValue = false;
+          ev.stopPropagation();
 
-              var x = ev.pageX || ev.touches[0].pageX;
-              var y = ev.pageY || ev.touches[0].pageY;
-              _this.el.fire('rot', {x: x, y: y, event: ev});
-          };
+          var x = ev.pageX || ev.touches[0].pageX;
+          var y = ev.pageY || ev.touches[0].pageY;
+          _this.el.fire('rot', {
+            x: x,
+            y: y,
+            event: ev
+          });
+        };
 
-          var pointElement = this.drawPoint(bbox.width / 2, 20)
-                                .attr('class', this.options.classPoints + '_rot')
-                                .on("touchstart", curriedEvent)
-                                .on("mousedown", curriedEvent);
-          this.rectSelection.set.add(pointElement);
+        var pointElement = this.drawPoint(bbox.width / 2, 20)
+          .attr('class', this.options.classPoints + '_rot')
+          .on("touchstart", curriedEvent)
+          .on("mousedown", curriedEvent);
+        this.rectSelection.set.add(pointElement);
       }
 
-  };
+    };
 
-  SelectHandler.prototype.handler = function () {
+    SelectHandler.prototype.handler = function () {
 
       var bbox = this.el.bbox();
       this.nested.matrix(new SVG.Matrix(this.el).translate(bbox.x, bbox.y));
 
       if (this.rectSelection.isSelected) {
-          this.updateRectSelection();
+        this.updateRectSelection();
       }
 
       if (this.pointSelection.isSelected) {
-          this.updatePointSelection();
+        this.updatePointSelection();
       }
 
-  };
+    };
 
-  SelectHandler.prototype.observe = function () {
+    SelectHandler.prototype.observe = function () {
       var _this = this;
 
       if (MutationObserver) {
-          if (this.rectSelection.isSelected || this.pointSelection.isSelected) {
-              this.observerInst = this.observerInst || new MutationObserver(function () {
-                  _this.handler();
-              });
-              this.observerInst.observe(this.el.node, {attributes: true});
-          } else {
-              try {
-                  this.observerInst.disconnect();
-                  delete this.observerInst;
-              } catch (e) {
-              }
-          }
+        if (this.rectSelection.isSelected || this.pointSelection.isSelected) {
+          this.observerInst = this.observerInst || new MutationObserver(function () {
+            _this.handler();
+          });
+          this.observerInst.observe(this.el.node, {
+            attributes: true
+          });
+        } else {
+          try {
+            this.observerInst.disconnect();
+            delete this.observerInst;
+          } catch (e) {}
+        }
       } else {
-          this.el.off('DOMAttrModified.select');
+        this.el.off('DOMAttrModified.select');
 
-          if (this.rectSelection.isSelected || this.pointSelection.isSelected) {
-              this.el.on('DOMAttrModified.select', function () {
-                  _this.handler();
-              });
-          }
+        if (this.rectSelection.isSelected || this.pointSelection.isSelected) {
+          this.el.on('DOMAttrModified.select', function () {
+            _this.handler();
+          });
+        }
       }
-  };
+    };
 
-  SelectHandler.prototype.cleanup = function () {
+    SelectHandler.prototype.cleanup = function () {
 
       //var _this = this;
 
       if (!this.rectSelection.isSelected && this.rectSelection.set) {
-          // stop watching the element, remove the selection
-          this.rectSelection.set.each(function () {
-              this.remove();
-          });
+        // stop watching the element, remove the selection
+        this.rectSelection.set.each(function () {
+          this.remove();
+        });
 
-          this.rectSelection.set.clear();
-          delete this.rectSelection.set;
+        this.rectSelection.set.clear();
+        delete this.rectSelection.set;
       }
 
       if (!this.pointSelection.isSelected && this.pointSelection.set) {
-          // Remove all points, clear the set, stop watching the element
-          this.pointSelection.set.each(function () {
-              this.remove();
-          });
+        // Remove all points, clear the set, stop watching the element
+        this.pointSelection.set.each(function () {
+          this.remove();
+        });
 
-          this.pointSelection.set.clear();
-          delete this.pointSelection.set;
+        this.pointSelection.set.clear();
+        delete this.pointSelection.set;
       }
 
       if (!this.pointSelection.isSelected && !this.rectSelection.isSelected) {
-          this.nested.remove();
-          delete this.nested;
+        this.nested.remove();
+        delete this.nested;
 
       }
-  };
+    };
 
 
-  SVG.extend(SVG.Element, {
+    SVG.extend(SVG.Element, {
       // Select element with mouse
       selectize: function (value, options) {
 
-          // Check the parameters and reassign if needed
-          if (typeof value === 'object') {
-              options = value;
-              value = true;
-          }
+        // Check the parameters and reassign if needed
+        if (typeof value === 'object') {
+          options = value;
+          value = true;
+        }
 
-          var selectHandler = this.remember('_selectHandler') || new SelectHandler(this);
+        var selectHandler = this.remember('_selectHandler') || new SelectHandler(this);
 
-          selectHandler.init(value === undefined ? true : value, options || {});
+        selectHandler.init(value === undefined ? true : value, options || {});
 
-          return this;
+        return this;
 
       }
-  });
+    });
 
-  SVG.Element.prototype.selectize.defaults = {
-      points: ['lt', 'rt', 'rb', 'lb', 't', 'r', 'b', 'l'],    // which points to draw, default all
-      pointsExclude: [],                       // easier option if to exclude few than rewrite all
-      classRect: 'svg_select_boundingRect',    // Css-class added to the rect
-      classPoints: 'svg_select_points',        // Css-class added to the points
-      pointSize: 7,                            // size of point
-      rotationPoint: true,                     // If true, rotation point is drawn. Needed for rotation!
-      deepSelect: false,                       // If true, moving of single points is possible (only line, polyline, polyon)
-      pointType: 'circle'                      // Point type: circle or rect, default circle
-  };
+    SVG.Element.prototype.selectize.defaults = {
+      points: ['lt', 'rt', 'rb', 'lb', 't', 'r', 'b', 'l'], // which points to draw, default all
+      pointsExclude: [], // easier option if to exclude few than rewrite all
+      classRect: 'svg_select_boundingRect', // Css-class added to the rect
+      classPoints: 'svg_select_points', // Css-class added to the points
+      pointSize: 7, // size of point
+      rotationPoint: true, // If true, rotation point is drawn. Needed for rotation!
+      deepSelect: false, // If true, moving of single points is possible (only line, polyline, polyon)
+      pointType: 'circle' // Point type: circle or rect, default circle
+    };
   }());
 
-  (function() {
   (function () {
+    (function () {
 
       function ResizeHandler(el) {
 
-          el.remember('_resizeHandler', this);
+        el.remember('_resizeHandler', this);
 
-          this.el = el;
-          this.parameters = {};
-          this.lastUpdateCall = null;
-          this.p = el.doc().node.createSVGPoint();
+        this.el = el;
+        this.parameters = {};
+        this.lastUpdateCall = null;
+        this.p = el.doc().node.createSVGPoint();
       }
 
-      ResizeHandler.prototype.transformPoint = function(x, y, m){
+      ResizeHandler.prototype.transformPoint = function (x, y, m) {
 
-          this.p.x = x - (this.offset.x - window.pageXOffset);
-          this.p.y = y - (this.offset.y - window.pageYOffset);
+        this.p.x = x - (this.offset.x - window.pageXOffset);
+        this.p.y = y - (this.offset.y - window.pageYOffset);
 
-          return this.p.matrixTransform(m || this.m);
+        return this.p.matrixTransform(m || this.m);
 
       };
 
-      ResizeHandler.prototype._extractPosition = function(event) {
-          // Extract a position from a mouse/touch event.
-          // Returns { x: .., y: .. }
-          return {
-              x: event.clientX != null ? event.clientX : event.touches[0].clientX,
-              y: event.clientY != null ? event.clientY : event.touches[0].clientY
-          }
+      ResizeHandler.prototype._extractPosition = function (event) {
+        // Extract a position from a mouse/touch event.
+        // Returns { x: .., y: .. }
+        return {
+          x: event.clientX != null ? event.clientX : event.touches[0].clientX,
+          y: event.clientY != null ? event.clientY : event.touches[0].clientY
+        }
       };
 
       ResizeHandler.prototype.init = function (options) {
 
-          var _this = this;
+        var _this = this;
 
-          this.stop();
+        this.stop();
 
-          if (options === 'stop') {
-              return;
+        if (options === 'stop') {
+          return;
+        }
+
+        this.options = {};
+
+        // Merge options and defaults
+        for (var i in this.el.resize.defaults) {
+          this.options[i] = this.el.resize.defaults[i];
+          if (typeof options[i] !== 'undefined') {
+            this.options[i] = options[i];
           }
+        }
 
-          this.options = {};
+        // We listen to all these events which are specifying different edges
+        this.el.on('lt.resize', function (e) {
+          _this.resize(e || window.event);
+        }); // Left-Top
+        this.el.on('rt.resize', function (e) {
+          _this.resize(e || window.event);
+        }); // Right-Top
+        this.el.on('rb.resize', function (e) {
+          _this.resize(e || window.event);
+        }); // Right-Bottom
+        this.el.on('lb.resize', function (e) {
+          _this.resize(e || window.event);
+        }); // Left-Bottom
 
-          // Merge options and defaults
-          for (var i in this.el.resize.defaults) {
-              this.options[i] = this.el.resize.defaults[i];
-              if (typeof options[i] !== 'undefined') {
-                  this.options[i] = options[i];
-              }
-          }
+        this.el.on('t.resize', function (e) {
+          _this.resize(e || window.event);
+        }); // Top
+        this.el.on('r.resize', function (e) {
+          _this.resize(e || window.event);
+        }); // Right
+        this.el.on('b.resize', function (e) {
+          _this.resize(e || window.event);
+        }); // Bottom
+        this.el.on('l.resize', function (e) {
+          _this.resize(e || window.event);
+        }); // Left
 
-          // We listen to all these events which are specifying different edges
-          this.el.on('lt.resize', function(e){ _this.resize(e || window.event); });  // Left-Top
-          this.el.on('rt.resize', function(e){ _this.resize(e || window.event); });  // Right-Top
-          this.el.on('rb.resize', function(e){ _this.resize(e || window.event); });  // Right-Bottom
-          this.el.on('lb.resize', function(e){ _this.resize(e || window.event); });  // Left-Bottom
+        this.el.on('rot.resize', function (e) {
+          _this.resize(e || window.event);
+        }); // Rotation
 
-          this.el.on('t.resize', function(e){ _this.resize(e || window.event); });   // Top
-          this.el.on('r.resize', function(e){ _this.resize(e || window.event); });   // Right
-          this.el.on('b.resize', function(e){ _this.resize(e || window.event); });   // Bottom
-          this.el.on('l.resize', function(e){ _this.resize(e || window.event); });   // Left
+        this.el.on('point.resize', function (e) {
+          _this.resize(e || window.event);
+        }); // Point-Moving
 
-          this.el.on('rot.resize', function(e){ _this.resize(e || window.event); }); // Rotation
-
-          this.el.on('point.resize', function(e){ _this.resize(e || window.event); }); // Point-Moving
-
-          // This call ensures, that the plugin reacts to a change of snapToGrid immediately
-          this.update();
+        // This call ensures, that the plugin reacts to a change of snapToGrid immediately
+        this.update();
 
       };
 
-      ResizeHandler.prototype.stop = function(){
-          this.el.off('lt.resize');
-          this.el.off('rt.resize');
-          this.el.off('rb.resize');
-          this.el.off('lb.resize');
+      ResizeHandler.prototype.stop = function () {
+        this.el.off('lt.resize');
+        this.el.off('rt.resize');
+        this.el.off('rb.resize');
+        this.el.off('lb.resize');
 
-          this.el.off('t.resize');
-          this.el.off('r.resize');
-          this.el.off('b.resize');
-          this.el.off('l.resize');
+        this.el.off('t.resize');
+        this.el.off('r.resize');
+        this.el.off('b.resize');
+        this.el.off('l.resize');
 
-          this.el.off('rot.resize');
+        this.el.off('rot.resize');
 
-          this.el.off('point.resize');
+        this.el.off('point.resize');
 
-          return this;
+        return this;
       };
 
       ResizeHandler.prototype.resize = function (event) {
 
-          var _this = this;
+        var _this = this;
 
-          this.m = this.el.node.getScreenCTM().inverse();
-          this.offset = { x: window.pageXOffset, y: window.pageYOffset };
+        this.m = this.el.node.getScreenCTM().inverse();
+        this.offset = {
+          x: window.pageXOffset,
+          y: window.pageYOffset
+        };
 
-          var txPt = this._extractPosition(event.detail.event);
-          this.parameters = {
-              type: this.el.type, // the type of element
-              p: this.transformPoint(txPt.x, txPt.y),
-              x: event.detail.x,      // x-position of the mouse when resizing started
-              y: event.detail.y,      // y-position of the mouse when resizing started
-              box: this.el.bbox(),    // The bounding-box of the element
-              rotation: this.el.transform().rotation  // The current rotation of the element
-          };
+        var txPt = this._extractPosition(event.detail.event);
+        this.parameters = {
+          type: this.el.type, // the type of element
+          p: this.transformPoint(txPt.x, txPt.y),
+          x: event.detail.x, // x-position of the mouse when resizing started
+          y: event.detail.y, // y-position of the mouse when resizing started
+          box: this.el.bbox(), // The bounding-box of the element
+          rotation: this.el.transform().rotation // The current rotation of the element
+        };
 
-          // Add font-size parameter if the element type is text
-          if (this.el.type === "text") {
-              this.parameters.fontSize = this.el.attr()["font-size"];
-          }
+        // Add font-size parameter if the element type is text
+        if (this.el.type === "text") {
+          this.parameters.fontSize = this.el.attr()["font-size"];
+        }
 
-          // the i-param in the event holds the index of the point which is moved, when using `deepSelect`
-          if (event.detail.i !== undefined) {
+        // the i-param in the event holds the index of the point which is moved, when using `deepSelect`
+        if (event.detail.i !== undefined) {
 
-              // get the point array
+          // get the point array
+          var array = this.el.array().valueOf();
+
+          // Save the index and the point which is moved
+          this.parameters.i = event.detail.i;
+          this.parameters.pointCoords = [array[event.detail.i][0], array[event.detail.i][1]];
+        }
+
+        // Lets check which edge of the bounding-box was clicked and resize the this.el according to this
+        switch (event.type) {
+
+          // Left-Top-Edge
+          case 'lt':
+            // We build a calculating function for every case which gives us the new position of the this.el
+            this.calc = function (diffX, diffY) {
+              // The procedure is always the same
+              // First we snap the edge to the given grid (snapping to 1px grid is normal resizing)
+              var snap = this.snapToGrid(diffX, diffY);
+
+              // Now we check if the new height and width still valid (> 0)
+              if (this.parameters.box.width - snap[0] > 0 && this.parameters.box.height - snap[1] > 0) {
+                // ...if valid, we resize the this.el (which can include moving because the coord-system starts at the left-top and this edge is moving sometimes when resized)
+
+                /*
+                 * but first check if the element is text box, so we can change the font size instead of
+                 * the width and height
+                 */
+
+                if (this.parameters.type === "text") {
+                  this.el.move(this.parameters.box.x + snap[0], this.parameters.box.y);
+                  this.el.attr("font-size", this.parameters.fontSize - snap[0]);
+                  return;
+                }
+
+                snap = this.checkAspectRatio(snap);
+
+                this.el.move(this.parameters.box.x + snap[0], this.parameters.box.y + snap[1]).size(this.parameters.box.width - snap[0], this.parameters.box.height - snap[1]);
+              }
+            };
+            break;
+
+            // Right-Top
+          case 'rt':
+            // s.a.
+            this.calc = function (diffX, diffY) {
+              var snap = this.snapToGrid(diffX, diffY, 1 << 1);
+              if (this.parameters.box.width + snap[0] > 0 && this.parameters.box.height - snap[1] > 0) {
+                if (this.parameters.type === "text") {
+                  this.el.move(this.parameters.box.x - snap[0], this.parameters.box.y);
+                  this.el.attr("font-size", this.parameters.fontSize + snap[0]);
+                  return;
+                }
+
+                snap = this.checkAspectRatio(snap, true);
+
+                this.el.move(this.parameters.box.x, this.parameters.box.y + snap[1]).size(this.parameters.box.width + snap[0], this.parameters.box.height - snap[1]);
+              }
+            };
+            break;
+
+            // Right-Bottom
+          case 'rb':
+            // s.a.
+            this.calc = function (diffX, diffY) {
+              var snap = this.snapToGrid(diffX, diffY, 0);
+              if (this.parameters.box.width + snap[0] > 0 && this.parameters.box.height + snap[1] > 0) {
+                if (this.parameters.type === "text") {
+                  this.el.move(this.parameters.box.x - snap[0], this.parameters.box.y);
+                  this.el.attr("font-size", this.parameters.fontSize + snap[0]);
+                  return;
+                }
+
+                snap = this.checkAspectRatio(snap);
+
+                this.el.move(this.parameters.box.x, this.parameters.box.y).size(this.parameters.box.width + snap[0], this.parameters.box.height + snap[1]);
+              }
+            };
+            break;
+
+            // Left-Bottom
+          case 'lb':
+            // s.a.
+            this.calc = function (diffX, diffY) {
+              var snap = this.snapToGrid(diffX, diffY, 1);
+              if (this.parameters.box.width - snap[0] > 0 && this.parameters.box.height + snap[1] > 0) {
+                if (this.parameters.type === "text") {
+                  this.el.move(this.parameters.box.x + snap[0], this.parameters.box.y);
+                  this.el.attr("font-size", this.parameters.fontSize - snap[0]);
+                  return;
+                }
+
+                snap = this.checkAspectRatio(snap, true);
+
+                this.el.move(this.parameters.box.x + snap[0], this.parameters.box.y).size(this.parameters.box.width - snap[0], this.parameters.box.height + snap[1]);
+              }
+            };
+            break;
+
+            // Top
+          case 't':
+            // s.a.
+            this.calc = function (diffX, diffY) {
+              var snap = this.snapToGrid(diffX, diffY, 1 << 1);
+              if (this.parameters.box.height - snap[1] > 0) {
+                // Disable the font-resizing if it is not from the corner of bounding-box
+                if (this.parameters.type === "text") {
+                  return;
+                }
+
+                this.el.move(this.parameters.box.x, this.parameters.box.y + snap[1]).height(this.parameters.box.height - snap[1]);
+              }
+            };
+            break;
+
+            // Right
+          case 'r':
+            // s.a.
+            this.calc = function (diffX, diffY) {
+              var snap = this.snapToGrid(diffX, diffY, 0);
+              if (this.parameters.box.width + snap[0] > 0) {
+                if (this.parameters.type === "text") {
+                  return;
+                }
+
+                this.el.move(this.parameters.box.x, this.parameters.box.y).width(this.parameters.box.width + snap[0]);
+              }
+            };
+            break;
+
+            // Bottom
+          case 'b':
+            // s.a.
+            this.calc = function (diffX, diffY) {
+              var snap = this.snapToGrid(diffX, diffY, 0);
+              if (this.parameters.box.height + snap[1] > 0) {
+                if (this.parameters.type === "text") {
+                  return;
+                }
+
+                this.el.move(this.parameters.box.x, this.parameters.box.y).height(this.parameters.box.height + snap[1]);
+              }
+            };
+            break;
+
+            // Left
+          case 'l':
+            // s.a.
+            this.calc = function (diffX, diffY) {
+              var snap = this.snapToGrid(diffX, diffY, 1);
+              if (this.parameters.box.width - snap[0] > 0) {
+                if (this.parameters.type === "text") {
+                  return;
+                }
+
+                this.el.move(this.parameters.box.x + snap[0], this.parameters.box.y).width(this.parameters.box.width - snap[0]);
+              }
+            };
+            break;
+
+            // Rotation
+          case 'rot':
+            // s.a.
+            this.calc = function (diffX, diffY) {
+
+              // yes this is kinda stupid but we need the mouse coords back...
+              var current = {
+                x: diffX + this.parameters.p.x,
+                y: diffY + this.parameters.p.y
+              };
+
+              // start minus middle
+              var sAngle = Math.atan2((this.parameters.p.y - this.parameters.box.y - this.parameters.box.height / 2), (this.parameters.p.x - this.parameters.box.x - this.parameters.box.width / 2));
+
+              // end minus middle
+              var pAngle = Math.atan2((current.y - this.parameters.box.y - this.parameters.box.height / 2), (current.x - this.parameters.box.x - this.parameters.box.width / 2));
+
+              var angle = this.parameters.rotation + (pAngle - sAngle) * 180 / Math.PI + this.options.snapToAngle / 2;
+
+              // We have to move the element to the center of the box first and change the rotation afterwards
+              // because rotation always works around a rotation-center, which is changed when moving the element
+              // We also set the new rotation center to the center of the box.
+              this.el.center(this.parameters.box.cx, this.parameters.box.cy).rotate(angle - (angle % this.options.snapToAngle), this.parameters.box.cx, this.parameters.box.cy);
+            };
+            break;
+
+            // Moving one single Point (needed when an element is deepSelected which means you can move every single point of the object)
+          case 'point':
+            this.calc = function (diffX, diffY) {
+
+              // Snapping the point to the grid
+              var snap = this.snapToGrid(diffX, diffY, this.parameters.pointCoords[0], this.parameters.pointCoords[1]);
+
+              // Get the point array
               var array = this.el.array().valueOf();
 
-              // Save the index and the point which is moved
-              this.parameters.i = event.detail.i;
-              this.parameters.pointCoords = [array[event.detail.i][0], array[event.detail.i][1]];
-          }
+              // Changing the moved point in the array
+              array[this.parameters.i][0] = this.parameters.pointCoords[0] + snap[0];
+              array[this.parameters.i][1] = this.parameters.pointCoords[1] + snap[1];
 
-          // Lets check which edge of the bounding-box was clicked and resize the this.el according to this
-          switch (event.type) {
+              // And plot the new this.el
+              this.el.plot(array);
+            };
+        }
 
-              // Left-Top-Edge
-              case 'lt':
-                  // We build a calculating function for every case which gives us the new position of the this.el
-                  this.calc = function (diffX, diffY) {
-                      // The procedure is always the same
-                      // First we snap the edge to the given grid (snapping to 1px grid is normal resizing)
-                      var snap = this.snapToGrid(diffX, diffY);
-
-                      // Now we check if the new height and width still valid (> 0)
-                      if (this.parameters.box.width - snap[0] > 0 && this.parameters.box.height - snap[1] > 0) {
-                          // ...if valid, we resize the this.el (which can include moving because the coord-system starts at the left-top and this edge is moving sometimes when resized)
-
-                          /*
-                           * but first check if the element is text box, so we can change the font size instead of
-                           * the width and height
-                           */
-
-                          if (this.parameters.type === "text") {
-                              this.el.move(this.parameters.box.x + snap[0], this.parameters.box.y);
-                              this.el.attr("font-size", this.parameters.fontSize - snap[0]);
-                              return;
-                          }
-
-                          snap = this.checkAspectRatio(snap);
-
-                          this.el.move(this.parameters.box.x + snap[0], this.parameters.box.y + snap[1]).size(this.parameters.box.width - snap[0], this.parameters.box.height - snap[1]);
-                      }
-                  };
-                  break;
-
-              // Right-Top
-              case 'rt':
-                  // s.a.
-                  this.calc = function (diffX, diffY) {
-                      var snap = this.snapToGrid(diffX, diffY, 1 << 1);
-                      if (this.parameters.box.width + snap[0] > 0 && this.parameters.box.height - snap[1] > 0) {
-                          if (this.parameters.type === "text") {
-                              this.el.move(this.parameters.box.x - snap[0], this.parameters.box.y);
-                              this.el.attr("font-size", this.parameters.fontSize + snap[0]);
-                              return;
-                          }
-
-                          snap = this.checkAspectRatio(snap, true);
-
-                          this.el.move(this.parameters.box.x, this.parameters.box.y + snap[1]).size(this.parameters.box.width + snap[0], this.parameters.box.height - snap[1]);
-                      }
-                  };
-                  break;
-
-              // Right-Bottom
-              case 'rb':
-                  // s.a.
-                  this.calc = function (diffX, diffY) {
-                      var snap = this.snapToGrid(diffX, diffY, 0);
-                      if (this.parameters.box.width + snap[0] > 0 && this.parameters.box.height + snap[1] > 0) {
-                          if (this.parameters.type === "text") {
-                              this.el.move(this.parameters.box.x - snap[0], this.parameters.box.y);
-                              this.el.attr("font-size", this.parameters.fontSize + snap[0]);
-                              return;
-                          }
-
-                          snap = this.checkAspectRatio(snap);
-
-                          this.el.move(this.parameters.box.x, this.parameters.box.y).size(this.parameters.box.width + snap[0], this.parameters.box.height + snap[1]);
-                      }
-                  };
-                  break;
-
-              // Left-Bottom
-              case 'lb':
-                  // s.a.
-                  this.calc = function (diffX, diffY) {
-                      var snap = this.snapToGrid(diffX, diffY, 1);
-                      if (this.parameters.box.width - snap[0] > 0 && this.parameters.box.height + snap[1] > 0) {
-                          if (this.parameters.type === "text") {
-                              this.el.move(this.parameters.box.x + snap[0], this.parameters.box.y);
-                              this.el.attr("font-size", this.parameters.fontSize - snap[0]);
-                              return;
-                          }
-
-                          snap = this.checkAspectRatio(snap, true);
-
-                          this.el.move(this.parameters.box.x + snap[0], this.parameters.box.y).size(this.parameters.box.width - snap[0], this.parameters.box.height + snap[1]);
-                      }
-                  };
-                  break;
-
-              // Top
-              case 't':
-                  // s.a.
-                  this.calc = function (diffX, diffY) {
-                      var snap = this.snapToGrid(diffX, diffY, 1 << 1);
-                      if (this.parameters.box.height - snap[1] > 0) {
-                          // Disable the font-resizing if it is not from the corner of bounding-box
-                          if (this.parameters.type === "text") {
-                              return;
-                          }
-
-                          this.el.move(this.parameters.box.x, this.parameters.box.y + snap[1]).height(this.parameters.box.height - snap[1]);
-                      }
-                  };
-                  break;
-
-              // Right
-              case 'r':
-                  // s.a.
-                  this.calc = function (diffX, diffY) {
-                      var snap = this.snapToGrid(diffX, diffY, 0);
-                      if (this.parameters.box.width + snap[0] > 0) {
-                          if (this.parameters.type === "text") {
-                              return;
-                          }
-
-                          this.el.move(this.parameters.box.x, this.parameters.box.y).width(this.parameters.box.width + snap[0]);
-                      }
-                  };
-                  break;
-
-              // Bottom
-              case 'b':
-                  // s.a.
-                  this.calc = function (diffX, diffY) {
-                      var snap = this.snapToGrid(diffX, diffY, 0);
-                      if (this.parameters.box.height + snap[1] > 0) {
-                          if (this.parameters.type === "text") {
-                              return;
-                          }
-
-                          this.el.move(this.parameters.box.x, this.parameters.box.y).height(this.parameters.box.height + snap[1]);
-                      }
-                  };
-                  break;
-
-              // Left
-              case 'l':
-                  // s.a.
-                  this.calc = function (diffX, diffY) {
-                      var snap = this.snapToGrid(diffX, diffY, 1);
-                      if (this.parameters.box.width - snap[0] > 0) {
-                          if (this.parameters.type === "text") {
-                              return;
-                          }
-
-                          this.el.move(this.parameters.box.x + snap[0], this.parameters.box.y).width(this.parameters.box.width - snap[0]);
-                      }
-                  };
-                  break;
-
-              // Rotation
-              case 'rot':
-                  // s.a.
-                  this.calc = function (diffX, diffY) {
-
-                      // yes this is kinda stupid but we need the mouse coords back...
-                      var current = {x: diffX + this.parameters.p.x, y: diffY + this.parameters.p.y};
-
-                      // start minus middle
-                      var sAngle = Math.atan2((this.parameters.p.y - this.parameters.box.y - this.parameters.box.height / 2), (this.parameters.p.x - this.parameters.box.x - this.parameters.box.width / 2));
-
-                      // end minus middle
-                      var pAngle = Math.atan2((current.y - this.parameters.box.y - this.parameters.box.height / 2), (current.x - this.parameters.box.x - this.parameters.box.width / 2));
-
-                      var angle = this.parameters.rotation + (pAngle - sAngle) * 180 / Math.PI + this.options.snapToAngle / 2;
-
-                      // We have to move the element to the center of the box first and change the rotation afterwards
-                      // because rotation always works around a rotation-center, which is changed when moving the element
-                      // We also set the new rotation center to the center of the box.
-                      this.el.center(this.parameters.box.cx, this.parameters.box.cy).rotate(angle - (angle % this.options.snapToAngle), this.parameters.box.cx, this.parameters.box.cy);
-                  };
-                  break;
-
-              // Moving one single Point (needed when an element is deepSelected which means you can move every single point of the object)
-              case 'point':
-                  this.calc = function (diffX, diffY) {
-
-                      // Snapping the point to the grid
-                      var snap = this.snapToGrid(diffX, diffY, this.parameters.pointCoords[0], this.parameters.pointCoords[1]);
-
-                      // Get the point array
-                      var array = this.el.array().valueOf();
-
-                      // Changing the moved point in the array
-                      array[this.parameters.i][0] = this.parameters.pointCoords[0] + snap[0];
-                      array[this.parameters.i][1] = this.parameters.pointCoords[1] + snap[1];
-
-                      // And plot the new this.el
-                      this.el.plot(array);
-                  };
-          }
-
-          this.el.fire('resizestart', {dx: this.parameters.x, dy: this.parameters.y, event: event});
-          // When resizing started, we have to register events for...
-          // Touches.
-          SVG.on(window, 'touchmove.resize', function(e) {
-              _this.update(e || window.event);
-          });
-          SVG.on(window, 'touchend.resize', function() {
-              _this.done();
-          });
-          // Mouse.
-          SVG.on(window, 'mousemove.resize', function (e) {
-              _this.update(e || window.event);
-          });
-          SVG.on(window, 'mouseup.resize', function () {
-              _this.done();
-          });
+        this.el.fire('resizestart', {
+          dx: this.parameters.x,
+          dy: this.parameters.y,
+          event: event
+        });
+        // When resizing started, we have to register events for...
+        // Touches.
+        SVG.on(window, 'touchmove.resize', function (e) {
+          _this.update(e || window.event);
+        });
+        SVG.on(window, 'touchend.resize', function () {
+          _this.done();
+        });
+        // Mouse.
+        SVG.on(window, 'mousemove.resize', function (e) {
+          _this.update(e || window.event);
+        });
+        SVG.on(window, 'mouseup.resize', function () {
+          _this.done();
+        });
 
       };
 
       // The update-function redraws the element every time the mouse is moving
       ResizeHandler.prototype.update = function (event) {
 
-          if (!event) {
-              if (this.lastUpdateCall) {
-                  this.calc(this.lastUpdateCall[0], this.lastUpdateCall[1]);
-              }
-              return;
+        if (!event) {
+          if (this.lastUpdateCall) {
+            this.calc(this.lastUpdateCall[0], this.lastUpdateCall[1]);
           }
+          return;
+        }
 
-          // Calculate the difference between the mouseposition at start and now
-          var txPt = this._extractPosition(event);
-          var p = this.transformPoint(txPt.x, txPt.y);
+        // Calculate the difference between the mouseposition at start and now
+        var txPt = this._extractPosition(event);
+        var p = this.transformPoint(txPt.x, txPt.y);
 
-          var diffX = p.x - this.parameters.p.x,
-              diffY = p.y - this.parameters.p.y;
+        var diffX = p.x - this.parameters.p.x,
+          diffY = p.y - this.parameters.p.y;
 
-          this.lastUpdateCall = [diffX, diffY];
+        this.lastUpdateCall = [diffX, diffY];
 
-          // Calculate the new position and height / width of the element
-          this.calc(diffX, diffY);
+        // Calculate the new position and height / width of the element
+        this.calc(diffX, diffY);
 
-         // Emit an event to say we have changed.
-          this.el.fire('resizing', {dx: diffX, dy: diffY, event: event});
+        // Emit an event to say we have changed.
+        this.el.fire('resizing', {
+          dx: diffX,
+          dy: diffY,
+          event: event
+        });
       };
 
       // Is called on mouseup.
       // Removes the update-function from the mousemove event
       ResizeHandler.prototype.done = function () {
-          this.lastUpdateCall = null;
-          SVG.off(window, 'mousemove.resize');
-          SVG.off(window, 'mouseup.resize');
-          SVG.off(window, 'touchmove.resize');
-          SVG.off(window, 'touchend.resize');
-          this.el.fire('resizedone');
+        this.lastUpdateCall = null;
+        SVG.off(window, 'mousemove.resize');
+        SVG.off(window, 'mouseup.resize');
+        SVG.off(window, 'touchmove.resize');
+        SVG.off(window, 'touchend.resize');
+        this.el.fire('resizedone');
       };
 
       // The flag is used to determine whether the resizing is used with a left-Point (first bit) and top-point (second bit)
       // In this cases the temp-values are calculated differently
       ResizeHandler.prototype.snapToGrid = function (diffX, diffY, flag, pointCoordsY) {
 
-          var temp;
+        var temp;
 
-          // If `pointCoordsY` is given, a single Point has to be snapped (deepSelect). That's why we need a different temp-value
-          if (typeof pointCoordsY !== 'undefined') {
-              // Note that flag = pointCoordsX in this case
-              temp = [(flag + diffX) % this.options.snapToGrid, (pointCoordsY + diffY) % this.options.snapToGrid];
-          } else {
-              // We check if the flag is set and if not we set a default-value (both bits set - which means upper-left-edge)
-              flag = flag == null ? 1 | 1 << 1 : flag;
-              temp = [(this.parameters.box.x + diffX + (flag & 1 ? 0 : this.parameters.box.width)) % this.options.snapToGrid, (this.parameters.box.y + diffY + (flag & (1 << 1) ? 0 : this.parameters.box.height)) % this.options.snapToGrid];
-          }
+        // If `pointCoordsY` is given, a single Point has to be snapped (deepSelect). That's why we need a different temp-value
+        if (typeof pointCoordsY !== 'undefined') {
+          // Note that flag = pointCoordsX in this case
+          temp = [(flag + diffX) % this.options.snapToGrid, (pointCoordsY + diffY) % this.options.snapToGrid];
+        } else {
+          // We check if the flag is set and if not we set a default-value (both bits set - which means upper-left-edge)
+          flag = flag == null ? 1 | 1 << 1 : flag;
+          temp = [(this.parameters.box.x + diffX + (flag & 1 ? 0 : this.parameters.box.width)) % this.options.snapToGrid, (this.parameters.box.y + diffY + (flag & (1 << 1) ? 0 : this.parameters.box.height)) % this.options.snapToGrid];
+        }
 
-          if(diffX < 0) {
-              temp[0] -= this.options.snapToGrid;
-          }
-          if(diffY < 0) {
-              temp[1] -= this.options.snapToGrid;
-          }
+        if (diffX < 0) {
+          temp[0] -= this.options.snapToGrid;
+        }
+        if (diffY < 0) {
+          temp[1] -= this.options.snapToGrid;
+        }
 
-          diffX -= (Math.abs(temp[0]) < this.options.snapToGrid / 2 ?
-                    temp[0] :
-                    temp[0] - (diffX < 0 ? -this.options.snapToGrid : this.options.snapToGrid));
-          diffY -= (Math.abs(temp[1]) < this.options.snapToGrid / 2 ?
-                    temp[1] :
-                    temp[1] - (diffY < 0 ? -this.options.snapToGrid : this.options.snapToGrid));
+        diffX -= (Math.abs(temp[0]) < this.options.snapToGrid / 2 ?
+          temp[0] :
+          temp[0] - (diffX < 0 ? -this.options.snapToGrid : this.options.snapToGrid));
+        diffY -= (Math.abs(temp[1]) < this.options.snapToGrid / 2 ?
+          temp[1] :
+          temp[1] - (diffY < 0 ? -this.options.snapToGrid : this.options.snapToGrid));
 
-          return this.constraintToBox(diffX, diffY, flag, pointCoordsY);
+        return this.constraintToBox(diffX, diffY, flag, pointCoordsY);
 
       };
 
       // keep element within constrained box
       ResizeHandler.prototype.constraintToBox = function (diffX, diffY, flag, pointCoordsY) {
-          //return [diffX, diffY]
-          var c = this.options.constraint || {};
-          var orgX, orgY;
+        //return [diffX, diffY]
+        var c = this.options.constraint || {};
+        var orgX, orgY;
 
-          if (typeof pointCoordsY !== 'undefined') {
-            orgX = flag;
-            orgY = pointCoordsY;
-          } else {
-            orgX = this.parameters.box.x + (flag & 1 ? 0 : this.parameters.box.width);
-            orgY = this.parameters.box.y + (flag & (1<<1) ? 0 : this.parameters.box.height);
-          }
+        if (typeof pointCoordsY !== 'undefined') {
+          orgX = flag;
+          orgY = pointCoordsY;
+        } else {
+          orgX = this.parameters.box.x + (flag & 1 ? 0 : this.parameters.box.width);
+          orgY = this.parameters.box.y + (flag & (1 << 1) ? 0 : this.parameters.box.height);
+        }
 
-          if (typeof c.minX !== 'undefined' && orgX + diffX < c.minX) {
-            diffX = c.minX - orgX;
-          }
+        if (typeof c.minX !== 'undefined' && orgX + diffX < c.minX) {
+          diffX = c.minX - orgX;
+        }
 
-          if (typeof c.maxX !== 'undefined' && orgX + diffX > c.maxX) {
-            diffX = c.maxX - orgX;
-          }
+        if (typeof c.maxX !== 'undefined' && orgX + diffX > c.maxX) {
+          diffX = c.maxX - orgX;
+        }
 
-          if (typeof c.minY !== 'undefined' && orgY + diffY < c.minY) {
-            diffY = c.minY - orgY;
-          }
+        if (typeof c.minY !== 'undefined' && orgY + diffY < c.minY) {
+          diffY = c.minY - orgY;
+        }
 
-          if (typeof c.maxY !== 'undefined' && orgY + diffY > c.maxY) {
-            diffY = c.maxY - orgY;
-          }
+        if (typeof c.maxY !== 'undefined' && orgY + diffY > c.maxY) {
+          diffY = c.maxY - orgY;
+        }
 
-          return [diffX, diffY];
+        return [diffX, diffY];
       };
 
       ResizeHandler.prototype.checkAspectRatio = function (snap, isReverse) {
-          if (!this.options.saveAspectRatio) {
-              return snap;
-          }
+        if (!this.options.saveAspectRatio) {
+          return snap;
+        }
 
-          var updatedSnap = snap.slice();
-          var aspectRatio = this.parameters.box.width / this.parameters.box.height;
-          var newW = this.parameters.box.width + snap[0];
-          var newH = this.parameters.box.height - snap[1];
-          var newAspectRatio = newW / newH;
+        var updatedSnap = snap.slice();
+        var aspectRatio = this.parameters.box.width / this.parameters.box.height;
+        var newW = this.parameters.box.width + snap[0];
+        var newH = this.parameters.box.height - snap[1];
+        var newAspectRatio = newW / newH;
 
-          if (newAspectRatio < aspectRatio) {
-              // Height is too big. Adapt it
-              updatedSnap[1] = newW / aspectRatio - this.parameters.box.height;
-              isReverse && (updatedSnap[1] = -updatedSnap[1]);
-          } else if (newAspectRatio > aspectRatio) {
-              // Width is too big. Adapt it
-              updatedSnap[0] = this.parameters.box.width - newH * aspectRatio;
-              isReverse && (updatedSnap[0] = -updatedSnap[0]);
-          }
+        if (newAspectRatio < aspectRatio) {
+          // Height is too big. Adapt it
+          updatedSnap[1] = newW / aspectRatio - this.parameters.box.height;
+          isReverse && (updatedSnap[1] = -updatedSnap[1]);
+        } else if (newAspectRatio > aspectRatio) {
+          // Width is too big. Adapt it
+          updatedSnap[0] = this.parameters.box.width - newH * aspectRatio;
+          isReverse && (updatedSnap[0] = -updatedSnap[0]);
+        }
 
-          return updatedSnap;
+        return updatedSnap;
       };
 
       SVG.extend(SVG.Element, {
-          // Resize element with mouse
-          resize: function (options) {
+        // Resize element with mouse
+        resize: function (options) {
 
-              (this.remember('_resizeHandler') || new ResizeHandler(this)).init(options || {});
+          (this.remember('_resizeHandler') || new ResizeHandler(this)).init(options || {});
 
-              return this;
+          return this;
 
-          }
+        }
 
       });
 
       SVG.Element.prototype.resize.defaults = {
-          snapToAngle: 0.1,       // Specifies the speed the rotation is happening when moving the mouse
-          snapToGrid: 1,          // Snaps to a grid of `snapToGrid` Pixels
-          constraint: {},         // keep element within constrained box
-          saveAspectRatio: false  // Save aspect ratio when resizing using lt, rt, rb or lb points
+        snapToAngle: 0.1, // Specifies the speed the rotation is happening when moving the mouse
+        snapToGrid: 1, // Snaps to a grid of `snapToGrid` Pixels
+        constraint: {}, // keep element within constrained box
+        saveAspectRatio: false // Save aspect ratio when resizing using lt, rt, rb or lb points
       };
 
-  }).call(this);
+    }).call(this);
   }());
 
   function styleInject(css, ref) {
-    if ( ref === void 0 ) ref = {};
+    if (ref === void 0) ref = {};
     var insertAt = ref.insertAt;
 
-    if (!css || typeof document === 'undefined') { return; }
+    if (!css || typeof document === 'undefined') {
+      return;
+    }
 
     var head = document.head || document.getElementsByTagName('head')[0];
     var style = document.createElement('style');
@@ -28618,9 +28721,9 @@
   (function () {
     function resetTriggers(element) {
       var triggers = element.__resizeTriggers__,
-          expand = triggers.firstElementChild,
-          contract = triggers.lastElementChild,
-          expandChild = expand ? expand.firstElementChild : null;
+        expand = triggers.firstElementChild,
+        contract = triggers.lastElementChild,
+        expandChild = expand ? expand.firstElementChild : null;
 
       if (contract) {
         contract.scrollLeft = contract.scrollWidth;
@@ -28678,10 +28781,9 @@
 
 
     var animation = false,
-        animationstartevent = 'animationstart',
-        domPrefixes = 'Webkit Moz O ms'.split(' '),
-        startEvents = 'webkitAnimationStart animationstart oAnimationStart MSAnimationStart'.split(' ');
-    {
+      animationstartevent = 'animationstart',
+      domPrefixes = 'Webkit Moz O ms'.split(' '),
+      startEvents = 'webkitAnimationStart animationstart oAnimationStart MSAnimationStart'.split(' '); {
       var elm = document.createElement('fakeelement');
 
       if (elm.style.animationName !== undefined) {
@@ -28738,7 +28840,7 @@
 
   window.Apex = {};
 
-  var InitCtxVariables = /*#__PURE__*/function () {
+  var InitCtxVariables = /*#__PURE__*/ function () {
     function InitCtxVariables(ctx) {
       _classCallCheck(this, InitCtxVariables);
 
@@ -28781,7 +28883,7 @@
     return InitCtxVariables;
   }();
 
-  var Destroy = /*#__PURE__*/function () {
+  var Destroy = /*#__PURE__*/ function () {
     function Destroy(ctx) {
       _classCallCheck(this, Destroy);
 
@@ -28873,7 +28975,7 @@
    * @module ApexCharts
    **/
 
-  var ApexCharts$1 = /*#__PURE__*/function () {
+  var ApexCharts$1 = /*#__PURE__*/ function () {
     function ApexCharts(el, opts) {
       _classCallCheck(this, ApexCharts);
 

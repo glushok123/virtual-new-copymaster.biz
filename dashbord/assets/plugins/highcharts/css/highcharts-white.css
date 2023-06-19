@@ -24,8 +24,8 @@
 }
 
 .highcharts-root text {
-    stroke-width: 0px;
-	fill: #ffffff !important;
+  stroke-width: 0px;
+  fill: #ffffff !important;
 }
 
 .highcharts-strong {
@@ -44,7 +44,8 @@
   fill: rgba(255, 255, 255, 0);
 }
 
-.highcharts-plot-border, .highcharts-plot-background {
+.highcharts-plot-border,
+.highcharts-plot-background {
   fill: none;
 }
 
@@ -70,12 +71,12 @@
 
 /* Titles */
 .highcharts-title {
-  fill: #ffffff ;
+  fill: #ffffff;
   font-size: 1.5em;
 }
 
 .highcharts-subtitle {
-  fill: #ffffff ;
+  fill: #ffffff;
 }
 
 /* Axes */
@@ -89,11 +90,11 @@
 }
 
 .highcharts-axis-title {
-  fill: #ffffff ;
+  fill: #ffffff;
 }
 
 .highcharts-axis-labels {
-  fill: #ffffff ;
+  fill: #ffffff;
   cursor: default;
   font-size: 0.9em;
 }
@@ -132,7 +133,7 @@
 /* Credits */
 .highcharts-credits {
   cursor: pointer;
-  fill: #ffffff ;
+  fill: #ffffff;
   font-size: 0.7em;
   transition: fill 250ms, font-size 250ms;
 }
@@ -307,7 +308,8 @@ g.highcharts-series,
   stroke-width: 0;
 }
 
-.highcharts-data-label text, text.highcharts-data-label {
+.highcharts-data-label text,
+text.highcharts-data-label {
   fill: #ffffff;
 }
 
@@ -444,7 +446,7 @@ g.highcharts-series,
   stroke-width: 0;
 }
 
-.highcharts-legend-item > text {
+.highcharts-legend-item>text {
   fill: #333333;
   font-weight: bold;
   font-size: 1em;
@@ -471,7 +473,8 @@ g.highcharts-series,
   fill: #cccccc;
 }
 
-circle.highcharts-legend-nav-active, circle.highcharts-legend-nav-inactive {
+circle.highcharts-legend-nav-active,
+circle.highcharts-legend-nav-inactive {
   /* tracker */
   fill: rgba(192, 192, 192, 0.0001);
 }
@@ -519,7 +522,8 @@ circle.highcharts-legend-nav-active, circle.highcharts-legend-nav-inactive {
 }
 
 /* Plot bands and polar pane backgrounds */
-.highcharts-plot-band, .highcharts-pane {
+.highcharts-plot-band,
+.highcharts-pane {
   fill: #000000;
   fill-opacity: 0.05;
 }
@@ -923,7 +927,8 @@ text.highcharts-drilldown-data-label,
 }
 
 /* Gantt */
-.highcharts-treegrid-node-collapsed, .highcharts-treegrid-node-expanded {
+.highcharts-treegrid-node-collapsed,
+.highcharts-treegrid-node-expanded {
   cursor: pointer;
 }
 

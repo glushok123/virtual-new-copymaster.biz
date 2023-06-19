@@ -1,13 +1,13 @@
 <?php
-$keyw="Копировальный центр «Копимастер»";
-$titl="Копировальный центр «Копимастер»";
-$desc="Копировальный центр «Копимастер» - Печать чертежей круглосуточно!";
+$keyw = "Копировальный центр «Копимастер»";
+$titl = "Копировальный центр «Копимастер»";
+$desc = "Копировальный центр «Копимастер» - Печать чертежей круглосуточно!";
 include_once 'header.php';
- ?>
+?>
 
- <section class="section">
-     <div class="container text-center">
-         <div class="w1 con">
+<section class="section">
+    <div class="container text-center">
+        <div class="w1 con">
             <h1>Копимастер подскажет, где сшить дипломную работу в Москве!</h1>
             <p>Сдача дипломной работы является неотъемлемой частью обучения в любом ВУЗе, поэтому ежегодно студенты ищут, где сшить дипломную работу. Она представляет собой творческую работу студента, которая состоит из множества страниц, содержит различные дополнения. Успех ее защиты во многом зависит не только от качества работы и знания материала, но и непосредственно самого оформления. Любая приемная комиссия или преподаватель добавит баллы за ее красивую визуализацию. В связи с этим в обязательном порядке нужно правильно сшить дипломную работу. По самой низкой цене сделать это можно в нашем копировальном центре.</p>
             <p>На выбор мы предлагаем много различных вариантов обложки. Выбрать можно как бюджетные модели по низкой цене (из азиатских и российских материалов), так и эксклюзивные изделия (авторская ручная работа из импортных материалов). У нас вы можете заказать брошюровку диплома на пластиковую пружину или сшить дипломную работу в твердом переплете. Оба эти варианта имеют свои достоинства и преимущества.</p>
@@ -21,37 +21,41 @@ include_once 'header.php';
             </ul>
             <p>Если вы ищите, где сшить дипломную работу - обращайтесь в наш копировальный центр. Низкие цены и высокое качество работ гарантированы!</p>
         </div>
+    </div>
+</div></section><br><br><section class="price">
+<div class="row text-center justify-content-center">
+    <div class="col-12 col-lg-6 col-xl-6 text-center justify-content-center">
+        <div
+            class="table-responsive">
+            <!--Черно - белое копирование / печать А4 и А3-->
+            <?php include_once "price/FL/print/BW/fl_b-w_a4_a3.php"; ?>
         </div>
-     </div>
- </section>
 
- <br><br>
+        <div
+            class="table-responsive">
+            <!--Черно - белое копирование / печать больших форматов-->
+            <?php include_once "price/FL/print/BW/fl_b-w_a0-a2.php"; ?>
+        </div>
 
-<section class="price">
-     <div class="row text-center justify-content-center">
-         <div class="col-12 col-lg-6 col-xl-6 text-center justify-content-center" >
-             <div class="table-responsive"><!--Черно - белое копирование / печать А4 и А3-->
-                 <?php include_once "price/FL/print/BW/fl_b-w_a4_a3.php"; ?>
-             </div>
+        <div
+            class="table-responsive">
+            <!--Цветное копирование/печать форматов А4 и А3*-->
+            <?php include_once "price/FL/print/CV/fl_c-v_a4_a3.php"; ?>
+        </div>
 
-             <div class="table-responsive"><!--Черно - белое копирование / печать больших форматов-->
-                 <?php include_once "price/FL/print/BW/fl_b-w_a0-a2.php"; ?>
-             </div>
+        <div
+            class="table-responsive">
+            <!--Широкоформатная цветная печать и копирование-->
+            <?php include_once "price/FL/print/CV/fl_v-v_a0-a2.php"; ?>
+        </div>
 
-             <div class="table-responsive"><!--Цветное копирование/печать форматов А4 и А3*-->
-                 <?php include_once "price/FL/print/CV/fl_c-v_a4_a3.php"; ?>
-             </div>
+        <div
+            class="table-responsive">
+            <!--Переплетные работы-->
+            <?php include_once "price/FL/fl_pereplet.php"; ?>
+        </div>ы
+    </div>
+</div></section><?php
+include_once 'footer.php';
+?>
 
-             <div class="table-responsive"><!--Широкоформатная цветная печать и копирование-->
-                 <?php include_once "price/FL/print/CV/fl_v-v_a0-a2.php"; ?>
-             </div>
-
-             <div class="table-responsive"><!--Переплетные работы-->
-                 <?php include_once "price/FL/fl_pereplet.php"; ?>
-             </div>ы
-         </div>
-     </div>
-</section>
-<?php
- include_once 'footer.php';
- ?>

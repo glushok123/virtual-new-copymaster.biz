@@ -60,7 +60,8 @@
     return function (elems) {
       var events, elem, i;
       // eslint-disable-next-line eqeqeq
-      for (i = 0; (elem = elems[i]) != null; i++) {
+      for (i = 0;
+        (elem = elems[i]) != null; i++) {
         // Only trigger remove when necessary to save time
         events = $._data(elem, 'events');
         if (events && events.remove) {
@@ -162,17 +163,15 @@
       })();
     });
     constructor.prototype = $.widget.extend(
-      basePrototype,
-      {
+      basePrototype, {
         // TODO: remove support for widgetEventPrefix
         // always use the name + a colon as the prefix, e.g., draggable:start
         // don't prefix for widgets that aren't DOM-based
-        widgetEventPrefix: existingConstructor
-          ? basePrototype.widgetEventPrefix || name
-          : name
+        widgetEventPrefix: existingConstructor ?
+          basePrototype.widgetEventPrefix || name :
+          name
       },
-      proxiedPrototype,
-      {
+      proxiedPrototype, {
         constructor: constructor,
         namespace: namespace,
         widgetName: name,
@@ -225,10 +224,9 @@
         ) {
           // Clone objects
           if ($.isPlainObject(value)) {
-            target[key] = $.isPlainObject(target[key])
-              ? $.widget.extend({}, target[key], value)
-              : // Don't extend strings, arrays, etc. with objects
-                $.widget.extend({}, value);
+            target[key] = $.isPlainObject(target[key]) ?
+              $.widget.extend({}, target[key], value) : // Don't extend strings, arrays, etc. with objects
+              $.widget.extend({}, value);
 
             // Copy everything else by reference
           } else {
@@ -265,21 +263,21 @@
             if (!instance) {
               return $.error(
                 'cannot call methods on ' +
-                  name +
-                  ' prior to initialization; ' +
-                  "attempted to call method '" +
-                  options +
-                  "'"
+                name +
+                ' prior to initialization; ' +
+                "attempted to call method '" +
+                options +
+                "'"
               );
             }
 
             if (!$.isFunction(instance[options]) || options.charAt(0) === '_') {
               return $.error(
                 "no such method '" +
-                  options +
-                  "' for " +
-                  name +
-                  ' widget instance'
+                options +
+                "' for " +
+                name +
+                ' widget instance'
               );
             }
 
@@ -287,9 +285,9 @@
 
             if (methodValue !== instance && methodValue !== undefined) {
               returnValue =
-                methodValue && methodValue.jquery
-                  ? returnValue.pushStack(methodValue.get())
-                  : methodValue;
+                methodValue && methodValue.jquery ?
+                returnValue.pushStack(methodValue.get()) :
+                methodValue;
               return false;
             }
           });
@@ -317,7 +315,7 @@
     };
   };
 
-  $.Widget = function (/* options, element */) {};
+  $.Widget = function ( /* options, element */ ) {};
   $.Widget._childConstructors = [];
 
   $.Widget.prototype = {
@@ -354,19 +352,16 @@
           }
         });
         this.document = $(
-          element.style
-            ? // Element within the document
-              element.ownerDocument
-            : // Element is window or document
-              element.document || element
+          element.style ? // Element within the document
+          element.ownerDocument : // Element is window or document
+          element.document || element
         );
         this.window = $(
           this.document[0].defaultView || this.document[0].parentWindow
         );
       }
 
-      this.options = $.widget.extend(
-        {},
+      this.options = $.widget.extend({},
         this.options,
         this._getCreateOptions(),
         options
@@ -530,19 +525,22 @@
     },
 
     enable: function () {
-      return this._setOptions({ disabled: false });
+      return this._setOptions({
+        disabled: false
+      });
     },
 
     disable: function () {
-      return this._setOptions({ disabled: true });
+      return this._setOptions({
+        disabled: true
+      });
     },
 
     _classes: function (options) {
       var full = [];
       var that = this;
 
-      options = $.extend(
-        {
+      options = $.extend({
           element: this.element,
           classes: this.options.classes || {}
         },
@@ -660,9 +658,9 @@
           ) {
             return;
           }
-          return (typeof handler === 'string'
-            ? instance[handler]
-            : handler
+          return (typeof handler === 'string' ?
+            instance[handler] :
+            handler
           ).apply(instance, arguments);
         }
 
@@ -698,10 +696,11 @@
 
     _delay: function (handler, delay) {
       var instance = this;
+
       function handlerProxy() {
-        return (typeof handler === 'string'
-          ? instance[handler]
-          : handler
+        return (typeof handler === 'string' ?
+          instance[handler] :
+          handler
         ).apply(instance, arguments);
       }
       return setTimeout(handlerProxy, delay || 0);
@@ -737,9 +736,9 @@
 
       data = data || {};
       event = $.Event(event);
-      event.type = (type === this.widgetEventPrefix
-        ? type
-        : this.widgetEventPrefix + type
+      event.type = (type === this.widgetEventPrefix ?
+        type :
+        this.widgetEventPrefix + type
       ).toLowerCase();
 
       // The original event may come from any element
@@ -765,22 +764,29 @@
     }
   };
 
-  $.each({ show: 'fadeIn', hide: 'fadeOut' }, function (method, defaultEffect) {
+  $.each({
+    show: 'fadeIn',
+    hide: 'fadeOut'
+  }, function (method, defaultEffect) {
     $.Widget.prototype['_' + method] = function (element, options, callback) {
       if (typeof options === 'string') {
-        options = { effect: options };
+        options = {
+          effect: options
+        };
       }
 
       var hasOptions;
-      var effectName = !options
-        ? method
-        : options === true || typeof options === 'number'
-        ? defaultEffect
-        : options.effect || defaultEffect;
+      var effectName = !options ?
+        method :
+        options === true || typeof options === 'number' ?
+        defaultEffect :
+        options.effect || defaultEffect;
 
       options = options || {};
       if (typeof options === 'number') {
-        options = { duration: options };
+        options = {
+          duration: options
+        };
       }
 
       hasOptions = !$.isEmptyObject(options);

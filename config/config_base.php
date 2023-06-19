@@ -16,14 +16,15 @@ require_once BASE_PATH . '/dashbord/helpers/helpers.php';
 |--------------------------------------------------------------------------
  */
 
- define('DB_HOST', "localhost:3306");
- define('DB_USER', "a0458868_dashbord2_copymaster");#
- define('DB_PASSWORD', "!140199!");#
- define('DB_NAME', "a0458868_dashbord2_copymaster");#
+define('DB_HOST', "localhost:3306");
+define('DB_USER', "a0458868_dashbord2_copymaster"); #
+define('DB_PASSWORD', "!140199!"); #
+define('DB_NAME', "a0458868_dashbord2_copymaster"); #
 
 /**
  * Get instance of DB object
  */
-function getDbInstance() {
+function getDbInstance()
+{
 	return new MysqliDb(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 }

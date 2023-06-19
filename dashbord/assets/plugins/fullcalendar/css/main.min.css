@@ -95,7 +95,7 @@ a.fc-event:hover {
 .fc-theme-standard td,
 .fc-theme-standard th {
 	border: 1px solid rgb(255 255 255 / 0.14);
-    border: 1px solid rgb(255 255 255 / 0.14);
+	border: 1px solid rgb(255 255 255 / 0.14);
 }
 
 .fc-liquid-hack td,
@@ -115,7 +115,7 @@ a.fc-event:hover {
 	height: 1em;
 	-webkit-user-select: none;
 	user-select: none;
-	font-family: fcicons!important;
+	font-family: fcicons !important;
 	speak: none;
 	font-style: normal;
 	font-variant: normal;
@@ -335,7 +335,7 @@ a.fc-event:hover {
 
 .fc-theme-standard .fc-scrollgrid {
 	border: 1px solid rgb(255 255 255 / 15%);
-    border: 1px solid rgb(255 255 255 / 15%);
+	border: 1px solid rgb(255 255 255 / 15%);
 }
 
 .fc .fc-scrollgrid,

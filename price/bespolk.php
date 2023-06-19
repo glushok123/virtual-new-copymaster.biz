@@ -1,9 +1,9 @@
 <?php
-$keyw='Транспаранты бессмертный полк, штендер для акции бессмертный полк';
-$titl='Транспаранты для участия в шествии "Бессмертного полка"';
-$desc='Транспаранты для участия в шествии "Бессмертного полка"';
+$keyw = 'Транспаранты бессмертный полк, штендер для акции бессмертный полк';
+$titl = 'Транспаранты для участия в шествии "Бессмертного полка"';
+$desc = 'Транспаранты для участия в шествии "Бессмертного полка"';
 include_once 'header.php';
- ?>
+?>
  <br>
 <div class=" text-center">
 
@@ -11,9 +11,6 @@ include_once 'header.php';
     <section class="section">
         <div class="container text-center">
             <h1>Транспаранты для участия в шествии <br> "Бессмертного полка"</h1><hr>
-
-
-
 
             <p style='font-size: 2.5em; text-align:center;'>Транспаранты А3, А4  <br>(30х40 см и 20х30 см)</p><br>
             <p style='font-size: 1.6em; text-align:center;'>Варианты оформления транспаранта</p><br>
@@ -297,7 +294,7 @@ font-size: 45px;
 
 <?php
 include_once 'footer.php';
- ?>
+?>
 
 <script type="text/javascript">
 

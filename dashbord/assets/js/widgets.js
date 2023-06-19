@@ -368,7 +368,7 @@ $(function () {
 		xaxis: {
 			categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
 		}
-		
+
 	};
 	var chart = new ApexCharts(document.querySelector("#chart5"), options);
 	chart.render();
@@ -561,9 +561,9 @@ $(function () {
 		dataLabels: {
 			enabled: false
 		},
-		stroke:{
-         colors:['rgba(255, 255, 255, 0.0)']
-        },
+		stroke: {
+			colors: ['rgba(255, 255, 255, 0.0)']
+		},
 		labels: ['Social Media', 'Email', 'Organic'],
 		responsive: [{
 			breakpoint: 480,

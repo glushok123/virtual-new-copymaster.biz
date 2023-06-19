@@ -315,9 +315,9 @@ $(function () {
 			enabled: false,
 			theme: 'dark',
 		},
-		stroke:{
-         colors:['rgba(255, 255, 255, 0.0)']
-        },
+		stroke: {
+			colors: ['rgba(255, 255, 255, 0.0)']
+		},
 		labels: ['Mobile', 'Desktop', 'Tablet'],
 		responsive: [{
 			breakpoint: 480,
@@ -362,9 +362,9 @@ $(function () {
 			theme: 'dark',
 		},
 		labels: ['Male', 'Female', 'Others'],
-		stroke:{
-         colors:['rgba(255, 255, 255, 0.0)']
-        },
+		stroke: {
+			colors: ['rgba(255, 255, 255, 0.0)']
+		},
 		responsive: [{
 			breakpoint: 480,
 			options: {

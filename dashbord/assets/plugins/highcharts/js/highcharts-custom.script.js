@@ -1137,7 +1137,7 @@ $(function () {
 			y: 100,
 			floating: true,
 			backgroundColor: Highcharts.defaultOptions.legend.backgroundColor || // theme
-			'rgba(255,255,255,0.25)'
+				'rgba(255,255,255,0.25)'
 		},
 		series: [{
 			name: 'Rainfall',

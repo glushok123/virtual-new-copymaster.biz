@@ -1,4 +1,6 @@
-<table id="table_6"><!--Сканирование*-->
+<table
+    id="table_6">
+    <!--Сканирование*-->
     <tbody>
         <tr class="tr1">
             <td colspan="7">Сканирование*</td>
@@ -56,3 +58,4 @@
         </tr>
     </tbody>
 </table>
+

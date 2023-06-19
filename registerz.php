@@ -5,10 +5,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/config/config.php';
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST')
-{
-    if ($_POST["id"] == "vizitki")
-    {
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if ($_POST["id"] == "vizitki") {
         $name = $_POST["login"];
         $email = $_POST["email"];
         $phon = $_POST["phon"];
@@ -27,23 +25,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         $db = getDbInstance();
         $datat = date('d.m.y H:i');
 
-            $db->query("INSERT INTO zayavki
+        $db->query("INSERT INTO zayavki
             ( `name`, `email`, `phon`,  `created_at`, `info`,`tip`)
             VALUES
-            ('".$name."','".$email."','".$phon."','".$datat."','".$info."','vizitka')");
+            ('" . $name . "','" . $email . "','" . $phon . "','" . $datat . "','" . $info . "','vizitka')");
 
-           $json = '{
+        $json = '{
                 "status":"success"
             }';
 
 
-            //require_once 'send.php';
-            //sendmessage("glushok19999@gmail.com");
-            echo $json;
+        //require_once 'send.php';
+        //sendmessage("glushok19999@gmail.com");
+        echo $json;
     }
 
-    if ($_POST["id"] == "listovki")
-    {
+    if ($_POST["id"] == "listovki") {
         $name = $_POST["login"];
         $email = $_POST["email"];
         $phon = $_POST["phon"];
@@ -62,22 +59,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         $db = getDbInstance();
         $datat = date('d.m.y H:i');
 
-            $db->query("INSERT INTO zayavki
+        $db->query("INSERT INTO zayavki
             ( `name`, `email`, `phon`,  `created_at`, `info`,`tip`)
             VALUES
-            ('".$name."','".$email."','".$phon."','".$datat."','".$info."','listovki')");
+            ('" . $name . "','" . $email . "','" . $phon . "','" . $datat . "','" . $info . "','listovki')");
 
-           $json = '{
+        $json = '{
                 "status":"success"
             }';
 
-            //require_once 'send.php';
-            //sendmessage("glushok19999@gmail.com");
-            echo $json;
+        //require_once 'send.php';
+        //sendmessage("glushok19999@gmail.com");
+        echo $json;
     }
 
-    if ($_POST["id"] == "petchat")
-    {
+    if ($_POST["id"] == "petchat") {
         $name = $_POST["login"];
         $email = $_POST["email"];
         $phon = $_POST["phon"];
@@ -88,29 +84,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         $srok = $_POST["srok"];
 
         $data = [];
-        array_push($data, $petchat_tip, $osnastka, $avt_osnastka,  $srok);
+        array_push($data, $petchat_tip, $osnastka, $avt_osnastka, $srok);
 
         $info = serialize($data);
 
         $db = getDbInstance();
         $datat = date('d.m.y H:i');
 
-            $db->query("INSERT INTO zayavki
+        $db->query("INSERT INTO zayavki
             ( `name`, `email`, `phon`,  `created_at`, `info`,`tip`)
             VALUES
-            ('".$name."','".$email."','".$phon."','".$datat."','".$info."','petchat')");
+            ('" . $name . "','" . $email . "','" . $phon . "','" . $datat . "','" . $info . "','petchat')");
 
-           $json = '{
+        $json = '{
                 "status":"success"
             }';
 
-            //require_once 'send.php';
-            //sendmessage("glushok19999@gmail.com");
-            echo $json;
+        //require_once 'send.php';
+        //sendmessage("glushok19999@gmail.com");
+        echo $json;
     }
 
-    if ($_POST["id"] == "petfoto")
-    {
+    if ($_POST["id"] == "petfoto") {
         $name = $_POST["login"];
         $email = $_POST["email"];
         $phon = $_POST["phon"];
@@ -121,28 +116,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         $srok = $_POST["srok"];
 
         $data = [];
-        array_push($data, $sizebum, $tibum, $kolit,  $srok);
+        array_push($data, $sizebum, $tibum, $kolit, $srok);
 
         $info = serialize($data);
 
         $db = getDbInstance();
         $datat = date('d.m.y H:i');
 
-            $db->query("INSERT INTO zayavki
+        $db->query("INSERT INTO zayavki
             ( `name`, `email`, `phon`,  `created_at`, `info`,`tip`)
             VALUES
-            ('".$name."','".$email."','".$phon."','".$datat."','".$info."','petfoto')");
+            ('" . $name . "','" . $email . "','" . $phon . "','" . $datat . "','" . $info . "','petfoto')");
 
-           $json = '{
+        $json = '{
                 "status":"success"
             }';
 
 
-            echo $json;
+        echo $json;
     }
 
-    if ($_POST["id"] == "ОБРАТНАЯ СВЯЗЬ")
-    {
+    if ($_POST["id"] == "ОБРАТНАЯ СВЯЗЬ") {
         $name = $_POST["login"];
         $email = $_POST["email"];
         $phon = $_POST["phon"];
@@ -153,20 +147,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         $db = getDbInstance();
         $datat = date('d.m.y H:i');
 
-            $db->query("INSERT INTO zayavki
+        $db->query("INSERT INTO zayavki
             ( `name`, `email`, `phon`,  `created_at`, `info`,`tip`,`kwiz_vid`,`kwiz_srok`)
             VALUES
-            ('".$name."','".$email."','".$phon."','".$datat."','ОБРАТНАЯ СВЯЗЬ','ОБРАТНАЯ СВЯЗЬ','".$vid."','".$srok."')");
+            ('" . $name . "','" . $email . "','" . $phon . "','" . $datat . "','ОБРАТНАЯ СВЯЗЬ','ОБРАТНАЯ СВЯЗЬ','" . $vid . "','" . $srok . "')");
 
-           $json = '{
+        $json = '{
                 "status":"success"
             }';
 
-            echo $json;
+        echo $json;
     }
 
-    if ($_POST["id"] == "штендер")
-    {
+    if ($_POST["id"] == "штендер") {
         $name = $_POST["name"];
         $email = $_POST["email"];
         $phon = $_POST["phone"];
@@ -189,50 +182,49 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
         $unid = uniqid();
         $url_screenimg = '';
-        if ($screenimg != null){
+        if ($screenimg != null) {
             list($type, $screenimg) = explode(';', $screenimg);
-            list(, $screenimg)      = explode(',', $screenimg);
+            list(, $screenimg) = explode(',', $screenimg);
             $screenimg = base64_decode($screenimg);
-            $url_screenimg = 'upload/shtender_scrin/'.$unid .'.'.$screenimg_ext.'';
-            file_put_contents($url_screenimg , $screenimg);
-            $url_screenimg = "/".$url_screenimg;
+            $url_screenimg = 'upload/shtender_scrin/' . $unid . '.' . $screenimg_ext . '';
+            file_put_contents($url_screenimg, $screenimg);
+            $url_screenimg = "/" . $url_screenimg;
         }
         $url_photo1img = '';
-        if ($photo1img != null){
+        if ($photo1img != null) {
             list($type, $photo1img) = explode(';', $photo1img);
-            list(, $photo1img)      = explode(',', $photo1img);
+            list(, $photo1img) = explode(',', $photo1img);
             $photo1img = base64_decode($photo1img);
-            $url_photo1img = 'upload/shtender_img1/'.$unid.'.'.$photo1img_ext.'';
-            file_put_contents($url_photo1img , $photo1img);
-            $url_photo1img = "/".$url_photo1img;
+            $url_photo1img = 'upload/shtender_img1/' . $unid . '.' . $photo1img_ext . '';
+            file_put_contents($url_photo1img, $photo1img);
+            $url_photo1img = "/" . $url_photo1img;
         }
         $url_photo2img = '';
-        if ($photo2img != null){
+        if ($photo2img != null) {
             list($type, $photo2img) = explode(';', $photo2img);
-            list(, $photo2img)      = explode(',', $photo2img);
+            list(, $photo2img) = explode(',', $photo2img);
             $photo2img = base64_decode($photo2img);
-            $url_photo2img = 'upload/shtender_img2/'.$unid.'.'.$photo2img_ext.'';
+            $url_photo2img = 'upload/shtender_img2/' . $unid . '.' . $photo2img_ext . '';
             file_put_contents($url_photo2img, $photo2img);
-            $url_photo2img = "/".$url_photo2img;
+            $url_photo2img = "/" . $url_photo2img;
         }
 
 
         $data = [];
-        array_push($data, $name1, $zv1, $ye1,  $name2, $zv2, $ye2, $flret,  $format, $template, $url_screenimg, $url_photo1img, $url_photo2img);
+        array_push($data, $name1, $zv1, $ye1, $name2, $zv2, $ye2, $flret, $format, $template, $url_screenimg, $url_photo1img, $url_photo2img);
 
         $info = serialize($data);
 
         $db = getDbInstance();
         $datat = date('d.m.y H:i');
 
-            $db->query("INSERT INTO zayavki
+        $db->query("INSERT INTO zayavki
             ( `name`, `email`, `phon`,  `created_at`, `info`,`tip`)
            VALUES
-            ('".$name."','".$email."','".$phon."','".$datat."','".$info."','штендер')");
+            ('" . $name . "','" . $email . "','" . $phon . "','" . $datat . "','" . $info . "','штендер')");
     }
 
-    if ($_POST["id"] == "kalendari")
-    {
+    if ($_POST["id"] == "kalendari") {
         $name = $_POST["login"];
         $email = $_POST["email"];
         $phon = $_POST["phon"];
@@ -252,7 +244,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         $db->query("INSERT INTO zayavki
         ( `name`, `email`, `phon`,  `created_at`, `info`,`tip`)
         VALUES
-        ('".$name."','".$email."','".$phon."','".$datat."','".$info."','Календари')");
+        ('" . $name . "','" . $email . "','" . $phon . "','" . $datat . "','" . $info . "','Календари')");
 
         $json = '{
             "status":"success"
@@ -261,8 +253,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         echo $json;
     }
 
-    if ($_POST["id"] == "order-kalkulator")
-    {
+    if ($_POST["id"] == "order-kalkulator") {
         $name = $_POST["fio"];
         $email = $_POST["email"];
         $phone = $_POST["phone"];
@@ -275,11 +266,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         ( `name`, `email`, `phon`, `created_at`, `comment`,`tip`)
         VALUES
         (
-            '".$name."',
-            '".$email."',
-            '".$phone."',
-            '".$datat."',
-            'Чек в заявках № ".$idOrder."',
+            '" . $name . "',
+            '" . $email . "',
+            '" . $phone . "',
+            '" . $datat . "',
+            'Чек в заявках № " . $idOrder . "',
             'С калькулятора')"
         );
 
@@ -290,8 +281,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         echo $json;
     }
 
-    if ($_POST["id"] == "mug")
-    {
+    if ($_POST["id"] == "mug") {
         $id_mugs = $_POST["mug_id"];
         $name = $_POST["user_name"];
         $email = $_POST["email"];

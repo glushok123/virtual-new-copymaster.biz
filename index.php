@@ -1,11 +1,11 @@
 <?php
-$keyw="копимастер, копимастер на октябрьской, копировальные центры, копировальный центр, копировальный центр круглосуточно";
-$titl="Копировальный центр Копимастер на Октябрьской ";
-$desc="Круглосуточный копировальный центр Копимастер на Октябрьской предлагает печать, сканирование, ксерокопию, брошюрование, ламинирование документов. ";
+$keyw = "копимастер, копимастер на октябрьской, копировальные центры, копировальный центр, копировальный центр круглосуточно";
+$titl = "Копировальный центр Копимастер на Октябрьской ";
+$desc = "Круглосуточный копировальный центр Копимастер на Октябрьской предлагает печать, сканирование, ксерокопию, брошюрование, ламинирование документов. ";
 
 
 include_once 'header.php';
- ?>
+?>
 
 
 
@@ -109,7 +109,7 @@ include_once 'header.php';
             </style>
         <div class="container" >
                 <div class="row justify-content-center text-center" style="margin: 20px 0 0 0 ;">
-        			<div class="col-12 col-lg-4 col-xl-4 justify-content-center text-center">
+                    <div class="col-12 col-lg-4 col-xl-4 justify-content-center text-center">
                         <a href="pechat_proektov.php">
                             <div class="card serv justify-content-center text-center">
                                 <img src="img/servlist_1.jpg" class="card-img-top imgserv rounded mx-auto d-block" alt="...">
@@ -118,164 +118,164 @@ include_once 'header.php';
                                 </div>
                             </div>
                         </a>
-        			</div>
-        			<div class="col-12 col-lg-4 col-xl-4">
+                    </div>
+                    <div class="col-12 col-lg-4 col-xl-4">
                         <a href="service_2.php">
                             <div class="card justify-content-center ">
-            					<img src="img/servlist_2.jpg" class="card-img-top imgserv rounded mx-auto d-block" alt="...">
-            					<div class="card-body">
-            						<h5 class="card-title serv-titel" >Услуги переплета и брошюровки</h5>
+                                <img src="img/servlist_2.jpg" class="card-img-top imgserv rounded mx-auto d-block" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title serv-titel" >Услуги переплета и брошюровки</h5>
 
-            					</div>
-            				</div>
+                                </div>
+                            </div>
                         </a>
-        			</div>
-        			<div class="col-12 col-lg-4 col-xl-4">
+                    </div>
+                    <div class="col-12 col-lg-4 col-xl-4">
                         <a href="service_3.php">
                             <div class="card justify-content-center">
-            					<img src="img/servlist_3.jpg" class="card-img-top imgserv rounded mx-auto d-block" alt="...">
-            					<div class="card-body">
-            						<h5 class="card-title serv-titel">Ксерокопирование </h5>
+                                <img src="img/servlist_3.jpg" class="card-img-top imgserv rounded mx-auto d-block" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title serv-titel">Ксерокопирование </h5>
 
-            					</div>
-            				</div>
+                                </div>
+                            </div>
                         </a>
-        			</div>
-    			</div>
+                    </div>
+                </div>
                 <div class="row justify-content-center text-center" style="margin: 20px 0 0 0 ;">
-        			<div class="col-12 col-lg-4 col-xl-4">
+                    <div class="col-12 col-lg-4 col-xl-4">
                         <a href="service_4.php">
                             <div class="card justify-content-center">
-            					<img src="images/plavandposter.jpg" class="card-img-top imgserv rounded mx-auto d-block" alt="...">
-            					<div class="card-body">
-            						<h5 class="card-title serv-titel">Печать плакатов, постеров и больших фото</h5>
+                                <img src="images/plavandposter.jpg" class="card-img-top imgserv rounded mx-auto d-block" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title serv-titel">Печать плакатов, постеров и больших фото</h5>
 
-            					</div>
-            				</div>
+                                </div>
+                            </div>
                         </a>
-        			</div>
-        			<div class="col-12 col-lg-4 col-xl-4">
+                    </div>
+                    <div class="col-12 col-lg-4 col-xl-4">
                         <a href="service_5.php">
                             <div class="card justify-content-center">
-            					<img src="images/corpkli.jpg" class="card-img-top imgserv rounded mx-auto d-block" alt="...">
-            					<div class="card-body">
-            						<h5 class="card-title serv-titel">Корпоративным клиентам  </h5><br>
+                                <img src="images/corpkli.jpg" class="card-img-top imgserv rounded mx-auto d-block" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title serv-titel">Корпоративным клиентам  </h5><br>
 
-            					</div>
-            				</div>
+                                </div>
+                            </div>
                         </a>
-        			</div>
-        			<div class="col-12 col-lg-4 col-xl-4">
+                    </div>
+                    <div class="col-12 col-lg-4 col-xl-4">
                         <a href="service_6.php">
                             <div class="card justify-content-center">
-            					<img src="img/servlist_6.jpg" class="card-img-top imgserv rounded mx-auto d-block" alt="...">
-            					<div class="card-body">
-            						<h5 class="card-title serv-titel">Сканирование и оцифровка  </h5><br>
+                                <img src="img/servlist_6.jpg" class="card-img-top imgserv rounded mx-auto d-block" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title serv-titel">Сканирование и оцифровка  </h5><br>
 
-            					</div>
-            				</div>
+                                </div>
+                            </div>
                         </a>
-        			</div>
-    			</div>
+                    </div>
+                </div>
 
                 <div class="row justify-content-center text-center" style="margin: 20px 0 0 0 ;">
-        			<div class="col-12 col-lg-4 col-xl-4">
+                    <div class="col-12 col-lg-4 col-xl-4">
                         <a href="service_7.php">
                             <div class="card justify-content-center">
-            					<img src="img/servlist_7.jpg" class="card-img-top imgserv rounded mx-auto d-block" alt="...">
-            					<div class="card-body">
-            						<h5 class="card-title serv-titel">Услуги дизайнера</h5>
+                                <img src="img/servlist_7.jpg" class="card-img-top imgserv rounded mx-auto d-block" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title serv-titel">Услуги дизайнера</h5>
 
-            					</div>
-            				</div>
+                                </div>
+                            </div>
                         </a>
-        			</div>
-        			<div class="col-12 col-lg-4 col-xl-4">
+                    </div>
+                    <div class="col-12 col-lg-4 col-xl-4">
                         <a href="service_8.php">
                             <div class="card justify-content-center">
-            					<img src="images/petandshamp.jpeg" class="card-img-top imgserv rounded mx-auto d-block" alt="...">
-            					<div class="card-body">
-            						<h5 class="card-title serv-titel">Печати и штампы</h5>
+                                <img src="images/petandshamp.jpeg" class="card-img-top imgserv rounded mx-auto d-block" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title serv-titel">Печати и штампы</h5>
 
-            					</div>
-            				</div>
+                                </div>
+                            </div>
                         </a>
-        			</div>
-        			<div class="col-12 col-lg-4 col-xl-4">
+                    </div>
+                    <div class="col-12 col-lg-4 col-xl-4">
                         <a href="service_9.php">
                             <div class="card justify-content-center">
-            					<img src="img/servlist_9.jpg" class="card-img-top imgserv rounded mx-auto d-block" alt="...">
-            					<div class="card-body">
-            						<h5 class="card-title serv-titel">Цветная печать</h5>
+                                <img src="img/servlist_9.jpg" class="card-img-top imgserv rounded mx-auto d-block" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title serv-titel">Цветная печать</h5>
 
-            					</div>
-            				</div>
+                                </div>
+                            </div>
                         </a>
-        			</div>
-    			</div>
+                    </div>
+                </div>
 
                 <div class="row justify-content-center text-center" style="margin: 20px 0 0 0 ;">
-        			<div class="col-12 col-lg-4 col-xl-4">
+                    <div class="col-12 col-lg-4 col-xl-4">
                         <a href="service_10.php">
                             <div class="card justify-content-center">
-            					<img src="images/flesh.jpg" class="card-img-top imgserv rounded mx-auto d-block" alt="...">
-            					<div class="card-body">
-            						<h5 class="card-title serv-titel">Распечатка документов с флешки</h5>
+                                <img src="images/flesh.jpg" class="card-img-top imgserv rounded mx-auto d-block" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title serv-titel">Распечатка документов с флешки</h5>
 
-            					</div>
-            				</div>
+                                </div>
+                            </div>
                         </a>
 
-        			</div>
-        			<div class="col-12 col-lg-4 col-xl-4">
+                    </div>
+                    <div class="col-12 col-lg-4 col-xl-4">
                         <a href="service_11.php">
                             <div class="card justify-content-center">
-            					<img src="images/cifropetchat.jfif" class="card-img-top imgserv rounded mx-auto d-block" alt="...">
-            					<div class="card-body">
-            						<h5 class="card-title serv-titel">Цифровая печать А4 и А3</h5><br>
+                                <img src="images/cifropetchat.jfif" class="card-img-top imgserv rounded mx-auto d-block" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title serv-titel">Цифровая печать А4 и А3</h5><br>
 
-            					</div>
-            				</div>
+                                </div>
+                            </div>
                         </a>
-        			</div>
-        			<div class="col-12 col-lg-4 col-xl-4">
+                    </div>
+                    <div class="col-12 col-lg-4 col-xl-4">
                         <a href="service_12.php">
                             <div class="card justify-content-center">
-            					<img src="img/servlist_12.jpg" class="card-img-top imgserv rounded mx-auto d-block" alt="...">
-            					<div class="card-body">
-            						<h5 class="card-title serv-titel">Печать на пенокартоне</h5><br>
+                                <img src="img/servlist_12.jpg" class="card-img-top imgserv rounded mx-auto d-block" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title serv-titel">Печать на пенокартоне</h5><br>
 
-            					</div>
-            				</div>
+                                </div>
+                            </div>
                         </a>
-        			</div>
-    			</div>
+                    </div>
+                </div>
 
                 <div class="row justify-content-center text-center" style="margin: 20px 0 0 0 ;">
-        			<div class="col-12 col-lg-4 col-xl-4">
+                    <div class="col-12 col-lg-4 col-xl-4">
                         <a href="mugs.php">
                             <div class="card justify-content-center">
-            					<img src="img/servlist_13.jpg" class="card-img-top imgserv rounded mx-auto d-block" alt="...">
-            					<div class="card-body">
-            						<h5 class="card-title serv-titel">Сувенирная продукция</h5>
+                                <img src="img/servlist_13.jpg" class="card-img-top imgserv rounded mx-auto d-block" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title serv-titel">Сувенирная продукция</h5>
 
-            					</div>
-            				</div>
+                                </div>
+                            </div>
                         </a>
-        			</div>
-        			<div class="col-12 col-lg-4 col-xl-4">
+                    </div>
+                    <div class="col-12 col-lg-4 col-xl-4">
                         <a href="service_14.php">
                             <div class="card justify-content-center">
-            					<img src="images/rez.jpg" class="card-img-top imgserv rounded mx-auto d-block" alt="...">
-            					<div class="card-body">
-            						<h5 class="card-title serv-titel">Изготовление резинового клише</h5>
+                                <img src="images/rez.jpg" class="card-img-top imgserv rounded mx-auto d-block" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title serv-titel">Изготовление резинового клише</h5>
 
-            					</div>
-            				</div>
+                                </div>
+                            </div>
                         </a>
-        			</div>
+                    </div>
 
-    			</div>
+                </div>
             </div>
 
     </section>
@@ -456,7 +456,7 @@ include_once 'header.php';
 
     <?php
     include_once 'footer.php';
-     ?>
+    ?>
 
 
      <!-- Modal -->

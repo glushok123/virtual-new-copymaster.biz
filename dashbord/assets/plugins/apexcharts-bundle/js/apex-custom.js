@@ -500,7 +500,7 @@ $(function () {
 		tooltip: {
 			theme: 'dark',
 		},
-		
+
 	};
 	var chart = new ApexCharts(document.querySelector("#chart6"), options);
 	chart.render();

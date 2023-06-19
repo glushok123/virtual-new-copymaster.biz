@@ -2,11 +2,12 @@
 // ---------------------------------------------------------------------------------
 //  Resize Image
 // ---------------------------------------------------------------------------------
-function ResizeImage($FileName, $SaveFile, $MaxWidth, $MaxHeight = null) {
+function ResizeImage($FileName, $SaveFile, $MaxWidth, $MaxHeight = null)
+{
 
     $extension = GetFileExtension($FileName);
 
-    switch(strtolower($extension)) {
+    switch (strtolower($extension)) {
         case "gif":
             $objImage = imagecreatefromgif($FileName);
             break;
@@ -38,14 +39,14 @@ function ResizeImage($FileName, $SaveFile, $MaxWidth, $MaxHeight = null) {
     $DestImage = imagecreatetruecolor($TargetWidth, $TargetHeight);
 
     // handle transparancy    
-    if ( ($type == IMAGETYPE_GIF) || ($type == IMAGETYPE_PNG) ) {
+    if (($type == IMAGETYPE_GIF) || ($type == IMAGETYPE_PNG)) {
         $trnprt_indx = imagecolortransparent($objImage);
         // If we have a specific transparent color
         if ($trnprt_indx >= 0) {
             // Get the original image's transparent color's RGB values
-            $trnprt_color  = imagecolorsforindex($objImage, $trnprt_indx);
+            $trnprt_color = imagecolorsforindex($objImage, $trnprt_indx);
             // Allocate the same color in the new image resource
-            $trnprt_indx    = imagecolorallocate($DestImage, $trnprt_color['red'], $trnprt_color['green'], $trnprt_color['blue']);
+            $trnprt_indx = imagecolorallocate($DestImage, $trnprt_color['red'], $trnprt_color['green'], $trnprt_color['blue']);
 
             // Completely fill the background of the new image with allocated color.
             imagefill($DestImage, 0, 0, $trnprt_indx);
@@ -70,16 +71,16 @@ function ResizeImage($FileName, $SaveFile, $MaxWidth, $MaxHeight = null) {
 
 
 
-    imagecopyresampled($DestImage, $objImage, 0, 0, 0, 0, $TargetWidth, $TargetHeight, $width, $height); 
-    switch(strtolower($extension)) {
+    imagecopyresampled($DestImage, $objImage, 0, 0, 0, 0, $TargetWidth, $TargetHeight, $width, $height);
+    switch (strtolower($extension)) {
         case "gif":
             imagegif($DestImage, $SaveFile);
             break;
         case "png":
-            imagepng($DestImage, $SaveFile,0);
+            imagepng($DestImage, $SaveFile, 0);
             break;
         default:
-            imagejpeg($DestImage,$SaveFile,100);
+            imagejpeg($DestImage, $SaveFile, 100);
             break;
     }
 }
@@ -87,16 +88,17 @@ function ResizeImage($FileName, $SaveFile, $MaxWidth, $MaxHeight = null) {
 // ---------------------------------------------------------------------------------
 //  GetFileExtension
 // ---------------------------------------------------------------------------------
-function GetFileExtension($inFileName) {
+function GetFileExtension($inFileName)
+{
     return substr($inFileName, strrpos($inFileName, '.') + 1);
 }
 
 //ResizeImage('ScreenShots - 1123373.png', 'test.png', 1700);
 
-$image = new Imagick( __DIR__ . '/ScreenShots - 1123373.png'); // default 72 dpi image
-$image->resizeImage(796, 341, imagick::FILTER_UNDEFINED , 1);
+$image = new Imagick(__DIR__ . '/ScreenShots - 1123373.png'); // default 72 dpi image
+$image->resizeImage(796, 341, imagick::FILTER_UNDEFINED, 1);
 //$image->setImageResolution(300, 300);
-$image->setImageResolution(796, 300) ; // it change only image density.
+$image->setImageResolution(796, 300); // it change only image density.
 //$image->resampleImage(796, 300, imagick::FILTER_UNDEFINED, 1);
 $image->writeImage(__DIR__ . "/img-500dpi.png"); // this image will have 500 dpi
 
