@@ -55,6 +55,7 @@
 					</div>
 				</div>
 			</div>
+			<button class="btn btn-danger" id="update-3d-model-2">Применить к 3D модели</button>
 			<?
 			if (isMobile()) {
 				echo ('
@@ -81,7 +82,7 @@
 			}
 
 			?>
-
+			
 		</div>
 		<div class="span5">
 			<div class="tabbable">
@@ -132,7 +133,7 @@
 							</div>
 
 							<button class="btn btn-success" id="download">Скачать макет</button>
-							<button class="btn btn-danger" id="test">Применить к 3D модели</button>
+							<button class="btn btn-danger" id="update-3d-model-1">Применить к 3D модели</button>
 
 							<div class="row ">
 								<div class=" ">

@@ -13,40 +13,12 @@ function sendScreenShots() {
 
 //Создание скриншота 
 function createScreenShots() {
-
     window.open(canvas.toDataURL('image/png'));
     html2canvas(document.querySelector("#drawingArea")).then(canvas => {
         document.querySelector("#screen").appendChild(canvas);
         dataURL = canvas.toDataURL('image/png', 2.0);
         post_data(dataURL);
     });
-}
-
-//перевертывание футболки
-function rotateShit() {
-    if (valueSelect === "img/crew_front.png") {
-        if ($('#flipback').attr("data-original-title") == "Show Back View") {
-            $('#flipback').attr('data-original-title', 'Show Front View');
-            $("#tshirtFacing").attr("src", "img/crew_back.png");
-            a = JSON.stringify(canvas);
-            canvas.clear();
-            try {
-                var json = JSON.parse(b);
-                canvas.loadFromJSON(b);
-            } catch (e) {}
-        } else {
-            $('#flipback').attr('data-original-title', 'Show Back View');
-            $("#tshirtFacing").attr("src", "img/crew_front.png");
-            b = JSON.stringify(canvas);
-            canvas.clear();
-            try {
-                var json = JSON.parse(a);
-                canvas.loadFromJSON(a);
-            } catch (e) {}
-        }
-    }
-    canvas.renderAll();
-    canvas.calcOffset();
 }
 
 //Отправка скриншота на сервер
@@ -112,6 +84,7 @@ $('.upload_files').on('click', function (event) {
                 $('#blah').trigger('click')
                 $('.ajax-reply').html(html);
                 arrayImagesDownload.push('/constructor-Mugs/phpModules/uploads/' + respond.name)
+                
             }
             // ошибка
             else {
@@ -251,6 +224,3 @@ function sendOrderRequest() {
 $(document).on('click', '.add-in-cart', function () {
     sendOrderRequest($(this))
 });
-$('#flipback').click(function () {
-    rotateShit();
-}); //БЫЛО перевертывание картинки
