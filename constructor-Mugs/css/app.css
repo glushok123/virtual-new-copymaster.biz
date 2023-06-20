@@ -112,3 +112,34 @@ body {
 #drawingArea:hover {
     border: 2px solid red !important;
 }
+
+@media screen and (max-width: 1700px) {
+    .span6 {
+        width:470px !important;
+    }
+}
+@media screen and (max-width: 1600px) {
+    .span6 {
+        width:420px !important;
+    }
+}
+@media screen and (max-width: 1500px) {
+    .span6 {
+        width:390px !important;
+    }
+}
+@media screen and (max-width: 1400px) {
+    .span6 {
+        width:360px !important;
+    }
+}
+@media screen and (max-width: 1300px) {
+    .span6 {
+        width:310px !important;
+    }
+}
+@media screen and (max-width: 900px) {
+    .span6 {
+        width:100% !important;
+    }
+}
