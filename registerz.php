@@ -357,10 +357,52 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             'order_id' => $orderId
         ]);
     }
+    
+    if ($_POST["id"] == "mugs") //кружки (конструктор)
+    {
+        $data = [];
+
+        $name = $_POST["user_name"];
+        $email = $_POST["email"];
+        $phone = $_POST["phone"];
+        $comment = $_POST["comment"];
+
+        $data = [
+            'images' => empty($_POST["images"]) === true ? [] : $_POST["images"],
+            'screenShots' => empty($_POST["screenShots"]) === true ? [] : $_POST["screenShots"],
+        ];
+
+        $info = serialize($data);
+
+        $db = getDbInstance();
+        $datat = date('d.m.y H:i');
+
+        $db->query("
+            INSERT INTO zayavki
+            ( `name`, `email`, `phon`, `comment`,  `created_at`, `info`,`tip`)
+            VALUES
+            (
+                '" . $name . "', 
+                '" . $email . "', 
+                '" . $phone . "', 
+                '" . $comment . "', 
+                '" . $datat . "', 
+                '" . $info . "', 
+                'Кружка (Конструктор)')
+        ");
+
+        $orderId = $db->getInsertId();
+
+        echo json_encode([
+            'success' => true,
+            'message' => 'Ваш заказ зарезервирован под № ' . $orderId . '. В течении 10 минут с вами свяжется наш менеджер.',
+            'order_id' => $orderId
+        ]);
+    }
 
     require_once 'send.php';
 
-    //sendmessage("info@copymaster.biz");
-    //sendmessage("Manager@copymaster.biz");
-    //sendmessage("design@copymaster.biz");
+    sendmessage("info@copymaster.biz");
+    sendmessage("Manager@copymaster.biz");
+    sendmessage("design@copymaster.biz");
 }

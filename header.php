@@ -131,7 +131,12 @@ ecommerce: "dataLayer"
                                                 <li>
                                                     <a class="dropdown-item" href="/shtender/">Конструктор штендера<br>"Бессмертный полк"</a>
                                                 </li>
-
+                                                <li>
+                                                    <a class="dropdown-item" href="/constructorT-Shirt/">Конструктор футболок</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="/constructor-Mugs/">Конструктор кружек</a>
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>

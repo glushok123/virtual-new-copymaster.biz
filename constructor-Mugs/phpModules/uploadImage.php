@@ -75,7 +75,7 @@ function image_resize($image_type_id, $img_width, $img_height, $width, $height)
 {
     $k = $width / $height;
 
-    $target_width = 700;
+    $target_width = 1100;
     $target_height = $target_width / $k;
     $target_layer = imagecreatetruecolor($target_width, $target_height);
     imagecopyresampled($target_layer, $image_type_id, 0, 0, 0, 0, $target_width, $target_height, $img_width, $img_height);

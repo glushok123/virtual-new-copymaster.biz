@@ -4,7 +4,6 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/config/config.php';
 
 function route($method, $urlData, $formData)
 {
-
     // Получение информации о заявках
     // GET /requests/
     if ($method === 'GET') {
@@ -40,36 +39,51 @@ function route($method, $urlData, $formData)
                 }
 
                 if ($z["tip"] === "Футболка") {
+                    $z["tip"] = "<label class='text-red' style='font-size:20px;'>Футболка (Конструктор)</label>"; 
                     if (!empty($z["info"])) {
                         $info = unserialize($z["info"]);
 
                         if (!empty($info["screenShots"])) {
                             if (!empty($info["screenShots"][0])) {
-                                $z["tip"] = $z["tip"] . "<hr><a href='/constructorT-Shirt/phpModules/" . $info["screenShots"][0] . "' target='_blank'>Скрин 1(просмотр)</a>";
+                                $z["tip"] = $z["tip"] . "<hr><a class='btn btn-success px-2' href='/constructorT-Shirt/phpModules/" . $info["screenShots"][0] . "' target='_blank'>Скрин 1(просмотр)</a>";
                             }
 
                             if (!empty($info["screenShots"][1])) {
-                                $z["tip"] = $z["tip"] . "<br><a href='/constructorT-Shirt/phpModules/" . $info["screenShots"][1] . "' target='_blank'>Скрин 2(просмотр)</a>";
+                                $z["tip"] = $z["tip"] . "<br><a class='btn btn-success px-2' href='/constructorT-Shirt/phpModules/" . $info["screenShots"][1] . "' target='_blank'>Скрин 2(просмотр)</a>";
                             }
                         }
 
                         if (!empty($info["images"])) {
                             if (!empty($info["images"][0])) {
-                                $z["tip"] = $z["tip"] . "<hr><a href='" . $info["images"][0] . "' target='_blank'>Image 1(просмотр)</a>";
+                                $z["tip"] = $z["tip"] . "<hr><a class='btn btn-success px-2' href='" . $info["images"][0] . "' target='_blank'>Image 1(просмотр)</a>";
                             }
 
                             if (!empty($info["images"][1])) {
-                                $z["tip"] = $z["tip"] . "<br><a href='" . $info["images"][1] . "' target='_blank'>Image 2(просмотр)</a>";
+                                $z["tip"] = $z["tip"] . "<br><a class='btn btn-success px-2' href='" . $info["images"][1] . "' target='_blank'>Image 2(просмотр)</a>";
                             }
 
                             if (!empty($info["images"][2])) {
-                                $z["tip"] = $z["tip"] . "<br><a href='" . $info["images"][2] . "' target='_blank'>Image 3(просмотр)</a>";
+                                $z["tip"] = $z["tip"] . "<br><a class='btn btn-success px-2' href='" . $info["images"][2] . "' target='_blank'>Image 3(просмотр)</a>";
                             }
                         }
                     }
                 }
 
-                $text = '{ "id":"' . $z["id"] . '", "name":"' . $z["name"] . '",  "email":"' . $z["email"] . '",  "status":"' . $z["status"] . '",  "comment":"' . $z["comment"] . '","price":"' . $z["price"] . '",  "created_at":"' . $z["created_at"] . '",  "updated_at":"' . $z["updated_at"] . '",  "phon":"' . $z["phon"] . '", "tip":"' . $z["tip"] . '"},';
+                if ($z["tip"] === "Кружка (Конструктор)") {
+                    $z["tip"] = "<label class='text-red' style='font-size:20px;'>Кружка (Конструктор)</label>"; 
+                    if (!empty($z["info"])) {
+                        $info = unserialize($z["info"]);
+
+                        if (!empty($info["images"])) {
+                            if (!empty($info["images"][0])) {
+                                $z["tip"] = $z["tip"] . "<hr><a class='btn btn-outline-success px-2 mx-2' href='/constructor-Mugs/" . $info["images"][0] . "' target='_blank'>Макет jpg (открыть)</a><a class='btn btn-outline-danger px-2' href='/constructor-Mugs/" . $info["images"][0] . "'  download>Скачать</a>";
+                                $z["tip"] = $z["tip"] . "<hr><a class='btn btn-outline-success px-2 mx-2' href='/constructor-Mugs/" . str_replace('jpg', 'png', $info["images"][0]) . "' target='_blank'>Макет png (открыть)</a><a class='btn btn-outline-danger px-2' href='/constructor-Mugs/" . $info["images"][0] . "'  download>Скачать</a>";
+                            }
+                        }
+                    }
+                }
+
+                $text = '{ "id":"' . $z["id"] . '", "name":"' . $z["name"] . ' ",  "email":"' . $z["email"] . '",  "status":"' . $z["status"] . '",  "comment":"' . $z["comment"] . '","price":"' . $z["price"] . '",  "created_at":"' . $z["created_at"] . '",  "updated_at":"' . $z["updated_at"] . '",  "phon":"' . $z["phon"] . '", "tip":"' . $z["tip"] . '"},';
                 $json = $json . $text;
             }
             $json = $json . ']';
