@@ -405,4 +405,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     sendmessage("info@copymaster.biz");
     sendmessage("Manager@copymaster.biz");
     sendmessage("design@copymaster.biz");
+    //sendmessage("glushok19999@gmail.com");
 }

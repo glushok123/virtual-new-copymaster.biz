@@ -18,7 +18,7 @@ function sendmessage($emails)
         $mail->Port = 587; // TCP port to connect to
         $mail->Host = 'smtp.yandex.ru'; // Specify main and backup SMTP servers
         $mail->Username = 'glushkovkibervoin@yandex.ru'; // SMTP username
-        $mail->Password = '!140199!qW'; // SMTP password
+        $mail->Password = 'kkmlxetugpikxklw'; // SMTP password
         //Recipients
         $mail->setFrom('glushkovkibervoin@yandex.ru', 'Andrey');
         $mail->addAddress($emails); // Name is optional
@@ -28,7 +28,7 @@ function sendmessage($emails)
         $mail->Body = 'НОВАЯ заявка! <br> https://copymaster.biz/dashbord/';
         $mail->AltBody = "НОВАЯ заявка! ";
         $mail->send();
-        echo 'Message has been sent';
+        //echo 'Message has been sent';
     } catch (Exception $e) {
         echo 'Message could not be sent.';
         echo 'Mailer Error: ' . $mail->ErrorInfo;
