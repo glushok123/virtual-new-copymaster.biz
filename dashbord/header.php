@@ -204,6 +204,9 @@
 							<li> 
 								<a href="./customersCalculator.php"><i class="bx bx-right-arrow-alt"></i>Клиенты и скидки</a>
 							</li>
+							<li> 
+								<a href="./openAndCloseSmena.php"><i class="bx bx-right-arrow-alt"></i>Открытие и закрытие смены</a>
+							</li>
 						</ul>
 					</li>
 				</ul>
@@ -274,3 +277,11 @@
 		}
 	});
 </script>
+
+<style>
+	.article-img{
+		object-fit: cover !important;
+  		width: 230px !important;
+  		height: 230px !important;
+	}
+</style>
