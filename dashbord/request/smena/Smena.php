@@ -51,6 +51,7 @@ class Smena {
                 $dateEnd,
                 $item['comment_start'],
                 $item['comment_end'],
+                $item['user_created'],
                 //$action
             ];
         }
@@ -83,9 +84,9 @@ class Smena {
         }
 
         $this->db->query("INSERT INTO smena
-            ( `type`, `date_start`, `date_end`, `comment_start`, `date_created`)
+            ( `type`, `date_start`, `date_end`, `comment_start`, `date_created`, `user_created`)
             VALUES
-            ('" . $type . "','" . $date . "', null,'" . $comment . "','" . $date . "')");
+            ('" . $type . "','" . $date . "', null,'" . $comment . "','" . $date . "', '" . $_SESSION['login'] . "')");
 
         return json_encode([
             'status' => "success"
