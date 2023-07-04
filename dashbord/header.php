@@ -39,6 +39,9 @@
 	<script src="assets/plugins/notifications/js/notifications.min.js"></script>
 	<script src="assets/plugins/notifications/js/notification-custom-script.js"></script>
 
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
+
 </head>
 
 <style>

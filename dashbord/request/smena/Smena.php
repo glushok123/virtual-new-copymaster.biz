@@ -45,12 +45,13 @@ class Smena {
             }
 
             $this->arrayInfo[] = [
+                $item['id'],
                 $type,
                 $dateStart,
                 $dateEnd,
                 $item['comment_start'],
                 $item['comment_end'],
-                $action
+                //$action
             ];
         }
 
@@ -63,9 +64,32 @@ class Smena {
      * 
      * @return [type]
      */
-    public function createSmena(string $comment) 
+    public function createSmena(string $type, string $comment) 
     {
-        //
+        $date = date('d.m.y H:i');
+
+        $type = $type == 'День' ? 1 : 0;
+
+        $res = $this->db->query("SELECT * FROM `smena` WHERE ISNULL(date_end)");
+
+        foreach ($res as $item) {
+            $this->db->query("
+                UPDATE smena
+                SET 
+                date_end='" . $date . "', 
+                comment_end='" . $comment . "' 
+                WHERE id=" . $item['id'] . "
+            ");
+        }
+
+        $this->db->query("INSERT INTO smena
+            ( `type`, `date_start`, `date_end`, `comment_start`, `date_created`)
+            VALUES
+            ('" . $type . "','" . $date . "', null,'" . $comment . "','" . $date . "')");
+
+        return json_encode([
+            'status' => "success"
+        ]);
     }
 
     /**
