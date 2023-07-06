@@ -49,8 +49,51 @@ class Smena {
                 $type,
                 $dateStart,
                 $dateEnd,
-                $item['comment_start'],
-                $item['comment_end'],
+                '
+                <table class="table">
+                    <tr>
+                        <td>Тип</td>
+                        <td>Количество</td>
+                    </tr>
+                    <tr>
+                        <td>594</td>
+                        <td>' . $item['type_594'] . '</td>
+                    </tr>
+                    <tr>
+                        <td>914</td>
+                        <td>' . $item['type_914'] . '</td>
+                    </tr>
+                    <tr>
+                        <td>610(м)</td>
+                        <td>' . $item['type_610_m'] . '</td>
+                    </tr>
+                    <tr>
+                        <td>841</td>
+                        <td>' . $item['type_841'] . '</td>
+                    </tr>
+                    <tr>
+                        <td>1060 (м)</td>
+                        <td>' . $item['type_1060_м'] . '</td>
+                    </tr>
+                    <tr>
+                        <td>420</td>
+                        <td>' . $item['type_420'] . '</td>
+                    </tr>
+                    <tr>
+                        <td>297</td>
+                        <td>' . $item['type_297'] . '</td>
+                    </tr>
+                    <tr>
+                        <td>A4</td>
+                        <td>' . $item['type_A4'] . '</td>
+                    </tr>
+                    <tr></tr>
+                        <td>A3</td>
+                        <td>' . $item['type_A3'] . '</td>
+                    </tr>
+                </table>
+                ',
+                //$item['comment_end'],
                 $item['user_created'],
                 //$action
             ];
@@ -65,11 +108,12 @@ class Smena {
      * 
      * @return [type]
      */
-    public function createSmena(string $type, string $comment) 
+    public function createSmena(array $request) 
     {
         $date = date('d.m.y H:i');
+        $type = '';
 
-        $type = $type == 'День' ? 1 : 0;
+        $type = $request['formOpenType'] == 'День' ? 1 : 0;
 
         $res = $this->db->query("SELECT * FROM `smena` WHERE ISNULL(date_end)");
 
@@ -77,16 +121,45 @@ class Smena {
             $this->db->query("
                 UPDATE smena
                 SET 
-                date_end='" . $date . "', 
-                comment_end='" . $comment . "' 
+                date_end='" . $date . "'
                 WHERE id=" . $item['id'] . "
             ");
         }
 
         $this->db->query("INSERT INTO smena
-            ( `type`, `date_start`, `date_end`, `comment_start`, `date_created`, `user_created`)
+            ( 
+                `type`, 
+                `date_start`, 
+                `date_end`, 
+                `date_created`, 
+                `user_created`,
+                `type_594`,
+                `type_914`,
+                `type_610_m`,
+                `type_841`,
+                `type_1060_м`,
+                `type_420`,
+                `type_297`,
+                `type_A4`,
+                `type_A3`
+            )
             VALUES
-            ('" . $type . "','" . $date . "', null,'" . $comment . "','" . $date . "', '" . $_SESSION['login'] . "')");
+            (
+                '" . $type . "',
+                '" . $date . "', 
+                null,
+                '" . $date . "', 
+                '" . $_SESSION['login'] . "',
+                '" .  $request['type_594'] . "',
+                '" .  $request['type_914'] . "',
+                '" .  $request['type_610_m'] . "',
+                '" .  $request['type_841'] . "',
+                '" .  $request['type_1060_м'] . "',
+                '" .  $request['type_420'] . "',
+                '" .  $request['type_297'] . "',
+                '" .  $request['type_A4'] . "',
+                '" .  $request['type_A3'] . "'
+            )");
 
         return json_encode([
             'status' => "success"

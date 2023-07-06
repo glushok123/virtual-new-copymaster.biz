@@ -35,7 +35,7 @@
                         <th>Дата открытия</th>
                         <th>Дата закрытия</th>
                         <th>Остатки в начале смены</th>
-                        <th>Остатки в конце смены</th>
+                        <!--th>Остатки в конце смены</th-->
                         <th>Пользователь</th>
                     </tr>
                 </thead>
@@ -60,17 +60,55 @@
             <div class="modal-body">
                 <form id='form-open-smena'>
 
-                    <select id="formOpenType" class="form-control" aria-label=".form-select-lg example">
-                        <option selected> Выберите Тип смены</option>
+                    <select name="formOpenType" class="form-control" aria-label=".form-select-lg example">
+                        <option > Выберите Тип смены</option>
                         <option value="День">День</option>
                         <option value="ночь">ночь</option>
                     </select>
 
                     <hr>
-                    <div class="mb-3">
-                        <label for="exampleFormControlTextarea1" class="form-label">Отчёт по остаткам</label>
-                        <textarea class="form-control" id="formOpenComment" rows="4"></textarea>
-                    </div>
+                    <table class="table">
+                        <tr>
+                            <td>Тип</td>
+                            <td>Количество</td>
+                        </tr>
+                        <tr>
+                            <td>594</td>
+                            <td><input class="form-control" type="number" name='type_594'></td>
+                        </tr>
+                        <tr>
+                            <td>914</td>
+                            <td><input class="form-control" type="number" name='type_914'></td>
+                        </tr>
+                        <tr>
+                            <td>610(м)</td>
+                            <td><input class="form-control" type="number" name='type_610_m'></td>
+                        </tr>
+                        <tr>
+                            <td>841</td>
+                            <td><input class="form-control" type="number" name='type_841'></td>
+                        </tr>
+                        <tr>
+                            <td>1060 (м)</td>
+                            <td><input class="form-control" type="number" name='type_1060_м'></td>
+                        </tr>
+                        <tr>
+                            <td>420</td>
+                            <td><input class="form-control" type="number" name='type_420'></td>
+                        </tr>
+                        <tr>
+                            <td>297</td>
+                            <td><input class="form-control" type="number" name='type_297'></td>
+                        </tr>
+                        <tr>
+                            <td>A4</td>
+                            <td><input class="form-control" type="number" name='type_A4'></td>
+                        </tr>
+                        <tr></tr>
+                            <td>A3</td>
+                            <td><input class="form-control" type="number" name='type_A3'></td>
+                        </tr>
+                    </table>
                 </form>
             </div>
             <div class="modal-footer">
@@ -141,14 +179,22 @@ $(document).ready(function() {
     requestInfo();
 
     function requestOpenSmena() {
+        // создадим пустой объект
+        var $data = {};
+        // переберём все элементы input, textarea и select формы с id="myForm "
+        $('#form-open-smena').find ('input, textearea, select').each(function() {
+            // добавим новое свойство к объекту $data
+            // имя свойства – значение атрибута name элемента
+            // значение свойства – значение свойство value элемента
+            $data[this.name] = $(this).val();
+        });
+
+        console.log($data);
         $.ajax({
             url: '/dashbord/request/smena/createSmena.php',
             method: 'post',
             dataType: "json",
-            data: {
-                type: $('#formOpenType').val(),
-                comment: $('#formOpenComment').val(),
-            },
+            data: $data,
             async: true,
             success: function(data) {
                 if (data.status == 'success') {
