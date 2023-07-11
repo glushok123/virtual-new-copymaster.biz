@@ -1,123 +1,17 @@
 <?
-	include('./header.php')
+	include_once('./header.php');
+	include_once('./view/openAndCloseSmena/modalOpenSmena.php');
+	include_once('./view/openAndCloseSmena/modalAddMaterial.php');
 ?>
-
-<style>
-
-</style>
 
 <div class="page-wrapper">
     <div class="page-content-wrapper">
-        <div class="container">
-            <br>
-            <hr>
-
-            <div class='row text-center'>
-                <h2 class='mx-auto'>Отчёт по сменам</h2>
-            </div>
-
-            <div class='row text-center'>
-                <span class='mx-auto'>При открытии новой смены, предыдущая закроется автоматически! </span>
-            </div>
-
-            <hr>
-            <div class='row text-center'>
-                <button type="button" class="btn btn-outline-success mx-auto" style="color:white;" data-toggle="modal"
-                    data-target="#exampleModal">Открыть смену</button>
-            </div>
-            <hr>
-
-            <table id="table" class="table table-striped table-bordered table-sm text-center table-dark" style="width:100%">
-                <thead>
-                    <tr>
-                        <th>№</th>
-                        <th>Тип смены</th>
-                        <th>Дата открытия</th>
-                        <th>Дата закрытия</th>
-                        <th>Остатки в начале смены</th>
-                        <!--th>Остатки в конце смены</th-->
-                        <th>Пользователь</th>
-                    </tr>
-                </thead>
-                <tbody class="table-striped">
-
-                </tbody>
-            </table>
-        </div>
+        <?
+            include_once('./view/openAndCloseSmena/content.php');
+        ?>
     </div>
 </div>
 
-<!-- Модальное окно -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Открытие смены</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form id='form-open-smena'>
-
-                    <select name="formOpenType" class="form-control" aria-label=".form-select-lg example">
-                        <option > Выберите Тип смены</option>
-                        <option value="День">День</option>
-                        <option value="ночь">ночь</option>
-                    </select>
-
-                    <hr>
-                    <table class="table">
-                        <tr>
-                            <td>Тип</td>
-                            <td>Количество</td>
-                        </tr>
-                        <tr>
-                            <td>594</td>
-                            <td><input class="form-control" type="number" name='type_594'></td>
-                        </tr>
-                        <tr>
-                            <td>914</td>
-                            <td><input class="form-control" type="number" name='type_914'></td>
-                        </tr>
-                        <tr>
-                            <td>610(м)</td>
-                            <td><input class="form-control" type="number" name='type_610_m'></td>
-                        </tr>
-                        <tr>
-                            <td>841</td>
-                            <td><input class="form-control" type="number" name='type_841'></td>
-                        </tr>
-                        <tr>
-                            <td>1060 (м)</td>
-                            <td><input class="form-control" type="number" name='type_1060_м'></td>
-                        </tr>
-                        <tr>
-                            <td>420</td>
-                            <td><input class="form-control" type="number" name='type_420'></td>
-                        </tr>
-                        <tr>
-                            <td>297</td>
-                            <td><input class="form-control" type="number" name='type_297'></td>
-                        </tr>
-                        <tr>
-                            <td>A4</td>
-                            <td><input class="form-control" type="number" name='type_A4'></td>
-                        </tr>
-                        <tr></tr>
-                            <td>A3</td>
-                            <td><input class="form-control" type="number" name='type_A3'></td>
-                        </tr>
-                    </table>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
-                <button type="button" class="btn btn-primary" id='buttonOpenSmena'>Открыть смену</button>
-            </div>
-        </div>
-    </div>
-</div>
 
 <!--end switcher-->
 <script src="assets/js/jquery.min.js"></script>
@@ -142,71 +36,119 @@
 <script src="assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
 <script src="assets/js/app.js"></script>
 
-<script type="text/javascript">
+<style media="screen">
+    .ogrsize {
+        max-width: 80px;
+        min-width: 80px;
+    }
+</style>
 
+<script type="text/javascript">
+    $(document).ready(function() {
+        var table = $('#table').DataTable({
+            "order": [0, 'desc']
+        });
+
+        var tableMaterial = $('#table-material').DataTable({
+            "order": [0, 'desc']
+        });
+
+        // Информация о сменах
+        function requestInfoSmena($id) {
+            $.ajax({
+                url: '/dashbord/request/smena/getInfoByTable.php',
+                method: 'post',
+                dataType: "json",
+                data: {},
+                async: true,
+                success: function(data) {
+                    table.clear().draw();
+                    table.rows.add(data).draw();
+                },
+            });
+        }
+
+        // Информация о приходах
+        function requestInfoMaterial($id) {
+            $.ajax({
+                url: '/dashbord/request/material/getInfoByTable.php',
+                method: 'post',
+                dataType: "json",
+                data: {},
+                async: true,
+                success: function(data) {
+                    tableMaterial.clear().draw();
+                    tableMaterial.rows.add(data).draw();
+                },
+            });
+        }
+
+        requestInfoSmena();
+        requestInfoMaterial();
+
+        /**
+         * Открытие смены
+         *
+         * @return void
+         */
+        function requestOpenSmena() {
+            var $data = {};
+
+            $('#form-open-smena').find('input, textearea, select').each(function() {
+                $data[this.name] = $(this).val();
+            });
+
+            $.ajax({
+                url: '/dashbord/request/smena/createSmena.php',
+                method: 'post',
+                dataType: "json",
+                data: $data,
+                async: true,
+                success: function(data) {
+                    if (data.status == 'success') {
+                        toastr.success('Смена открыта!')
+                        location.reload()
+                    }
+                },
+            });
+        }
+
+        /**
+         * Добавление прихода
+         *
+         * @return void
+         */
+        function requestAddMaterial() {
+            var $data = {};
+
+            $('#form-add-material').find('input, textearea, select').each(function() {
+                $data[this.name] = $(this).val();
+            });
+
+            $.ajax({
+                url: '/dashbord/request/material/addMaterial.php',
+                method: 'post',
+                dataType: "json",
+                data: $data,
+                async: true,
+                success: function(data) {
+                    if (data.status == 'success') {
+                        toastr.success('Добавлен!')
+                        location.reload()
+                    }
+                },
+            });
+        }
+
+        $(document).on('click', '#buttonOpenSmena', function() {
+            requestOpenSmena($(this));
+        });
+
+        $(document).on('click', '#buttonAddMaterial', function() {
+            requestAddMaterial($(this));
+        });
+    })
 </script>
 
 </body>
-
 </html>
-<style media="screen">
-.ogrsize {
-    max-width: 80px;
-    min-width: 80px;
-}
-</style>
-<script type="text/javascript">
-$(document).ready(function() {
-    var table = $('#table').DataTable({
-        "order": [ 0, 'desc' ]
-    });
-
-    // Информация о сменах
-    function requestInfo($id) {
-        $.ajax({
-            url: '/dashbord/request/smena/getInfoByTable.php',
-            method: 'post',
-            dataType: "json",
-            data: {},
-            async: true,
-            success: function(data) {
-                table.clear().draw();
-                table.rows.add(data).draw();
-            },
-        });
-    }
-
-    requestInfo();
-
-    function requestOpenSmena() {
-        // создадим пустой объект
-        var $data = {};
-        // переберём все элементы input, textarea и select формы с id="myForm "
-        $('#form-open-smena').find ('input, textearea, select').each(function() {
-            // добавим новое свойство к объекту $data
-            // имя свойства – значение атрибута name элемента
-            // значение свойства – значение свойство value элемента
-            $data[this.name] = $(this).val();
-        });
-
-        console.log($data);
-        $.ajax({
-            url: '/dashbord/request/smena/createSmena.php',
-            method: 'post',
-            dataType: "json",
-            data: $data,
-            async: true,
-            success: function(data) {
-                if (data.status == 'success') {
-                    toastr.success('Смена открыта!')
-                    location.reload()
-                }
-            },
-        });
-    }
-
-    $(document).on('click', '#buttonOpenSmena', function () {
-        requestOpenSmena($(this));
-    });
-})
-</script>
