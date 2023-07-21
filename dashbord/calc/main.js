@@ -2681,6 +2681,19 @@ let base = new function () {
         this.fnm = titelBD['cv'];
         this.pr = ppr[16];
       }
+      this.cw = new function () {
+        this.fnm = 'Печать на кружках';
+        this.lst = new function () {
+          this.cwa = new function () {
+            this.fnm = "Белая кружка";
+            this.pr = 600;
+          }
+          this.cwb = new function () {
+            this.fnm = "Цветная кружка";
+            this.pr = 600;
+          }
+        }
+      }
     }
   }
   this.d = new function () {
