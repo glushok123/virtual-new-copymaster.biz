@@ -1888,80 +1888,7 @@ let base = new function () {
 
 		this.lst = new function () {
 
-			this.ca = new function () {
-				this.nm = "Сканирование";
-				let gr = [0,10,50,100,500]; // градиент цен
-				this.grad = gr;
-				let pr = [
-					[13.2,10.56,7.92,5.28,3.96], // А4 авто
-					[19.8,15.84,11.88,7.92,5.94], // А4 руч
-					[19.8,15.84,11.88,9.24,6.6], // А3 авто
-					[29.7,23.76,17.82,13.86,9.9], // А3 руч
-					[46.2,33,26.4,19.8,15.84], // А2
-					[85.8,72.6,59.4,46.2,33], // А1
-					[145.2,125.4,112.2,99,85.8] // A0
-				];
-				for (k in pr) {
-					for (l in pr[k]) {
-						pr[k][l] = Math.round(pr[k][l]*z)/100;
-					}
-				}
-				this.price = pr;
-				this.lst = new function () {
-					this.caa = new function () {
-						this.nm = "A4";
-						this.fnm = "Сканирование формат А4";
-						this.lst = new function () {
-							this.caaa = new function () {
-								this.nm = "автоскан";
-								this.gr = gr;
-								this.pr = pr[0];
-							}
-							this.caab = new function () {
-								this.nm = "со стекла";
-								this.fnm = "со стекла";
-								this.gr = gr;
-								this.pr = pr[1];
-							}
-						}
-					}
-					this.cab = new function () {
-						this.nm = "A3";
-						this.fnm = "Сканирование формат А3";
-						this.lst = new function () {
-							this.caba = new function () {
-								this.nm = "автоскан";
-								this.gr = gr;
-								this.pr = pr[2];
-							}
-							this.cabb = new function () {
-								this.nm = "со стекла";
-								this.fnm = "со стекла";
-								this.gr = gr;
-								this.pr = pr[3];
-							}
-						}
-					}
-					this.cac = new function () {
-						this.nm = "A2";
-						this.fnm = "Сканирование формат А2";
-						this.gr = gr;
-						this.pr = pr[4];
-					}
-					this.cad = new function () {
-						this.nm = "A1";
-						this.fnm = "Сканирование формат А1";
-						this.gr = gr;
-						this.pr = pr[5];
-					}
-					this.cae = new function () {
-						this.nm = "A0";
-						this.fnm = "Сканирование формат А0";
-						this.gr = gr;
-						this.pr = pr[6];
-					}
-				}
-			}
+
 			this.cb = new function () {
 				this.nm = "Ламинирование";
 				let gr = [0,10,50]; //градиент цен
@@ -2544,6 +2471,80 @@ let base = new function () {
                             }
                         }	
                     }
+					this.gс = new function () {
+						this.nm = "Сканирование";
+						let gr = [0,10,50,100,500]; // градиент цен
+						this.grad = gr;
+						let pr = [
+							[13.2,10.56,7.92,5.28,3.96], // А4 авто
+							[19.8,15.84,11.88,7.92,5.94], // А4 руч
+							[19.8,15.84,11.88,9.24,6.6], // А3 авто
+							[29.7,23.76,17.82,13.86,9.9], // А3 руч
+							[46.2,33,26.4,19.8,15.84], // А2
+							[85.8,72.6,59.4,46.2,33], // А1
+							[145.2,125.4,112.2,99,85.8] // A0
+						];
+						for (k in pr) {
+							for (l in pr[k]) {
+								pr[k][l] = Math.round(pr[k][l]*z)/100;
+							}
+						}
+						this.price = pr;
+						this.lst = new function () {
+							this.gсa = new function () {
+								this.nm = "A4";
+								this.fnm = "Сканирование формат А4";
+								this.lst = new function () {
+									this.gсaa = new function () {
+										this.nm = "автоскан";
+										this.gr = gr;
+										this.pr = pr[0];
+									}
+									this.gсab = new function () {
+										this.nm = "со стекла";
+										this.fnm = "со стекла";
+										this.gr = gr;
+										this.pr = pr[1];
+									}
+								}
+							}
+							this.gсb = new function () {
+								this.nm = "A3";
+								this.fnm = "Сканирование формат А3";
+								this.lst = new function () {
+									this.gсba = new function () {
+										this.nm = "автоскан";
+										this.gr = gr;
+										this.pr = pr[2];
+									}
+									this.gсbb = new function () {
+										this.nm = "со стекла";
+										this.fnm = "со стекла";
+										this.gr = gr;
+										this.pr = pr[3];
+									}
+								}
+							}
+							this.gсc = new function () {
+								this.nm = "A2";
+								this.fnm = "Сканирование формат А2";
+								this.gr = gr;
+								this.pr = pr[4];
+							}
+							this.gсd = new function () {
+								this.nm = "A1";
+								this.fnm = "Сканирование формат А1";
+								this.gr = gr;
+								this.pr = pr[5];
+							}
+							this.gсe = new function () {
+								this.nm = "A0";
+								this.fnm = "Сканирование формат А0";
+								this.gr = gr;
+								this.pr = pr[6];
+							}
+						}
+					}
                 }
     }
 }
