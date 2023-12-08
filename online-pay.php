@@ -41,9 +41,14 @@ include_once 'header.php';
                     </p><br>
                   </form-->
                   <div class="row text-center">
-                      <div class="col-md-12 mx-auto" style="width: 300px;">
+                      <div class="row text-center mx-auto">
+                          <h2 style="color: #0a53be">
+                              2204 4502 4204 6818
+                          </h2>
+                      </div>
+                      <!--div class="col-md-12 mx-auto" style="width: 300px;">
                        <iframe src="https://yoomoney.ru/quickpay/shop-widget?writer=seller&targets=%D0%9E%D0%BF%D0%BB%D0%B0%D1%82%D0%B0%20%D1%83%D1%81%D0%BB%D1%83%D0%B3&default-sum=&button-text=11&payment-type-choice=on&successURL=&quickpay=shop&account=41001450854725&" width="100%" height="225" frameborder="0" allowtransparency="true" scrolling="no"></iframe>
-                    </div>
+                    </div-->
                   </div>
                   
                  
