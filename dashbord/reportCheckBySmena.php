@@ -255,7 +255,7 @@
                                     </li>
 
 									<li class="nav-item">
-										<a class="nav-link custom-tab-link active " data-toggle="tab" href="#a">2023</a>
+										<a class="nav-link custom-tab-link " data-toggle="tab" href="#a">2023</a>
 									</li>
 									<li class="nav-item">
 										<a class="nav-link custom-tab-link" data-toggle="tab" href="#b">2022</a>
