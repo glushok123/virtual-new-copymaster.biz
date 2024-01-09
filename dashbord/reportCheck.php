@@ -104,6 +104,57 @@
 		],
 	];
 
+$date2024 = [
+    'Январь' => [
+        '2024-01-01',
+        '2024-01-31',
+    ],
+    'Февраль' => [
+        '2024-02-01',
+        '2024-02-29',
+    ],
+    'Март' => [
+        '2024-03-01',
+        '2024-03-31',
+    ],
+    'Апрель' => [
+        '2024-04-01',
+        '2024-04-30',
+    ],
+    'Май' => [
+        '2024-05-01',
+        '2024-05-31',
+    ],
+    'Июнь' => [
+        '2024-06-01',
+        '2024-06-30',
+    ],
+    'Июль' => [
+        '2024-07-01',
+        '2024-07-31',
+    ],
+    'Август' => [
+        '2024-08-01',
+        '2024-08-31',
+    ],
+    'Сентябрь' => [
+        '2024-09-01',
+        '2024-09-30',
+    ],
+    'Октябрь' => [
+        '2024-10-01',
+        '2024-10-31',
+    ],
+    'Ноябрь' => [
+        '2024-11-01',
+        '2024-11-30',
+    ],
+    'Декабрь'=> [
+        '2024-12-01',
+        '2024-12-31',
+    ],
+];
+
 	foreach ($date2022 as $key => $month) {
 		$stmt = $dbh->prepare("
 			SELECT 
@@ -143,7 +194,28 @@
 		$data2023 = $stmt->fetchAll();
 		$date2023[$key]['info'] = $data2023;
 	}
-	
+
+foreach ($date2024 as $key => $month) {
+    $stmt = $dbh->prepare("
+                SELECT 
+                    ci.id, 
+                    ci.cost, 
+                    ci.createtime, 
+                    ci.discount, 
+                    ci.discount_percent, 
+                    ci.pay_type 
+                    from check_id as ci 
+                    where '" . $month[0] . " 08:29:59' <= ci.createtime 
+                    and 
+                    ci.createtime < '" . $month[1] ." 08:29:59'
+                    AND (ci.cher = '0' ) 
+                    order by ci.createtime DESC;
+            ");
+
+    $stmt->execute();
+    $data2024 = $stmt->fetchAll();
+    $date2024[$key]['info'] = $data2024;
+}
 ?>
 
 <style>
@@ -174,8 +246,11 @@
 						<div class='row'>
 							<div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
 								<ul class="nav nav-tabs ">
+                                    <li class="nav-item">
+                                        <a class="nav-link custom-tab-link active" data-toggle="tab" href="#с">2024</a>
+                                    </li>
 									<li class="nav-item">
-										<a class="nav-link custom-tab-link active " data-toggle="tab" href="#a">2023</a>
+										<a class="nav-link custom-tab-link " data-toggle="tab" href="#a">2023</a>
 									</li>
 									<li class="nav-item">
 										<a class="nav-link custom-tab-link" data-toggle="tab" href="#b">2022</a>
@@ -185,7 +260,66 @@
 							</div>
 							<div class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10">
 								<div class="tab-content text-center">
-									<div class="tab-pane fade show active" id="a">
+                                    <div class="tab-pane fade show active" id="с">
+                                        <div class="container">
+                                            <div class=' text-center'>
+                                                <h3>2023</h3>
+                                            </div>
+
+                                            <?php
+
+                                            echo '<table class="table table-striped table-bordered table-dark table-hover table-sm">';
+                                            echo '
+												<tr>
+													<td>Месяц</td>
+													<td>Заработано за месяц</td>
+													<td>Средний чек за месяц</td>
+													<td>Количество чеков</td>
+													<td>Оплачено картой</td>
+													<td>Оплачено наличкой</td>
+													<td>Действия</td>
+												</tr>
+												';
+                                            foreach ($date2024 as $key => $month) {
+                                                $averageMoneys = 0; // Средний чек
+                                                $inTotalMoneys = 0; // Всего заработано
+                                                $quantity = count($month['info']); // общее количество чеков
+                                                $payTypeByСash = 0; // наличкой
+                                                $payTypeByСard = 0; // картой
+
+                                                foreach ($month['info'] as $check) {
+                                                    $inTotalMoneys = $inTotalMoneys + $check['cost'];
+
+                                                    if($check['pay_type'] == 'cash') {
+                                                        $payTypeByСash = $payTypeByСash + 1;
+                                                    }
+
+                                                    if($check['pay_type'] == 'card') {
+                                                        $payTypeByСard = $payTypeByСard + 1;
+                                                    }
+                                                };
+
+                                                $averageMoneys = $inTotalMoneys == 0 ? 0 : $inTotalMoneys/$quantity;
+                                                echo '
+													<tr>
+														<td>' . $key . '</td>
+														<td>' . $inTotalMoneys . ' р.</td>
+														<td>' . ceil($averageMoneys) . ' р.</td>
+														<td>' . $quantity . ' шт.</td>
+														<td>' . $payTypeByСard . ' шт.</td>
+														<td>' . $payTypeByСash . ' шт.</td>
+														<td><button type="button" class="btn-info more-detailed" data-start="' . $month[0] .'" data-end="' . $month[1] .'" init-more>Подробнее</button></td>
+													</tr>
+													';
+
+                                            }
+                                            echo '</table>';
+
+                                            ?>
+
+                                        </div>
+                                    </div>
+									<div class="tab-pane fade" id="a">
 										<div class="container">
 										<div class=' text-center'>
 											<h3>2023</h3>
