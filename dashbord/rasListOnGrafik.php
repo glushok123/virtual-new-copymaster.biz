@@ -51,7 +51,8 @@
 									<h4>Год</h4>
 									<select id="years"  class="form-control" aria-label=".form-select-lg example">
 										<option value="2022">2022</option>
-										<option value="2023" selected>2023</option>
+										<option value="2023">2023</option>
+										<option value="2024" selected>2024</option>
 									</select>
 								</div>
 							</div>
