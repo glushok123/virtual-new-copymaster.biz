@@ -253,7 +253,7 @@
                         <div class="container">
                           <div class="row">
                             <div class="col-md-12 text-center">
-                              <h3 class="animate-charcter"> м. Октябрьская, Калужская площадь, дом 1 к 1</h3>
+                              <h3 class="animate-charcter"> М. Новокузнецкая, Пятницкая улица, 25, стр. 1</h3>
                             </div>
                           </div>
                         </div>

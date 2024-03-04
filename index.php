@@ -397,7 +397,8 @@ include_once 'header.php';
     <br><br><br>
     <div class="row justify-content-center">
       <div class="col-12 col-xl-8">
-        <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A2071f207a1d68f3b22bacc5a5ff0a2239b91b1869ddda0088d36d2ec493478f8&amp;width=100%25&amp;height=662&amp;lang=ru_RU&amp;scroll=true"></script></div>
+          <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Ad2136c5c357a6950a046d1e48ee8b5291093f848d3bd36d32e6abc68cd010df4&amp;width=100%&amp;height=662&amp;lang=ru_RU&amp;scroll=true"></script>
+        <!--script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A2071f207a1d68f3b22bacc5a5ff0a2239b91b1869ddda0088d36d2ec493478f8&amp;width=100%25&amp;height=662&amp;lang=ru_RU&amp;scroll=true"></script--></div>
       <div class="col-12 col-xl-4 justify-content-center text-center">
         <div style="width:100%;height:800px;overflow:hidden;position:relative;">
           <iframe style="width:100%;height:100%;border:1px solid #e6e6e6;border-radius:8px;box-sizing:border-box;text-align:center;margin: 0 auto;" src="https://yandex.ru/maps-reviews-widget/1032608171?comments"></iframe>
