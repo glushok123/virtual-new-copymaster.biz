@@ -196,12 +196,12 @@
                         <div class="col-6">
                             <div class="row text-center">
                                 <h3>ФИЗ. лица </h3>
-                                <i class="fas fa-phone">+7 (925) 456-70-96</i><br>
-                                <i class="fas ">+7 (925) 277-70-62 <span>(Telegram, WhatshApp)</span></i><br>
+                                <!--i class="fas fa-phone">+7 (925) 456-70-96</i--><br>
+                                <i class="fas ">+7 (925) 277-70-62 <span>(Telegram, WhatshApp)</span></i><br><br>
                                 <i class="a1 maila1" style="font-size:16px;">info@copymaster.biz</i><br>
 
                                 <button class='btn btn-outline-primary'>
-                                    <a class="social-icon icon-phone" title="Подпишитесь на нас в Phone" aria-label="Подпишитесь на нас в Phone" href="tel: +79254567096" target="_blank">Позвонить</a><br>
+                                    <a class="social-icon icon-phone" title="Подпишитесь на нас в Phone" aria-label="Подпишитесь на нас в Phone" href="tel: +79252777062" target="_blank">Позвонить</a><br>
                                 </button>
 
                             </div>
@@ -209,11 +209,11 @@
                         <div class="col-6">
                             <div class="row text-center">
                                 <h3>Юр. лица</h3>
-                                <i class="fas fa-phone">+7 (925) 968-66-86</i><br><br>
+                                <i class="fas fa-phone">+7 (925) 277-70-62</i><br><br>
                                 <i class="a1 maila1" style="font-size:16px;">manager@copymaster.biz</i><br>
                                 
                                 <button class='btn btn-outline-primary' >
-                                    <a class="social-icon icon-phone" title="Подпишитесь на нас в Phone" aria-label="Подпишитесь на нас в Phone" href="tel: +79259686686" target="_blank">Позвонить</a><br>
+                                    <a class="social-icon icon-phone" title="Подпишитесь на нас в Phone" aria-label="Подпишитесь на нас в Phone" href="tel: +79252777062" target="_blank">Позвонить</a><br>
                                 </button>
                             </div>
                         </div>
