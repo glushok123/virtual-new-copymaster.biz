@@ -197,7 +197,7 @@
                             <div class="row text-center">
                                 <h3>ФИЗ. лица </h3>
                                 <i class="fas fa-phone">+7 (925) 456-70-96</i><br>
-                                <i class="fas ">+7 (929) 656-52-33 <span>(Telegram, WhatshApp)</span></i><br>
+                                <i class="fas ">+7 (925) 277-70-62 <span>(Telegram, WhatshApp)</span></i><br>
                                 <i class="a1 maila1" style="font-size:16px;">info@copymaster.biz</i><br>
 
                                 <button class='btn btn-outline-primary'>
