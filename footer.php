@@ -261,8 +261,7 @@
                           <div class="row">
                             <div class="col-md-12 text-center">
                                 <a href="https://vk.com/public207042473"><i class="fa-brands fa-3x fa-vk"></i></a>
-                                <a href="#"><i class="fa-brands fa-3x fa-instagram"></i></a>
-                                <a href="#"><i class="fa-brands fa-3x fa-whatsapp"></i></a>
+                                <a href="https://wa.me/79252777062?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82!%20%F0%9F%91%8B%20%D0%9C%D0%B5%D0%BD%D1%8F%20%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D1%83%D0%B5%D1%82..."><i class="fa-brands fa-3x fa-whatsapp"></i></a>
                             </div>
                           </div>
                         </div>
