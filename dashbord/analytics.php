@@ -750,13 +750,13 @@
 
 		var kpis = [
 			{ hero: true, icon: 'bx-wallet', label: 'Выручка', value: money(t.revenue), delta: delta(t.revenue, p.revenue) },
-			{ icon: 'bx-receipt', label: 'Чеков', value: int(t.n), delta: delta(t.n, p.n) },
+			{ icon: 'bx-receipt', label: state.calc === 'ur' ? 'Заказов' : 'Чеков', value: int(t.n), delta: delta(t.n, p.n) },
 			{ icon: 'bx-calculator', label: 'Средний чек', value: money(t.avg), delta: delta(t.avg, p.avg) },
 			state.calc === 'ur'
 				? { icon: 'bx-buildings', label: 'Клиентов', value: int(s.clients.list.length), delta: '<span class="an-note">' + (s.clients.total ? pct(s.clients.withClient / s.clients.total) : '0%') + ' заказов с названием клиента</span>' }
 				: { icon: 'bx-credit-card', label: 'Безналичные', value: pct(t.cashless), delta: '<span class="an-note">' + money(t.card + t.yr) + '</span>' },
-			{ icon: 'bx-purchase-tag', label: 'Скидки', value: money(t.discount), delta: '<span class="an-note">' + (t.n ? pct(t.discounted / t.n) : '0%') + ' чеков со скидкой</span>' },
-			{ icon: 'bx-trophy', label: 'Лучший день', value: best ? money(best.revenue) : '—', delta: '<span class="an-note">' + (best ? dayLabel(best.d, s.period.days > 300) + ' · ' + int(best.n) + ' чеков' : 'нет продаж') + '</span>' }
+			{ icon: 'bx-purchase-tag', label: 'Скидки', value: money(t.discount), delta: '<span class="an-note">' + (t.n ? pct(t.discounted / t.n) : '0%') + (state.calc === 'ur' ? ' заказов' : ' чеков') + ' со скидкой</span>' },
+			{ icon: 'bx-trophy', label: 'Лучший день', value: best ? money(best.revenue) : '—', delta: '<span class="an-note">' + (best ? dayLabel(best.d, s.period.days > 300) + ' · ' + int(best.n) + (state.calc === 'ur' ? ' заказов' : ' чеков') : 'нет продаж') + '</span>' }
 		];
 		document.getElementById('anKpis').innerHTML = kpis.map(function (k, i) {
 			var note = i < 3 && p.n ? '<span class="an-note">' + esc(prevLabel) + '</span>' : '';
