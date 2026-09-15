@@ -40,6 +40,13 @@ $urls = explode('/', $url);
 $router = $urls[0];
 $urlData = array_slice($urls, 1);
 
-// Подключаем файл-роутер и запускаем главную функцию
-include_once 'routers/' . $router . '.php';
+// Подключаем файл-роутер и запускаем главную функцию.
+// Имя роутера — только латиница: иначе через ../ можно было подключить любой .php на сервере.
+if (!preg_match('/^[a-z]+$/', $router) || !is_file(__DIR__ . '/routers/' . $router . '.php')) {
+    http_response_code(404);
+    header('Content-Type: application/json; charset=utf-8');
+    echo json_encode(array('error' => 'Not Found'));
+    exit;
+}
+include_once __DIR__ . '/routers/' . $router . '.php';
 route($method, $urlData, $formData);

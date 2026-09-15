@@ -1,330 +1,145 @@
 <?php
+/**
+ * REST API заявок для страницы «Заявки → Обработка» (dashbord/index.php). Только для авторизованных сотрудников.
+ *
+ *   GET    api/requests/?status=&type=&search=&from=&to=&sort=&page=&limit=  — список + счётчики
+ *   GET    api/requests/{id}                 — одна заявка
+ *   GET    api/requests/poll?since={id}      — сколько пришло новых заявок (автообновление)
+ *   GET    api/requests/ids?фильтры          — все id по фильтрам (выбрать всё)
+ *   GET    api/requests/export?фильтры       — CSV
+ *   PUT    api/requests/{id}   JSON {status, price, comment, fields{}, expectedUpdated}
+ *   POST   api/requests/bulk   JSON {ids: [], status}
+ *   DELETE api/requests/{id}
+ *
+ * Изменяющие запросы требуют заголовок X-Requested-With: XMLHttpRequest (защита от CSRF: такой запрос
+ * с чужого сайта невозможен без CORS-preflight, а CORS не разрешён).
+ * Поиск передаётся параметром search: параметр q занят роутингом (api/.htaccess).
+ */
 require_once $_SERVER['DOCUMENT_ROOT'] . '/config/config.php';
+require_once __DIR__ . '/../../helpers/RequestsRepository.php';
 
+/**
+ * Обработка запроса без побочного вывода — удобно тестировать.
+ * @param callable $repoFactory function(): RequestsRepository
+ * @return array [httpStatus, data] — data: массив для JSON или ['csv' => rows]
+ */
+function requestsHandle($method, array $urlData, array $query, $body, array $session, array $server, $repoFactory)
+{
+	if (empty($session['user_logged_in'])) {
+		return [401, ['error' => 'Необходимо авторизоваться']];
+	}
+	if ($method !== 'GET') {
+		$xrw = isset($server['HTTP_X_REQUESTED_WITH']) ? strtolower($server['HTTP_X_REQUESTED_WITH']) : '';
+		if ($xrw !== 'xmlhttprequest') {
+			return [403, ['error' => 'Запрос отклонён']];
+		}
+	}
+
+	$action = isset($urlData[0]) ? (string)$urlData[0] : '';
+	if (count($urlData) > 1) {
+		return [404, ['error' => 'Не найдено']];
+	}
+	$isId = $action !== '' && ctype_digit($action) && strlen($action) <= 9;
+
+	$json = null;
+	if ($method === 'PUT' || $method === 'POST') {
+		$json = json_decode((string)$body, true);
+		if (!is_array($json)) {
+			return [400, ['error' => 'Ожидается JSON']];
+		}
+	}
+
+	try {
+		/** @var RequestsRepository $repo */
+		$repo = $repoFactory();
+
+		if ($method === 'GET') {
+			if ($action === '') {
+				$page = isset($query['page']) ? (int)$query['page'] : 1;
+				$limit = isset($query['limit']) ? (int)$query['limit'] : 40;
+				return [200, $repo->listRequests($query, $page, $limit)];
+			}
+			if ($action === 'poll') {
+				return [200, $repo->poll(isset($query['since']) ? $query['since'] : 0)];
+			}
+			if ($action === 'ids') {
+				return [200, ['ids' => $repo->ids($query)]];
+			}
+			if ($action === 'export') {
+				return [200, ['csv' => $repo->exportRows($query)]];
+			}
+			if ($isId) {
+				$item = $repo->find((int)$action);
+				return $item ? [200, ['item' => $item]] : [404, ['error' => 'Заявка не найдена']];
+			}
+			return [404, ['error' => 'Не найдено']];
+		}
+
+		if ($method === 'PUT' && $isId) {
+			return [200, ['item' => $repo->update((int)$action, $json)]];
+		}
+
+		if ($method === 'POST' && $action === 'bulk') {
+			$updated = $repo->bulkStatus(isset($json['ids']) ? $json['ids'] : null, isset($json['status']) ? $json['status'] : '');
+			return [200, ['updated' => $updated]];
+		}
+
+		if ($method === 'DELETE' && $isId) {
+			$repo->delete((int)$action);
+			return [200, ['deleted' => (int)$action]];
+		}
+
+		return [405, ['error' => 'Метод не поддерживается']];
+	} catch (RequestsApiError $e) {
+		return [$e->httpStatus, ['error' => $e->getMessage()] + $e->payload];
+	} catch (Exception $e) {
+		error_log('api/requests: ' . $e->getMessage());
+		return [500, ['error' => 'Ошибка сервера']];
+	}
+}
 
 function route($method, $urlData, $formData)
 {
-    // Получение информации о заявках
-    // GET /requests/
-    if ($method === 'GET') {
-        // Вытаскиваем заявки из базы...
-        $db = getDbInstance();
-        if (empty($urlData[0])) {
-            $res = $db->query("SELECT * FROM `zayavki`");
-            $json = '[';
-            foreach ($res as $z) {
+	ini_set('display_errors', '0');
+	if (session_status() !== PHP_SESSION_ACTIVE) {
+		session_start();
+	}
+	$session = isset($_SESSION) ? $_SESSION : [];
+	session_write_close();
 
-                if ($z["tip"] == "vizitka") {
-                    $z["tip"] = "ВИЗИТКА";
-                }
+	list($status, $data) = requestsHandle(
+		$method,
+		array_values(array_filter((array)$urlData, 'strlen')),
+		$_GET,
+		file_get_contents('php://input'),
+		$session,
+		$_SERVER,
+		function () {
+			return new RequestsRepository(getDbInstance(), require __DIR__ . '/../../helpers/requestsConfig.php', $_SERVER['DOCUMENT_ROOT']);
+		}
+	);
 
-                if ($z["tip"] == "listovki") {
-                    $z["tip"] = "ЛИСТОВКА";
-                }
+	http_response_code($status);
+	header('Cache-Control: no-store');
+	header('X-Content-Type-Options: nosniff');
 
-                if ($z["tip"] == "petchat") {
-                    $z["tip"] = "ПЕЧАТЬ";
-                }
+	if ($status === 200 && isset($data['csv'])) {
+		header('Content-Type: text/csv; charset=utf-8');
+		header('Content-Disposition: attachment; filename="zayavki-' . date('Y-m-d') . '.csv"');
+		$out = fopen('php://output', 'w');
+		fwrite($out, "\xEF\xBB\xBF");
+		foreach ($data['csv'] as $line) {
+			// Защита от формул в Excel: значения, начинающиеся с = + - @, экранируем апострофом.
+			fputcsv($out, array_map(function ($cell) {
+				$cell = (string)$cell;
+				return preg_match('/^[=+\-@\t\r]/', $cell) ? "'" . $cell : $cell;
+			}, $line), ';');
+		}
+		fclose($out);
+		return;
+	}
 
-                if ($z["tip"] == "petfoto") {
-                    $z["tip"] = "ПЕЧАТЬ ФОТО";
-                }
-
-                if ($z["tip"] == "ОБРАТНАЯ СВЯЗЬ") {
-                    $z["tip"] = $z["tip"] . "<hr>" . $z["kwiz_vid"] . "<hr>" . $z["kwiz_srok"];
-                }
-
-                if ($z["tip"] == "Печать на кружке") {
-                    $z["tip"] = $z["tip"] . "<hr> Артикул кружки: " . $z["kwiz_vid"] . "<hr>" . $z["kwiz_srok"];
-                }
-
-                if ($z["tip"] === "Футболка") {
-                    $z["tip"] = "<label class='text-red' style='font-size:20px;'>Футболка (Конструктор)</label>"; 
-                    if (!empty($z["info"])) {
-                        $info = unserialize($z["info"]);
-
-                        if (!empty($info["screenShots"])) {
-                            if (!empty($info["screenShots"][0])) {
-                                $z["tip"] = $z["tip"] . "<hr><a class='btn btn-success px-2' href='/constructorT-Shirt/phpModules/" . $info["screenShots"][0] . "' target='_blank'>Скрин 1(просмотр)</a>";
-                            }
-
-                            if (!empty($info["screenShots"][1])) {
-                                $z["tip"] = $z["tip"] . "<br><a class='btn btn-success px-2' href='/constructorT-Shirt/phpModules/" . $info["screenShots"][1] . "' target='_blank'>Скрин 2(просмотр)</a>";
-                            }
-                        }
-
-                        if (!empty($info["images"])) {
-                            if (!empty($info["images"][0])) {
-                                $z["tip"] = $z["tip"] . "<hr><a class='btn btn-success px-2' href='" . $info["images"][0] . "' target='_blank'>Image 1(просмотр)</a>";
-                            }
-
-                            if (!empty($info["images"][1])) {
-                                $z["tip"] = $z["tip"] . "<br><a class='btn btn-success px-2' href='" . $info["images"][1] . "' target='_blank'>Image 2(просмотр)</a>";
-                            }
-
-                            if (!empty($info["images"][2])) {
-                                $z["tip"] = $z["tip"] . "<br><a class='btn btn-success px-2' href='" . $info["images"][2] . "' target='_blank'>Image 3(просмотр)</a>";
-                            }
-                        }
-                    }
-                }
-
-                if ($z["tip"] === "Кружка (Конструктор)") {
-                    $z["tip"] = "<label class='text-red' style='font-size:20px;'>Кружка (Конструктор)</label>"; 
-                    if (!empty($z["info"])) {
-                        $info = unserialize($z["info"]);
-
-                        if (!empty($info["images"])) {
-                            if (!empty($info["images"][0])) {
-                                $z["tip"] = $z["tip"] . "<hr><a class='btn btn-outline-success px-2 mx-2' href='/constructor-Mugs/" . $info["images"][0] . "' target='_blank'>Макет jpg (открыть)</a><a class='btn btn-outline-danger px-2' href='/constructor-Mugs/" . $info["images"][0] . "'  download>Скачать</a>";
-                                $z["tip"] = $z["tip"] . "<hr><a class='btn btn-outline-success px-2 mx-2' href='/constructor-Mugs/" . str_replace('jpg', 'png', $info["images"][0]) . "' target='_blank'>Макет png (открыть)</a><a class='btn btn-outline-danger px-2' href='/constructor-Mugs/" . $info["images"][0] . "'  download>Скачать</a>";
-                            }
-                        }
-                    }
-                }
-
-                $text = '{ "id":"' . $z["id"] . '", "name":"' . $z["name"] . ' ",  "email":"' . $z["email"] . '",  "status":"' . $z["status"] . '",  "comment":"' . $z["comment"] . '","price":"' . $z["price"] . '",  "created_at":"' . $z["created_at"] . '",  "updated_at":"' . $z["updated_at"] . '",  "phon":"' . $z["phon"] . '", "tip":"' . $z["tip"] . '"},';
-                $json = $json . $text;
-            }
-            $json = $json . ']';
-            $json = str_replace(',]', ']', $json);
-        } else {
-            $id = $urlData[0];
-            $res = $db->query("SELECT * FROM `zayavki` WHERE id='$id'");
-            $json = '[';
-            if ($res[0]["tip"] != "ОБРАТНАЯ СВЯЗЬ") {
-                $info = unserialize($res[0]["info"]);
-            }
-
-
-            if ($res[0]["tip"] == "vizitka") {
-                $text = '{ "id":"' . $res[0]["id"] . '", "kol":"' . $info[0] . '","tipbum":"' . $info[1] . '","cvet":"' . $info[2] . '","size":"' . $info[3] . '","srok":"' . $info[4] . '","status":"' . $res[0]["status"] . '" ,"price":"' . $res[0]["price"] . '","comment":"' . $res[0]["comment"] . '", "tip":"' . $res[0]["tip"] . '"  }';
-            }
-            if ($res[0]["tip"] == "listovki") {
-                $text = '{ "id":"' . $res[0]["id"] . '", "kol":"' . $info[0] . '","tipbum":"' . $info[1] . '","cvet":"' . $info[2] . '","size":"' . $info[3] . '","srok":"' . $info[4] . '","status":"' . $res[0]["status"] . '" ,"price":"' . $res[0]["price"] . '","comment":"' . $res[0]["comment"] . '", "tip":"' . $res[0]["tip"] . '"  }';
-            }
-
-            if ($res[0]["tip"] == "petchat") {
-                $text = '{ "id":"' . $res[0]["id"] . '", "petchat_tip":"' . $info[0] . '","osnastka":"' . $info[1] . '","avt_osnastka":"' . $info[2] . '","srok":"' . $info[3] . '","status":"' . $res[0]["status"] . '" ,"price":"' . $res[0]["price"] . '","comment":"' . $res[0]["comment"] . '", "tip":"' . $res[0]["tip"] . '"  }';
-            }
-
-            if ($res[0]["tip"] == "petfoto") {
-                $text = '{ "id":"' . $res[0]["id"] . '", "size":"' . $info[0] . '","tipbum":"' . $info[1] . '","kol":"' . $info[2] . '","srok":"' . $info[3] . '","status":"' . $res[0]["status"] . '" ,"price":"' . $res[0]["price"] . '","comment":"' . $res[0]["comment"] . '", "tip":"' . $res[0]["tip"] . '"  }';
-            }
-            if ($res[0]["tip"] == "штендер") {
-                $text = '{ "id":"' . $res[0]["id"] . '", "name1":"' . $info[0] . '","zv1":"' . $info[1] . '","ye1":"' . $info[2] . '","name2":"' . $info[3] . '","zv2":"' . $info[4] . '" ,"ye2":"' . $info[5] . '",  "flret":"' . $info[6] . '","format":"' . $info[7] . '","template":"' . $info[8] . '","url_screenimg":"' . $info[9] . '","url_photo1img":"' . $info[10] . '", "url_photo2img":"' . $info[11] . '","status":"' . $res[0]["status"] . '" ,"price":"' . $res[0]["price"] . '","comment":"' . $res[0]["comment"] . '", "tip":"' . $res[0]["tip"] . '"   }';
-            }
-            if ($res[0]["tip"] == "ОБРАТНАЯ СВЯЗЬ") {
-                $text = '{ "id":"' . $res[0]["id"] . '", "status":"' . $res[0]["status"] . '" ,"price":"' . $res[0]["price"] . '","comment":"' . $res[0]["comment"] . '", "tip":"' . $res[0]["tip"] . '"  }';
-            }
-
-            $json = $json . $text;
-
-            $json = $json . ']';
-            $json = str_replace(',]', ']', $json);
-        }
-        // Выводим ответ клиенту
-        echo json_encode($json);
-        return;
-    }
-
-
-    // Добавление новой заявки
-    // POST /requests/
-    if ($method === 'POST' && empty($urlData)) {
-        // Добавляем заявки в базу...
-
-
-        if ($formData['name'] == "") {
-            echo json_encode(
-                array(
-                    'error' => 'Bad Request'
-                )
-            );
-            return;
-        }
-        if ($formData['email'] == "") {
-            echo json_encode(
-                array(
-                    'error' => 'Bad Request'
-                )
-            );
-            return;
-        }
-        if ($formData['message'] == "") {
-            echo json_encode(
-                array(
-                    'error' => 'Bad Request'
-                )
-            );
-            return;
-        }
-
-        $db = getDbInstance();
-        $date_creat = date('Y-m-d H:i:s');
-        $db->query("INSERT INTO zayavki    ( `name`, `email`, `message`, `created_at`)
-        VALUES
-        ('" . $formData['name'] . "','" . $formData['email'] . "','" . $formData['message'] . "','" . $date_creat . "')");
-        // Выводим ответ клиенту
-
-        //$res = $db->query("SELECT * FROM `zayavki` WHERE id=$Id");
-        require_once 'send.php';
-        sendmessage("info@copymaster.biz");
-
-
-        echo json_encode(
-            array(
-                'method' => 'POST',
-                'id' => rand(1, 100),
-                'formData' => $formData['name']
-            )
-        );
-        return;
-    }
-
-
-    // Обновление данных заявки
-    // PUT /requests/{Id}/
-    if ($method === 'PUT' && count($urlData) === 1) {
-        // Получаем id заявки
-        if ($formData["tipz"] == "vizitka") {
-            $Id = $urlData[0];
-            $kolit = $formData["kol"];
-            $tibum = $formData["tip"];
-            $cvet = $formData["cvet"];
-            $sizebum = $formData["size"];
-            $srok = $formData["srok"];
-            $data = [];
-
-            array_push($data, $kolit, $tibum, $cvet, $sizebum, $srok);
-            $info = serialize($data);
-
-            $db = getDbInstance();
-            $date_update = date('Y-m-d H:i:s');
-            $db->query("UPDATE `zayavki` SET `price`='" . $formData['price'] . "',`status`='" . $formData['status'] . "', `comment`='" . $formData['comment'] . "',`updated_at`='" . $date_update . "',`info`='" . $info . "' WHERE id=$Id");
-            // Выводим ответ клиенту
-        }
-        if ($formData["tipz"] == "listovki") {
-            $Id = $urlData[0];
-            $kolit = $formData["kol"];
-            $tibum = $formData["tip"];
-            $cvet = $formData["cvet"];
-            $sizebum = $formData["size"];
-            $srok = $formData["srok"];
-            $data = [];
-
-            array_push($data, $kolit, $tibum, $cvet, $sizebum, $srok);
-            $info = serialize($data);
-
-            $db = getDbInstance();
-            $date_update = date('Y-m-d H:i:s');
-            $db->query("UPDATE `zayavki` SET `price`='" . $formData['price'] . "',`status`='" . $formData['status'] . "', `comment`='" . $formData['comment'] . "',`updated_at`='" . $date_update . "',`info`='" . $info . "' WHERE id=$Id");
-            // Выводим ответ клиенту
-        }
-        if ($formData["tipz"] == "petchat") {
-            $Id = $urlData[0];
-            $petchat_tip = $formData["petchat_tip"];
-            $osnastka = $formData["osnastka"];
-            $avt_osnastka = $formData["avt_osnastka"];
-            $srok = $formData["srok"];
-            $data = [];
-
-            array_push($data, $petchat_tip, $osnastka, $avt_osnastka, $srok);
-            $info = serialize($data);
-
-            $db = getDbInstance();
-            $date_update = date('Y-m-d H:i:s');
-            $db->query("UPDATE `zayavki` SET `price`='" . $formData['price'] . "',`status`='" . $formData['status'] . "', `comment`='" . $formData['comment'] . "',`updated_at`='" . $date_update . "',`info`='" . $info . "' WHERE id=$Id");
-            // Выводим ответ клиенту
-        }
-        if ($formData["tipz"] == "petfoto") {
-            $Id = $urlData[0];
-
-            $kolit = $formData["kol"];
-            $tibum = $formData["tip"];
-            $sizebum = $formData["size"];
-            $srok = $formData["srok"];
-
-            $data = [];
-
-            array_push($data, $sizebum, $tibum, $kolit, $srok);
-            $info = serialize($data);
-
-            $db = getDbInstance();
-            $date_update = date('Y-m-d H:i:s');
-            $db->query("UPDATE `zayavki` SET `price`='" . $formData['price'] . "',`status`='" . $formData['status'] . "', `comment`='" . $formData['comment'] . "',`updated_at`='" . $date_update . "',`info`='" . $info . "' WHERE id=$Id");
-            // Выводим ответ клиенту
-        }
-        if ($formData["tipz"] == "штендер") {
-            $Id = $urlData[0];
-
-            $name1 = $formData["name1"];
-            $zv1 = $formData["zv1"];
-            $ye1 = $formData["ye1"];
-
-            $name2 = $formData["name2"];
-            $zv2 = $formData["zv2"];
-            $ye2 = $formData["ye2"];
-
-            $url_photo1img = $formData["url_photo1img"];
-            $url_photo2img = $formData["url_photo2img"];
-            $url_screenimg = $formData["url_screenimg"];
-
-            $data = [];
-
-            array_push($data, $name1, $zv1, $ye1, $name2, $zv2, $ye2, $flret, $format, $template, $url_screenimg, $url_photo1img, $url_photo2img);
-            $info = serialize($data);
-
-            $db = getDbInstance();
-            $date_update = date('Y-m-d H:i:s');
-            $db->query("UPDATE `zayavki` SET `price`='" . $formData['price'] . "',`status`='" . $formData['status'] . "', `comment`='" . $formData['comment'] . "',`updated_at`='" . $date_update . "',`info`='" . $info . "' WHERE id=$Id");
-            // Выводим ответ клиенту
-        }
-        if ($formData["tipz"] == "ОБРАТНАЯ СВЯЗЬ") {
-            $Id = $urlData[0];
-            $db = getDbInstance();
-            $date_update = date('Y-m-d H:i:s');
-            $db->query("UPDATE `zayavki` SET `price`='" . $formData['price'] . "',`status`='" . $formData['status'] . "', `comment`='" . $formData['comment'] . "',`updated_at`='" . $date_update . "' WHERE id=$Id");
-            // Выводим ответ клиенту
-        }
-        echo json_encode(
-            array(
-                'method' => 'PUT',
-                'id' => $Id,
-                'formData' => $formData,
-                'email' => $res[0]['email']
-            )
-        );
-
-        return;
-    }
-
-    // Удаление заявки
-    // DELETE /requests/{Id}
-    if ($method === 'DELETE' && count($urlData) === 1) {
-        // Получаем id заявки
-        $Id = $urlData[0];
-
-        // Удаляем заявку из базы...
-        $db = getDbInstance();
-        $db->query("DELETE FROM `zayavki` WHERE id=$urlData[0]");
-        // Выводим ответ клиенту
-        echo json_encode(
-            array(
-                'method' => 'DELETE',
-                'id' => $Id
-            )
-        );
-        return;
-    }
-
-
-    // Возвращаем ошибку
-    header('HTTP/1.0 400 Bad Request');
-    echo json_encode(
-        array(
-            'error' => 'Bad Request'
-        )
-    );
-
+	header('Content-Type: application/json; charset=utf-8');
+	$json = json_encode($data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | (defined('JSON_INVALID_UTF8_SUBSTITUTE') ? JSON_INVALID_UTF8_SUBSTITUTE : 0));
+	echo $json === false ? '{"error":"Ошибка кодирования ответа"}' : $json;
 }
