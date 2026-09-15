@@ -168,6 +168,13 @@ if (isset($_SESSION['user_logged_in']) == false) {
                 if ($_SESSION['type'] == "admin") {
                     echo '
 								<li>
+									<a href="./analytics.php">
+										<div class="parent-icon"><i class="bx bx-bar-chart-alt-2"></i>
+										</div>
+										<div class="menu-title">Аналитика чеков</div>
+									</a>
+								</li>
+								<li>
 									<a class="has-arrow" href="javascript:;">
 										<div class="parent-icon"><i class="bx bx-line-chart"></i>
 										</div>
@@ -206,14 +213,6 @@ if (isset($_SESSION['user_logged_in']) == false) {
                         </li>
                         <li>
                             <a href="./applications.php"><i class="bx bx-right-arrow-alt"></i>Заказ материалов</a>
-                        </li>
-                        <li>
-                            <a href="./reportCheck.php"><i class="bx bx-right-arrow-alt"></i>статистика калькулятора по
-                                дням</a>
-                        </li>
-                        <li>
-                            <a href="./reportCheckBySmena.php"><i class="bx bx-right-arrow-alt"></i>статистика
-                                калькулятора по сменам</a>
                         </li>
                         <li>
                             <a href="./customersCalculator.php"><i class="bx bx-right-arrow-alt"></i>Клиенты и
