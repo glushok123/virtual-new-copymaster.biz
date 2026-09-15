@@ -186,6 +186,11 @@ if (isset($_SESSION['user_logged_in']) == false) {
 										<li> 
 											<a href="./titelPriceChange.php"><i class="bx bx-right-arrow-alt"></i>Изменение номенклатуры цен калк. ФИЗ </a>
 										</li>
+										<li> <a href="./priceChange.php?calc=ur"><i class="bx bx-right-arrow-alt"></i>Изменение калк. ЮР </a>
+										</li>
+										<li>
+											<a href="./titelPriceChange.php?calc=ur"><i class="bx bx-right-arrow-alt"></i>Изменение номенклатуры цен калк. ЮР </a>
+										</li>
 									</ul>
 								</li>
 							';
