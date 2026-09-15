@@ -50,6 +50,9 @@
 	.an-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--an-accent); }
 	.an-head h1 { margin: 4px 0 6px; font-size: clamp(28px, 3.2vw, 40px); font-weight: 700; letter-spacing: -.02em; line-height: 1.05; }
 	.an-head p { margin: 0; color: var(--an-muted); font-size: 14px; }
+	.an-head-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+	.an-calc .an-seg { height: 34px; padding: 0 16px; font-size: 13.5px; }
+	.an-calc-note { margin-top: 6px !important; color: var(--an-muted); font-size: 12.5px; }
 	.an-live { display: inline-flex; align-items: center; gap: 8px; }
 	.an-live::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--an-accent); box-shadow: 0 0 0 0 rgba(94, 234, 212, .6); animation: an-pulse 2.4s infinite; }
 
@@ -235,11 +238,18 @@
 
 						<div class="an-head">
 							<div>
-								<span class="an-eyebrow">Калькулятор ФИЗ</span>
+								<span class="an-eyebrow" id="anEyebrow">Калькулятор ФИЗ</span>
 								<h1>Аналитика чеков</h1>
 								<p class="an-live" id="anStatus">Загрузка данных…</p>
+								<p class="an-calc-note" id="anCalcNote" hidden>В калькуляторе ЮР заказы сохраняются черновиками — они учитываются вместе с проведёнными чеками.</p>
 							</div>
-							<button type="button" class="an-btn" id="anRefresh" title="Обновить данные"><i class="bx bx-refresh"></i>Обновить</button>
+							<div class="an-head-actions">
+								<div class="an-segs an-calc" role="group" aria-label="Калькулятор">
+									<button type="button" class="an-seg" data-calc="fiz">ФИЗ лица</button>
+									<button type="button" class="an-seg" data-calc="ur">ЮР лица</button>
+								</div>
+								<button type="button" class="an-btn" id="anRefresh" title="Обновить данные"><i class="bx bx-refresh"></i>Обновить</button>
+							</div>
 						</div>
 
 						<div class="an-toolbar">
@@ -265,6 +275,7 @@
 								<button type="button" class="an-tab" data-tab="years"><i class="bx bx-line-chart"></i>Годы</button>
 								<button type="button" class="an-tab" data-tab="time"><i class="bx bx-time-five"></i>Время</button>
 								<button type="button" class="an-tab" data-tab="services"><i class="bx bx-purchase-tag-alt"></i>Услуги</button>
+								<button type="button" class="an-tab" data-tab="clients"><i class="bx bx-buildings"></i>Клиенты</button>
 								<button type="button" class="an-tab" data-tab="checks"><i class="bx bx-receipt"></i>Чеки</button>
 							</nav>
 						</div>
@@ -295,7 +306,7 @@
 
 								<div class="an-grid an-grid-2">
 									<div class="an-card">
-										<div class="an-card-head"><h3>Способы оплаты</h3></div>
+										<div class="an-card-head"><h3 id="anPaymentsTitle">Способы оплаты</h3></div>
 										<div class="an-card-body" id="anPayments"></div>
 									</div>
 									<div class="an-card">
@@ -397,6 +408,21 @@
 								</div>
 							</section>
 
+							<!-- КЛИЕНТЫ -->
+							<section class="an-panel" data-panel="clients">
+								<div class="an-grid an-kpis" id="anClientKpis"></div>
+								<div class="an-card">
+									<div class="an-card-head">
+										<h3>Клиенты за период</h3>
+										<span class="an-note">По названию компании или имени из чека; разное написание одной компании («ООО "Ромашка"», «РОМАШКА») объединяется</span>
+									</div>
+									<div class="an-card-body">
+										<div class="an-tools"><input type="search" class="an-input" id="anClientSearch" placeholder="Поиск клиента или телефона…" style="flex:1 1 260px"></div>
+										<div class="an-scroll" id="anClientTable"></div>
+									</div>
+								</div>
+							</section>
+
 							<!-- ЧЕКИ -->
 							<section class="an-panel" data-panel="checks">
 								<div class="an-card" style="margin-bottom:16px">
@@ -472,10 +498,10 @@
 	var WEEKDAYS = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
 
 	var state = {
-		tab: 'overview', preset: '30d', from: null, to: null, gran: null,
+		calc: 'fiz', tab: 'overview', preset: '30d', from: null, to: null, gran: null,
 		summary: null, months: null, firstDate: null,
 		yearMetric: 's', hiddenYears: {}, heatMetric: 'n',
-		serviceCat: '', serviceSort: 'revenue', serviceLimit: 50
+		serviceCat: '', serviceSort: 'revenue', serviceLimit: 50, clientSort: 'revenue', clientLimit: 50
 	};
 	var charts = {};
 	var loadSeq = 0;
@@ -541,6 +567,7 @@
 
 	function saveHash() {
 		var parts = ['tab=' + state.tab];
+		if (state.calc !== 'fiz') parts.unshift('calc=' + state.calc);
 		if (state.preset) parts.push('preset=' + state.preset);
 		else parts.push('from=' + state.from, 'to=' + state.to);
 		try { history.replaceState(null, '', '#' + parts.join('&')); } catch (e) {}
@@ -557,6 +584,7 @@
 
 	// ── загрузка ───────────────────────────────
 	function api(params) {
+		params = Object.assign({ calc: state.calc }, params);
 		var query = Object.keys(params).map(function (k) { return k + '=' + encodeURIComponent(params[k]); }).join('&');
 		return fetch(API + '?' + query, { credentials: 'same-origin' }).then(function (r) {
 			return r.json().catch(function () { return { error: 'Ответ сервера не распознан (' + r.status + ')' }; }).then(function (data) {
@@ -702,6 +730,7 @@
 		if (state.tab === 'years') renderYears();
 		if (state.tab === 'time') renderTime();
 		if (state.tab === 'services') renderServices();
+		if (state.tab === 'clients') renderClients();
 		if (state.tab === 'checks') renderChecks();
 	}
 
@@ -723,7 +752,9 @@
 			{ hero: true, icon: 'bx-wallet', label: 'Выручка', value: money(t.revenue), delta: delta(t.revenue, p.revenue) },
 			{ icon: 'bx-receipt', label: 'Чеков', value: int(t.n), delta: delta(t.n, p.n) },
 			{ icon: 'bx-calculator', label: 'Средний чек', value: money(t.avg), delta: delta(t.avg, p.avg) },
-			{ icon: 'bx-credit-card', label: 'Безналичные', value: pct(t.cashless), delta: '<span class="an-note">' + money(t.card + t.yr) + '</span>' },
+			state.calc === 'ur'
+				? { icon: 'bx-buildings', label: 'Клиентов', value: int(s.clients.list.length), delta: '<span class="an-note">' + (s.clients.total ? pct(s.clients.withClient / s.clients.total) : '0%') + ' заказов с названием клиента</span>' }
+				: { icon: 'bx-credit-card', label: 'Безналичные', value: pct(t.cashless), delta: '<span class="an-note">' + money(t.card + t.yr) + '</span>' },
 			{ icon: 'bx-purchase-tag', label: 'Скидки', value: money(t.discount), delta: '<span class="an-note">' + (t.n ? pct(t.discounted / t.n) : '0%') + ' чеков со скидкой</span>' },
 			{ icon: 'bx-trophy', label: 'Лучший день', value: best ? money(best.revenue) : '—', delta: '<span class="an-note">' + (best ? dayLabel(best.d, s.period.days > 300) + ' · ' + int(best.n) + ' чеков' : 'нет продаж') + '</span>' }
 		];
@@ -791,7 +822,8 @@
 			}
 		});
 
-		renderPayments(t);
+		document.getElementById('anPaymentsTitle').textContent = state.calc === 'ur' ? 'Топ клиентов' : 'Способы оплаты';
+		if (state.calc === 'ur') renderTopClients(); else renderPayments(t);
 		document.getElementById('anCategories').innerHTML = categoryBars(false);
 		renderTopServices();
 	}
@@ -1056,6 +1088,69 @@
 			(list.length > shown.length ? '<div style="text-align:center;margin-top:12px"><button type="button" class="an-btn" data-more-services>Показать ещё ' + int(Math.min(50, list.length - shown.length)) + ' из ' + int(list.length - shown.length) + '</button></div>' : '');
 	}
 
+	// Клиенты
+	function renderTopClients() {
+		var s = state.summary, el = document.getElementById('anPayments');
+		var list = s.clients.list.slice(0, 8);
+		if (!list.length) { el.innerHTML = '<div class="an-empty">В заказах за период не указаны клиенты</div>'; return; }
+		var max = list[0].revenue, total = s.totals.revenue;
+		el.innerHTML = '<div class="an-bars">' + list.map(function (c) {
+			return '<div class="an-bar-row">' + barRow(c.name, c.revenue, total ? c.revenue / total : 0, max, C.s1) + '</div>';
+		}).join('') + '</div><div style="margin-top:14px"><button type="button" class="an-btn" data-goto="clients">Все клиенты</button></div>';
+	}
+
+	function renderClients() {
+		var s = state.summary, cl = s.clients, t = s.totals;
+		var repeat = cl.list.filter(function (c) { return c.checks > 1; });
+		var repeatRevenue = repeat.reduce(function (a, c) { return a + c.revenue; }, 0);
+		var clientRevenue = cl.list.reduce(function (a, c) { return a + c.revenue; }, 0);
+		var word = state.calc === 'ur' ? 'заказов' : 'чеков';
+		var kpis = [
+			{ icon: 'bx-buildings', label: 'Клиентов', value: int(cl.list.length), note: 'в ' + int(cl.withClient) + ' ' + word },
+			{ icon: 'bx-id-card', label: 'Указан клиент', value: cl.total ? pct(cl.withClient / cl.total) : '—', note: 'из ' + int(cl.total) + ' ' + word + ' за период' },
+			{ icon: 'bx-revision', label: 'Повторные клиенты', value: int(repeat.length), note: clientRevenue ? pct(repeatRevenue / clientRevenue) + ' выручки от клиентов' : 'нет данных' },
+			{ icon: 'bx-wallet', label: 'Выручка от клиентов', value: money(clientRevenue), note: t.revenue ? pct(clientRevenue / t.revenue) + ' всей выручки' : '' }
+		];
+		document.getElementById('anClientKpis').innerHTML = kpis.map(function (k) {
+			return '<div class="an-card an-kpi"><div class="an-kpi-label"><i class="bx ' + k.icon + '"></i>' + k.label + '</div><div class="an-kpi-value">' + k.value + '</div><span class="an-note">' + esc(k.note) + '</span></div>';
+		}).join('');
+		renderClientTable();
+	}
+
+	function renderClientTable() {
+		var s = state.summary, el = document.getElementById('anClientTable');
+		if (!s.clients.list.length) {
+			el.innerHTML = '<div class="an-empty">' + (state.calc === 'fiz'
+				? 'В чеках ФИЗ почти никогда не заполняют клиента и телефон, поэтому данных нет. Заполняйте поля «Клиент» и «Телефон» в калькуляторе — и здесь появится статистика.'
+				: 'За период нет заказов с указанным клиентом') + '</div>';
+			return;
+		}
+		var q = document.getElementById('anClientSearch').value.trim().toLowerCase().replace(/ё/g, 'е');
+		var list = s.clients.list.filter(function (c) {
+			return !q || (c.name + ' ' + c.tel).toLowerCase().replace(/ё/g, 'е').indexOf(q) !== -1;
+		});
+		var key = state.clientSort;
+		list.sort(function (a, b) {
+			if (key === 'name') return a.name.localeCompare(b.name, 'ru');
+			if (key === 'last') return b.last.localeCompare(a.last);
+			if (key === 'avg') return b.revenue / b.checks - a.revenue / a.checks;
+			return b[key] - a[key];
+		});
+		if (!list.length) { el.innerHTML = '<div class="an-empty">Ничего не найдено</div>'; return; }
+		var shown = list.slice(0, state.clientLimit);
+		var max = Math.max.apply(null, list.map(function (c) { return c.revenue; }));
+		var th = function (k, label, cls) { return '<th class="' + (cls || '') + (key === k ? ' is-sorted' : '') + '" data-client-sort="' + k + '">' + label + '</th>'; };
+		el.innerHTML = '<table class="an-table"><thead><tr>' + th('name', 'Клиент') + '<th>Телефон</th>' + th('checks', state.calc === 'ur' ? 'Заказов' : 'Чеков', 'num') + th('revenue', 'Сумма', 'num') + th('avg', 'Средний', 'num') + th('last', 'Последний', 'num') + '<th>Доля</th></tr></thead><tbody>' +
+			shown.map(function (c) {
+				return '<tr><td>' + esc(c.name) + '</td><td>' + (c.tel ? esc(c.tel) : '<span style="color:var(--an-faint)">—</span>') + '</td>' +
+					'<td class="num">' + int(c.checks) + '</td><td class="num">' + money(c.revenue) + '</td><td class="num">' + money(c.revenue / c.checks) + '</td>' +
+					'<td class="num">' + dayLabel(c.last, true) + '</td>' +
+					'<td><div class="an-share"><span class="an-bar-track"><span class="an-bar-fill" style="display:block;width:' + (max ? c.revenue / max * 100 : 0) + '%"></span></span></div></td></tr>';
+			}).join('') + '</tbody></table>' +
+			(list.length > shown.length ? '<div style="text-align:center;margin-top:12px"><button type="button" class="an-btn" data-more-clients>Показать ещё ' + int(Math.min(50, list.length - shown.length)) + ' из ' + int(list.length - shown.length) + '</button></div>' : '');
+	}
+
+
 	// Чеки
 	function renderChecks() {
 		var s = state.summary;
@@ -1064,17 +1159,18 @@
 		var days = [];
 		for (var d = parseDate(s.period.to), end = parseDate(s.period.from); d >= end && days.length < 400; d = addDays(d, -1)) days.push(ymd(d));
 
-		var html = '<table class="an-table"><thead><tr><th>День</th><th class="num">Чеков</th><th class="num">Выручка</th><th class="num">Средний чек</th><th class="num">Карта</th><th class="num">Наличные</th><th class="num">Скидки</th></tr></thead><tbody>';
+		var fiz = state.calc === 'fiz', cols = fiz ? 7 : 5;
+		var html = '<table class="an-table"><thead><tr><th>День</th><th class="num">' + (fiz ? 'Чеков' : 'Заказов') + '</th><th class="num">Выручка</th><th class="num">Средний чек</th>' + (fiz ? '<th class="num">Карта</th><th class="num">Наличные</th>' : '') + '<th class="num">Скидки</th></tr></thead><tbody>';
 		days.forEach(function (day) {
 			var r = map[day];
 			var wd = WEEKDAYS[(parseDate(day).getDay() + 6) % 7];
 			if (!r) {
-				html += '<tr class="an-day-row is-empty"><td>' + dayLabel(day, true) + ', ' + wd.toLowerCase() + '</td><td class="num" colspan="6">нет чеков</td></tr>';
+				html += '<tr class="an-day-row is-empty"><td>' + dayLabel(day, true) + ', ' + wd.toLowerCase() + '</td><td class="num" colspan="' + (cols - 1) + '">нет чеков</td></tr>';
 				return;
 			}
 			html += '<tr class="an-day-row" data-day="' + day + '" tabindex="0"><td>' + dayLabel(day, true) + ', ' + wd.toLowerCase() + '</td>' +
 				'<td class="num">' + int(r.n) + '</td><td class="num"><b>' + money(r.revenue) + '</b></td><td class="num">' + money(r.revenue / r.n) + '</td>' +
-				'<td class="num">' + money(r.card + r.yr) + '</td><td class="num">' + money(r.cash) + '</td><td class="num">' + (r.discount ? money(r.discount) : '—') + '</td></tr>';
+				(fiz ? '<td class="num">' + money(r.card + r.yr) + '</td><td class="num">' + money(r.cash) + '</td>' : '') + '<td class="num">' + (r.discount ? money(r.discount) : '—') + '</td></tr>';
 		});
 		html += '</tbody></table>';
 		if (days.length >= 400) html += '<p class="an-note" style="margin-top:10px">Показаны последние 400 дней периода.</p>';
@@ -1085,12 +1181,12 @@
 		if (!checks.length) return '<div class="an-empty">Чеков нет</div>';
 		return '<div class="an-checks">' + checks.map(function (c) {
 			var pay = PAY_BY_KEY[c.pay] || PAY[3];
+			var payBadge = state.calc === 'fiz' ? '<span class="an-pay" style="--dot:' + pay.color + '">' + pay.label + '</span>' : '';
 			var itemsSum = c.items.reduce(function (a, i) { return a + i.sum; }, 0);
 			var contact = c.contact ? [c.contact.client, c.contact.tel, c.contact.srok].filter(Boolean).map(esc).join(' · ') : '';
 			return '<div class="an-check"><div class="an-check-head">' +
 				'<b>№ ' + c.id + '</b><span class="an-note">' + (c.time.slice(0, 10) === state.openDay ? c.time.slice(11, 16) : dayLabel(c.time.slice(0, 10), true) + ', ' + c.time.slice(11, 16)) + '</span>' +
-				'<span class="an-pay" style="--dot:' + pay.color + '">' + pay.label + '</span>' +
-				(c.draft ? '<span class="an-pay">черновик</span>' : '') +
+				payBadge + (c.draft && state.calc === 'fiz' ? '<span class="an-pay">черновик</span>' : '') +
 				(contact ? '<span class="an-note"><i class="bx bx-user"></i> ' + contact + '</span>' : '') +
 				'<span class="an-check-sum">' + money(c.cost) + (c.discount ? ' <span class="an-note">(скидка ' + money(c.discount) + ')</span>' : '') + '</span></div>' +
 				'<table class="an-table"><tbody>' + c.items.map(function (i) {
@@ -1112,7 +1208,7 @@
 		row.classList.add('is-open');
 		var detail = document.createElement('tr');
 		detail.className = 'an-day-detail';
-		detail.innerHTML = '<td colspan="7"><div class="an-empty">Загрузка чеков…</div></td>';
+		detail.innerHTML = '<td colspan="' + row.children.length + '"><div class="an-empty">Загрузка чеков…</div></td>';
 		row.parentNode.insertBefore(detail, row.nextSibling);
 		api({ action: 'checks', date: day }).then(function (data) {
 			state.openDay = day;
@@ -1158,6 +1254,8 @@
 			return renderServices();
 		}
 		if (t.hasAttribute('data-more-services')) { state.serviceLimit += 50; return renderServiceTable(); }
+		if (t.hasAttribute('data-more-clients')) { state.clientLimit += 50; return renderClientTable(); }
+		if (t.hasAttribute('data-calc')) return setCalc(t.getAttribute('data-calc'), true);
 		if (t.classList.contains('an-day-row') && t.hasAttribute('data-day')) return toggleDay(t);
 	});
 
@@ -1170,10 +1268,31 @@
 
 	root.addEventListener('click', function (e) {
 		var th = e.target.closest('th[data-sort]');
-		if (!th) return;
-		state.serviceSort = th.getAttribute('data-sort');
-		renderServiceTable();
+		if (th) { state.serviceSort = th.getAttribute('data-sort'); renderServiceTable(); }
+		var cth = e.target.closest('th[data-client-sort]');
+		if (cth) { state.clientSort = cth.getAttribute('data-client-sort'); renderClientTable(); }
 	});
+
+	document.getElementById('anClientSearch').addEventListener('input', function () { state.clientLimit = 50; renderClientTable(); });
+
+	function setCalc(calc, reload) {
+		state.calc = calc === 'ur' ? 'ur' : 'fiz';
+		root.querySelectorAll('[data-calc]').forEach(function (b) { b.classList.toggle('is-active', b.getAttribute('data-calc') === state.calc); });
+		document.getElementById('anEyebrow').textContent = state.calc === 'ur' ? 'Калькулятор ЮР' : 'Калькулятор ФИЗ';
+		document.getElementById('anCalcNote').hidden = state.calc !== 'ur';
+		if (!reload) return;
+		loadSeq++;
+		state.summary = null; state.months = null; state.firstDate = null;
+		state.hiddenYears = {}; state.serviceCat = '';
+		document.getElementById('anLoader').hidden = false;
+		root.querySelectorAll('.an-panel').forEach(function (p) { p.classList.remove('is-active'); });
+		var go = function () {
+			setTab(state.tab);
+			var r = state.preset ? presetRange(state.preset) : null;
+			setPeriod(r ? ymd(r[0]) : state.from, r ? ymd(r[1]) : state.to, state.preset);
+		};
+		loadMonths().then(go, go);
+	}
 
 	document.getElementById('anServiceSearch').addEventListener('input', function () { state.serviceLimit = 50; renderServiceTable(); });
 
@@ -1237,6 +1356,7 @@
 
 	var h = readHash();
 	state.tab = h.tab || 'overview';
+	setCalc(h.calc, false);
 	var init = function () {
 		var preset = h.preset || (h.from && h.to ? '' : '30d');
 		var range = preset ? presetRange(preset) : null;

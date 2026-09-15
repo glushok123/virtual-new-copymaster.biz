@@ -1,6 +1,6 @@
 <?php
 /**
- * Аналитика чеков калькулятора ФИЗ (БД калькулятора: check_id + offers).
+ * Аналитика чеков калькуляторов ФИЗ и ЮР (у каждого своя БД с таблицами check_id + offers).
  *
  * Проведённые чеки — cher = '0' (1 и 2 — черновики).
  * check_id.cost — сумма чека после скидки, check_id.discount — скидка в рублях.
@@ -39,19 +39,36 @@ class Analytics
     /** @var PDO */
     private $db;
     private $cacheDir;
+    private $categories;
+    private $groups;
+    /** SQL-условие «какие записи считаем»: для ФИЗ — проведённые чеки, для ЮР — ещё и черновики */
+    private $cherSql;
+    private $cherSqlC;
 
-    public function __construct(PDO $db, $cacheDir)
+    /**
+     * @param array $options cher — значения check_id.cher, которые учитываются;
+     *                       categories / groups — названия разделов и подразделов калькулятора
+     */
+    public function __construct(PDO $db, $cacheDir, array $options = [])
     {
         $this->db = $db;
         $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $this->db->exec("SET NAMES utf8");
         $this->cacheDir = $cacheDir;
+        $this->categories = isset($options['categories']) ? $options['categories'] : self::CATEGORIES;
+        $this->groups = isset($options['groups']) ? $options['groups'] : self::GROUPS;
+
+        $cher = isset($options['cher']) ? $options['cher'] : ['0'];
+        $list = implode(', ', array_map(function ($v) { return "'" . preg_replace('/\D/', '', $v) . "'"; }, $cher));
+        $this->cherSql = "cher IN ($list)";
+        $this->cherSqlC = "c.cher IN ($list)";
     }
 
-    /** Номер последнего чека — меняется с каждым новым чеком, по нему сбрасывается кэш. */
+    /** Меняется с каждым новым или удалённым чеком — по нему сбрасывается кэш. */
     public function version()
     {
-        return (int)$this->db->query("SELECT MAX(id) FROM check_id")->fetchColumn();
+        $row = $this->db->query("SELECT COUNT(*) AS n, MAX(id) AS m FROM check_id")->fetch(PDO::FETCH_ASSOC);
+        return $row['n'] . '-' . $row['m'];
     }
 
     /** Все сводки за период [from; to] (даты Y-m-d включительно) и за такой же период перед ним. */
@@ -68,9 +85,82 @@ class Analytics
             'prevDaily' => $this->daily($prevFrom, $prevTo),
             'heatmap' => $this->heatmap($from, $to),
             'services' => $this->services($from, $to),
-            'categories' => self::CATEGORIES,
-            'groups' => self::GROUPS,
+            'clients' => $this->clients($from, $to),
+            'categories' => $this->categories,
+            'groups' => $this->groups,
         ];
+    }
+
+    /**
+     * Клиенты (название компании / имя из чека) за период.
+     * Написание нормализуется: «ООО "СтайлГрупп"» и «СТАЙЛГРУПП» — один клиент.
+     */
+    public function clients($from, $to)
+    {
+        $st = $this->db->prepare("
+            SELECT c.id, c.cost, c.createtime, MAX(TRIM(o.name_komp)) AS client, MAX(TRIM(o.tel)) AS tel
+            FROM check_id c
+            LEFT JOIN offers o ON o.item = c.id
+            WHERE {$this->cherSqlC} AND c.createtime >= ? AND c.createtime < ?
+            GROUP BY c.id, c.cost, c.createtime
+        ");
+        $st->execute($this->range($from, $to));
+
+        $clients = [];
+        $withClient = 0;
+        $total = 0;
+        foreach ($st->fetchAll(PDO::FETCH_ASSOC) as $row) {
+            $total++;
+            $name = trim((string)$row['client']);
+            $tel = trim((string)$row['tel']);
+            $key = $this->clientKey($name);
+            if ($key === '') {
+                $key = preg_replace('/\D/', '', $tel);
+                if (strlen($key) < 6) {
+                    continue;
+                }
+                $key = 'tel:' . substr($key, -10);
+            }
+            $withClient++;
+            if (!isset($clients[$key])) {
+                $clients[$key] = ['names' => [], 'tel' => '', 'checks' => 0, 'revenue' => 0, 'first' => $row['createtime'], 'last' => $row['createtime']];
+            }
+            $c = &$clients[$key];
+            $label = $name !== '' ? $name : $tel;
+            $c['names'][$label] = (isset($c['names'][$label]) ? $c['names'][$label] : 0) + 1;
+            if ($tel !== '') {
+                $c['tel'] = $tel;
+            }
+            $c['checks']++;
+            $c['revenue'] += (float)$row['cost'];
+            $c['first'] = min($c['first'], $row['createtime']);
+            $c['last'] = max($c['last'], $row['createtime']);
+            unset($c);
+        }
+
+        $list = [];
+        foreach ($clients as $c) {
+            arsort($c['names']);
+            $list[] = [
+                'name' => key($c['names']),
+                'tel' => $c['tel'],
+                'checks' => $c['checks'],
+                'revenue' => round($c['revenue'], 2),
+                'first' => substr($c['first'], 0, 10),
+                'last' => substr($c['last'], 0, 10),
+            ];
+        }
+        usort($list, function ($a, $b) { return $b['revenue'] < $a['revenue'] ? -1 : ($b['revenue'] > $a['revenue'] ? 1 : 0); });
+
+        return ['total' => $total, 'withClient' => $withClient, 'list' => array_slice($list, 0, 300)];
+    }
+
+    private function clientKey($name)
+    {
+        $key = mb_strtoupper($name, 'UTF-8');
+        $key = preg_replace('/(?<!\p{L})(ООО|ОАО|ЗАО|ПАО|АО|ИП|ГУП|ГБУ|МУП|ФГУП)(?!\p{L})/u', ' ', $key);
+        $key = preg_replace('/[^\p{L}\p{N}]+/u', '', $key);
+        return $key;
     }
 
     /** Итоги по дням: количество, выручка, скидки, разбивка по способу оплаты. */
@@ -88,7 +178,7 @@ class Analytics
                 SUM(pay_type NOT IN ('cash', 'card', 'yr')) AS other_n,
                 SUM(IF(pay_type NOT IN ('cash', 'card', 'yr'), cost, 0)) AS other
             FROM check_id
-            WHERE cher = '0' AND createtime >= ? AND createtime < ?
+            WHERE {$this->cherSql} AND createtime >= ? AND createtime < ?
             GROUP BY d
             ORDER BY d
         ");
@@ -112,7 +202,7 @@ class Analytics
         $st = $this->db->prepare("
             SELECT WEEKDAY(createtime) AS wd, HOUR(createtime) AS h, COUNT(*) AS n, SUM(cost) AS s
             FROM check_id
-            WHERE cher = '0' AND createtime >= ? AND createtime < ?
+            WHERE {$this->cherSql} AND createtime >= ? AND createtime < ?
             GROUP BY wd, h
         ");
         $st->execute($this->range($from, $to));
@@ -129,7 +219,7 @@ class Analytics
             SELECT o.name, SUM(o.price) AS revenue, SUM(o.count) AS qty, COUNT(DISTINCT o.item) AS checks
             FROM offers o
             JOIN check_id c ON c.id = o.item
-            WHERE c.cher = '0' AND c.createtime >= ? AND c.createtime < ?
+            WHERE {$this->cherSqlC} AND c.createtime >= ? AND c.createtime < ?
             GROUP BY o.name
             ORDER BY revenue DESC
         ");
@@ -142,8 +232,8 @@ class Analytics
             $code = isset($map[$name]) ? $map[$name] : $this->codeByName($name);
             $rows[] = [
                 'name' => $name,
-                'cat' => $code[0],
-                'group' => strlen($code) > 1 ? substr($code, 0, 2) : '',
+                'cat' => mb_substr($code, 0, 1, 'UTF-8'),
+                'group' => mb_strlen($code, 'UTF-8') > 1 ? mb_substr($code, 0, 2, 'UTF-8') : '',
                 'revenue' => round((float)$row['revenue'], 2),
                 'qty' => (int)$row['qty'],
                 'checks' => (int)$row['checks'],
@@ -158,7 +248,7 @@ class Analytics
         $rows = $this->db->query("
             SELECT YEAR(createtime) AS y, MONTH(createtime) AS m, COUNT(*) AS n, SUM(cost) AS s
             FROM check_id
-            WHERE cher = '0'
+            WHERE {$this->cherSql}
             GROUP BY y, m
             ORDER BY y, m
         ")->fetchAll(PDO::FETCH_ASSOC);
@@ -174,7 +264,7 @@ class Analytics
         $st = $this->db->prepare("
             SELECT id, createtime, cost, discount, discount_percent, pay_type, prepayment
             FROM check_id
-            WHERE cher = '0' AND createtime >= ? AND createtime < ?
+            WHERE {$this->cherSql} AND createtime >= ? AND createtime < ?
             ORDER BY createtime DESC
         ");
         $st->execute($this->range($date, $date));
@@ -307,7 +397,7 @@ class Analytics
     {
         // Элемент lst: a:4:{i:0;s:5:"abaac";i:1;i:5;i:2;i:41;i:3;i:205;} — числа бывают i:, d: или s:N:"…"
         $number = '(?:[id]:([\d.]+)|s:\d+:"([\d.]*)")';
-        if (!preg_match_all('/a:4:\{i:0;s:\d+:"([a-z]+)";i:1;' . $number . ';i:2;' . $number . ';/', $row['objtest'], $found, PREG_SET_ORDER)) {
+        if (!preg_match_all('/a:4:\{i:0;s:\d+:"([a-zа-яё]+)";i:1;' . $number . ';i:2;' . $number . ';/u', $row['objtest'], $found, PREG_SET_ORDER)) {
             return null;
         }
         $m = array_map(function ($f) {

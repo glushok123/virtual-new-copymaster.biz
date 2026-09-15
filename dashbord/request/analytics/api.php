@@ -29,11 +29,26 @@ function analyticsDate($value)
     return $date && $date->format('Y-m-d') === $value ? $value : null;
 }
 
-require __DIR__ . '/../../calc/connect.php';
 require __DIR__ . '/Analytics.php';
 
-$cacheDir = __DIR__ . '/cache';
-$analytics = new Analytics($dbh, $cacheDir);
+// Калькуляторы: у ЮР своя БД, а заказы юрлиц сохраняются черновиками (cher = 1) — их тоже учитываем.
+$calcs = [
+    'fiz' => ['connect' => '/../../calc/connect.php', 'options' => ['cher' => ['0']]],
+    'ur' => ['connect' => '/../../calcUr/connect.php', 'options' => [
+        'cher' => ['0', '1'],
+        'categories' => ['a' => 'Печать', 'b' => 'Переплёт', 'c' => 'Прочее', 'd' => 'Дизайн', 'e' => 'Багетка', 'g' => 'Фальцовка и сканирование', 'x' => 'Не определено'],
+        'groups' => array_merge(Analytics::GROUPS, [
+            'bd' => 'Вставка конверта для CD', 'be' => 'Вставка файла',
+            'ga' => 'Фальцовка', 'gb' => 'Цветное сканирование', 'gс' => 'Сканирование',
+        ]),
+    ]],
+];
+$calc = isset($_GET['calc']) && isset($calcs[$_GET['calc']]) ? $_GET['calc'] : 'fiz';
+
+require __DIR__ . $calcs[$calc]['connect'];
+
+$cacheDir = __DIR__ . '/cache/' . $calc;
+$analytics = new Analytics($dbh, $cacheDir, $calcs[$calc]['options']);
 $action = isset($_GET['action']) ? $_GET['action'] : '';
 
 try {

@@ -17,4 +17,4 @@ constructor-Mugs/img/*
 constructor-Mugs/prepare_img/*
 
 # кэш аналитики чеков
-dashbord/request/analytics/cache/*.json
+dashbord/request/analytics/cache/**/*.json
