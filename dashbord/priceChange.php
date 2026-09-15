@@ -7,12 +7,32 @@
 		exit;
 	}
 
-	$sections = require __DIR__ . '/helpers/priceChangeConfig.php';
+	// ?calc=fiz (по умолчанию) | ur — какой калькулятор редактируем (см. helpers/priceCalcConfig.php)
+	$pcCalcs = require __DIR__ . '/helpers/priceCalcConfig.php';
+	$pcCalc = priceCalcKey($pcCalcs, isset($_GET['calc']) ? $_GET['calc'] : null);
+	if ($pcCalc === null) {
+		$pcCalc = 'fiz';
+	}
+	$pcCalcInfo = $pcCalcs[$pcCalc];
+	$pcTable = $pcCalcInfo['priceTable'];
+
+	$sections = require __DIR__ . '/helpers/' . $pcCalcInfo['config'];
 
 	$db = getDbInstance();
 	$prices = [];
-	foreach ($db->get('pricecalc', null, ['name', 'price']) as $row) {
-		$prices[$row['name']] = $row['price'];
+	$pcTableMissing = false;
+	try {
+		$pcTableMissing = $pcCalc !== 'fiz' && !$db->tableExists($pcTable);
+		if (!$pcTableMissing) {
+			foreach ($db->get($pcTable, null, ['name', 'price']) as $row) {
+				$prices[$row['name']] = $row['price'];
+			}
+		}
+	} catch (Exception $e) {
+		$pcTableMissing = true;
+	}
+	if ($pcTableMissing) {
+		$sections = [];
 	}
 
 	function pcEsc($value)
@@ -83,6 +103,28 @@
 		color: var(--pc-text);
 	}
 	.pc-head p { margin: 0; color: var(--pc-muted); font-size: 14px; }
+	.pc-eyebrow-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+	.pc-switch {
+		display: inline-flex;
+		padding: 2px;
+		border: 1px solid var(--pc-line);
+		border-radius: 999px;
+		background: var(--pc-surface-hi);
+	}
+	.pc-switch-item {
+		display: inline-block;
+		min-width: 38px;
+		padding: 2px 10px;
+		border-radius: 999px;
+		color: var(--pc-muted);
+		font: 600 11px/18px 'Onest', sans-serif;
+		letter-spacing: .08em;
+		text-align: center;
+		text-decoration: none;
+		transition: background .15s, color .15s;
+	}
+	a.pc-switch-item:hover { color: var(--pc-text); background: rgba(255, 255, 255, .08); text-decoration: none; }
+	.pc-switch-item.is-active { background: var(--pc-accent); color: var(--pc-accent-ink); }
 
 	.pc-stats { display: flex; gap: 8px; flex-wrap: wrap; }
 	.pc-chip {
@@ -229,6 +271,21 @@
 	.pc.is-results .pc-tab.is-active { color: var(--pc-text); background: var(--pc-surface-hi); }
 	.pc.is-results .pc-tab.is-active .pc-tab-count { background: rgba(255, 255, 255, .08); }
 	.pc-tab.is-nomatch { opacity: .4; }
+	.pc-tab.is-hidden-section:not(.is-active) { color: rgba(226, 232, 240, .42); font-style: italic; }
+	.pc-hidden-note {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		margin: 0 0 14px;
+		padding: 10px 14px;
+		border: 1px dashed rgba(251, 191, 36, .45);
+		border-radius: var(--pc-radius);
+		background: rgba(251, 191, 36, .07);
+		color: #fde68a;
+		font-size: 13.5px;
+	}
+	.pc-hidden-note i { font-size: 18px; }
+	.pc-missing b, .pc-missing code { color: var(--pc-text); }
 	.pc-tab-dirty {
 		position: absolute;
 		top: 7px;
@@ -476,16 +533,39 @@
 
 						<div class="pc-head">
 							<div>
-								<span class="pc-eyebrow">Калькулятор ФИЗ</span>
-								<h1>Цены калькулятора</h1>
+								<div class="pc-eyebrow-row">
+									<span class="pc-eyebrow"><?= pcEsc($pcCalcInfo['label']) ?></span>
+									<nav class="pc-switch" aria-label="Выбор калькулятора">
+										<?php foreach ($pcCalcs as $calcKey => $calcInfo): ?>
+											<?php if ($calcKey === $pcCalc): ?>
+												<span class="pc-switch-item is-active" aria-current="page"><?= pcEsc($calcInfo['short']) ?></span>
+											<?php else: ?>
+												<a class="pc-switch-item" href="priceChange.php?calc=<?= pcEsc($calcKey) ?>"><?= pcEsc($calcInfo['short']) ?></a>
+											<?php endif; ?>
+										<?php endforeach; ?>
+									</nav>
+								</div>
+								<h1>Цены калькулятора <?= pcEsc($pcCalcInfo['short']) ?></h1>
 								<p>Изменения попадают в калькулятор сразу после сохранения.</p>
 							</div>
+							<?php if (!$pcTableMissing): ?>
 							<div class="pc-stats" role="group" aria-label="Фильтр позиций">
 								<button type="button" class="pc-chip is-active" data-filter="all"><span class="pc-dot"></span>Все <b><?= $positions ?></b></button>
 								<button type="button" class="pc-chip" data-filter="empty"><span class="pc-dot"></span>Без цены <b id="pcEmptyCount">0</b></button>
 								<button type="button" class="pc-chip" data-filter="dirty"><span class="pc-dot"></span>Изменённые <b id="pcDirtyChip">0</b></button>
 							</div>
+							<?php endif; ?>
 						</div>
+
+						<?php if ($pcTableMissing): ?>
+						<div class="pc-empty pc-missing">
+							<i class="bx bx-data"></i>
+							Таблица цен <b><?= pcEsc($pcTable) ?></b> не найдена в базе.<br>
+							<?php if ($pcCalc === 'ur'): ?>
+								Выполните миграцию <code>dashbord/sql/2026_09_15_calc_ur_prices_titles.sql</code> — до этого калькулятор использует прежние цены.
+							<?php endif; ?>
+						</div>
+						<?php else: ?>
 
 						<div class="pc-toolbar">
 							<label class="pc-search">
@@ -499,7 +579,7 @@
 
 							<nav class="pc-tabs" role="tablist">
 								<?php foreach ($sections as $section): ?>
-									<button type="button" class="pc-tab" role="tab" data-tab="<?= pcEsc($section['id']) ?>">
+									<button type="button" class="pc-tab<?= !empty($section['hidden']) ? ' is-hidden-section' : '' ?>" role="tab" data-tab="<?= pcEsc($section['id']) ?>"<?= !empty($section['hidden']) ? ' title="Скрыто в калькуляторе"' : '' ?>>
 										<i class="bx <?= pcEsc($section['icon']) ?>"></i>
 										<span><?= pcEsc($section['title']) ?></span>
 										<em class="pc-tab-count" data-count-for="<?= pcEsc($section['id']) ?>"></em>
@@ -517,6 +597,9 @@
 						<?php foreach ($sections as $section): ?>
 							<section class="pc-panel" role="tabpanel" data-panel="<?= pcEsc($section['id']) ?>">
 								<h2 class="pc-panel-title"><?= pcEsc($section['title']) ?></h2>
+								<?php if (!empty($section['hidden'])): ?>
+									<div class="pc-hidden-note"><i class="bx bx-hide"></i>Скрыто в калькуляторе — сотрудники сейчас не видят эти позиции. Цены можно подготовить заранее.</div>
+								<?php endif; ?>
 								<div class="pc-groups">
 									<?php foreach ($section['groups'] as $group): ?>
 										<?php
@@ -579,6 +662,7 @@
 								</div>
 							</section>
 						<?php endforeach; ?>
+						<?php endif; ?>
 
 					</div>
 				</div>
@@ -586,11 +670,13 @@
 		</div>
 	</div>
 
+	<?php if (!$pcTableMissing): ?>
 	<div class="pc-bar" id="pcBar" role="region" aria-live="polite">
 		<span class="pc-bar-text">Не сохранено: <b id="pcDirtyCount">0</b><span class="pc-bar-bad" id="pcBadText" hidden></span></span>
 		<button type="button" class="pc-btn" id="pcReset">Отменить<span class="pc-btn-label-long"> всё</span></button>
 		<button type="button" class="pc-btn pc-btn-primary" id="pcSave">Сохранить <span class="pc-kbd">Ctrl S</span></button>
 	</div>
+	<?php endif; ?>
 
 	<!--end switcher-->
 	<script src="assets/js/jquery.min.js"></script>
@@ -612,8 +698,10 @@
 	<!-- App JS -->
 	<script src="assets/js/app.js"></script>
 
+<?php if (!$pcTableMissing): ?>
 <script>
 (function () {
+	var PC_CALC = <?= json_encode($pcCalc) ?>;
 	var root = document.getElementById('pc');
 	var searchInput = document.getElementById('pcSearch');
 	var inputs = Array.prototype.slice.call(root.querySelectorAll('.pc-input'));
@@ -781,7 +869,7 @@
 		$.ajax({
 			url: 'save_price.php',
 			method: 'POST',
-			data: { info: JSON.stringify(payload) },
+			data: { info: JSON.stringify(payload), calc: PC_CALC },
 			dataType: 'json'
 		}).done(function (response) {
 			var rejected = response.rejected || [];
@@ -917,6 +1005,7 @@
 	applyFilter();
 })();
 </script>
+<?php endif; ?>
 
 </body>
 </html>

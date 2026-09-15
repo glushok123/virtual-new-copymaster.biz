@@ -509,7 +509,7 @@ if (!isset($_SESSION['user_logged_in']))
 	<script src="assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
 	<script src="assets/js/app.js"></script>
 	<link rel="stylesheet" href="stylo.css" />
-	<script src="mainur.js"></script>
+	<script src="mainur.js?v=2"></script>
 
 </body>
 </html>
