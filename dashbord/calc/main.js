@@ -2757,10 +2757,10 @@ let base = new function () {
         prRBD["dis_fd_5"]
       ],//фото на док (раcширение)
       [
-        30,  // 10X15
-        70,  // 15X20
-        150,   // 20X30
-        250   // 30X40
+        prRBD["dis_foto_10x15"],
+        prRBD["dis_foto_15x20"],
+        prRBD["dis_foto_20x30"],
+        prRBD["dis_foto_30x40"]
       ], //Печать фото
     ]
     this.price = pr;
@@ -3919,7 +3919,6 @@ let base = new function () {
 						this.nm = "10Х15";
 						this.fnm = titelBD['dla'];
 						this.pr = pr[7][0];
-                        console.log(pr)
 					}
 
 					this.dlb = new function() {
@@ -3934,8 +3933,8 @@ let base = new function () {
 						this.pr = pr[7][2];
 					}
                   this.dld = new function() {
-                    this.nm = "30х40";
-                    this.fnm = "30х40";
+                    this.nm = "30Х40";
+                    this.fnm = titelBD['dld'];
                     this.pr = pr[7][3];
                   }
 				}

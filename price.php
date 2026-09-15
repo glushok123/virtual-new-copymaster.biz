@@ -399,7 +399,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
 <link rel="stylesheet" href="/kalculator/stylo.css?m1" />
 <link rel="stylesheet" href="/kalculator/postStyle.css?m1" />
-<script src="/kalculator/main.js"></script>
+<script src="/kalculator/main.js?v=2"></script>
 <script type="text/javascript">
 
     $('.pometka').each(function(i, obj) {

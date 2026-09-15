@@ -778,6 +778,25 @@
 					</table>
 					<br>
 
+					<h3>Печать фото</h3>
+					<table class="table table-striped table-bordered" id="dis_foto">
+						<tbody>
+							<tr>
+								<td>10x15</td>
+								<td>15x20</td>
+								<td>20x30</td>
+								<td>30x40</td>
+							</tr>
+							<tr>
+								<td id="dis_foto_10x15"></td>
+								<td id="dis_foto_15x20"></td>
+								<td id="dis_foto_20x30"></td>
+								<td id="dis_foto_30x40"></td>
+							</tr>
+						</tbody>
+					</table>
+					<br>
+
 				</div>
 			</div>
 		</div>
@@ -1019,6 +1038,15 @@ $(document).ready(function(){
 			});
 		});
 		$('#dis_krask tr').each(function(row){
+			$(this).find('td').each(function(cell){
+				if ($(this).attr('id') != undefined){
+					let textinfo= $(this).find("input").val();
+					textinfo = textinfo.replace(",", ".");
+					json = json + '"'+$(this).attr("id")+'":"'+textinfo+'",';
+				}
+			});
+		});
+		$('#dis_foto tr').each(function(row){
 			$(this).find('td').each(function(cell){
 				if ($(this).attr('id') != undefined){
 					let textinfo= $(this).find("input").val();
