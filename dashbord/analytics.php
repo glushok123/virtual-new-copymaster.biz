@@ -750,7 +750,7 @@
 						type: 'line', label: 'Предыдущий период', order: 0,
 						data: cur.map(function (_, i) { return prev[i] ? prev[i].revenue : null; }),
 						borderColor: 'rgba(226,232,240,.5)', borderWidth: 2, pointRadius: 0, pointHoverRadius: 4,
-						pointBackgroundColor: 'rgba(226,232,240,.8)', tension: .3, spanGaps: true
+						pointBackgroundColor: 'rgba(226,232,240,.8)', cubicInterpolationMode: 'monotone', spanGaps: true
 					},
 					{
 						label: 'Выручка', order: 1, data: cur.map(function (b) { return b.revenue; }),
@@ -882,6 +882,7 @@
 			return '<button type="button" class="an-chip' + (state.hiddenYears[y] ? ' is-off' : '') + '" data-year="' + y + '"><i class="an-key" style="background:' + color(y) + '"></i>' + y + '</button>';
 		}).join('');
 
+		var now = new Date(), thisYear = now.getFullYear(), thisMonth = now.getMonth();
 		drawChart('chYears', {
 			type: 'line',
 			data: {
@@ -889,9 +890,11 @@
 				datasets: years.slice().reverse().map(function (y) {
 					return {
 						label: String(y), data: MONTHS.map(function (_, i) { return value(y, i + 1); }),
+						// текущий месяц ещё не закончился — отрезок к нему пунктиром
+						segment: { borderDash: function (ctx) { return y === thisYear && ctx.p1DataIndex === thisMonth ? [6, 5] : undefined; } },
 						borderColor: color(y), backgroundColor: color(y), borderWidth: y === years[0] ? 3 : 2,
 						pointRadius: 3, pointHoverRadius: 6, pointBorderColor: '#262e38', pointBorderWidth: 2,
-						tension: .3, spanGaps: false, hidden: !!state.hiddenYears[y]
+						cubicInterpolationMode: 'monotone', spanGaps: false, hidden: !!state.hiddenYears[y]
 					};
 				})
 			},
@@ -904,7 +907,11 @@
 						itemSort: function (a, b) { return (b.raw || 0) - (a.raw || 0); },
 						callbacks: {
 							title: function (items) { return MONTHS_FULL[items[0].dataIndex]; },
-							label: function (ctx) { return ctx.raw == null ? null : ' ' + ctx.dataset.label + ': ' + fmt(ctx.raw); }
+							label: function (ctx) {
+								if (ctx.raw == null) return null;
+								var partial = +ctx.dataset.label === thisYear && ctx.dataIndex === thisMonth ? ' (месяц идёт)' : '';
+								return ' ' + ctx.dataset.label + ': ' + fmt(ctx.raw) + partial;
+							}
 						}
 					})
 				},
