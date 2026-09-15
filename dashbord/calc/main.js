@@ -2776,6 +2776,74 @@ let base = new function () {
       }
       this.dc = new function () {
         this.nm = "Печать визиток";
+        // цены за тираж: dis_viz_{1s|2s}_{n — не срочно|s — срочно}_{кол-во}
+        let viz = function (sides, urgency, qty) {
+          return prRBD["dis_viz_" + sides + "_" + urgency + "_" + qty];
+        };
+        this.lst = new function() {
+          this.dca = new function() {
+            this.nm = "1 cторона";
+            this.fnm = titelBD['dca'];
+            this.lst = new function() {
+              this.dcaa = new function() {
+                this.nm = "Не cрочно";
+                this.fnm = titelBD['dcaa'];
+                this.lst = new function() {
+                  this.dcaaa = new function() { this.nm = "100"; this.fnm = titelBD['dcaaa']; this.pr = viz('1s', 'n', 100); }
+                  this.dcaab = new function() { this.nm = "200"; this.fnm = titelBD['dcaab']; this.pr = viz('1s', 'n', 200); }
+                  this.dcaac = new function() { this.nm = "300"; this.fnm = titelBD['dcaac']; this.pr = viz('1s', 'n', 300); }
+                  this.dcaad = new function() { this.nm = "500"; this.fnm = titelBD['dcaad']; this.pr = viz('1s', 'n', 500); }
+                  this.dcaae = new function() { this.nm = "1000"; this.fnm = titelBD['dcaae']; this.pr = viz('1s', 'n', 1000); }
+                }
+              }
+              this.dcab = new function() {
+                this.nm = "cрочно";
+                this.fnm = titelBD['dcab'];
+                this.lst = new function() {
+                  this.dcaba = new function() { this.nm = "100"; this.fnm = titelBD['dcaba']; this.pr = viz('1s', 's', 100); }
+                  this.dcabb = new function() { this.nm = "200"; this.fnm = titelBD['dcabb']; this.pr = viz('1s', 's', 200); }
+                  this.dcabc = new function() { this.nm = "300"; this.fnm = titelBD['dcabc']; this.pr = viz('1s', 's', 300); }
+                  this.dcabd = new function() { this.nm = "500"; this.fnm = titelBD['dcabd']; this.pr = viz('1s', 's', 500); }
+                  this.dcabe = new function() { this.nm = "1000"; this.fnm = titelBD['dcabe']; this.pr = viz('1s', 's', 1000); }
+                }
+              }
+            }
+          }
+          this.dcb = new function() {
+            this.nm = "2 cтороны";
+            this.fnm = titelBD['dcb'];
+            this.lst = new function() {
+              this.dcba = new function() {
+                this.nm = "Не cрочно";
+                this.fnm = titelBD['dcba'];
+                this.lst = new function() {
+                  this.dcbaa = new function() { this.nm = "100"; this.fnm = titelBD['dcbaa']; this.pr = viz('2s', 'n', 100); }
+                  this.dcbab = new function() { this.nm = "200"; this.fnm = titelBD['dcbab']; this.pr = viz('2s', 'n', 200); }
+                  this.dcbac = new function() { this.nm = "300"; this.fnm = titelBD['dcbac']; this.pr = viz('2s', 'n', 300); }
+                  this.dcbad = new function() { this.nm = "500"; this.fnm = titelBD['dcbad']; this.pr = viz('2s', 'n', 500); }
+                  this.dcbae = new function() { this.nm = "1000"; this.fnm = titelBD['dcbae']; this.pr = viz('2s', 'n', 1000); }
+                }
+              }
+              this.dcbb = new function() {
+                this.nm = "cрочно";
+                this.fnm = titelBD['dcbb'];
+                this.lst = new function() {
+                  this.dcbba = new function() { this.nm = "100"; this.fnm = titelBD['dcbba']; this.pr = viz('2s', 's', 100); }
+                  this.dcbbb = new function() { this.nm = "200"; this.fnm = titelBD['dcbbb']; this.pr = viz('2s', 's', 200); }
+                  this.dcbbc = new function() { this.nm = "300"; this.fnm = titelBD['dcbbc']; this.pr = viz('2s', 's', 300); }
+                  this.dcbbd = new function() { this.nm = "500"; this.fnm = titelBD['dcbbd']; this.pr = viz('2s', 's', 500); }
+                  this.dcbbe = new function() { this.nm = "1000"; this.fnm = titelBD['dcbbe']; this.pr = viz('2s', 's', 1000); }
+                }
+              }
+            }
+          }
+        }
+      }
+      // Прежний вариант визиток (виды бумаги, заливка) — скрыт, оставлен на будущее.
+      // Его названия в titel_calc сохранены в таблице titel_calc_backup_20260915.
+      this.dc_hidden = new function () {
+        this.hidden = true;
+        this.nm = "Печать визиток";
         this.lst = new function() {
 
           this.dca = new function() {
@@ -3943,6 +4011,7 @@ let base = new function () {
     }
   }
   this.e = new function () {
+    this.hidden = true; // услуги багетки не оказываются — раздел скрыт
     this.nm = "Багетка";
     this.lst = new function () {
       this.ea = new function () {
@@ -4904,24 +4973,20 @@ let serv = new function () {
   }
 
   this.getName = function (id) {
-    let obj = base[id[0]];
+    let path = main.getPath(id) || [];
     let name = '';
-    for (i = 1; i < id.length; i++) {
-      obj = obj.lst[id.slice(0, i + 1)];
-      if (obj.fnm) {
-        name += obj.fnm + ' ';
+    for (i = 1; i < path.length; i++) {
+      if (path[i].fnm) {
+        name += path[i].fnm + ' ';
       }
     }
     return name;
   }
 
   this.getMetric = function (id) {
-    let obj = base[id[0]];
-    for (i = 1; i < id.length; i++) {
-      obj = obj.lst[id.slice(0, i + 1)];
-    }
-    if (obj.me) {
-      return obj.me;
+    let path = main.getPath(id);
+    if (path && path[path.length - 1].me) {
+      return path[path.length - 1].me;
     }
     return 'шт.';
   }
@@ -4931,19 +4996,30 @@ let main = new function () {
   this.html = '';
   this.css = '';
 
-  this.getObj = function (id) {
-    let obj = base[id[0]];
-    for (i = 1; i < id.length; i++) {
-      if (obj.lst && obj.lst[id.slice(0, i + 1)]) {
-        obj = obj.lst[id.slice(0, i + 1)];
-      } else {
-        return false;
+  // Цепочка узлов от раздела до позиции. Если позиции нет в текущем дереве,
+  // ищем её в скрытых ветках (ключ *_hidden) — чтобы открывались старые черновики.
+  this.getPath = function (id) {
+    let walk = function (obj, i) {
+      if (i === id.length) {
+        return [obj];
       }
-    }
+      let key = id.slice(0, i + 1);
+      for (let k of [key, key + '_hidden']) {
+        if (obj.lst && obj.lst[k]) {
+          let rest = walk(obj.lst[k], i + 1);
+          if (rest) {
+            return [obj].concat(rest);
+          }
+        }
+      }
+      return null;
+    };
+    return base[id[0]] ? walk(base[id[0]], 1) : null;
+  }
 
-    return obj;
-
-
+  this.getObj = function (id) {
+    let path = main.getPath(id);
+    return path ? path[path.length - 1] : false;
   }
 
   this.numToStr = function (num) {
@@ -5025,7 +5101,7 @@ let main = new function () {
         tid = id;
         for (var i = id.length + 1; i < 8; i++) {
           tid += 'a';
-          if (main.getObj(tid) && main.getObj(tid).pr) {
+          if (document.getElementById(tid) && main.getObj(tid) && main.getObj(tid).pr) {
             document.getElementById(tid).click();
           }
         }
@@ -5049,6 +5125,9 @@ let main = new function () {
 
   this.makeSome = function (obj, func) {
     for (let k in obj) {
+      if (obj[k].hidden) {
+        continue; // раздел скрыт в калькуляторе, но оставлен в коде
+      }
       func(obj[k], k);
       if (obj[k].lst) {
         this.makeSome(obj[k].lst, func);
