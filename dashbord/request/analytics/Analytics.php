@@ -262,7 +262,7 @@ class Analytics
     public function checksByDay($date)
     {
         $st = $this->db->prepare("
-            SELECT id, createtime, cost, discount, discount_percent, pay_type, prepayment
+            SELECT id, createtime, cost, discount, discount_percent, pay_type
             FROM check_id
             WHERE {$this->cherSql} AND createtime >= ? AND createtime < ?
             ORDER BY createtime DESC
@@ -275,7 +275,7 @@ class Analytics
     public function checkById($id)
     {
         $st = $this->db->prepare("
-            SELECT id, createtime, cost, discount, discount_percent, pay_type, prepayment, cher
+            SELECT id, createtime, cost, discount, discount_percent, pay_type, cher
             FROM check_id WHERE id = ?
         ");
         $st->execute([(int)$id]);
