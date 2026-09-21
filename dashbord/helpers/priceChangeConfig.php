@@ -18,14 +18,19 @@ $tiersScan = [0, 10, 50, 100, 500];
 $tiersLam = [0, 10, 50];
 $vizQty = [100, 200, 300, 500, 1000];
 
-$wideFormat = function ($kind, $suffixMat) {
+$wideFormat = function ($kind, $suffixMat, $withFilm = false) {
     $rows = [];
     foreach (['A2' => 'А2', 'A1' => 'А1', 'A0' => 'А0', 'ns' => 'Нестандартная'] as $code => $label) {
-        $rows[] = [$label, [
+        $cells = [
             "petchat_{$kind}_{$code}_{$suffixMat}",
             "petchat_{$kind}_{$code}_gl",
             $code === 'A0' ? null : "petchat_{$kind}_{$code}_kalka",
-        ]];
+        ];
+        if ($withFilm) {
+            $cells[] = "petchat_{$kind}_{$code}_samokl";
+            $cells[] = "petchat_{$kind}_{$code}_xolst";
+        }
+        $rows[] = [$label, $cells];
     }
     return $rows;
 };
@@ -75,8 +80,8 @@ return [
             [
                 'title' => 'Цветная широкоформатная',
                 'type' => 'matrix',
-                'cols' => ['Матовая 180 г', 'Глянец HP', 'Калька 90 г'],
-                'rows' => $wideFormat('chet', 'mat'),
+                'cols' => ['Матовая 180 г', 'Глянец HP', 'Калька 90 г', 'Самоклейка', 'Холст 320 г'],
+                'rows' => $wideFormat('chet', 'mat', true),
             ],
             [
                 'title' => 'Черно-белая A4 / A3',
@@ -109,6 +114,16 @@ return [
                 'type' => 'matrix',
                 'cols' => ['Матовая 180 г', 'Глянец HP', 'Калька 90 г'],
                 'rows' => $wideFormat('bw', 'mat_180'),
+            ],
+            [
+                'title' => 'Самоклейка A4 / A3',
+                'note' => 'Цена за лист, тираж не влияет',
+                'type' => 'matrix',
+                'cols' => ['A4', 'A3'],
+                'rows' => [
+                    ['Цветная печать', ['petchat_chet_A4_sk', 'petchat_chet_A3_sk']],
+                    ['Черно-белая печать', ['petchat_bw_A4_sk', 'petchat_bw_A3_sk']],
+                ],
             ],
             [
                 'title' => 'Доплата за плотную бумагу',

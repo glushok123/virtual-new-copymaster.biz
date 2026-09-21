@@ -197,7 +197,7 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
 		<link rel="stylesheet" href="stylo.css?m1" />
 		<link rel="stylesheet" href="postStyle.css?m1" />
-		<script src="main.js?v=2"></script>
+		<script src="main.js?v=3"></script>
 	</body>
 </html>
 

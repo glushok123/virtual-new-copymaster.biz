@@ -487,7 +487,7 @@ let base = new function() {
                                 this.fnm = titelBD['aaai'];
                                 //this.ski = "b9";
                                 //this.gr = grS;
-                                this.pr = '150'; //prS[0].slice(0);
+                                this.pr = prRBD["petchat_chet_A4_sk"] || '150'; //prS[0].slice(0);
                                 //for (k in this.pr) { this.pr[k] += bA4[7]; }
                             }
                         }
@@ -828,10 +828,10 @@ let base = new function() {
                             }
                             this.aabj = new function() {
                                 this.nm = "cамоклейка";
-                                this.fnm = titelBD['aaai'];
+                                this.fnm = titelBD['aabj'];
                                 //this.ski = "b9";
                                 //this.gr = grS;
-                                this.pr = '290'; //prS[0].slice(0);
+                                this.pr = prRBD["petchat_chet_A3_sk"] || '290'; //prS[0].slice(0);
                                 //for (k in this.pr) { this.pr[k] += bA4[7]; }
                             }
                         }
@@ -1573,7 +1573,7 @@ let base = new function() {
                                 this.fnm = titelBD['abai'];
                                 //this.ski = "b9";
                                 // this.gr = grS;
-                                this.pr = '150'; //prS[0].slice(0);
+                                this.pr = prRBD["petchat_bw_A4_sk"] || '150'; //prS[0].slice(0);
                                 //for (k in this.pr) { this.pr[k] += bA4[7]; }
                             }
                         }
@@ -1830,10 +1830,10 @@ let base = new function() {
                             }
                             this.abbg = new function() {
                                 this.nm = "cамоклейка";
-                                this.fnm = titelBD['aaai'];
+                                this.fnm = titelBD['abbg'];
                                 //this.ski = "b9";
                                 //this.gr = grS;
-                                this.pr = '290'; //prS[0].slice(0);
+                                this.pr = prRBD["petchat_bw_A3_sk"] || '290'; //prS[0].slice(0);
                                 //for (k in this.pr) { this.pr[k] += bA4[7]; }
                             }
                         }
